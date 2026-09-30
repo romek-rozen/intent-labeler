@@ -240,8 +240,10 @@ sequenceDiagram
 - JSON that fails the contract goes back to the model with the exact error and its previous answer, up
   to 3 attempts. A repeated identical prompt tends to repeat the same mistake.
 - Answers are cached by (prompt, input, model): re-running a snapshot is free and reproducible.
-- A cheap reasoning model is enough. `openai/gpt-6-luna` with `reasoning_effort=low` labels a
-  10-result SERP in about a minute for a fraction of a cent.
+- A cheap model is enough, and reasoning is not needed. Seven low-cost OpenRouter models were measured
+  on two real SERPs with reasoning switched off: all kept the contract (one failed once on another
+  query), at $0.0003-$0.0022 per query and 3-40 seconds. With reasoning on, one model returned empty
+  answers and another took minutes. Default: `openai/gpt-6-luna`, about $0.001 and 5-20 seconds.
 
 ## 13. Search demand and seasonality
 

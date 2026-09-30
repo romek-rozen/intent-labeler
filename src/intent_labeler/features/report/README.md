@@ -11,10 +11,12 @@ flowchart LR
     H --> C1[share_bars<br/>answer and traffic]
     H --> C2[rank_map<br/>result x intent]
     H --> C3[length_strips]
+    H --> C4[monthly_bars]
     H --> T[tables: intents, content form,<br/>page types, themes, results]
     C1 --> PAGE[self-contained HTML<br/>light + dark]
     C2 --> PAGE
     C3 --> PAGE
+    C4 --> PAGE
     T --> PAGE
     MD --> MDF[report.md]
 ```
@@ -29,7 +31,8 @@ flowchart LR
 ## Files
 
 - `charts.py` - inline SVG: `share_bars` (answer or traffic share), `rank_map` (result x intent dot
-  matrix), `length_strips` (words per page per intent with median tick). Hover = SVG `<title>`.
+  matrix), `length_strips` (words per page per intent with median tick), `monthly_bars` (search volume per month,
+last 36 months). Hover = SVG `<title>`.
 - `palette.py` - 8 categorical colours in fixed order, light and dark steps. Colour follows the
   intent's position in the labels, never its share. The `unassigned` intent is grey.
 - `html.py`, `markdown.py` - page layout and tables.

@@ -15,7 +15,7 @@ from intent_labeler.core.types import Result, Snapshot
 from intent_labeler.features import page_source, report, search_volume, serp_source, traffic
 from intent_labeler.pipeline import analyze
 
-app = FastAPI(title="Intent Labeler", version="0.3.0",
+app = FastAPI(title="Intent Labeler", version="0.4.0",
               description="Search intent and content form from a SERP or a page set.")
 MAX_URLS = 50
 MAX_FILES = 50

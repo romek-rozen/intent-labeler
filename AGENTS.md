@@ -60,9 +60,15 @@ Rules:
 contract and the coverage/share rules in JavaScript - when you change those in Python, change them
 there too. Never put an API key in the site.
 
-`community/` holds public playground results merged from pull requests. `tests/test_community.py`
-validates them (shape, known result IDs, no secrets). Review content before merging; never edit a
-contributor's numbers.
+Public playground results are sent to an n8n webhook (workflow `3QW1NFUnVRVMYPkU` on
+n8n.nimblio.work) that validates them and stores them in the data table `intent_labeler_contributions`;
+see `site/README.md`. The webhook accepts only the site's origin and has two bot traps (honeypot field,
+minimum time). If you change the record shape in `publicRecord()` in `site/app.js`, change the n8n
+validation too.
+
+`community/` still accepts results as pull requests; `tests/test_community.py` validates them (shape,
+known result IDs, no secrets). Neither route is shown on the site (`SHOW_COMMUNITY = False`) until
+there is moderation. Review content before merging; never edit a contributor's numbers.
 
 ## Changing behaviour
 

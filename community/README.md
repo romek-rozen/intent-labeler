@@ -1,7 +1,8 @@
 # community
 
-Results people ran in the website playground and chose to contribute. Each file arrives as a pull
-request opened from the playground's "Contribute on GitHub" button.
+Results contributed as pull requests. The playground itself now sends public results to an n8n
+collection instead (see `site/README.md`) and no longer shows a GitHub button, so files arrive here only
+when someone opens a pull request by hand.
 
 They are **collected, not published**: the website does not show them until there is moderation
 (a query can contain offensive or personal text, and checking that with a model on the fly is not

@@ -1,20 +1,32 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 - 2026-09-30
 
+Library
 - `search_volume` feature: keyword volume, CPC, difficulty and 8 years of monthly history from
-  DataForSEO Labs ($0.012), seasonality computed by code; in the CLI, API, reports and playground.
-- DataForSEO costs recorded in `snapshot.costs`; the playground shows the actual cost of each run.
-- Every example labeled by seven low-cost models on the same data (`scripts/run_model_comparison.py`);
-  a failing model is recorded as a result. `INTENT_LLM_EXTRA_BODY` switches reasoning off on OpenRouter.
-- Playground: page reading via DataForSEO content parsing, live step-by-step progress with timers.
-- Site restyled with the Zwinnie media kit; sponsor links at the top; examples in six markets.
+  DataForSEO Labs ($0.012), seasonality computed by code; in the CLI, API and reports.
+- DataForSEO costs recorded in `snapshot.costs` and printed by the CLI.
+- `INTENT_LLM_EXTRA_BODY` merges provider fields into the request; used to switch reasoning off on
+  OpenRouter, now the default in `.env.example`.
+- Report cards and tables wrap long words on narrow screens.
 
-- GitHub Pages site with an animated SERP, twelve live examples in five markets and a playground.
-- Playground: live Google top 10 via the visitor's DataForSEO account (16 markets, language per
-  market), optional traffic estimate, OpenRouter labeling; keys never leave the browser.
-- Public results as pull requests to `community/`, validated by `tests/test_community.py`, shown in
-  a community gallery. CI runs the tests on every pull request.
+Examples
+- Sixteen live queries in six markets, each labeled by seven low-cost models on the same data
+  (`scripts/run_model_comparison.py`); a failing model is recorded as a result.
+
+Website (GitHub Pages)
+- Playground on the visitor's own keys: live Google top 10 in 16 markets, page reading via DataForSEO
+  content parsing, search volume and seasonality, traffic per URL, seven benchmarked models.
+- Live step-by-step progress with realistic waiting times, request timeouts and retry notices.
+- Result as intent cards with searcher goals, evidence and their pages; charts for share of results,
+  share of traffic, result-to-intent map and page lengths; page types, heading themes, helps/avoid,
+  brands, AI Overview, raw JSON.
+- Cost of the run per step (DataForSEO `cost`, OpenRouter tokens in/out and `usage.cost`) and account
+  balances for both services.
+- Public results sent to an n8n collection (validated, honeypot, minimum time, not published); the
+  result box offers "Sponsor This Project" and a JSON download.
+- Zwinnie colours, DM Sans and Source Sans 3, sponsor links at the top, "Made in Poland with love"
+  footer, DataForSEO affiliate link.
 
 ## 0.3.0 - 2026-09-30
 

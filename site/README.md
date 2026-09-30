@@ -29,7 +29,8 @@ stores it in the n8n data table `intent_labeler_contributions` with `status = ne
 and again in n8n: a hidden honeypot field `website` that people never fill, and `elapsed_ms` since the
 page opened (under 5 seconds is dropped). No password: anything in a static page is public.
 
-The GitHub route is no longer offered on the page (the result box shows a sponsor button and a JSON download instead), but pull requests to `community/` still work the same way: with "Public" selected, the result page
+The result box shows a "Sponsor This Project" button and a JSON download. The GitHub route is no longer
+offered on the page, but pull requests to `community/` still work if someone opens one by hand; the page
 offers a link that opens GitHub's "new file" form for `community/<market>-<query>-<date>.json`,
 pre-filled with the record (no keys). GitHub forks and opens a pull request; `tests/test_community.py`
 checks the file in CI. "Public" is the default. Merged files are collected in `community/` but **not
@@ -44,9 +45,8 @@ flowchart LR
     V[visitor + own keys] --> GP
     GP -. browser fetch .-> DFS[DataForSEO]
     GP -. browser fetch .-> OR[OpenRouter]
-    GP -. public result .-> PR[pull request<br/>community/*.json]
-    PR --> CI[tests/test_community.py]
-    CI --> SRC
+    GP -. public result .-> N8N[n8n webhook<br/>validate, honeypot, min time]
+    N8N --> DT[(data table<br/>intent_labeler_contributions)]
 ```
 
 Build locally: `python scripts/build_site.py && python -m http.server -d _site 8000`.

@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 from intent_labeler.core.types import Result, Snapshot
 from intent_labeler.features.page_source.extract import extract_html
 
-USER_AGENT = "Mozilla/5.0 (compatible; intent-labeler/0.3; +https://github.com/romek-rozen/intent-labeler)"
+USER_AGENT = "Mozilla/5.0 (compatible; intent-labeler/0.4; +https://github.com/romek-rozen/intent-labeler)"
 MAX_BYTES = 3_000_000
 # Below this many words the HTML is almost always a JavaScript shell, a consent
 # wall or a bot block, not the real page. Measured on a live "standing desk"

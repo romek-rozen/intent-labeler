@@ -6,10 +6,11 @@ traffic), in what form each is answered, how long the winning pages are, and whe
 want an article at all.
 
 **Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** - bring your own
-OpenRouter key (and DataForSEO login for live Google results and page reading in 16 markets; a full
-run costs about half a US cent). The page has no server and
-stores no keys. Results you choose to contribute are proposed as pull requests to
-[`community/`](community/) - collected, not published on the site until there is moderation.
+OpenRouter key, and a DataForSEO login for live Google results, page reading, search volume and traffic
+in 16 markets. A full run costs about $0.03 in API fees (most of it DataForSEO Labs); the page shows the
+actual cost of every step, token counts and your remaining balances. The page has no server and stores
+no keys. Results marked "Public" (the default) are collected for the project through a small webhook -
+not published on the site until there is moderation.
 
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
@@ -78,8 +79,10 @@ cp .env.example .env             # then fill in the LLM endpoint and model
 ```
 
 Any OpenAI-compatible endpoint works: OpenAI, OpenRouter, LiteLLM, vLLM, Ollama (`http://localhost:11434/v1`).
-A cheap reasoning model is enough: `openai/gpt-6-luna` on OpenRouter with `INTENT_LLM_TEMPERATURE=none`
-and `INTENT_LLM_REASONING_EFFORT=low` (the defaults in `.env.example`).
+A cheap model is enough, with reasoning switched off: `openai/gpt-6-luna` on OpenRouter with
+`INTENT_LLM_TEMPERATURE=none` and `INTENT_LLM_EXTRA_BODY={"reasoning":{"enabled":false}}` (the defaults
+in `.env.example`). Seven low-cost models were benchmarked on the same data; see the model comparison
+on every example page and `scripts/run_model_comparison.py`.
 
 ## Use
 

@@ -26,8 +26,12 @@ or input return `422` with a message.
 
 ```json
 {"keyword": "standing desk", "language": "en", "location_code": 2840, "depth": 10,
- "brief": "", "fetch_pages": true, "traffic": true}
+ "brief": "", "fetch_pages": true, "traffic": true, "volume": true}
 ```
+
+`traffic` adds a DataForSEO Labs traffic estimate per URL (about $0.013), `volume` adds search volume
+and seasonality (about $0.012). The response carries the DataForSEO costs in `snapshot.costs` and the
+demand data in `demand`.
 
 ## `POST /analyze/urls`
 
