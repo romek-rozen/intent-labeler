@@ -293,3 +293,12 @@ ul.plain li { margin-bottom: 6px; }
 
 /* Honeypot: invisible to people and screen readers, still in the DOM for form-filling bots. */
 .hp { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* playground result, report layout */
+.pg-h { font-family: var(--display); font-size: 1.45rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 40px 0 10px; }
+.pg-panel { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-card); padding: 14px 16px; }
+.pg-panel p { max-width: 80ch; }
+.pg-panel > .bars { margin: 0; }
+.pg-output table th { white-space: nowrap; font-size: 0.9rem; }
+.pg-output table td { overflow-wrap: break-word; }
+.pg-output .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }

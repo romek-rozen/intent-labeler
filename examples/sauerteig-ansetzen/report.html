@@ -6,7 +6,7 @@
 :root[data-theme="dark"]{--surface:#1a1a19;--panel:#222220;--text:#fff;--text2:#c3c2b7;--muted:#77756e;--line:#34332f;--band:#20201e;--s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;}
 *{box-sizing:border-box}body{margin:0;background:var(--surface);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
 main{max-width:980px;margin:0 auto;padding:24px 16px 64px}
-h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:36px 0 8px}.sub{color:var(--text2);margin:0 0 20px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:40px 0 10px}.sub{color:var(--text2);margin:0 0 20px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:12px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .card{min-width:0}.card b{display:block;font-size:22px;overflow-wrap:anywhere}.card span{color:var(--text2);font-size:13px}
@@ -15,7 +15,7 @@ svg{width:100%;height:auto;display:block}.lbl{fill:var(--text2);font-size:13px}.
 .val{fill:var(--text);font-size:12px;font-weight:600}.grid{stroke:var(--line)}.band{fill:var(--band)}
 .empty{fill:var(--line)}.median{stroke:var(--text);stroke-width:2}
 table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--text2);font-weight:600}td,th{overflow-wrap:anywhere}.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+th{color:var(--text2);font-weight:600}th{white-space:nowrap}td{overflow-wrap:break-word}.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
 .note{color:var(--text2);font-size:13px}.warn{border-left:4px solid var(--s4)}a{color:inherit}ul{margin:6px 0;padding-left:20px}
 </style></head><body><main>
 <h1>Sauerteig ansetzen</h1>

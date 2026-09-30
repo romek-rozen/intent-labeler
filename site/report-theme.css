@@ -28,4 +28,7 @@ h1 { max-width: none; }
 
 .panel { max-width: 100%; overflow-x: auto; }
 main { min-width: 0; }
-td, th { overflow-wrap: anywhere; }
+th { white-space: nowrap; }
+td { overflow-wrap: break-word; }
+main h2 { margin-top: 48px; margin-bottom: 12px; }
+table { font-size: 0.95rem; }

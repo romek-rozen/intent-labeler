@@ -487,7 +487,7 @@ function trafficBars(rows, colorOf) {
   if (!rows.some((r) => r.traffic != null)) return "";
   return `<h4 class="pg-h">Share of traffic per intent</h4>
     <p class="hint">From estimated traffic per URL; pages the database does not know are left out, not counted as zero.</p>
-    <div class="bars">${rows.map((r, i) => `
+    <div class="pg-panel bars">${rows.map((r, i) => `
       <div class="bar" style="--c:${colorOf(r, i)}; --w:${((r.traffic || 0) * 100).toFixed(1)}%">
         <span class="name">${esc(r.title)}</span>
         <span class="track"><span class="fill"></span><span class="val">${pct(r.traffic)}</span></span>
@@ -497,7 +497,7 @@ function trafficBars(rows, colorOf) {
 function rankMap(rows, results, colorOf) {
   const sorted = [...results].sort((a, b) => a.rank - b.rank);
   return `<h4 class="pg-h">Which result serves which intent</h4>
-    <div class="table-wrap"><table class="rank-map">
+    <div class="pg-panel table-wrap"><table class="rank-map">
       <tr><th>#</th><th>Result</th>${rows.map((r, i) => `<th class="dot-col" title="${esc(r.title)}"><span class="sw" style="--c:${colorOf(r, i)}"></span>${esc(r.title)}</th>`).join("")}</tr>
       ${sorted.map((p) => `<tr><td>${p.rank}</td><td class="res">${esc(p.domain || p.url)}</td>${rows.map((r, i) =>
         `<td class="dot-col">${r.result_ids.includes(p.result_id) ? `<span class="dot" style="--c:${colorOf(r, i)}" title="${esc(p.domain)} - ${esc(r.title)}"></span>` : `<span class="dot empty"></span>`}</td>`).join("")}</tr>`).join("")}
@@ -511,7 +511,7 @@ function lengthStrips(rows, results, colorOf) {
   const max = Math.max(...all);
   return `<h4 class="pg-h">Length of pages per intent</h4>
     <p class="hint">Dots are pages, the dark tick is the median. Thin and unread pages are left out. Scale: 0 to ${max.toLocaleString("en")} words.</p>
-    <div class="strips">${rows.map((r, i) => {
+    <div class="pg-panel strips">${rows.map((r, i) => {
       const pages = r.result_ids.map((id) => byId[id]).filter((p) => p && p.fetch_status === "ok");
       const med = nearestRank(pages.map((p) => p.words).sort((a, b) => a - b), 50);
       return `<div class="strip"><span class="name">${esc(r.title)}</span><span class="line">
@@ -542,6 +542,7 @@ function costTable(run) {
 }
 
 function render(run) {
+  // Same layout as the example reports (examples/*.html): sections with tables, not cards.
   const { keyword, results, labels, rows } = run;
   const out = $("#pgOutput");
   const { top, length, basis, warnings } = decide(rows);
@@ -554,31 +555,41 @@ function render(run) {
   const d = run.demand;
   const pageTypes = covered(labels.page_types, results, "page_type");
   const themes = covered(labels.heading_themes, results, "theme");
+  const questions = covered((labels.reader_questions || []).map((q) => ({ ...q, question: q.question })), results, "question");
+  const qCount = Object.fromEntries(questions.map((q) => [q.question, q.count]));
   const colorOf = (r, i) => (r.fallback ? "var(--rule)" : color(i));
+  const section = (title, body, note = "") => `<h4 class="pg-h">${title}</h4>${note ? `<p class="hint">${note}</p>` : ""}<div class="pg-panel">${body}</div>`;
+  const coverTable = (items, name, header) => items.length
+    ? `<div class="table-wrap"><table><tr><th>${header}</th><th class="num">Results</th><th>Ranks</th></tr>${items.map((x) =>
+        `<tr><td>${esc(x[name])}</td><td class="num">${x.count} (${pct(x.count / results.length)})</td><td>${x.ranks.join(", ") || "-"}</td></tr>`).join("")}</table></div>`
+    : `<p class="hint">-</p>`;
 
   const facts = [
     [top?.title || "-", `dominant intent, ${pct(top?.coverage)} of results`],
     [top?.form || "-", "form that answers it"],
+    [pageTypes[0]?.page_type || "-", "most common page type"],
     [length ? `${length.p50.toLocaleString("en")} words` : "no number", length ? `reference length, middle half ${length.p25}-${length.p75}` : `reference length: ${basis}`],
     [d?.volume != null ? d.volume.toLocaleString("en") : "-", d?.season ? `searches a month, seasonality ${d.season.index?.toFixed(2)}` : "searches a month"],
-    [pageTypes[0]?.page_type || "-", "most common page type"],
-    [labels.expected_genre && length ? labels.expected_genre : "withheld", "genre the results expect"],
   ];
 
-  const intentCard = (r, i) => {
-    const pages = r.result_ids.map((id) => byId[id]).filter(Boolean).sort((a, b) => a.rank - b.rank);
-    return `<article class="group pg-group" style="--c:${colorOf(r, i)}">
-      <h4>${esc(r.title)}${r.intent_type ? ` <span class="tag">${esc(r.intent_type)}</span>` : ""}</h4>
-      <p class="goal">${esc(r.searcher_goal || "")}</p>
-      <p class="form">Form: <b>${esc(r.form || "-")}</b></p>
-      ${r.evidence ? `<p class="evidence">Why: ${esc(r.evidence)}</p>` : ""}
-      <div class="nums"><span><b>${pct(r.coverage)}</b> of results</span><span><b>${pct(r.share)}</b> share</span>${hasTraffic ? `<span><b>${pct(r.traffic)}</b> of traffic</span>` : ""}${r.words.length ? `<span><b>${nearestRank(r.words, 50).toLocaleString("en")}</b> median words</span>` : ""}</div>
-      <div class="rows">${pages.map((p) => `<a class="row" href="${esc(p.url)}" rel="noopener" target="_blank"><span class="rank">${p.rank}</span>
-        <span><span class="t">${esc(p.title || p.url)}</span><span class="d">${esc(p.domain)}${p.fetch_status ? `, ${p.fetch_status === "ok" ? `${p.words.toLocaleString("en")} words` : p.fetch_status}` : ""}${p.etv != null ? `, ~${Math.round(p.etv).toLocaleString("en")} visits/month` : ""}</span></span></a>`).join("")}</div>
-    </article>`;
-  };
+  const intentsTable = `<div class="table-wrap"><table>
+    <tr><th>Intent</th><th>Form</th><th class="num">Coverage</th><th class="num">Share</th>${hasTraffic ? `<th class="num">Traffic</th>` : ""}<th>Ranks</th><th class="num">Median words</th><th>Searcher goal</th></tr>
+    ${rows.map((r, i) => `<tr><td><span class="sw" style="--c:${colorOf(r, i)}"></span>${esc(r.title)}</td><td>${esc(r.form || "-")}</td>
+      <td class="num">${pct(r.coverage)}</td><td class="num">${pct(r.share)}</td>${hasTraffic ? `<td class="num">${pct(r.traffic)}</td>` : ""}
+      <td>${r.ranks.join(", ")}</td><td class="num">${r.words.length ? nearestRank(r.words, 50).toLocaleString("en") : "-"}</td>
+      <td>${esc(r.searcher_goal || "")}${r.evidence ? `<br><span class="hint">Why: ${esc(r.evidence)}</span>` : ""}</td></tr>`).join("")}
+  </table></div>`;
 
-  const pills = (items, label) => items.length ? items.map((x) => `<span class="tag">${esc(x[label])}${x.count != null ? ` <b>${x.count}</b>` : ""}</span>`).join("") : `<span class="hint">-</span>`;
+  const formTable = rows.some((r) => r.elements) ? `<div class="table-wrap"><table><tr><th>Intent</th>${Object.values(EL).map((l) => `<th class="num">${l}</th>`).join("")}<th class="num">pages</th></tr>
+      ${rows.filter((r) => r.elements).map((r) => `<tr><td>${esc(r.title)}</td>${Object.keys(EL).map((k) => `<td class="num">${pct(r.elements[k])}</td>`).join("")}<td class="num">${r.words.length}</td></tr>`).join("")}</table></div>` : "";
+
+  const intentOf = (id) => rows.filter((r) => r.result_ids.includes(id)).map((r) => r.title).join("; ");
+  const allResults = `<div class="table-wrap"><table><tr><th class="num">#</th><th>Page</th><th>Intents</th><th class="num">Words</th>${hasTraffic ? `<th class="num">Traffic</th>` : ""}<th>Fetch</th></tr>
+    ${[...results].sort((a, b) => a.rank - b.rank).map((p) => `<tr><td class="num">${p.rank}</td>
+      <td><a href="${esc(p.url)}" rel="noopener" target="_blank">${esc(p.title || p.url)}</a><br><span class="hint">${esc(p.domain)}</span></td>
+      <td>${esc(intentOf(p.result_id))}</td><td class="num">${p.fetch_status === "ok" ? p.words.toLocaleString("en") : "-"}</td>
+      ${hasTraffic ? `<td class="num">${p.etv != null ? Math.round(p.etv).toLocaleString("en") : "-"}</td>` : ""}<td>${esc(p.fetch_status || "not read")}</td></tr>`).join("")}
+  </table></div>`;
 
   out.hidden = false;
   out.innerHTML = `
@@ -587,50 +598,32 @@ function render(run) {
       <span class="tags"><span class="tag">Google ${esc(run.market)}</span><span class="tag">${results.length} results</span><span class="tag">${measured} pages read</span><span class="tag">${esc(currentModelLabel(run.model))}</span></span>
     </header>
     <p class="pg-summary">${esc(labels.summary || "")}</p>
-
     <div class="fact-grid">${facts.map(([v, k]) => `<div class="fact"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("")}</div>
     ${warnings.length ? `<ul class="warn-list">${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
 
-    <h4 class="pg-h">Share of results per intent</h4>
-    <div class="bars">${rows.map((r, i) => `
+    ${d ? section("Search demand", `<p><b>${(d.volume ?? 0).toLocaleString("en")}</b> searches a month. CPC ${d.cpc ?? "-"}, keyword difficulty ${d.difficulty ?? "-"}${d.season ? `. Peak in ${MONTH_NAMES[d.season.peak - 1]}, low in ${MONTH_NAMES[d.season.low - 1]}, seasonality index ${d.season.index?.toFixed(2)}${d.season.yoy != null ? `; last 12 months ${d.season.yoy >= 0 ? "+" : ""}${Math.round(d.season.yoy * 100)}% on the year before` : ""}` : ""}.</p>${monthlyChart(d.monthly)}`) : ""}
+
+    ${section("Share of results per intent", `<div class="bars">${rows.map((r, i) => `
       <div class="bar" style="--c:${colorOf(r, i)}; --w:${(r.share * 100).toFixed(1)}%">
         <span class="name">${esc(r.title)}</span>
         <span class="track"><span class="fill"></span><span class="val">${pct(r.share)}</span></span>
-      </div>`).join("")}</div>
-
+      </div>`).join("")}</div>`, "A result serving two intents counts half to each, so shares add up to 100%. Coverage (in the intents table) counts every page that addresses the intent.")}
     ${trafficBars(rows, colorOf)}
     ${rankMap(rows, results, colorOf)}
     ${lengthStrips(rows, results, colorOf)}
 
-    <h4 class="pg-h">Intents</h4>
-    <div class="pg-groups">${rows.map(intentCard).join("")}</div>
-
-    ${d ? `<h4 class="pg-h">Search demand</h4><div class="demand"><p><b>${(d.volume ?? 0).toLocaleString("en")}</b> searches a month. CPC ${d.cpc ?? "-"}, keyword difficulty ${d.difficulty ?? "-"}${d.season ? `. Peak in ${MONTH_NAMES[d.season.peak - 1]}, low in ${MONTH_NAMES[d.season.low - 1]}, seasonality index ${d.season.index?.toFixed(2)}${d.season.yoy != null ? `; last 12 months ${d.season.yoy >= 0 ? "+" : ""}${Math.round(d.season.yoy * 100)}% on the year before` : ""}` : ""}.</p>${monthlyChart(d.monthly)}</div>` : ""}
-
-    ${rows.some((r) => r.elements) ? `<h4 class="pg-h">Content form on the pages</h4>
-    <div class="table-wrap"><table><tr><th>Intent</th>${Object.values(EL).map((l) => `<th>${l}</th>`).join("")}</tr>
-      ${rows.filter((r) => r.elements).map((r) => `<tr><td>${esc(r.title)}</td>${Object.keys(EL).map((k) => `<td>${pct(r.elements[k])}</td>`).join("")}</tr>`).join("")}</table></div>` : ""}
-
-    <div class="two-col">
-      <section><h4 class="pg-h">What helps</h4><ul class="plain">${(labels.useful_elements || []).map((e) => `<li><b>${esc(e.element)}</b> - ${esc(e.job || "")}</li>`).join("") || "<li>-</li>"}</ul></section>
-      <section><h4 class="pg-h">What to avoid</h4><ul class="plain">${(labels.avoid || []).map((e) => `<li><b>${esc(e.element)}</b> - ${esc(e.reason || "")}</li>`).join("") || "<li>-</li>"}</ul></section>
-    </div>
-
-    <div class="two-col">
-      <section><h4 class="pg-h">Page types</h4><span class="tags">${pills(pageTypes, "page_type")}</span></section>
-      <section><h4 class="pg-h">Heading themes</h4><span class="tags">${pills(themes, "theme")}</span></section>
-    </div>
-
-    <h4 class="pg-h">Reader questions</h4>
-    <ul class="plain">${(labels.reader_questions || []).map((q) => `<li>${esc(q.question)} <span class="tag">${esc(q.source)}</span></li>`).join("") || "<li>-</li>"}</ul>
-
-    <div class="two-col">
-      <section><h4 class="pg-h">Brands in the results</h4><span class="tags">${(labels.competitor_brands || []).map((b) => `<span class="tag">${esc(b)}</span>`).join("") || `<span class="hint">-</span>`}</span></section>
-      <section><h4 class="pg-h">AI Overview</h4><p>${labels.ai_overview_signal?.present ? "Present." : "Not shown for this query."} ${esc(labels.ai_overview_signal?.interpretation || "")}</p></section>
-    </div>
+    ${section("Intents", intentsTable)}
+    ${formTable ? section("Content form on the pages", formTable, "Share of read pages per intent that contain each element.") : ""}
+    ${section("Page types", coverTable(pageTypes, "page_type", "Page type"))}
+    ${section("Heading themes", coverTable(themes, "theme", "Theme"), "Topics the pages cover - what a complete answer is expected to address. Not an outline.")}
+    ${section("Recommended elements", `<b>Use</b><ul class="plain">${(labels.useful_elements || []).map((e) => `<li><b>${esc(e.element)}</b> - ${esc(e.job || "")}</li>`).join("") || "<li>-</li>"}</ul>
+      <b>Avoid</b><ul class="plain">${(labels.avoid || []).map((e) => `<li><b>${esc(e.element)}</b> - ${esc(e.reason || "")}</li>`).join("") || "<li>-</li>"}</ul>`)}
+    ${section("Reader questions", `<ul class="plain">${(labels.reader_questions || []).map((q) => `<li>${esc(q.question)} <span class="hint">(${esc(q.source)}${qCount[q.question] ? `, ${qCount[q.question]} results` : ""})</span></li>`).join("") || "<li>-</li>"}</ul>`)}
+    ${section("Brands and AI Overview", `<p><b>Brands in the results:</b> ${esc((labels.competitor_brands || []).join(", ")) || "-"}</p>
+      <p><b>AI Overview:</b> ${labels.ai_overview_signal?.present ? "present." : "absent."} ${esc(labels.ai_overview_signal?.interpretation || "")}</p>`)}
+    ${section("All results", allResults)}
 
     ${costTable(run)}
-
     <details class="raw"><summary>Raw JSON from the model</summary><pre>${esc(JSON.stringify(labels, null, 2))}</pre></details>
     ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing left your browser except the calls to DataForSEO and OpenRouter.</p>`}`;
 }
