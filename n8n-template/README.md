@@ -3,9 +3,9 @@
 Two templates, same method and the same Code nodes:
 
 - [`intent-labeler-google-sheets.json`](intent-labeler-google-sheets.json) - batch: keywords in a Google Sheet, results written back with the official Google Sheets nodes. Described below.
-- [`intent-labeler-webhook.json`](intent-labeler-webhook.json) - one keyword per request: POST to a webhook, get JSON back. Two lanes on one canvas: lane A with the DataForSEO community nodes (self-hosted only), lane B with HTTP Request nodes (works on n8n Cloud). Keep one. See [Webhook template](#webhook-template).
+- [`intent-labeler-webhook.json`](intent-labeler-webhook.json) - one keyword per request: POST to a webhook, get JSON back. Two lanes on one canvas: lane A with the [verified DataForSEO nodes](https://n8n.io/integrations/dataforseo/) (n8n Cloud and self-hosted, one-time install), lane B with HTTP Request nodes (nothing to install). Keep one. See [Webhook template](#webhook-template).
 
-Requirements: an [n8n](https://skq.pl/n8n) instance (affiliate link; lane A of the webhook template needs self-hosted n8n), a [DataForSEO](https://skq.pl/data4seo) account (affiliate link) and an [OpenRouter](https://openrouter.ai/keys) key.
+Requirements: an [n8n](https://skq.pl/n8n) instance (affiliate link), a [DataForSEO](https://skq.pl/data4seo) account (affiliate link) and an [OpenRouter](https://openrouter.ai/keys) key.
 
 Creator Hub descriptions: [`creator-hub-description.md`](creator-hub-description.md) (Sheets) and [`creator-hub-description-webhook.md`](creator-hub-description-webhook.md).
 

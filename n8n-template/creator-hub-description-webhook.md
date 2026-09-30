@@ -1,12 +1,12 @@
 # Label search intent from Google top 10 with DataForSEO and OpenRouter via webhook
 
-> Community node disclaimer: lane A uses the DataForSEO community node and runs on self-hosted n8n only. Lane B runs everywhere. Add a workflow screenshot at the top of the listing.
+> Lane A uses the verified DataForSEO node (n8n-nodes-dataforseo), available on n8n Cloud and self-hosted after a one-time install. Add a workflow screenshot at the top of the listing in case the preview does not render the node.
 
 ### Send a keyword, get back what Google's top 10 actually wants: which search intents it serves, in what form, and how long the winning pages are.
 
 This template holds **two versions of the same workflow**, one under the other. Keep the one you need and delete the other.
-* **Lane A** uses the DataForSEO community nodes (self-hosted n8n only).
-* **Lane B** uses HTTP Request nodes and works everywhere, including n8n Cloud.
+* **Lane A** uses the verified DataForSEO nodes. They work on n8n Cloud and self-hosted; an instance owner installs them once from the nodes panel.
+* **Lane B** uses HTTP Request nodes and needs no extra install.
 
 **Good to know**
 * A full run costs about $0.03 in API fees (DataForSEO about $0.029, OpenRouter about $0.001). SERP and grouping only: about $0.003.

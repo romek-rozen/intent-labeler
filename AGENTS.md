@@ -73,7 +73,7 @@ there is moderation. Review content before merging; never edit a contributor's n
 ## n8n template
 
 `n8n-template/` holds two n8n workflow exports: a Google Sheets batch (official Sheets nodes) and a
-webhook with two lanes (DataForSEO community nodes vs HTTP Request). Their
+webhook with two lanes (verified DataForSEO nodes, also on n8n Cloud, vs HTTP Request). Their
 Code nodes re-implement the counting rules in JavaScript (like `site/app.js`); keep all three in step
 with `features/metrics` and `features/form_decision`. The live copies are workflows `fOsP70JjwnJjHhPO` (Sheets)
 and `TrPsqb5yieit1G00` (webhook) in the "Intent Labeler" folder on n8n.nimblio.work; run
