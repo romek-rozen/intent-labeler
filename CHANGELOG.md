@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Site: sitemap, canonical links, noindex on per-model report variants, meta descriptions and titles
+  per report, Open Graph image; Star on GitHub buttons with the live count; playground result uses the
+  report layout (tables for intents, page types, themes, all results) and the length chart has an axis.
+- Reports: table headers and numbers no longer break mid-word; more space above section headings.
+
 ## 0.4.0 - 2026-09-30
 
 Library

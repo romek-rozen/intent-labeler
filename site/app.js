@@ -523,7 +523,7 @@ function lengthStrips(rows, results, colorOf) {
   if (!all.length) return "";
   const max = Math.max(...all);
   return `<h4 class="pg-h">Length of pages per intent</h4>
-    <p class="hint">Dots are pages, the dark tick is the median. Thin and unread pages are left out. Scale: 0 to ${max.toLocaleString("en")} words.</p>
+    <p class="hint">Dots are pages, the dark tick is the median. Thin and unread pages are left out.</p>
     <div class="pg-panel strips">${rows.map((r, i) => {
       const pages = r.result_ids.map((id) => byId[id]).filter((p) => p && p.fetch_status === "ok");
       const med = nearestRank(pages.map((p) => p.words).sort((a, b) => a - b), 50);
@@ -531,7 +531,19 @@ function lengthStrips(rows, results, colorOf) {
         ${pages.map((p) => `<span class="pt" style="left:${(100 * p.words / max).toFixed(1)}%; --c:${colorOf(r, i)}" title="${esc(p.domain)}: ${p.words.toLocaleString("en")} words"></span>`).join("")}
         ${med ? `<span class="med" style="left:${(100 * med / max).toFixed(1)}%" title="median ${med.toLocaleString("en")} words"></span>` : ""}
       </span></div>`;
-    }).join("")}</div>`;
+    }).join("")}
+    <div class="strip strip-axis"><span class="name">words</span><span class="line axis">${niceTicks(max).map((t) =>
+      `<span class="tick" style="left:${(100 * t / max).toFixed(1)}%">${t.toLocaleString("en")}</span>`).join("")}</span></div></div>`;
+}
+
+// Round axis ticks (0, 1,000, 2,000...) that fit under the longest page.
+function niceTicks(max) {
+  const raw = max / 5;
+  const pow = 10 ** Math.floor(Math.log10(raw || 1));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * pow).find((st) => st >= raw) || pow * 10;
+  const out = [];
+  for (let t = 0; t <= max; t += step) out.push(Math.round(t));
+  return out;
 }
 
 function costTable(run) {

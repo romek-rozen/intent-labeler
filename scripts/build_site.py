@@ -13,6 +13,7 @@ from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+BASE_URL = "https://romek-rozen.github.io/intent-labeler/"
 OUT = ROOT / "_site"
 PROMPT = ROOT / "src/intent_labeler/features/intent_labeling/prompts/system.md"
 HERO_EXAMPLE = "standing-desk"
@@ -132,14 +133,31 @@ def themed_report(html: str, folders: list[Path], index: int, runs: list[dict] |
               '<a href="https://github.com/romek-rozen/intent-labeler">&#9733; Star on GitHub</a>'
               '<a class="nav-sponsor" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor</a></nav></header>')
     keyword = _keyword(folders[index])
+    analysis = json.loads((folders[index] / "analysis.json").read_text())
+    form, snap = analysis["form"], analysis["snapshot"]
+    market = MARKETS.get(str(snap.get("location")), snap["language"].upper())
+    volume = (analysis.get("demand") or {}).get("volume")
+    intents = sum(1 for i in analysis["labels"]["intents"] if i.get("basis") == "model")
+    description = (f"Search intent for \"{keyword}\" on Google {market}: {intents} intents, dominant "
+                   f"\"{form['dominant_intent_title']}\", answered by {form['dominant_intent_form']}."
+                   + (f" {volume:,} searches a month." if volume else "")
+                   + " Share of results and traffic, page length and content form.")
+    main_url = f"{BASE_URL}examples/{folders[index].name}.html"
+    seo = (f'<meta name="description" content="{escape(description)}">'
+           f'<link rel="canonical" href="{main_url}">'
+           + ('<meta name="robots" content="noindex, follow">' if current else ''))
     og = ('<meta property="og:type" content="article">'
           f'<meta property="og:title" content="{escape(keyword)} - search intent report">'
+          f'<meta property="og:description" content="{escape(description)}">'
+          f'<meta property="og:url" content="{main_url}">'
           '<meta property="og:site_name" content="Intent Labeler">'
           '<meta property="og:image" content="https://romek-rozen.github.io/intent-labeler/og-image.png">'
           '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
           '<meta name="twitter:card" content="summary_large_image">'
           '<meta name="twitter:image" content="https://romek-rozen.github.io/intent-labeler/og-image.png">')
-    head = f'{FONTS}{og}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
+    head = f'{FONTS}{seo}{og}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
+    html = html.replace(f"<title>{escape(keyword)} - Intent Report</title>",
+                        f"<title>{escape(keyword)}: search intent on Google {escape(market)} - Intent Labeler</title>", 1)
     html = html.replace("</head>", head + "</head>", 1)
     html = html.replace("<main>", header + pager + "<main>", 1)
     panel = model_panel(folders[index].name, runs or [], current)
@@ -162,16 +180,14 @@ def community_records() -> list[dict]:
     return sorted(records, key=lambda r: r.get("date", ""), reverse=True)
 
 
-def bust_cache() -> None:
-    """Version asset URLs by content hash: GitHub Pages serves them with max-age=600, so without
-    this a visitor keeps the previous app.js for ten minutes after a deploy."""
-    versions = {name: hashlib.sha256((OUT / name).read_bytes()).hexdigest()[:10]
-                for name in ("app.js", "style.css", "report-theme.css")}
-    for page in [OUT / "index.html", *(OUT / "examples").glob("*.html")]:
-        html = page.read_text()
-        for name, version in versions.items():
-            html = html.replace(f'"{name}"', f'"{name}?v={version}"').replace(f'"../{name}"', f'"../{name}?v={version}"')
-        page.write_text(html)
+def write_sitemap(folders: list[Path]) -> None:
+    """Home page and the main report of each example. Model variants are noindex, so they stay out."""
+    from datetime import date
+    today = date.today().isoformat()
+    urls = [BASE_URL] + [f"{BASE_URL}examples/{f.name}.html" for f in folders]
+    body = "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>" for u in urls)
+    (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>'
+                                     f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>')
 
 
 def main() -> None:
@@ -196,7 +212,7 @@ def main() -> None:
     (OUT / "data.json").write_text(json.dumps(data, ensure_ascii=False))
     shutil.copy(PROMPT, OUT / "prompt.md")
     shutil.copy(ROOT / "examples/standing-desk/snapshot.json", OUT / "sample-snapshot.json")
-    bust_cache()
+    write_sitemap(folders)
     print(f"built {OUT} with {len(folders)} examples")
 
 

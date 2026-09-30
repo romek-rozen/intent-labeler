@@ -51,3 +51,14 @@ flowchart LR
 
 Build locally: `python scripts/build_site.py && python -m http.server -d _site 8000`.
 The workflow rebuilds on every push to `site/`, `examples/` or the prompt.
+
+## Search engines and sharing
+
+`build_site.py` writes `sitemap.xml` (home page and the main report of each example), a canonical link
+on every page, `noindex, follow` on the per-model variants (canonical to the main report, so they do not
+compete with it), a generated meta description and title per report, and Open Graph / Twitter tags with
+`og-image.png` (1200x630). GitHub Pages serves no `robots.txt` for a project path, which means
+everything is crawlable. To speed up indexing, add `https://romek-rozen.github.io/intent-labeler/` as
+a URL-prefix property in Google Search Console and submit `sitemap.xml`.
+
+"Star on GitHub" buttons show the live star count from the public GitHub API (no key).
