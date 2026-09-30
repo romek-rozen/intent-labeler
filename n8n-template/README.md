@@ -2,10 +2,12 @@
 
 Two templates, same method and the same Code nodes:
 
-- [`intent-labeler-google-sheets.json`](intent-labeler-google-sheets.json) - batch: keywords in a Google Sheet, built only from native nodes: verified DataForSEO nodes, a Basic LLM Chain with the OpenRouter Chat Model, and Google Sheets nodes. The chain does not report the model cost, so `cost_openrouter_usd` stays empty (about $0.001 per keyword). Described below.
+- [`intent-labeler-google-sheets.json`](intent-labeler-google-sheets.json) - published in the n8n library as [Label search intent from Google SERPs with DataForSEO, OpenRouter and Sheets](https://n8n.io/workflows/20213-label-search-intent-from-google-serps-with-dataforseo-openrouter-and-sheets/). Batch: keywords in a Google Sheet, built only from native nodes: verified DataForSEO nodes, a Basic LLM Chain with the OpenRouter Chat Model, and Google Sheets nodes. The chain does not report the model cost, so `cost_openrouter_usd` stays empty (about $0.001 per keyword). Described below.
 - [`intent-labeler-webhook.json`](intent-labeler-webhook.json) - one keyword per request: POST to a webhook, get JSON back. Two lanes on one canvas: lane A (native: DataForSEO nodes + Basic LLM Chain, model cost unknown) with the [verified DataForSEO nodes](https://n8n.io/integrations/dataforseo/) (n8n Cloud and self-hosted, one-time install), lane B with HTTP Request nodes (nothing to install). Keep one. See [Webhook template](#webhook-template).
 
 Requirements: an [n8n](https://skq.pl/n8n) instance (affiliate link), a [DataForSEO](https://skq.pl/data4seo) account (affiliate link) and an [OpenRouter](https://openrouter.ai/keys) key.
+
+All templates by the author: [n8n creator page](https://n8n.io/creators/romek/).
 
 Creator Hub descriptions: [`creator-hub-description.md`](creator-hub-description.md) (Sheets) and [`creator-hub-description-webhook.md`](creator-hub-description-webhook.md).
 

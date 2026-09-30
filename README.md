@@ -12,7 +12,7 @@ actual cost of every step, token counts and your remaining balances. The page ha
 no keys. Results marked "Public" (the default) are collected for the project through a small webhook -
 not published on the site until there is moderation.
 
-**n8n templates:** the same method as a Google Sheets workflow and as a webhook API - see [`n8n-template/`](n8n-template/). No n8n yet? [n8n](https://skq.pl/n8n) (affiliate link).
+**n8n templates:** the same method as a Google Sheets workflow and as a webhook API - see [`n8n-template/`](n8n-template/). The Google Sheets version is published in the n8n template library: [Label search intent from Google SERPs with DataForSEO, OpenRouter and Sheets](https://n8n.io/workflows/20213-label-search-intent-from-google-serps-with-dataforseo-openrouter-and-sheets/) (more from the author: [n8n creator page](https://n8n.io/creators/romek/)). No n8n yet? [n8n](https://skq.pl/n8n) (affiliate link).
 
 **Accounts you need:** [DataForSEO](https://skq.pl/data4seo) (affiliate link) for Google results, pages, volume and traffic, and an [OpenRouter](https://openrouter.ai/keys) key for the model.
 
