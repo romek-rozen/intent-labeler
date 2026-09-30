@@ -52,8 +52,8 @@ flowchart TD
 
 1. Make a copy of the template sheet and paste its URL into **Config -> spreadsheet_url**.
 2. Credentials:
-   - **DataForSEO** - install the verified DataForSEO node once, then a DataForSEO API credential with your API login and API password (DataForSEO dashboard -> API access). Referral link: https://skq.pl/data4seo
-   - **OpenRouter** - OpenRouter credential with your key.
+   - **DataForSEO** - install the verified DataForSEO node once, then a DataForSEO API credential with your API login and API password (DataForSEO dashboard -> API access). No account yet? https://skq.pl/data4seo (affiliate link)
+   - **OpenRouter** - OpenRouter credential on the "OpenRouter Chat Model" node.
    - **Google Sheets OAuth2** - on the Google Sheets nodes: "Read Keywords tab", the three "Write" nodes and "Mark keyword as done" (matched by `row_number`).
 3. Add keywords to the **Keywords** tab: `keyword`, `country_code` (DataForSEO location code: 2840
    United States, 2826 United Kingdom, 2616 Poland, 2276 Germany, 2250 France, 2380 Italy) and
