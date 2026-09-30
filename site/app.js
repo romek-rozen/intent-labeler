@@ -33,16 +33,26 @@ serp.insertAdjacentHTML("afterend", `<p class="serp-note">Result 4 serves two in
 serp.classList.add("grouped", "settled");
 
 // ------------------------------------------------------------ examples ----
-$("#exampleList").innerHTML = data.examples.map((ex) => `
-  <a class="example" href="examples/${ex.slug}.html">
+// Every card carries the same pill row (facts), then warnings in their own style, so cards align.
+$("#exampleList").innerHTML = data.examples.map((ex) => {
+  const facts = [
+    `Google ${ex.market}`,
+    `${ex.results} results`,
+    ex.volume != null ? `${ex.volume.toLocaleString("en")} / month` : "volume n/a",
+    ex.season_index ? `seasonality ${ex.season_index}` : "seasonality n/a",
+    ex.length ? `${ex.length} words` : "no reference length",
+    `${ex.models} models`,
+  ];
+  const warns = ex.warnings.length ? ex.warnings.map((w) => `<span class="tag warn">${esc(w.replaceAll("_", " "))}</span>`).join("")
+    : `<span class="tag ok">no warnings</span>`;
+  return `<a class="example" href="examples/${ex.slug}.html">
     <span class="q">${esc(ex.keyword)}</span>
-    <span class="market">Google ${esc(ex.market)}, ${ex.results} results</span>
     <span class="stack" aria-hidden="true">${ex.intents.map((it, i) => `<span style="flex:${it.share};background:${color(i)}"></span>`).join("")}</span>
     <p class="dom"><b>${esc(ex.dominant)}</b><br>${esc(ex.form)}</p>
-    ${ex.volume != null ? `<p class="meta"><b>${ex.volume.toLocaleString("en")}</b> searches per month${ex.season_index ? `, seasonality index ${ex.season_index}` : ""}</p>` : ""}
-    <p class="meta">${ex.length ? `Reference length ${ex.length} words` : `No reference length (${esc(ex.length_basis.replaceAll("_", " "))})`}${ex.models ? `. Compared across ${ex.models} models` : ""}</p>
-    <span>${ex.warnings.map((w) => `<span class="tag">${esc(w.replaceAll("_", " "))}</span>`).join("")}</span>
-  </a>`).join("");
+    <span class="tags">${facts.map((f) => `<span class="tag">${esc(f)}</span>`).join("")}</span>
+    <span class="tags">${warns}</span>
+  </a>`;
+}).join("");
 
 // ---------------------------------------------------------- playground ----
 // Markets: DataForSEO location code + the languages Google serves there.

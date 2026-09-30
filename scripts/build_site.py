@@ -60,7 +60,7 @@ def hero_data(folder: Path) -> dict:
 
 
 FOOTER = ('<footer class="foot"><p class="made">Made with <span class="heart" aria-label="love">&#10084;</span> by '
-          '<a href="https://rozenberger.com">Roman Rozenberger</a> and '
+          '<a href="https://www.linkedin.com/in/romanrozenberger/">Roman Rozenberger</a> and '
           '<a href="https://zwinnie.com" aria-label="Zwinnie.com"><img src="https://zwinnie.com/user/themes/zwinnie/'
           'images/logo/zwinnie-wordmark-light.svg" alt="Zwinnie" width="143" height="26"></a></p>'
           '<p class="foot-sponsor">Useful? <a href="https://github.com/sponsors/romek-rozen">Sponsor on GitHub</a> '

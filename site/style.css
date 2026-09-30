@@ -230,3 +230,10 @@ fieldset, .playground > *, .field-row > label { min-width: 0; }
 .month-bars span { flex: 1; background: var(--i1); border-radius: 2px 2px 0 0; min-width: 2px; }
 .month-axis { display: flex; justify-content: space-between; font: 0.72rem var(--mono); color: var(--ink-2); margin-top: 4px; }
 select { width: 100%; max-width: 100%; text-overflow: ellipsis; }
+
+.example .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.example .tags + .tags { margin-top: 0; }
+.example .tag { margin: 0; }
+.tag.warn { border-color: #A16207; color: #A16207; }
+.tag.ok { border-color: #1E7D4F; color: #1E7D4F; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag.warn { border-color: #E0B052; color: #E0B052; } :root:not([data-theme="light"]) .tag.ok { border-color: #4FC98A; color: #4FC98A; } }
