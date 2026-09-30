@@ -6,6 +6,7 @@ from the package so the site and the library never drift apart.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 from html import escape
@@ -153,6 +154,18 @@ def community_records() -> list[dict]:
     return sorted(records, key=lambda r: r.get("date", ""), reverse=True)
 
 
+def bust_cache() -> None:
+    """Version asset URLs by content hash: GitHub Pages serves them with max-age=600, so without
+    this a visitor keeps the previous app.js for ten minutes after a deploy."""
+    versions = {name: hashlib.sha256((OUT / name).read_bytes()).hexdigest()[:10]
+                for name in ("app.js", "style.css", "report-theme.css")}
+    for page in [OUT / "index.html", *(OUT / "examples").glob("*.html")]:
+        html = page.read_text()
+        for name, version in versions.items():
+            html = html.replace(f'"{name}"', f'"{name}?v={version}"').replace(f'"../{name}"', f'"../{name}?v={version}"')
+        page.write_text(html)
+
+
 def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -175,6 +188,7 @@ def main() -> None:
     (OUT / "data.json").write_text(json.dumps(data, ensure_ascii=False))
     shutil.copy(PROMPT, OUT / "prompt.md")
     shutil.copy(ROOT / "examples/standing-desk/snapshot.json", OUT / "sample-snapshot.json")
+    bust_cache()
     print(f"built {OUT} with {len(folders)} examples")
 
 
