@@ -473,6 +473,45 @@ function covered(rows, results, name) {
   }).sort((a, b) => b.count - a.count);
 }
 
+// The three report charts, in HTML/CSS so they share the page's fonts and colours.
+function trafficBars(rows, colorOf) {
+  if (!rows.some((r) => r.traffic != null)) return "";
+  return `<h4 class="pg-h">Share of traffic per intent</h4>
+    <p class="hint">From estimated traffic per URL; pages the database does not know are left out, not counted as zero.</p>
+    <div class="bars">${rows.map((r, i) => `
+      <div class="bar" style="--c:${colorOf(r, i)}; --w:${((r.traffic || 0) * 100).toFixed(1)}%">
+        <span class="name">${esc(r.title)}</span>
+        <span class="track"><span class="fill"></span><span class="val">${pct(r.traffic)}</span></span>
+      </div>`).join("")}</div>`;
+}
+
+function rankMap(rows, results, colorOf) {
+  const sorted = [...results].sort((a, b) => a.rank - b.rank);
+  return `<h4 class="pg-h">Which result serves which intent</h4>
+    <div class="table-wrap"><table class="rank-map">
+      <tr><th>#</th><th>Result</th>${rows.map((r, i) => `<th class="dot-col" title="${esc(r.title)}"><span class="sw" style="--c:${colorOf(r, i)}"></span>${esc(r.title)}</th>`).join("")}</tr>
+      ${sorted.map((p) => `<tr><td>${p.rank}</td><td class="res">${esc(p.domain || p.url)}</td>${rows.map((r, i) =>
+        `<td class="dot-col">${r.result_ids.includes(p.result_id) ? `<span class="dot" style="--c:${colorOf(r, i)}" title="${esc(p.domain)} - ${esc(r.title)}"></span>` : `<span class="dot empty"></span>`}</td>`).join("")}</tr>`).join("")}
+    </table></div>`;
+}
+
+function lengthStrips(rows, results, colorOf) {
+  const byId = Object.fromEntries(results.map((r) => [r.result_id, r]));
+  const all = results.filter((r) => r.fetch_status === "ok").map((r) => r.words);
+  if (!all.length) return "";
+  const max = Math.max(...all);
+  return `<h4 class="pg-h">Length of pages per intent</h4>
+    <p class="hint">Dots are pages, the dark tick is the median. Thin and unread pages are left out. Scale: 0 to ${max.toLocaleString("en")} words.</p>
+    <div class="strips">${rows.map((r, i) => {
+      const pages = r.result_ids.map((id) => byId[id]).filter((p) => p && p.fetch_status === "ok");
+      const med = nearestRank(pages.map((p) => p.words).sort((a, b) => a - b), 50);
+      return `<div class="strip"><span class="name">${esc(r.title)}</span><span class="line">
+        ${pages.map((p) => `<span class="pt" style="left:${(100 * p.words / max).toFixed(1)}%; --c:${colorOf(r, i)}" title="${esc(p.domain)}: ${p.words.toLocaleString("en")} words"></span>`).join("")}
+        ${med ? `<span class="med" style="left:${(100 * med / max).toFixed(1)}%" title="median ${med.toLocaleString("en")} words"></span>` : ""}
+      </span></div>`;
+    }).join("")}</div>`;
+}
+
 function costTable(run) {
   const c = run.cost;
   const dfs = c.serp + c.pages + c.traffic + c.volume;
@@ -543,12 +582,16 @@ function render(run) {
     <div class="fact-grid">${facts.map(([v, k]) => `<div class="fact"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join("")}</div>
     ${warnings.length ? `<ul class="warn-list">${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
 
-    <h4 class="pg-h">How the results divide</h4>
+    <h4 class="pg-h">Share of results per intent</h4>
     <div class="bars">${rows.map((r, i) => `
       <div class="bar" style="--c:${colorOf(r, i)}; --w:${(r.share * 100).toFixed(1)}%">
         <span class="name">${esc(r.title)}</span>
         <span class="track"><span class="fill"></span><span class="val">${pct(r.share)}</span></span>
       </div>`).join("")}</div>
+
+    ${trafficBars(rows, colorOf)}
+    ${rankMap(rows, results, colorOf)}
+    ${lengthStrips(rows, results, colorOf)}
 
     <h4 class="pg-h">Intents</h4>
     <div class="pg-groups">${rows.map(intentCard).join("")}</div>
