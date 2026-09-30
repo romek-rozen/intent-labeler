@@ -31,12 +31,16 @@ Every number in the report can be re-derived from `analysis.json` by hand.
 
 ## 3. Intents
 
-Each intent has a `title`, a `searcher_goal` (what the person wants to get done), an `intent_type`
-from the classic five (`informational`, `commercial`, `transactional`, `navigational`, `local`), an
-`importance` (`dominant`, `supporting`, `minor`), the `result_ids` it covers and a line of `evidence`.
+Intents are **emergent, not imposed**. There is no taxonomy and no fixed number: the model reads the
+results and names each goal it finds in its own words, as specific as the results justify - e.g.
+"choose between electric and manual desks under $500", "check whether standing all day is healthy",
+"find the right desk height for my body". A fixed list (informational / commercial / ...) would merge
+exactly the distinctions a writer needs.
 
-The type is a coarse filter; the `searcher_goal` is the useful part. "Commercial" says little; "choose
-between electric and manual desks under $500" tells a writer what to build.
+Each intent has a `title`, a `searcher_goal`, an `importance` (`dominant`, `supporting`, `minor`), the
+`result_ids` it covers and a line of `evidence`. The optional `intent_type` is a coarse tag from the
+classic five, added after grouping, for filtering in a panel only. An unknown tag is dropped to null,
+never rejected, so it cannot force the grouping.
 
 ### Overlap is allowed, silence is not
 
@@ -114,9 +118,9 @@ site section ("which of our 20 pages serve which intent, and where do they overl
 - JSON that fails the contract is sent back to the model with the exact error and its previous answer,
   up to 3 attempts. A repeated identical prompt at temperature 0 tends to repeat the same mistake.
 - Answers are cached by (prompt, input, model), so re-running a snapshot is free and reproducible.
-- Mid-size hosted models (e.g. Gemini Flash class) label a 20-result SERP in 20-40 seconds. Small local
-  models work but tend to split one goal into near-duplicate intents; the prompt asks for 2-5 well
-  separated intents to counter that.
+- Mid-size hosted models (e.g. Gemini Flash class) label a 20-result SERP in 20-40 seconds. The prompt
+  asks the model neither to merge different goals nor to split one goal into near-duplicates; it does
+  not cap the number of intents.
 
 ## 11. What this method does not do
 

@@ -21,7 +21,7 @@ writes a percentage.
 
 | Output | Meaning |
 |---|---|
-| Intents | 2-5 searcher goals, each typed (`informational`, `commercial`, `transactional`, `navigational`, `local`) and ranked (`dominant`, `supporting`, `minor`) |
+| Intents | searcher goals that emerge from the results - no fixed taxonomy, no fixed count - each ranked (`dominant`, `supporting`, `minor`), with an optional coarse tag (`informational`, `commercial`, ...) for filtering |
 | Share per intent | fraction of results serving it; a result may serve several intents |
 | Ranks per intent | where those results sit in the SERP, and how many are in the top 3 |
 | Page types | product page, category listing, guide, review, forum... with shares |
@@ -107,7 +107,7 @@ Code layout: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 - Page fetching uses plain HTTP. JavaScript-rendered pages come back `thin`; bot-protected sites come back `error`.
   Both stay in the intent analysis (title and snippet are enough to label them) but not in length statistics.
-- The labeling is as good as the model. Small local models tend to create near-duplicate intents; see METHOD.md.
+- The labeling is as good as the model; see METHOD.md on model choice.
 - Traffic share is computed only when you supply `etv` per result; nothing is estimated.
 
 ## Development

@@ -28,11 +28,14 @@ def test_unplaced_results_go_to_explicit_unassigned_intent(labels_raw):
     assert fallback["intent_id"] == UNASSIGNED_INTENT_ID and fallback["basis"] == "code_fallback"
 
 
-def test_bad_intent_type_and_dominant_are_rejected(labels_raw):
-    bad = copy.deepcopy(labels_raw)
-    bad["intents"][0]["intent_type"] = "shopping"
-    with pytest.raises(ValueError, match="intent_type"):
-        validate(bad, IDS)
+def test_intent_type_is_an_optional_tag_not_a_constraint(labels_raw):
+    labels_raw["intents"][0]["intent_type"] = "shopping"
+    labels_raw["intents"][1].pop("intent_type")
+    data = validate(labels_raw, IDS)
+    assert data["intents"][0]["intent_type"] is None and data["intents"][1]["intent_type"] is None
+
+
+def test_unknown_dominant_is_rejected(labels_raw):
     labels_raw["dominant_intent_id"] = "i9"
     with pytest.raises(ValueError, match="dominant_intent_id"):
         validate(labels_raw, IDS)

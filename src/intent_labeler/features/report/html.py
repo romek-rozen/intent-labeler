@@ -42,7 +42,7 @@ def render_html(analysis: dict) -> str:
     band = form["length_band_words"]
     cards = [
         (escape(form["dominant_intent_title"] or "n/a"), "dominant intent"),
-        (escape(form["dominant_intent_type"] or "n/a"), "intent type"),
+        (escape(form["dominant_intent_type"] or "-"), "intent tag"),
         (escape(form["dominant_page_type"] or "n/a"), "dominant page type"),
         (length, f"target length ({band[0]:,}-{band[1]:,})" if band else f"length: {form['length_basis']}"),
         (f'{metrics["intent_overlap_ratio"]:.2f}', "intents per result (1.0 = clean SERP)"),
@@ -52,7 +52,7 @@ def render_html(analysis: dict) -> str:
         row = metrics["intents"][intent["intent_id"]]
         legend_rows.append(
             f"<tr><td>{_swatch(index, intent)}{escape(intent['title'])}</td>"
-            f"<td>{escape(intent['intent_type'])}</td><td>{escape(intent['importance'])}</td>"
+            f"<td>{escape(intent['intent_type'] or '-')}</td><td>{escape(intent['importance'])}</td>"
             f"<td>{row['count']} ({row['share'] * 100:.0f}%)</td>"
             f"<td>{', '.join(map(str, row['ranks'])) or '-'}</td>"
             f"<td>{row['word_count'].get('p50') or '-'}</td>"
@@ -91,7 +91,7 @@ def render_html(analysis: dict) -> str:
 <h2>Length of pages per intent</h2>
 <p class="note">Dots are pages, the dark tick is the median. Target length uses only the dominant intent.</p>
 <div class="panel">{charts.length_strips(intents, results)}</div>
-<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Type</th><th>Importance</th><th>Results</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(legend_rows)}</table></div>
+<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Tag</th><th>Importance</th><th>Results</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(legend_rows)}</table></div>
 <h2>Recommended form</h2><div class="panel"><b>Use</b><ul>{elements}</ul><b>Avoid</b><ul>{avoid}</ul></div>
 <h2>Reader questions</h2><div class="panel"><ul>{questions}</ul></div>
 <h2>All results</h2><div class="panel"><table><tr><th>#</th><th>Page</th><th>Intents</th><th>Words</th><th>Fetch</th></tr>{''.join(result_rows)}</table></div>

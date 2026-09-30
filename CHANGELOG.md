@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Intents are emergent again (as in the original pipeline): no fixed taxonomy, no "2-5" limit.
+  `intent_type` is an optional coarse tag; unknown values become null instead of failing validation.
+
 ## 0.1.0 - 2026-09-30
 
 First standalone release, extracted from an internal editorial pipeline.

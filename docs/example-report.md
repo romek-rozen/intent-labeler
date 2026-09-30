@@ -6,7 +6,7 @@ Mixed SERP: shoppers comparing models dominate, with health and setup questions 
 - Dominant page type: review / listicle
 - Target length: 3100 words (IQR 2100-3800), basis: median_of_dominant_intent_pages, n=4
 
-| Intent | Type | Results | Share | Ranks | Median words |
+| Intent | Tag | Results | Share | Ranks | Median words |
 |---|---|---|---|---|---|
 | Compare and choose a desk | commercial | 4 | 40% | 2, 6, 7, 8 | 3100 |
 | Buy a desk now | transactional | 4 | 40% | 1, 3, 5, 10 | 1200 |

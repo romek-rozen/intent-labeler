@@ -55,10 +55,10 @@ def validate(data: object, result_ids: list[str]) -> dict:
             raise ValueError(f"duplicate or reserved intent_id {intent_id!r}")
         seen.add(intent_id)
         intent["intent_id"] = intent_id
+        # Optional coarse tag, never a constraint: intents are emergent and
+        # named by the searcher goal. An unknown tag is dropped, not rejected.
         intent_type = _text(intent.get("intent_type")).lower()
-        if intent_type not in INTENT_TYPES:
-            raise ValueError(f"intent {intent_id}: intent_type must be one of {INTENT_TYPES}")
-        intent["intent_type"] = intent_type
+        intent["intent_type"] = intent_type if intent_type in INTENT_TYPES else None
         importance = _text(intent.get("importance")).lower() or "supporting"
         intent["importance"] = importance if importance in IMPORTANCE else "supporting"
         intent["result_ids"] = _ids(intent, known, f"intent {intent_id}")
@@ -96,7 +96,7 @@ def validate(data: object, result_ids: list[str]) -> dict:
         data["intents"].append({
             "intent_id": UNASSIGNED_INTENT_ID, "title": "Unassigned results",
             "searcher_goal": "the model did not place these results in any intent",
-            "intent_type": "informational", "importance": "minor",
+            "intent_type": None, "importance": "minor",
             "result_ids": missing, "evidence": "", "basis": "code_fallback",
         })
     data["summary"] = _text(data.get("summary"))
