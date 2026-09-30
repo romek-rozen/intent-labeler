@@ -141,12 +141,19 @@ $("#pgLoad").addEventListener("click", async () => {
 });
 
 function parseResults(text) {
+  // "title | url | snippet". Titles often contain "|" themselves ("Best desks | Wirecutter"),
+  // so the URL field is found by shape, not by position.
   return text.split("\n").map((l) => l.trim()).filter(Boolean).map((line, i) => {
-    const [title = "", url = "", ...rest] = line.split("|").map((p) => p.trim());
+    const parts = line.split("|").map((p) => p.trim());
+    let at = parts.findIndex((p) => /^https?:\/\//i.test(p));
+    if (at < 0) at = Math.min(1, parts.length - 1);
+    const title = parts.slice(0, at).join(" | ") || parts[0] || "";
+    const url = /^https?:\/\//i.test(parts[at] || "") ? parts[at] : "";
+    const snippet = parts.slice(at + 1).join(" | ");
     let domain = "";
     try { domain = new URL(url).hostname.replace(/^www\./, ""); } catch { /* not a URL */ }
     return { result_id: `r${String(i + 1).padStart(2, "0")}`, rank: i + 1, url, domain, title,
-             description: rest.join(" | ").slice(0, 220), highlighted: [], digest: "" };
+             description: snippet.slice(0, 220), highlighted: [], digest: "" };
   });
 }
 
