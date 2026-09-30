@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-30T10:36:56+00:00",
+  "generated_at": "2026-09-30T11:02:52+00:00",
   "llm_cache_hit": false,
   "snapshot": {
     "source": "serp",
@@ -206,7 +206,9 @@
       "related_searches",
       "shopping"
     ],
-    "checked_at": "2026-09-30 10:00:00 +00:00"
+    "checked_at": "2026-09-30 10:00:00 +00:00",
+    "search_volume": {},
+    "costs": {}
   },
   "labels": {
     "summary": "Mixed SERP: shoppers comparing models dominate, with health and setup questions as supporting intents.",
@@ -695,5 +697,6 @@
         "message": "By answers the dominant intent is \"Buy a desk now\", by traffic \"Compare and choose a desk\": many weak pages versus one strong page. Decide deliberately."
       }
     ]
-  }
+  },
+  "demand": {}
 }

@@ -1,0 +1,2248 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T10:48:01+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://mannhold-haustechnik.de/ratgeber/waermepumpe-stromverbrauch",
+        "rank": 1,
+        "domain": "mannhold-haustechnik.de",
+        "title": "Wärmepumpe Stromverbrauch 2026: kWh, Kosten & ...",
+        "description": "02.05.2026 — Beispiel Berlin 2026: Haushaltsstrom 0,31 €/kWh, Wärmepumpenstrom 0,27 €/kWh. Bei 5.000 kWh Jahresverbrauch: 200 € Ersparnis/Jahr – Unterzähler ...",
+        "headings": [
+          "H2: Wie viel Strom verbraucht eine Wärmepumpe – die kurze Antwort",
+          "H2: Berechnung: Formel für den Stromverbrauch",
+          "H2: Was die JAZ – und damit den Stromverbrauch – beeinflusst",
+          "H2: Wärmepumpenstrom-Tarif: So sparen Sie",
+          "H2: Stromverbrauch nach Gebäudegröße – Übersicht",
+          "H2: 5 Tipps zur Senkung des Stromverbrauchs",
+          "H2: Fazit",
+          "H2: Weiterführende Ratgeber",
+          "H2: Praxis-Check: Was wir vor einer Empfehlung prüfen",
+          "H3: Nächster Schritt: Lassen Sie sich persönlich beraten"
+        ],
+        "highlighted": [],
+        "word_count": 930,
+        "char_count": 6904,
+        "digest": "headings: Wie viel Strom verbraucht eine Wärmepumpe – die kurze Antwort; Berechnung: Formel für den Stromverbrauch; Was die JAZ – und damit den Stromverbrauch – beeinflusst; Wärmepumpenstrom-Tarif: So sparen Sie; Stromverbrauch nach Gebäudegröße – Übersicht; 5 Tipps zur Senkung des Stromverbrauchs; Fazit; Weiterführende Ratgeber | text: Für ein typisches Einfamilienhaus mit 150 m² Wohnfläche und e",
+        "excerpt": "## Wie viel Strom verbraucht eine Wärmepumpe – die kurze Antwort Für ein typisches Einfamilienhaus mit 150 m² Wohnfläche und einem Jahreswärmebedarf von 15.000 kWh: | JAZ | Stromverbrauch/Jahr | Kosten bei 0,30 €/kWh | |---|---|---| | 2,5 | 6.000 kWh | 1.800 € | | 3,0 | 5.000 kWh | 1.500 € | | 3,5 | 4.300 kWh | 1.290 € | | 4,0 | 3.750 kWh | 1.125 € | | 4,5 | 3.330 kWh | 1.000 € | **Zum Vergleich:** Eine Gasheizung (90 % Wirkungsgrad) würde bei 15.000 kWh Wärmebedarf ca. 16.700 kWh Gas benötigen. Bei 0,10 €/kWh Gaspreis = 1.670 €/Jahr – ähnlich wie die Wärmepumpe mit JAZ 3,0. Bei steigenden CO₂-Abgaben (2035: 65 €/t) wird Gas teurer, Strom durch erneuerbare Energien günstiger. --- ## Berechnung: Formel für den Stromverbrauch **Stromverbrauch (kWh) = Jahreswärmebedarf (kWh) ÷ JAZ** Den **Jahreswärmebedarf** erhalten Sie aus der Heizlastberechnung oder als Faustregel: | Gebäudetyp | Spezifischer Wärmebedarf | Jahreswärmebedarf bei 150 m² | |---|---|---| | Neubau (KfW 40) | 30–50 kWh/m²a | 4.500–7.500 kWh | | Sanierter Altbau | 60–100 kWh/m²a | 9.000–15.000 kWh | | Unsanierter Altbau | 120–200 kWh/m²a | 18.000–30.000 kWh | **Beispielrechnung Berliner Altbau (teilsaniert), 150 m²:** **4.688 kWh/Jahr** **1.313 €/Jahr** --- ## Was die JAZ – und damit den Stromverbrauch – beeinflusst **1. Vorlauftemperatur des Heizsystems** Die Vorlauftemperatur ist der größte Einzelfaktor. Jede 5 °C höhere Vorlauftemperatur senkt die JAZ um ca. 10–15 %: | Vorlauf | JAZ-Effekt | Empfehlung | |---|---",
+        "elements": {
+          "tables": 4,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 2,
+          "videos": 0,
+          "faq": 1,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 25.503000043332577,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://www.augsburger-allgemeine.de/bauen-wohnen/waermepumpen-kosten-umruestung-erklaert-wahl-der-heizkoerper-102063312",
+        "rank": 2,
+        "domain": "www.augsburger-allgemeine.de",
+        "title": "Wärmepumpen: Kosten, Umrüstung erklärt & Wahl der ...",
+        "description": "24.06.2022 — Die genauen Kosten hängen also zum einen davon ab, welche Wärmepumpe eingebaut wird und zum anderen davon, welchen Stromtarif man hat. Besonders ...",
+        "headings": [
+          "H3: Was kosten Wärmepumpen?",
+          "H3: Welche laufenden Kosten verursachen Wärmepumpen?",
+          "H3: Wie kann man auf Wärmepumpen umrüsten?",
+          "H3: Welche Heizkörper eigenen sich für Wärmepumpen?"
+        ],
+        "highlighted": [
+          "Kosten",
+          "Wärmepumpe"
+        ],
+        "word_count": 549,
+        "char_count": 3809,
+        "digest": "headings: Was kosten Wärmepumpen?; Welche laufenden Kosten verursachen Wärmepumpen?; Wie kann man auf Wärmepumpen umrüsten?; Welche Heizkörper eigenen sich für Wärmepumpen? | text: Viele Hausbesitzer überlegen derzeit, sich eine Wärmpumpe nachrüsten zu lassen. Die Kosten für das Heizen werden im Herbst wohl nochmal deutlich anziehen - ein Grund mehr, um über energiesparende Maßnahmen für den eigen",
+        "excerpt": "Viele Hausbesitzer überlegen derzeit, sich eine Wärmpumpe nachrüsten zu lassen. Die Kosten für das Heizen werden im Herbst wohl nochmal deutlich anziehen - ein Grund mehr, um über energiesparende Maßnahmen für den eigenen Heizkeller nachzudenken. Wärmepumpen arbeiten ganz ohne Brennstoffe und sind deshalb eine umweltschonende Art des Heizens. Sie gewinnen ihre Energie aus der Erde, aus der Wärme der Umgebungsluft oder aus dem Grundwasser. Das hängt davon ab, wie und wo sie installiert sind und wie die Gegebenheiten in und um das Haus sind. Bei allen Vorteilen gibt es aber Faktoren, die das Umrüsten kompliziert oder teurer machen. Wie erklären, mit welchen Kosten Sie bei einer Umrüstung rechnen müssen und wie sie funktioniert. ### Was kosten Wärmepumpen? Die Kosten einer Umrüstung auf eine Wärmepumpe hängen von verschiedenen Faktoren ab. Entscheidend dabei ist vor allem der Aufwand für die Installation am Gebäude. Wärmepumpen an sich kosten - je nach Modell - zwischen 7000 und 15.000 Euro. Die Installation kostet in vielen Fällen nochmal genauso viel oder sogar mehr: zwischen 2000 und 18.000 Euro. Hinzu kommen noch die Kosten für den Einbau durch die Installateure. Mit mindestens 10.000 Euro an Kosten sollte also gerechnet werden. Dabei sind die Förderungen durch den Staat allerdings schon mit eingepreist. Der Staat unterstützt Hausbesitzer bei der Umrüstung auf nachhaltigere Heizungen. Die Förderung kann bis zu 35 Prozent betragen. Energieberater von der Verbraucherzentrale u",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 4,
+          "images": 3,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 4.9001399874687195,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://mein-klempner.hamburg/waermepumpe-kosten-hamburg",
+        "rank": 3,
+        "domain": "mein-klempner.hamburg",
+        "title": "Wärmepumpe Kosten Hamburg 2026 – Preise, Einbau & ...",
+        "description": "Eine Luft-Wasser-Wärmepumpe kostet inklusive Installation 27.000 bis 40.000 €. Nach Abzug der Förderung (55-70 %) zahlen Sie zwischen 9.000 und 18.000 € ...",
+        "headings": [],
+        "highlighted": [
+          "27.000 bis 40.000 €"
+        ],
+        "word_count": 21,
+        "char_count": 175,
+        "digest": "text: Professioneller Klempner in Hamburg - Badsanierung, Heizungsbau, Rohrreinigung, Gasinstallation und 24/7 Notdienst aus einer Hand. Meisterbetrieb mit über 20 Jahren Erfahrung.",
+        "excerpt": "Professioneller Klempner in Hamburg - Badsanierung, Heizungsbau, Rohrreinigung, Gasinstallation und 24/7 Notdienst aus einer Hand. Meisterbetrieb mit über 20 Jahren Erfahrung.",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 0.5879999995231628,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://creditsun.de/immobilien/kosten-einer-waermepumpe/",
+        "rank": 4,
+        "domain": "creditsun.de",
+        "title": "Wie viel müssen Sie für eine Wärmepumpe investieren?",
+        "description": "01.12.2023 — So beginnen die Kosten einer Luft-Wasser-Wärmepumpe bei rund 10.000 Euro, während Erdwärme- und Wasser-Wasser-Systeme mit etwa 15.000 bis 25.000 ...",
+        "headings": [
+          "H1: Kosten einer Wärmepumpe – Wie viel müssen Sie investieren?",
+          "H2: Welche Arten von Wärmepumpen gibt es und welche Kosten erwarten Sie?",
+          "H2: Umrüstung auf Wärmepumpe bei Altbauten: Eine sinnvolle Entscheidung?",
+          "H2: Jährliche Kosten einer Wärmepumpe im Vergleich zu anderen Heizsystemen",
+          "H3: Hohe Investitionskosten können sich auszahlen"
+        ],
+        "highlighted": [
+          "Kosten",
+          "Wärmepumpe"
+        ],
+        "word_count": 861,
+        "char_count": 6658,
+        "digest": "headings: Kosten einer Wärmepumpe – Wie viel müssen Sie investieren?; Welche Arten von Wärmepumpen gibt es und welche Kosten erwarten Sie?; Umrüstung auf Wärmepumpe bei Altbauten: Eine sinnvolle Entscheidung?; Jährliche Kosten einer Wärmepumpe im Vergleich zu anderen Heizsystemen; Hohe Investitionskosten können sich auszahlen | text: Mit der Verabschiedung des neuen Heizungsgesetzes tritt eine sig",
+        "excerpt": "# Kosten einer Wärmepumpe – Wie viel müssen Sie investieren? Mit der Verabschiedung des neuen Heizungsgesetzes tritt eine signifikante Wende in der deutschen Heizungslandschaft ein. Ab 2024 wird die Installation von reinen Öl- oder Gasheizungen verboten sein, was insbesondere im Neubau den Einsatz von Wärmepumpen favorisiert. Doch wie sieht es mit Altbauten aus? Ist die Modernisierung in Altbauten mit Wärmepumpen sinnvoll? Erfahren Sie auch, welche Kosten auf Sie zukommen. ## Welche Arten von Wärmepumpen gibt es und welche Kosten erwarten Sie? In Anbetracht des neuen Heizungsgesetzes, das ab 2024 die Installation von reinen Öl- oder Gasheizungen untersagt, rücken Wärmepumpen in den Fokus als nachhaltige und effiziente Heizlösung. Sie stehen vor der Entscheidung, welche Wärmepumpenart sich für Ihr Zuhause eignet und mit welchen Kosten einer Wärmepumpe Sie rechnen müssen. Es gibt im Wesentlichen drei Arten von Wärmepumpen: - Luft-Wasser-Systeme - Erdwärme- und Wasser-Wasser-Systeme - Luft-Wasser-Wärmepumpen, die Wärme aus der Umgebungsluft ziehen, sind oft die kostengünstigste Option. Erdwärme- und Wasser-Wasser-Wärmepumpen, die Wärme aus dem Boden oder Grundwasser gewinnen, sind in der Anschaffung teurer, bieten aber in der Regel eine höhere Effizienz. Die Investitionskosten für eine Wärmepumpe variieren je nach Art und Umfang des erforderlichen Systems. So beginnen die Kosten einer **Luft-Wasser-Wärmepumpe bei rund 10.000 Euro**, während **Erdwärme- und Wasser-Wasser-Systeme ",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 8,
+          "images": 8,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 297.7170100212097,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://energie-spezialisten.de/waermepumpe/alles-zur-waermepumpe/",
+        "rank": 5,
+        "domain": "energie-spezialisten.de",
+        "title": "Wärmepumpe: Funktion, Einsatz, Kosten und Vorteile",
+        "description": "Eine Wärmepumpe ist ein Heiz- und Kühlsystem, das die Prinzipien der Thermodynamik nutzt, um Wärme an einem Ort zu gewinnen und an einen anderen zu übertragen.",
+        "headings": [
+          "H1: Fachartikel",
+          "H2: Immer auf dem neuesten Stand bleiben",
+          "H2: Unser Praxisleitfaden zur energetischen Sanierung"
+        ],
+        "highlighted": [
+          "Wärmepumpe"
+        ],
+        "word_count": 123,
+        "char_count": 1021,
+        "digest": "headings: Fachartikel; Immer auf dem neuesten Stand bleiben; Unser Praxisleitfaden zur energetischen Sanierung | text: Praxiswissen aus dem Ingenieurbüro: aktuelle Beiträge zu Förderung, Heiztechnik, Sanierung und Energierecht – neueste zuerst, nach Themen filterbar. Alle paar Wochen ein kurzer Überblick: neue Förderbedingungen von BAFA und KfW, anstehende Fristen und Hinweise auf neue Fachartikel",
+        "excerpt": "Wissen # Fachartikel Praxiswissen aus dem Ingenieurbüro: aktuelle Beiträge zu Förderung, Heiztechnik, Sanierung und Energierecht – neueste zuerst, nach Themen filterbar. Newsletter ## Immer auf dem neuesten Stand bleiben Alle paar Wochen ein kurzer Überblick: neue Förderbedingungen von BAFA und KfW, anstehende Fristen und Hinweise auf neue Fachartikel. Fachbuch ## Unser Praxisleitfaden zur energetischen Sanierung Sie möchten tiefer in die Materie der energetischen Sanierung von Bestandsgebäuden eintauchen? Einen umfassenden Einblick in die Potenziale der Bestandssanierung, die Nutzung von Fördermöglichkeiten und die richtige Herangehensweise an Ihr Sanierungsprojekt lesen Sie im Fachbuch unseres Geschäftsführers Dr. Günther Westner. - Wie ein iSFP entsteht – Vor-Ort-Analyse, Maßnahmenreihenfolge und Kostenschätzung - Gesetzliche Anforderungen, Förderprogramme von BAFA und KfW - Für WEG und Hausverwaltungen: Entscheidungsgrundlage für die Eigentümerversammlung Haufe · in Kooperation mit Haus + Grund München",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 4,
+          "images": 22,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 1.0499999523162842,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://www.klyma.de/blog-posts/waermepumpe-austauschen-kosten-und-vorteile-im-ueberblick",
+        "rank": 6,
+        "domain": "www.klyma.de",
+        "title": "Wärmepumpe austauschen: Kosten und Vorteile im ...",
+        "description": "18.03.2025 — Die Montage und der Anschluss der neuen Wärmepumpe kosten je nach Aufwand zwischen 3.000 und 7.000 Euro. Zu den Installationsarbeiten gehören:.",
+        "headings": [
+          "H1: Wärmepumpe austauschen: Kosten und Vorteile im Überblick",
+          "H2: Warum der Austausch einer alten Heizung sinnvoll sein kann",
+          "H2: Welche Kosten beim Wärmepumpentausch entstehen",
+          "H3: Anschaffungskosten für die Wärmepumpe",
+          "H3: Demontage der alten Heizung",
+          "H3: Installation der Wärmepumpe",
+          "H3: Erschließung der Wärmequelle",
+          "H3: Anpassung des Wärmeverteilsystems",
+          "H3: Beispielrechnung: Kosten für den Austausch einer Ölheizung durch eine Luft-Wasser-Wärmepumpe",
+          "H2: Fördermöglichkeiten für den Wärmepumpentausch optimal nutzen",
+          "H3: Grundförderung: 30% der Kosten",
+          "H3: Effizienzbonus: 5% Zuschlag",
+          "H3: Klimageschwindigkeits-Bonus: 20% extra",
+          "H3: Einkommens-Bonus: 30% für Geringverdiener",
+          "H3: Beispielrechnung: Maximale Förderung ausschöpfen",
+          "H2: Laufende Kosten einer Wärmepumpe im Vergleich",
+          "H3: Stromkosten als Hauptfaktor",
+          "H3: Wartungskosten gering halten",
+          "H3: Vergleich der jährlichen Heizkosten",
+          "H2: Planung und Dimensionierung: Entscheidend für die Wirtschaftlichkeit",
+          "H3: Ermittlung des Wärmebedarfs",
+          "H3: Auswahl der geeigneten Wärmepumpenart",
+          "H3: Richtige Dimensionierung",
+          "H3: Optimierung des Wärmeverteilsystems",
+          "H3: Integration erneuerbarer Energien",
+          "H3: Fachgerechte Installation",
+          "H2: Fazit: Wärmepumpentausch - eine lohnende Investition",
+          "H3: Wir beraten dich unverbindlich und kostenlos für deine eigene Wärmepumpe",
+          "H2: Heizungssysteme vergleichen: Kosten, Technik & Nachhaltigkeit im Überblick",
+          "H2: Heizungsmodernisierung: Professionelle Lösungen für nachhaltige Energieeffizienz",
+          "H2: Wärmepumpe installieren: Schritt-für-Schritt zum effizienten Heizsystem"
+        ],
+        "highlighted": [
+          "zwischen 3.000 und 7.000 Euro"
+        ],
+        "word_count": 1961,
+        "char_count": 15058,
+        "digest": "headings: Wärmepumpe austauschen: Kosten und Vorteile im Überblick; Warum der Austausch einer alten Heizung sinnvoll sein kann; Welche Kosten beim Wärmepumpentausch entstehen; Anschaffungskosten für die Wärmepumpe; Demontage der alten Heizung; Installation der Wärmepumpe; Erschließung der Wärmequelle; Anpassung des Wärmeverteilsystems | text: In Zeiten steigender Energiepreise und wachsenden Umwel",
+        "excerpt": "Wärmepumpe 18.3.2025 Thank you! Your submission has been received! In Zeiten steigender Energiepreise und wachsenden Umweltbewusstseins rückt der Austausch alter Heizungssysteme durch moderne Wärmepumpen immer stärker in den Fokus. Doch welche Kosten kommen auf Hausbesitzer zu und lohnt sich die Investition wirklich? In diesem Beitrag beleuchten wir die wichtigsten Aspekte rund um den Wärmepumpentausch und geben einen detaillierten Überblick über Kosten, Fördermöglichkeiten und langfristige Vorteile. Der Wechsel von einer konventionellen Öl- oder Gasheizung zu einer modernen Wärmepumpe bringt zahlreiche Vorteile mit sich. Zunächst einmal profitieren Hausbesitzer von deutlich geringeren Betriebskosten. Wärmepumpen nutzen kostenlose Umweltwärme und arbeiten äußerst effizient. Im Vergleich zu fossilen Heizsystemen lassen sich die laufenden Heizkosten um 30-50% reduzieren. Gerade angesichts steigender Öl- und Gaspreise macht sich diese Einsparung schnell bemerkbar. Ein weiterer wichtiger Aspekt ist der Umweltschutz. Wärmepumpen stoßen im Betrieb kein CO2 aus und leisten so einen wertvollen Beitrag zum Klimaschutz. In Kombination mit Ökostrom oder einer eigenen Photovoltaikanlage ist sogar ein komplett emissionsfreier Betrieb möglich. Hausbesitzer können also aktiv etwas für die Umwelt tun und gleichzeitig von niedrigeren Heizkosten profitieren. Nicht zu unterschätzen ist auch die Wertsteigerung der Immobilie durch den Einbau einer Wärmepumpe. Bei einem eventuellen Verkauf ist ein",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 9,
+          "images": 9,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 0.335999995470047,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://www.meinhausshop.de/magazin/kosten-einer-waermepumpe-niedrig-halten/",
+        "rank": 7,
+        "domain": "www.meinhausshop.de",
+        "title": "Kosten einer Wärmepumpe niedrig halten",
+        "description": "18.05.2021 — Das MeinHausShop Magazin gibt Tipps, wie sich die Kosten der Wärmepumpe niedrig halten lassen. Betriebs- & Anschaffungskosten ✓ senken!",
+        "headings": [
+          "H2: « Hier liegen die Einsparpotenziale »",
+          "H2: Was ist eine Wärmepumpe?",
+          "H2: Funktionsprinzip der unterschiedlichen Pumpentypen",
+          "H2: Nachhaltig heizen mit Kostenvorteil",
+          "H2: Wie hält man die Kosten der Wärmepumpe niedrig?",
+          "H3: Installationskosten sparen",
+          "H3: Heizflächen optimal abstimmen",
+          "H2: Das Nutzerverhalten anpassen",
+          "H2: Fazit – wie Sie mit einer Luftwärmepumpe bei der Heizung bares Geld sparen"
+        ],
+        "highlighted": [
+          "Kosten",
+          "Wärmepumpe"
+        ],
+        "word_count": 931,
+        "char_count": 6979,
+        "digest": "headings: « Hier liegen die Einsparpotenziale »; Was ist eine Wärmepumpe?; Funktionsprinzip der unterschiedlichen Pumpentypen; Nachhaltig heizen mit Kostenvorteil; Wie hält man die Kosten der Wärmepumpe niedrig?; Installationskosten sparen; Heizflächen optimal abstimmen; Das Nutzerverhalten anpassen | text: Mittlerweile sind effiziente Wärmepumpen weit verbreitet, doch die genaue Funktionsweise un",
+        "excerpt": "Inhaltsverzeichnis ## « Hier liegen die Einsparpotenziale » **Im Eigenheim macht das Heizen den Löwenanteil der Energiekosten aus. Kein Wunder, denn neben Heizwärme erzeugt die** **Heizung** **auch warmes Wasser für die Küche und das Badezimmer. Angesichts steigender Energiekosten wünschen sich immer mehr Hausbesitzer, die Heizkosten dauerhaft zu reduzieren und setzen deswegen auf** **effiziente Wärmepumpen****. Dieses System spart nicht nur Geld, es ist auch eine nachhaltige Form der Wärmegewinnung. Doch wer auf diese modernen Pumpen setzt, der ist nicht selten überrascht, dass Anschaffung und Betrieb dieser Systeme teurer sind als angenommen. Doch es gibt erhebliche Einsparpotenziale. Angefangen von der Anschaffung über die Montage bis hin zum Dauerbetrieb – wir zeigen Ihnen, wie Sie die Kosten niedrig halten.** ## Was ist eine Wärmepumpe? Mittlerweile sind effiziente Wärmepumpen weit verbreitet, doch die genaue Funktionsweise und Aufgabe der Pumpen ist vielen Eigenheimbesitzern nicht bekannt. Um die Kosten und potenzielle Einsparpotenziale zu erkennen, ist es aber nützlich, sich mit dem Funktionsprinzip und der Technik der Pumpen etwas besser vertraut zu machen. Worum handelt es sich bei diesen Geräten also genau? Wärmepumpen sind eine moderne Form der Heizung. Sie ermöglichen besonders nachhaltiges Heizen. Dabei nutzen diese Systeme die natürliche Wärme der Umwelt, um daraus Heizwärme zu generieren. Da diese Energieform unbegrenzt und zugleich kostenfrei vorhanden ist, ko",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 1,
+          "images": 13,
+          "videos": 0,
+          "faq": 0,
+          "forms": 3,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r08",
+        "url": "https://www.heizkosten-einsparen.de/waermepumpe-kosten-fuer-120qm-haus-ermitteln/",
+        "rank": 8,
+        "domain": "www.heizkosten-einsparen.de",
+        "title": "Wärmepumpe-Kosten für 120qm Haus Ermitteln",
+        "description": "23.05.2024 — Die Anschaffungskosten für eine Luft-Wasser-Wärmepumpe liegen zwischen 27.000 und 40.000 Euro, nach Abzug der Förderung kostet sie etwa 9.000 ...",
+        "headings": [
+          "H3: Schlüsselerkenntnisse:",
+          "H2: Kosten für Wärmepumpen vor und nach Förderung",
+          "H2: Kosten für verschiedene Arten von Wärmepumpen",
+          "H3: Vorteile der Luft-Wasser-Wärmepumpe",
+          "H3: Vorteile von Wasser- und Erdwärmepumpen",
+          "H2: Kostenunterschiede bei der Installation unterschiedlicher Wärmepumpenarten",
+          "H2: Luft-Luft-Wärmepumpen als günstigere Alternative",
+          "H2: Kostensenkung durch staatliche Förderung",
+          "H3: Grundförderung",
+          "H3: Geschwindigkeitsbonus",
+          "H3: Einkommensbonus",
+          "H2: Betriebskosten einer Wärmepumpe",
+          "H2: Vergleich der Kosten zwischen Wärmepumpe und Gasheizung",
+          "H3: Vorteile einer Wärmepumpe gegenüber einer Gasheizung",
+          "H2: Kosten für Erd- und Wasserwärmepumpen",
+          "H3: Vor- und Nachteile von Erd- und Wasserwärmepumpen",
+          "H2: Senkung der Wärmepumpen-Kosten durch staatliche Förderung",
+          "H2: Fazit"
+        ],
+        "highlighted": [
+          "zwischen 27.000 und 40.000 Euro"
+        ],
+        "word_count": 2521,
+        "char_count": 19145,
+        "digest": "headings: Schlüsselerkenntnisse:; Kosten für Wärmepumpen vor und nach Förderung; Kosten für verschiedene Arten von Wärmepumpen; Vorteile der Luft-Wasser-Wärmepumpe; Vorteile von Wasser- und Erdwärmepumpen; Kostenunterschiede bei der Installation unterschiedlicher Wärmepumpenarten; Luft-Luft-Wärmepumpen als günstigere Alternative; Kostensenkung durch staatliche Förderung | text: Haben Sie sich jema",
+        "excerpt": "Haben Sie sich jemals gefragt, wie viel eine Wärmepumpe für ein 120 Quadratmeter großes Haus kostet? Sind Sie neugierig, ob sich eine Wärmepumpe für Sie lohnt? Oder nehmen Sie vielleicht an, dass die Kosten für eine Wärmepumpe außerhalb Ihres Budgets liegen? Die Kosten einer Wärmepumpe können von verschiedenen Faktoren abhängen, wie der Art der Wärmepumpe und der benötigten Leistung. Luft-Wasser-Wärmepumpen sind beispielsweise ab 27.000 Euro erhältlich, während Wasser- und Erdwärmepumpen in der Regel teurer sind. Doch wussten Sie, dass es auch staatliche Förderungen für den Einbau einer Wärmepumpe gibt, die bis zu 70 Prozent der förderfähigen Kosten von 30.000 Euro decken können? Wenn Sie nach einer kostengünstigen Option suchen, könnte die thermondo Wärmepumpe für Sie interessant sein. Sie ist bereits ab 9.000 Euro erhältlich und bietet eine effiziente und nachhaltige Lösung für Ihr Zuhause. Lesen Sie weiter, um mehr über die Kosten für verschiedene Arten von Wärmepumpen zu erfahren und herauszufinden, wie Sie die Kosten senken können. ### Schlüsselerkenntnisse: - Die Kosten einer Wärmepumpe hängen von der Art der Wärmepumpe und der benötigten Leistung ab. - Luft-Wasser-Wärmepumpen kosten ab 27.000 Euro, während Wasser- und Erdwärmepumpen teurer sind. - Es gibt staatliche Förderungen, die bis zu 70 Prozent der förderfähigen Kosten von 30.000 Euro decken können. - Die thermondo Wärmepumpe ist ab 9.000 Euro erhältlich. - Lesen Sie weiter, um herauszufinden, wie Sie die Kosten ",
+        "elements": {
+          "tables": 4,
+          "ordered_lists": 0,
+          "unordered_lists": 6,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 46.76700044609606,
+        "fetch_status": "ok"
+      }
+    ],
+    "keyword": "Wärmepumpe Kosten",
+    "language": "de",
+    "location": "2276",
+    "people_also_ask": [
+      "Was kostet eine Wärmepumpe für 120 Quadratmeter Haus?",
+      "Für wen lohnt sich eine Wärmepumpe nicht?",
+      "Was kostet eine Wärmepumpe an Strom im Monat?",
+      "Warum wird das Heizen mit Wärmepumpe sehr teuer?"
+    ],
+    "related_searches": [],
+    "ai_overview": "",
+    "item_types": [
+      "paid",
+      "organic",
+      "people_also_ask",
+      "people_also_search",
+      "popular_products",
+      "images"
+    ],
+    "checked_at": "2026-09-30 10:24:32 +00:00",
+    "search_volume": {
+      "volume": 40500,
+      "cpc": 5.11,
+      "competition": 0.9,
+      "keyword_difficulty": 35,
+      "monthly": [
+        {
+          "year": 2018,
+          "month": 11,
+          "volume": 1900
+        },
+        {
+          "year": 2018,
+          "month": 12,
+          "volume": 1900
+        },
+        {
+          "year": 2019,
+          "month": 1,
+          "volume": 2900
+        },
+        {
+          "year": 2019,
+          "month": 2,
+          "volume": 2400
+        },
+        {
+          "year": 2019,
+          "month": 3,
+          "volume": 2400
+        },
+        {
+          "year": 2019,
+          "month": 4,
+          "volume": 1900
+        },
+        {
+          "year": 2019,
+          "month": 5,
+          "volume": 1900
+        },
+        {
+          "year": 2019,
+          "month": 6,
+          "volume": 1900
+        },
+        {
+          "year": 2019,
+          "month": 7,
+          "volume": 2900
+        },
+        {
+          "year": 2019,
+          "month": 8,
+          "volume": 2900
+        },
+        {
+          "year": 2019,
+          "month": 9,
+          "volume": 6600
+        },
+        {
+          "year": 2019,
+          "month": 10,
+          "volume": 8100
+        },
+        {
+          "year": 2019,
+          "month": 11,
+          "volume": 6600
+        },
+        {
+          "year": 2019,
+          "month": 12,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 1,
+          "volume": 9900
+        },
+        {
+          "year": 2020,
+          "month": 2,
+          "volume": 8100
+        },
+        {
+          "year": 2020,
+          "month": 3,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 4,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 5,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 6,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 7,
+          "volume": 5400
+        },
+        {
+          "year": 2020,
+          "month": 8,
+          "volume": 6600
+        },
+        {
+          "year": 2020,
+          "month": 9,
+          "volume": 6600
+        },
+        {
+          "year": 2020,
+          "month": 10,
+          "volume": 6600
+        },
+        {
+          "year": 2020,
+          "month": 11,
+          "volume": 8100
+        },
+        {
+          "year": 2020,
+          "month": 12,
+          "volume": 6600
+        },
+        {
+          "year": 2021,
+          "month": 1,
+          "volume": 9900
+        },
+        {
+          "year": 2021,
+          "month": 2,
+          "volume": 9900
+        },
+        {
+          "year": 2021,
+          "month": 3,
+          "volume": 9900
+        },
+        {
+          "year": 2021,
+          "month": 4,
+          "volume": 9900
+        },
+        {
+          "year": 2021,
+          "month": 5,
+          "volume": 12100
+        },
+        {
+          "year": 2021,
+          "month": 6,
+          "volume": 8100
+        },
+        {
+          "year": 2021,
+          "month": 7,
+          "volume": 8100
+        },
+        {
+          "year": 2021,
+          "month": 8,
+          "volume": 8100
+        },
+        {
+          "year": 2021,
+          "month": 9,
+          "volume": 9900
+        },
+        {
+          "year": 2021,
+          "month": 10,
+          "volume": 22200
+        },
+        {
+          "year": 2021,
+          "month": 11,
+          "volume": 14800
+        },
+        {
+          "year": 2021,
+          "month": 12,
+          "volume": 14800
+        },
+        {
+          "year": 2022,
+          "month": 1,
+          "volume": 22200
+        },
+        {
+          "year": 2022,
+          "month": 2,
+          "volume": 33100
+        },
+        {
+          "year": 2022,
+          "month": 3,
+          "volume": 135000
+        },
+        {
+          "year": 2022,
+          "month": 4,
+          "volume": 74000
+        },
+        {
+          "year": 2022,
+          "month": 5,
+          "volume": 40500
+        },
+        {
+          "year": 2022,
+          "month": 6,
+          "volume": 74000
+        },
+        {
+          "year": 2022,
+          "month": 7,
+          "volume": 135000
+        },
+        {
+          "year": 2022,
+          "month": 8,
+          "volume": 90500
+        },
+        {
+          "year": 2022,
+          "month": 9,
+          "volume": 60500
+        },
+        {
+          "year": 2022,
+          "month": 10,
+          "volume": 40500
+        },
+        {
+          "year": 2022,
+          "month": 11,
+          "volume": 40500
+        },
+        {
+          "year": 2022,
+          "month": 12,
+          "volume": 33100
+        },
+        {
+          "year": 2023,
+          "month": 1,
+          "volume": 27100
+        },
+        {
+          "year": 2023,
+          "month": 2,
+          "volume": 33100
+        },
+        {
+          "year": 2023,
+          "month": 3,
+          "volume": 135000
+        },
+        {
+          "year": 2023,
+          "month": 4,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 5,
+          "volume": 74000
+        },
+        {
+          "year": 2023,
+          "month": 6,
+          "volume": 49500
+        },
+        {
+          "year": 2023,
+          "month": 7,
+          "volume": 40500
+        },
+        {
+          "year": 2023,
+          "month": 8,
+          "volume": 27100
+        },
+        {
+          "year": 2023,
+          "month": 9,
+          "volume": 40500
+        },
+        {
+          "year": 2023,
+          "month": 10,
+          "volume": 27100
+        },
+        {
+          "year": 2023,
+          "month": 11,
+          "volume": 33100
+        },
+        {
+          "year": 2023,
+          "month": 12,
+          "volume": 33100
+        },
+        {
+          "year": 2024,
+          "month": 1,
+          "volume": 27100
+        },
+        {
+          "year": 2024,
+          "month": 2,
+          "volume": 27100
+        },
+        {
+          "year": 2024,
+          "month": 3,
+          "volume": 27100
+        },
+        {
+          "year": 2024,
+          "month": 4,
+          "volume": 22200
+        },
+        {
+          "year": 2024,
+          "month": 5,
+          "volume": 18100
+        },
+        {
+          "year": 2024,
+          "month": 6,
+          "volume": 18100
+        },
+        {
+          "year": 2024,
+          "month": 7,
+          "volume": 18100
+        },
+        {
+          "year": 2024,
+          "month": 8,
+          "volume": 22200
+        },
+        {
+          "year": 2024,
+          "month": 9,
+          "volume": 22200
+        },
+        {
+          "year": 2024,
+          "month": 10,
+          "volume": 27100
+        },
+        {
+          "year": 2024,
+          "month": 11,
+          "volume": 27100
+        },
+        {
+          "year": 2024,
+          "month": 12,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "volume": 33100
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "volume": 33100
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "volume": 27100
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "volume": 22200
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "volume": 33100
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "volume": 40500
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "volume": 40500
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "volume": 33100
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "volume": 40500
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "volume": 40500
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "volume": 49500
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "volume": 40500
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "volume": 33100
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "volume": 27100
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "volume": 33100
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "volume": 33100
+        }
+      ]
+    },
+    "costs": {
+      "search_volume": 0.01212
+    }
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Anschaffungskosten nach Pumpentyp",
+        "searcher_goal": "Erfahren, was eine Wärmepumpe in der Anschaffung kostet – aufgeschlüsselt nach Luft-Wasser-, Erdwärme- und Wasser-Wasser-Systemen und inklusive Installation.",
+        "form": "Vergleichstabelle mit Preisspannen je Wärmepumpenart und Installationsaufwand",
+        "intent_type": "informational",
+        "result_ids": [
+          "r03",
+          "r04",
+          "r08",
+          "r06"
+        ],
+        "evidence": "Snippets nennen konkrete Preisspannen: r03 '27.000 bis 40.000 €', r04 '10.000 Euro / 15.000 bis 25.000', r08 gleiche Spanne für 120-qm-Haus, r06 '3.000 bis 7.000 €' für Montage.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Kosten nach Förderung berechnen",
+        "searcher_goal": "Wissen, was nach Abzug staatlicher Zuschüsse tatsächlich selbst zu zahlen ist.",
+        "form": "Rechenbeispiel oder Fördertabelle mit Endpreis",
+        "intent_type": "informational",
+        "result_ids": [
+          "r03",
+          "r08",
+          "r04"
+        ],
+        "evidence": "r03 'Nach Abzug der Förderung (55-70 %) zahlen Sie zwischen 9.000 und 18.000 €'; r08 Überschrift 'Kosten für Wärmepumpen vor und nach Förderung', 'Kostensenkung durch staatliche Förderung'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Stromverbrauch und Betriebskosten",
+        "searcher_goal": "Abschätzen, was der laufende Betrieb an Strom kostet, wie viel kWh anfallen und was die Heizung monatlich ausmacht.",
+        "form": "Rechenweg mit Formel, kWh-Beispielen und Tarifvergleich",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01",
+          "r02",
+          "r04"
+        ],
+        "evidence": "r01 Kern des Artikels: 'Berechnung: Formel für den Stromverbrauch', 'Stromverbrauch nach Gebäudegröße', Tarifvergleich Haushaltsstrom vs. Wärmepumpenstrom; r02 'laufende Kosten'; r04 'Jährliche Kosten einer Wärmepumpe im Vergleich zu anderen Heizsystemen'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i4",
+        "title": "Kosten senken und sparen",
+        "searcher_goal": "Konkrete Hebel finden, mit denen sich Anschaffungs- und Betriebskosten einer Wärmepumpe drücken lassen.",
+        "form": "Tipps-Liste und Sparhebel-Checkliste",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01",
+          "r07"
+        ],
+        "evidence": "r01 Überschrift '5 Tipps zur Senkung des Stromverbrauchs'; r07 'Das MeinHausShop Magazin gibt Tipps, wie sich die Kosten ... niedrig halten lassen' mit 'Einsparpotenziale', 'Installationskosten sparen', 'Nutzerverhalten anpassen'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i5",
+        "title": "Umrüstung und Heizungstausch",
+        "searcher_goal": "Verstehen, was der Wechsel von alter Heizung auf Wärmepumpe kostet und welche Umbauten (Heizkörper, Wärmeverteilung, Wärmequelle) nötig sind.",
+        "form": "Ablaufbeschreibung mit Kostenpositionen der einzelnen Gewerke",
+        "intent_type": "informational",
+        "result_ids": [
+          "r02",
+          "r06",
+          "r04"
+        ],
+        "evidence": "r02 'Wie kann man auf Wärmepumpen umrüsten?', 'Welche Heizkörper eigenen sich'; r06 Kostenblöcke 'Demontage der alten Heizung', 'Installation', 'Erschließung der Wärmequelle', 'Anpassung des Wärmeverteilsystems'; r04 'Umrüstung auf Wärmepumpe bei Altbauten'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i6",
+        "title": "Grundlagen und Funktionsweise",
+        "searcher_goal": "Erst verstehen, was eine Wärmepumpe ist und wie sie funktioniert, bevor die Kosten eingeordnet werden können.",
+        "form": "Einsteiger-Erklärartikel mit Schemazeichnung",
+        "intent_type": "informational",
+        "result_ids": [
+          "r05",
+          "r07"
+        ],
+        "evidence": "r05 Titel 'Funktion, Einsatz, Kosten und Vorteile', Snippet erklärt Thermodynamik-Prinzip; r07 'Was ist eine Wärmepumpe?', 'Funktionsprinzip der unterschiedlichen Pumpentypen'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i7",
+        "title": "Lokaler Einbaupreis und Handwerker",
+        "searcher_goal": "Für den eigenen Standort herausfinden, was Einbau kostet und wer ihn durchführt.",
+        "form": "regionale Anbieterseite mit Preisangabe und Kontakt",
+        "intent_type": "local",
+        "result_ids": [
+          "r03"
+        ],
+        "evidence": "r03 ist Anbieterseite 'Wärmepumpe Kosten Hamburg 2026 – Preise, Einbau' mit regionalem Preis und Installationsleistung.",
+        "basis": "model"
+      }
+    ],
+    "expected_genre": "Ratgeber- und Vergleichsseiten mit konkreten Preis- und Verbrauchszahlen",
+    "page_types": [
+      {
+        "page_type": "Ratgeberartikel mit Verbrauchsberechnung",
+        "result_ids": [
+          "r01"
+        ]
+      },
+      {
+        "page_type": "Zeitungs-Ratgeberartikel",
+        "result_ids": [
+          "r02"
+        ]
+      },
+      {
+        "page_type": "regionale Handwerker-Angebotsseite",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "page_type": "Finanz-Ratgeber mit Kostenvergleich",
+        "result_ids": [
+          "r04"
+        ]
+      },
+      {
+        "page_type": "Anbieter-Informationsseite",
+        "result_ids": [
+          "r05"
+        ]
+      },
+      {
+        "page_type": "Ratgeber zu Heizungstausch mit Kostenaufstellung",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "page_type": "Shop-Magazin-Ratgeber mit Spartipps",
+        "result_ids": [
+          "r07"
+        ]
+      },
+      {
+        "page_type": "Ratgeber mit Beispielrechnung für 120-qm-Haus",
+        "result_ids": [
+          "r08"
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "Anschaffungskosten je Wärmepumpenart",
+        "result_ids": [
+          "r03",
+          "r04",
+          "r08",
+          "r06"
+        ]
+      },
+      {
+        "theme": "Stromverbrauch berechnen und JAZ",
+        "result_ids": [
+          "r01",
+          "r02",
+          "r04"
+        ]
+      },
+      {
+        "theme": "Wärmepumpenstrom-Tarif und laufende Kosten",
+        "result_ids": [
+          "r01",
+          "r02",
+          "r04"
+        ]
+      },
+      {
+        "theme": "Förderung und Endpreis",
+        "result_ids": [
+          "r03",
+          "r08",
+          "r04"
+        ]
+      },
+      {
+        "theme": "Kosten senken und Einsparpotenziale",
+        "result_ids": [
+          "r07",
+          "r01"
+        ]
+      },
+      {
+        "theme": "Umrüstung, Heizkörper und Altbau",
+        "result_ids": [
+          "r02",
+          "r06",
+          "r04"
+        ]
+      },
+      {
+        "theme": "Funktionsprinzip der Pumpentypen",
+        "result_ids": [
+          "r05",
+          "r07"
+        ]
+      },
+      {
+        "theme": "Installations- und Montagekosten",
+        "result_ids": [
+          "r06",
+          "r03",
+          "r08"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "mein-klempner.hamburg",
+      "creditsun.de",
+      "energie-spezialisten.de",
+      "klyma.de",
+      "meinhausshop.de",
+      "heizkosten-einsparen.de",
+      "Augsburger Allgemeine"
+    ],
+    "subject_brands": [],
+    "ai_overview_signal": {
+      "present": false,
+      "interpretation": "Kein AI Overview vorhanden; die Frage nach Kosten wird als klassische Ratgeber-Suche mit vielen konkurrierenden Preisangaben behandelt, was auf eine reine Informationsabsicht ohne eindeutige Einzelantwort hindeutet."
+    },
+    "article_fits": {
+      "value": true,
+      "reason": "Die Hauptabsicht gilt klar einer Text-Recherche über Preise, laufende Kosten und Fördermöglichkeiten, die sich in einem strukturierten Ratgeber mit Zahlen und Rechenbeispielen abbilden lässt."
+    },
+    "useful_elements": [
+      {
+        "element": "Preistabelle je Wärmepumpenart",
+        "job": "erlaubt direkten Vergleich der Anschaffungskosten"
+      },
+      {
+        "element": "Rechenbeispiel nach Förderung",
+        "job": "zeigt den tatsächlich selbst zu zahlenden Betrag"
+      },
+      {
+        "element": "Formel zur Stromverbrauchsberechnung mit kWh-Werten",
+        "job": "macht Betriebskosten für das eigene Haus abschätzbar"
+      },
+      {
+        "element": "Tabelle Jahresverbrauch nach Gebäudegröße",
+        "job": "ordnet den eigenen Fall schnell ein"
+      },
+      {
+        "element": "Spartipps-Liste",
+        "job": "gibt direkt umsetzbare Kostensenkungshebel"
+      },
+      {
+        "element": "Kostenaufstellung der Umrüstungs-Gewerke",
+        "job": "zeigt versteckte Nebenpositionen beim Heizungstausch"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "allgemeine Werbebroschüre ohne Zahlen",
+        "reason": "die Suche ist auf konkrete Kostengrößen gerichtet"
+      },
+      {
+        "element": "endlose Funktionsbeschreibung ohne Kostenbezug",
+        "reason": "verfehlt die dominierende Preisabsicht"
+      },
+      {
+        "element": "veraltete Preisangaben ohne Jahresbezug",
+        "reason": "Snippets datieren die Zahlen durchweg aktuell"
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Was kostet eine Wärmepumpe für 120 Quadratmeter Haus?",
+        "source": "paa",
+        "result_ids": [
+          "r08"
+        ]
+      },
+      {
+        "question": "Für wen lohnt sich eine Wärmepumpe nicht?",
+        "source": "paa",
+        "result_ids": [
+          "r04",
+          "r02"
+        ]
+      },
+      {
+        "question": "Was kostet eine Wärmepumpe an Strom im Monat?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r02"
+        ]
+      },
+      {
+        "question": "Warum wird das Heizen mit Wärmepumpe sehr teuer?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r02"
+        ]
+      },
+      {
+        "question": "Wie hoch sind die Kosten für Wärmepumpen vor und nach Förderung?",
+        "source": "heading",
+        "result_ids": [
+          "r08",
+          "r03"
+        ]
+      },
+      {
+        "question": "Welche laufenden Kosten verursachen Wärmepumpen?",
+        "source": "heading",
+        "result_ids": [
+          "r02",
+          "r01"
+        ]
+      }
+    ],
+    "summary": "Der SERP dreht sich vollständig um die Kostenfrage: Anschaffungspreise je Pumpentyp, Förderabzug und laufende Stromkosten bilden die drei Hauptachsen, ergänzt durch Spartipps und Umrüstungsaufwand. Es dominieren Ratgeber- und Magazinseiten mit konkreten Preisspannen statt Herstellerseiten, dazu eine regionale Handwerkersicht. Wer hier sucht, will belastbare Zahlen zum Vergleichen und Abschätzen, keine reine Produktwerbung.",
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 8,
+    "results_fetched": 6,
+    "has_ranks": true,
+    "traffic_known": 7,
+    "shared_results": [
+      "r01",
+      "r02",
+      "r03",
+      "r04",
+      "r06",
+      "r07",
+      "r08"
+    ],
+    "words": {
+      "n": 6,
+      "min": 549,
+      "p10": 549,
+      "p25": 861,
+      "p50": 930,
+      "p75": 1961,
+      "p90": 2521,
+      "max": 2521
+    },
+    "chars": {
+      "n": 6,
+      "min": 3809,
+      "p10": 3809,
+      "p25": 6658,
+      "p50": 6904,
+      "p75": 15058,
+      "p90": 19145,
+      "max": 19145
+    },
+    "intents": {
+      "i1": {
+        "count": 4,
+        "coverage": 0.5,
+        "answer_share": 0.1979,
+        "traffic_share": 0.2605,
+        "ranks": [
+          3,
+          4,
+          6,
+          8
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 3,
+          "min": 861,
+          "p10": 861,
+          "p25": 861,
+          "p50": 1961,
+          "p75": 2521,
+          "p90": 2521,
+          "max": 2521
+        },
+        "chars": {
+          "n": 3,
+          "min": 6658,
+          "p10": 6658,
+          "p25": 6658,
+          "p50": 15058,
+          "p75": 19145,
+          "p90": 19145,
+          "max": 19145
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.33,
+          "images": 0.67,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.33,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 3
+        }
+      },
+      "i2": {
+        "count": 3,
+        "coverage": 0.375,
+        "answer_share": 0.1354,
+        "traffic_share": 0.2601,
+        "ranks": [
+          3,
+          4,
+          8
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 2,
+          "min": 861,
+          "p10": 861,
+          "p25": 861,
+          "p50": 861,
+          "p75": 2521,
+          "p90": 2521,
+          "max": 2521
+        },
+        "chars": {
+          "n": 2,
+          "min": 6658,
+          "p10": 6658,
+          "p25": 6658,
+          "p50": 6658,
+          "p75": 19145,
+          "p90": 19145,
+          "max": 19145
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.0,
+          "images": 0.5,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.5,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 2
+        }
+      },
+      "i3": {
+        "count": 3,
+        "coverage": 0.375,
+        "answer_share": 0.1562,
+        "traffic_share": 0.2378,
+        "ranks": [
+          1,
+          2,
+          4
+        ],
+        "best_rank": 1,
+        "top3_count": 2,
+        "words": {
+          "n": 3,
+          "min": 549,
+          "p10": 549,
+          "p25": 549,
+          "p50": 861,
+          "p75": 930,
+          "p90": 930,
+          "max": 930
+        },
+        "chars": {
+          "n": 3,
+          "min": 3809,
+          "p10": 3809,
+          "p25": 3809,
+          "p50": 6658,
+          "p75": 6904,
+          "p90": 6904,
+          "max": 6904
+        },
+        "elements": {
+          "faq": 0.33,
+          "forms": 0.33,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.33,
+          "unordered_lists": 0.67,
+          "videos": 0.0,
+          "n": 3
+        }
+      },
+      "i4": {
+        "count": 2,
+        "coverage": 0.25,
+        "answer_share": 0.125,
+        "traffic_share": 0.0338,
+        "ranks": [
+          1,
+          7
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "words": {
+          "n": 2,
+          "min": 930,
+          "p10": 930,
+          "p25": 930,
+          "p50": 930,
+          "p75": 931,
+          "p90": 931,
+          "max": 931
+        },
+        "chars": {
+          "n": 2,
+          "min": 6904,
+          "p10": 6904,
+          "p25": 6904,
+          "p50": 6904,
+          "p75": 6979,
+          "p90": 6979,
+          "max": 6979
+        },
+        "elements": {
+          "faq": 0.5,
+          "forms": 0.5,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.5,
+          "unordered_lists": 0.5,
+          "videos": 0.0,
+          "n": 2
+        }
+      },
+      "i5": {
+        "count": 3,
+        "coverage": 0.375,
+        "answer_share": 0.1562,
+        "traffic_share": 0.2044,
+        "ranks": [
+          2,
+          4,
+          6
+        ],
+        "best_rank": 2,
+        "top3_count": 1,
+        "words": {
+          "n": 3,
+          "min": 549,
+          "p10": 549,
+          "p25": 549,
+          "p50": 861,
+          "p75": 1961,
+          "p90": 1961,
+          "max": 1961
+        },
+        "chars": {
+          "n": 3,
+          "min": 3809,
+          "p10": 3809,
+          "p25": 3809,
+          "p50": 6658,
+          "p75": 15058,
+          "p90": 15058,
+          "max": 15058
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.67,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 3
+        }
+      },
+      "i6": {
+        "count": 2,
+        "coverage": 0.25,
+        "answer_share": 0.1875,
+        "traffic_share": 0.0028,
+        "ranks": [
+          5,
+          7
+        ],
+        "best_rank": 5,
+        "top3_count": 0,
+        "words": {
+          "n": 1,
+          "min": 931,
+          "p10": 931,
+          "p25": 931,
+          "p50": 931,
+          "p75": 931,
+          "p90": 931,
+          "max": 931
+        },
+        "chars": {
+          "n": 1,
+          "min": 6979,
+          "p10": 6979,
+          "p25": 6979,
+          "p50": 6979,
+          "p75": 6979,
+          "p90": 6979,
+          "max": 6979
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i7": {
+        "count": 1,
+        "coverage": 0.125,
+        "answer_share": 0.0417,
+        "traffic_share": 0.0005,
+        "ranks": [
+          3
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      }
+    },
+    "page_types": [
+      {
+        "page_type": "Ratgeberartikel mit Verbrauchsberechnung",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          1
+        ]
+      },
+      {
+        "page_type": "Zeitungs-Ratgeberartikel",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          2
+        ]
+      },
+      {
+        "page_type": "regionale Handwerker-Angebotsseite",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          3
+        ]
+      },
+      {
+        "page_type": "Finanz-Ratgeber mit Kostenvergleich",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          4
+        ]
+      },
+      {
+        "page_type": "Anbieter-Informationsseite",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          5
+        ]
+      },
+      {
+        "page_type": "Ratgeber zu Heizungstausch mit Kostenaufstellung",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "page_type": "Shop-Magazin-Ratgeber mit Spartipps",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          7
+        ]
+      },
+      {
+        "page_type": "Ratgeber mit Beispielrechnung für 120-qm-Haus",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          8
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "Anschaffungskosten je Wärmepumpenart",
+        "count": 4,
+        "coverage": 0.5,
+        "ranks": [
+          3,
+          4,
+          6,
+          8
+        ]
+      },
+      {
+        "theme": "Stromverbrauch berechnen und JAZ",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "theme": "Wärmepumpenstrom-Tarif und laufende Kosten",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "theme": "Förderung und Endpreis",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          3,
+          4,
+          8
+        ]
+      },
+      {
+        "theme": "Umrüstung, Heizkörper und Altbau",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "theme": "Installations- und Montagekosten",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          3,
+          6,
+          8
+        ]
+      },
+      {
+        "theme": "Kosten senken und Einsparpotenziale",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          1,
+          7
+        ]
+      },
+      {
+        "theme": "Funktionsprinzip der Pumpentypen",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          5,
+          7
+        ]
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Für wen lohnt sich eine Wärmepumpe nicht?",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          2,
+          4
+        ]
+      },
+      {
+        "question": "Was kostet eine Wärmepumpe an Strom im Monat?",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Warum wird das Heizen mit Wärmepumpe sehr teuer?",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Wie hoch sind die Kosten für Wärmepumpen vor und nach Förderung?",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          3,
+          8
+        ]
+      },
+      {
+        "question": "Welche laufenden Kosten verursachen Wärmepumpen?",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Was kostet eine Wärmepumpe für 120 Quadratmeter Haus?",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          8
+        ]
+      }
+    ]
+  },
+  "form": {
+    "dominant_intent_id": "i1",
+    "dominant_intent_title": "Anschaffungskosten nach Pumpentyp",
+    "dominant_intent_form": "Vergleichstabelle mit Preisspannen je Wärmepumpenart und Installationsaufwand",
+    "dominant_intent_answer_share": 0.1979,
+    "dominant_intent_coverage": 0.5,
+    "top_page_type": "Ratgeberartikel mit Verbrauchsberechnung",
+    "dominant_by_traffic_id": "i1",
+    "expected_genre": "Ratgeber- und Vergleichsseiten mit konkreten Preis- und Verbrauchszahlen",
+    "expected_genre_withheld": null,
+    "article_fits": {
+      "value": true,
+      "reason": "Die Hauptabsicht gilt klar einer Text-Recherche über Preise, laufende Kosten und Fördermöglichkeiten, die sich in einem strukturierten Ratgeber mit Zahlen und Rechenbeispielen abbilden lässt."
+    },
+    "length_basis": "median_of_dominant_intent_pages",
+    "length_words": {
+      "p25": 861,
+      "p50": 1961,
+      "p75": 2521
+    },
+    "length_chars": {
+      "p25": 6658,
+      "p50": 15058,
+      "p75": 19145
+    },
+    "length_sample_size": 3,
+    "useful_elements": [
+      {
+        "element": "Preistabelle je Wärmepumpenart",
+        "job": "erlaubt direkten Vergleich der Anschaffungskosten"
+      },
+      {
+        "element": "Rechenbeispiel nach Förderung",
+        "job": "zeigt den tatsächlich selbst zu zahlenden Betrag"
+      },
+      {
+        "element": "Formel zur Stromverbrauchsberechnung mit kWh-Werten",
+        "job": "macht Betriebskosten für das eigene Haus abschätzbar"
+      },
+      {
+        "element": "Tabelle Jahresverbrauch nach Gebäudegröße",
+        "job": "ordnet den eigenen Fall schnell ein"
+      },
+      {
+        "element": "Spartipps-Liste",
+        "job": "gibt direkt umsetzbare Kostensenkungshebel"
+      },
+      {
+        "element": "Kostenaufstellung der Umrüstungs-Gewerke",
+        "job": "zeigt versteckte Nebenpositionen beim Heizungstausch"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "allgemeine Werbebroschüre ohne Zahlen",
+        "reason": "die Suche ist auf konkrete Kostengrößen gerichtet"
+      },
+      {
+        "element": "endlose Funktionsbeschreibung ohne Kostenbezug",
+        "reason": "verfehlt die dominierende Preisabsicht"
+      },
+      {
+        "element": "veraltete Preisangaben ohne Jahresbezug",
+        "reason": "Snippets datieren die Zahlen durchweg aktuell"
+      }
+    ],
+    "warnings": [
+      {
+        "code": "consider_separate_pages",
+        "message": "4 intents hold at least 15% each. Consider separate pages instead of one."
+      }
+    ]
+  },
+  "model": "deepseek/deepseek-v4.1-flash",
+  "demand": {
+    "volume": 40500,
+    "cpc": 5.11,
+    "competition": 0.9,
+    "keyword_difficulty": 35,
+    "monthly": [
+      {
+        "year": 2018,
+        "month": 11,
+        "volume": 1900
+      },
+      {
+        "year": 2018,
+        "month": 12,
+        "volume": 1900
+      },
+      {
+        "year": 2019,
+        "month": 1,
+        "volume": 2900
+      },
+      {
+        "year": 2019,
+        "month": 2,
+        "volume": 2400
+      },
+      {
+        "year": 2019,
+        "month": 3,
+        "volume": 2400
+      },
+      {
+        "year": 2019,
+        "month": 4,
+        "volume": 1900
+      },
+      {
+        "year": 2019,
+        "month": 5,
+        "volume": 1900
+      },
+      {
+        "year": 2019,
+        "month": 6,
+        "volume": 1900
+      },
+      {
+        "year": 2019,
+        "month": 7,
+        "volume": 2900
+      },
+      {
+        "year": 2019,
+        "month": 8,
+        "volume": 2900
+      },
+      {
+        "year": 2019,
+        "month": 9,
+        "volume": 6600
+      },
+      {
+        "year": 2019,
+        "month": 10,
+        "volume": 8100
+      },
+      {
+        "year": 2019,
+        "month": 11,
+        "volume": 6600
+      },
+      {
+        "year": 2019,
+        "month": 12,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 1,
+        "volume": 9900
+      },
+      {
+        "year": 2020,
+        "month": 2,
+        "volume": 8100
+      },
+      {
+        "year": 2020,
+        "month": 3,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 4,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 5,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 6,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 7,
+        "volume": 5400
+      },
+      {
+        "year": 2020,
+        "month": 8,
+        "volume": 6600
+      },
+      {
+        "year": 2020,
+        "month": 9,
+        "volume": 6600
+      },
+      {
+        "year": 2020,
+        "month": 10,
+        "volume": 6600
+      },
+      {
+        "year": 2020,
+        "month": 11,
+        "volume": 8100
+      },
+      {
+        "year": 2020,
+        "month": 12,
+        "volume": 6600
+      },
+      {
+        "year": 2021,
+        "month": 1,
+        "volume": 9900
+      },
+      {
+        "year": 2021,
+        "month": 2,
+        "volume": 9900
+      },
+      {
+        "year": 2021,
+        "month": 3,
+        "volume": 9900
+      },
+      {
+        "year": 2021,
+        "month": 4,
+        "volume": 9900
+      },
+      {
+        "year": 2021,
+        "month": 5,
+        "volume": 12100
+      },
+      {
+        "year": 2021,
+        "month": 6,
+        "volume": 8100
+      },
+      {
+        "year": 2021,
+        "month": 7,
+        "volume": 8100
+      },
+      {
+        "year": 2021,
+        "month": 8,
+        "volume": 8100
+      },
+      {
+        "year": 2021,
+        "month": 9,
+        "volume": 9900
+      },
+      {
+        "year": 2021,
+        "month": 10,
+        "volume": 22200
+      },
+      {
+        "year": 2021,
+        "month": 11,
+        "volume": 14800
+      },
+      {
+        "year": 2021,
+        "month": 12,
+        "volume": 14800
+      },
+      {
+        "year": 2022,
+        "month": 1,
+        "volume": 22200
+      },
+      {
+        "year": 2022,
+        "month": 2,
+        "volume": 33100
+      },
+      {
+        "year": 2022,
+        "month": 3,
+        "volume": 135000
+      },
+      {
+        "year": 2022,
+        "month": 4,
+        "volume": 74000
+      },
+      {
+        "year": 2022,
+        "month": 5,
+        "volume": 40500
+      },
+      {
+        "year": 2022,
+        "month": 6,
+        "volume": 74000
+      },
+      {
+        "year": 2022,
+        "month": 7,
+        "volume": 135000
+      },
+      {
+        "year": 2022,
+        "month": 8,
+        "volume": 90500
+      },
+      {
+        "year": 2022,
+        "month": 9,
+        "volume": 60500
+      },
+      {
+        "year": 2022,
+        "month": 10,
+        "volume": 40500
+      },
+      {
+        "year": 2022,
+        "month": 11,
+        "volume": 40500
+      },
+      {
+        "year": 2022,
+        "month": 12,
+        "volume": 33100
+      },
+      {
+        "year": 2023,
+        "month": 1,
+        "volume": 27100
+      },
+      {
+        "year": 2023,
+        "month": 2,
+        "volume": 33100
+      },
+      {
+        "year": 2023,
+        "month": 3,
+        "volume": 135000
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 5,
+        "volume": 74000
+      },
+      {
+        "year": 2023,
+        "month": 6,
+        "volume": 49500
+      },
+      {
+        "year": 2023,
+        "month": 7,
+        "volume": 40500
+      },
+      {
+        "year": 2023,
+        "month": 8,
+        "volume": 27100
+      },
+      {
+        "year": 2023,
+        "month": 9,
+        "volume": 40500
+      },
+      {
+        "year": 2023,
+        "month": 10,
+        "volume": 27100
+      },
+      {
+        "year": 2023,
+        "month": 11,
+        "volume": 33100
+      },
+      {
+        "year": 2023,
+        "month": 12,
+        "volume": 33100
+      },
+      {
+        "year": 2024,
+        "month": 1,
+        "volume": 27100
+      },
+      {
+        "year": 2024,
+        "month": 2,
+        "volume": 27100
+      },
+      {
+        "year": 2024,
+        "month": 3,
+        "volume": 27100
+      },
+      {
+        "year": 2024,
+        "month": 4,
+        "volume": 22200
+      },
+      {
+        "year": 2024,
+        "month": 5,
+        "volume": 18100
+      },
+      {
+        "year": 2024,
+        "month": 6,
+        "volume": 18100
+      },
+      {
+        "year": 2024,
+        "month": 7,
+        "volume": 18100
+      },
+      {
+        "year": 2024,
+        "month": 8,
+        "volume": 22200
+      },
+      {
+        "year": 2024,
+        "month": 9,
+        "volume": 22200
+      },
+      {
+        "year": 2024,
+        "month": 10,
+        "volume": 27100
+      },
+      {
+        "year": 2024,
+        "month": 11,
+        "volume": 27100
+      },
+      {
+        "year": 2024,
+        "month": 12,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 1,
+        "volume": 33100
+      },
+      {
+        "year": 2025,
+        "month": 2,
+        "volume": 33100
+      },
+      {
+        "year": 2025,
+        "month": 3,
+        "volume": 27100
+      },
+      {
+        "year": 2025,
+        "month": 4,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 5,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 6,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 7,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 8,
+        "volume": 22200
+      },
+      {
+        "year": 2025,
+        "month": 9,
+        "volume": 33100
+      },
+      {
+        "year": 2025,
+        "month": 10,
+        "volume": 40500
+      },
+      {
+        "year": 2025,
+        "month": 11,
+        "volume": 40500
+      },
+      {
+        "year": 2025,
+        "month": 12,
+        "volume": 33100
+      },
+      {
+        "year": 2026,
+        "month": 1,
+        "volume": 40500
+      },
+      {
+        "year": 2026,
+        "month": 2,
+        "volume": 40500
+      },
+      {
+        "year": 2026,
+        "month": 3,
+        "volume": 49500
+      },
+      {
+        "year": 2026,
+        "month": 4,
+        "volume": 40500
+      },
+      {
+        "year": 2026,
+        "month": 5,
+        "volume": 33100
+      },
+      {
+        "year": 2026,
+        "month": 6,
+        "volume": 27100
+      },
+      {
+        "year": 2026,
+        "month": 7,
+        "volume": 33100
+      },
+      {
+        "year": 2026,
+        "month": 8,
+        "volume": 33100
+      }
+    ],
+    "seasonality": {
+      "months": 94,
+      "profile": {
+        "1": 1.139,
+        "2": 1.139,
+        "3": 1.173,
+        "4": 0.96,
+        "5": 0.83,
+        "6": 0.762,
+        "7": 0.83,
+        "8": 0.876,
+        "9": 1.083,
+        "10": 1.071,
+        "11": 1.139,
+        "12": 1.0
+      },
+      "peak_month": 3,
+      "low_month": 6,
+      "seasonality_index": 1.54,
+      "yoy_change": 0.468
+    }
+  }
+}

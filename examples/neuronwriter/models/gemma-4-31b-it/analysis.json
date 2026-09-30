@@ -1,0 +1,1756 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T10:56:53+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://www.youtube.com/watch?v=o1KnMQMtgnk",
+        "rank": 1,
+        "domain": "www.youtube.com",
+        "title": "AI-Writing Explained | NEURONwriter tutorial",
+        "description": "You want to create optimized content quickly? 👉 Use AI.But always remember to read the text through and check facts! 🤓✨ New to NEURONwriter & want to try i...",
+        "headings": [],
+        "highlighted": [],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://appsumo.com/products/neuronwriter/reviews/this-is-the-best-content-optimizer-ive-201293/?srsltid=AU7gw4V3QXgIBDLPHzAXZvaGGP6ADnxSa7_ianh1CWGEHbn7HvPr2vu9",
+        "rank": 2,
+        "domain": "appsumo.com",
+        "title": "NEURONwriter Review: This is the best content optimizer I' ...",
+        "description": "I prefer the page optimizer in NeuronWriter because it is just more complete and provides a better range of NLP keywords. NeuronWriter provides more info and ... Read more",
+        "headings": [
+          "H3: NEURONwriter",
+          "H1: NEURONwriter",
+          "H2: 4.9",
+          "H1: NEURONwriter",
+          "H2: 4.9"
+        ],
+        "highlighted": [
+          "NeuronWriter"
+        ],
+        "word_count": 349,
+        "char_count": 1906,
+        "digest": "headings: NEURONwriter; NEURONwriter; 4.9; NEURONwriter; 4.9 | text: This is the best content optimizer I’ve ever used. I hate writing articles and blog posts. I procrastinate getting started and agonize over every sentence that I write. Hiring writers is expensive and the results are really hit and miss, especially with SEO. So, I have tried to find writing apps that make the ordeal of writing co",
+        "excerpt": "This is the best content optimizer I’ve ever used. I hate writing articles and blog posts. I procrastinate getting started and agonize over every sentence that I write. Hiring writers is expensive and the results are really hit and miss, especially with SEO. So, I have tried to find writing apps that make the ordeal of writing content easier and faster for me. I’ve tried quite a few other writing apps, and I own Writerzen, Closerscopy, and Postpace - all of which have page optimizers. I prefer the page optimizer in NeuronWriter because it is just more complete and provides a better range of NLP keywords. NeuronWriter provides more info and options, and it’s very flexible. It’s very easy to use with its built-in AI writer or I can use one of my other AI writers. I use TopicMojo and Writerzen for the keyword research and sometimes the initial headers outline. I then copy it over to NeuronWriter and use its NLP Terms to flesh out the article and get the SEO score to where I want it. One feature that I like is the ability to add my own NLP terms along with my desired number of usage. It helps when I’m writing about a topic that doesn’t have much competition for the AI to draw keywords from. A second feature that I like is the “Draft” mode. After having selected your header outline, the “Draft” mode separates your headers into individual blocks and actually gives you specific NLP keyword suggestions for just that header. You can then use the AI writer to create a paragraph specifi",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 15,
+          "videos": 0,
+          "faq": 1,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://medium.com/@usali15963/neuronwriter-alternatives-1d0de116f17d",
+        "rank": 3,
+        "domain": "medium.com",
+        "title": "NeuronWriter Alternatives",
+        "description": "NeuronWriter is solid, AI content tools are moving fast, automation, SEO depth, or just writing speed.",
+        "headings": [],
+        "highlighted": [
+          "NeuronWriter"
+        ],
+        "word_count": null,
+        "char_count": null,
+        "digest": "",
+        "excerpt": "",
+        "elements": {},
+        "extractor": "",
+        "etv": null,
+        "fetch_status": "error: HTTPError (Forbidden)"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.youtube.com/watch?v=gCJFBjYxUTA",
+        "rank": 4,
+        "domain": "www.youtube.com",
+        "title": "Neuronwriter Review & Tutorial: Is it better than SurferSEO?",
+        "description": "In this video I walk you through Neuronwriter, a Surfer SEO alternative that's 30% the price for 1 month - AND is on a Lifetime Deal at Appsumo. We go throug...",
+        "headings": [],
+        "highlighted": [],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.youtube.com/watch?v=HdRzLIoBBl0",
+        "rank": 5,
+        "domain": "www.youtube.com",
+        "title": "Is this the Ultimate Tool for SEO-Optimized Content Creation ...",
+        "description": "NeuronWriter, the platform that empowers you to create high-ranking content effortlessly. Explore its features and see how it can transform ...",
+        "headings": [],
+        "highlighted": [
+          "NeuronWriter"
+        ],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://www.reddit.com/r/localseo/comments/14ykegi/anyone_used_neuronwriter/",
+        "rank": 6,
+        "domain": "www.reddit.com",
+        "title": "Anyone used Neuronwriter? : r/localseo",
+        "description": "Last month I used Neuronwriter writer.\n\nKeyword was like this \"small roofing contractors in city\"\n\nI written article, optimized using Neuronwriter ...",
+        "headings": [],
+        "highlighted": [],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://appsumo.com/products/neuronwriter/reviews/best-tool-i-have-bought-305737/?srsltid=AU7gw4Uz5JUP4BbyyNOPagf5lusQ2HeTQsu-19I_jXQEqC5fj3Vk7wcC",
+        "rank": 7,
+        "domain": "appsumo.com",
+        "title": "NEURONwriter Review: Best tool I have bought",
+        "description": "Jun 3, 2024 — I expected it to be a AI writing tool that does all the work for me. I quickly found out this is not it. But it did help me publish content by ... Read more",
+        "headings": [
+          "H3: NEURONwriter",
+          "H1: NEURONwriter",
+          "H2: 4.9",
+          "H1: NEURONwriter",
+          "H2: 4.9"
+        ],
+        "highlighted": [
+          "AI writing tool"
+        ],
+        "word_count": 96,
+        "char_count": 487,
+        "digest": "headings: NEURONwriter; NEURONwriter; 4.9; NEURONwriter; 4.9 | text: At first I didn't like Neuron Writer much. I expected it to be a AI writing tool that does all the work for me. I quickly found out this is not it. But it did help me publish content by identifying NLP terms and Entities. I see growth on the sites I publish content for in terms of traffic (GSC clicks), visibility (better rankings",
+        "excerpt": "Jun 3, 2024 Best tool I have bought At first I didn't like Neuron Writer much. I expected it to be a AI writing tool that does all the work for me. I quickly found out this is not it. But it did help me publish content by identifying NLP terms and Entities. I see growth on the sites I publish content for in terms of traffic (GSC clicks), visibility (better rankings) and improved topical authority. Been using it for 6 months and can say, it is the best tool I bought. Helpful? 5 Share",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 15,
+          "videos": 0,
+          "faq": 1,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r08",
+        "url": "https://www.linkedin.com/pulse/neuronwriter-vs-frase-which-one-sparked-joy-md-al-imran-gdjbc",
+        "rank": 8,
+        "domain": "www.linkedin.com",
+        "title": "NeuronWriter vs Frase: Which One Sparked Joy?",
+        "description": "NeuronWriter is all about deep SEO writing. It dives into content structure, keyword mapping, and semantic analysis. nWriter sticks closer to ...",
+        "headings": [
+          "H1: NeuronWriter vs Frase: Which One Sparked Joy?",
+          "H2: NeuronWriter Review",
+          "H3: What I Like",
+          "H3: What Could Be Better",
+          "H2: My Personal Experience",
+          "H3: NeuronWriter User Interface",
+          "H3: NLP-Driven Optimization",
+          "H3: Keyword Research Tools",
+          "H3: Dashboard",
+          "H3: AI Content Generation",
+          "H3: Content Analysis of Top SERP Competitors",
+          "H3: Flexible and Scalable Lifetime Deal",
+          "H3: Projects and Article Management",
+          "H3: Easy Code Redemption and Upgrade",
+          "H3: Affordable Pay-as-You-Go AI Credits",
+          "H3: User-Friendly Dashboard",
+          "H3: Built-in Tutorial Library",
+          "H3: Active Roadmap & Feature Requests",
+          "H3: Multiple Team Members Support",
+          "H2: Frase Review",
+          "H3: What I Like",
+          "H3: What Could Be Better",
+          "H2: My Personal Experience",
+          "H3: Frase User Interface",
+          "H3: All-in-One Content Research Tool",
+          "H3: Document Creation System",
+          "H3: Dashboard",
+          "H3: Concept Map for Keyword Exploration",
+          "H3: Content Brief & Outline Builder",
+          "H3: Ease of Use",
+          "H3: Rich Editor with Media Support",
+          "H3: AI-Powered Question Ideas Tool",
+          "H3: SEO-Focused Insights",
+          "H3: Chatbot Assistant Feature",
+          "H3: Website Content Crawler",
+          "H3: Multiple Export Options",
+          "H2: Frase price and plans",
+          "H2: NeuronWriter vs Frase",
+          "H3: User Interface: NeuronWriter vs Frase",
+          "H3: Features Comparison: NeuronWriter vs Frase",
+          "H3: Pricing Plans & Lifetime Deals: NeuronWriter vs Frase",
+          "H3: Content Optimization Features: NeuronWriter vs Frase",
+          "H3: AI Writing Capabilities: NeuronWriter vs Frase",
+          "H3: SEO Analysis Tools: NeuronWriter vs Frase",
+          "H3: Keyword Research Integration: NeuronWriter vs Frase",
+          "H3: SEO Optimization Capabilities: NeuronWriter vs Frase",
+          "H3: Content Scoring System: NeuronWriter vs Frase",
+          "H3: Multi-language Support: NeuronWriter vs Frase",
+          "H3: Templates & Content Types Supported: NeuronWriter vs Frase",
+          "H3: Customer Support and Community: NeuronWriter vs Frase",
+          "H3: Best Fit Use Cases: NeuronWriter vs Frase",
+          "H3: Real-time Suggestions While Writing: NeuronWriter vs Frase",
+          "H3: Speed & Performance: NeuronWriter vs Frase",
+          "H2: My Final Thoughts on NeuronWriter vs Frase"
+        ],
+        "highlighted": [
+          "deep SEO writing"
+        ],
+        "word_count": 2217,
+        "char_count": 13255,
+        "digest": "headings: NeuronWriter vs Frase: Which One Sparked Joy?; NeuronWriter Review; What I Like; What Could Be Better; My Personal Experience; NeuronWriter User Interface; NLP-Driven Optimization; Keyword Research Tools | text: Ever get stuck choosing between two great tools? That was me with NeuronWriter vs Frase. Both promised to help me write better and rank faster—but in very different ways. I’ve sp",
+        "excerpt": "# NeuronWriter vs Frase: Which One Sparked Joy? Ever get stuck choosing between two great tools? That was me with NeuronWriter vs Frase. Both promised to help me write better and rank faster—but in very different ways. I’ve spent weeks testing them for real work, not just theory. I used them for blog posts, SEO plans, and even last-minute content ideas. What I found surprised me. If you’re caught between these two like I was, stick with me. I’ll break down the experience, what stood out, what didn’t, and what actually helped me write faster without losing quality. Let’s find the right fit for your workflow. Disclosure: This article includes affiliate links. If you decide to purchase through those links, I may receive a commission. I only recommend products I believe in. ## NeuronWriter Review I've been using NeuronWriter for over 9 months to write blog posts, landing pages, and optimize SEO content for clients. It's one of those rare tools that blends simplicity with serious optimization power—and it keeps getting better with time. ### What I Like I’ve spent quite a bit of time exploring different content tools, and NeuronWriter quickly earned a spot in my daily workflow. Here’s why I love it: ### What Could Be Better While I genuinely enjoy using NeuronWriter, no tool is perfect. Here are a few things I noticed that could be improved—but none are deal-breakers. ## My Personal Experience I’ve been using NeuronWriter for over 9 months now—across blog posts, landing pages, even",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 23,
+          "images": 35,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "ok"
+      }
+    ],
+    "keyword": "neuronwriter",
+    "language": "en",
+    "location": "2840",
+    "people_also_ask": [
+      "How much does NeuronWriter cost per month?",
+      "What is NeuronWriter used for?",
+      "What is the best free AI writing site?",
+      "Is neuron AI free?"
+    ],
+    "related_searches": [
+      "Neuronwriter review",
+      "Neuronwriter pricing",
+      "Neuronwriter reddit",
+      "Neuronwriter tutorial",
+      "Scalenut"
+    ],
+    "ai_overview": "NeuronWriter is an AI-powered content optimization and semantic SEO tool that helps users write and structure web pages to outrank competitors on Google. Core Features SERP & Competitor Analysis: Analyzes top-ranking Google search results (up to the top 30) to understand user intent and content structure. NLP & Semantic Optimization: Uses Natural Language Processing to provide a tailored checklist of relevant keywords, terms, and entities to include. Content Scoring: Gives a real-time content score to track optimization progress against top competitors. AI Writing Assistant: Includes templates, paragraph generators, and FAQ builders that utilize unused recommended terms to boost SEO value. Planning & Organization: Offers internal linking suggestions (via Google Search Console integration), content organizers, and team collaboration features. Pricing Plans Gold Plan: Around $69 per month ($57/mo billed annually); includes 10 projects, 75 content analyses, and 45,000 AI credits. Platinum Plan: Around $93 per month ($77/mo billed annually); includes 25 projects, 100 content analyses, and 60,000 AI credits. Note: Lifetime deals are also frequently featured on platforms like AppSumo.",
+    "item_types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "images",
+      "related_searches",
+      "google_reviews",
+      "knowledge_graph"
+    ],
+    "checked_at": "2026-09-30 10:55:11 +00:00",
+    "costs": {
+      "serp": 0.004,
+      "traffic": 0.01296,
+      "search_volume": 0.01212
+    },
+    "search_volume": {
+      "volume": 720,
+      "cpc": 11.3,
+      "competition": 0.25,
+      "keyword_difficulty": 12,
+      "monthly": [
+        {
+          "year": 2018,
+          "month": 7,
+          "volume": 0
+        },
+        {
+          "year": 2018,
+          "month": 8,
+          "volume": 0
+        },
+        {
+          "year": 2018,
+          "month": 9,
+          "volume": 0
+        },
+        {
+          "year": 2018,
+          "month": 10,
+          "volume": 0
+        },
+        {
+          "year": 2018,
+          "month": 11,
+          "volume": 0
+        },
+        {
+          "year": 2018,
+          "month": 12,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 1,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 2,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 3,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 4,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 5,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 6,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 7,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 8,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 9,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 10,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 11,
+          "volume": 0
+        },
+        {
+          "year": 2019,
+          "month": 12,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 1,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 2,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 3,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 4,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 5,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 6,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 7,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 8,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 9,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 10,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 11,
+          "volume": 0
+        },
+        {
+          "year": 2020,
+          "month": 12,
+          "volume": 0
+        },
+        {
+          "year": 2021,
+          "month": 1,
+          "volume": 0
+        },
+        {
+          "year": 2021,
+          "month": 2,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 3,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 4,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 5,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 6,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 7,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 8,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 9,
+          "volume": 0
+        },
+        {
+          "year": 2021,
+          "month": 10,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 11,
+          "volume": 10
+        },
+        {
+          "year": 2021,
+          "month": 12,
+          "volume": 10
+        },
+        {
+          "year": 2022,
+          "month": 1,
+          "volume": 10
+        },
+        {
+          "year": 2022,
+          "month": 2,
+          "volume": 10
+        },
+        {
+          "year": 2022,
+          "month": 3,
+          "volume": 10
+        },
+        {
+          "year": 2022,
+          "month": 4,
+          "volume": 10
+        },
+        {
+          "year": 2022,
+          "month": 5,
+          "volume": 20
+        },
+        {
+          "year": 2022,
+          "month": 6,
+          "volume": 480
+        },
+        {
+          "year": 2022,
+          "month": 7,
+          "volume": 720
+        },
+        {
+          "year": 2022,
+          "month": 8,
+          "volume": 590
+        },
+        {
+          "year": 2022,
+          "month": 9,
+          "volume": 720
+        },
+        {
+          "year": 2022,
+          "month": 10,
+          "volume": 480
+        },
+        {
+          "year": 2022,
+          "month": 11,
+          "volume": 1600
+        },
+        {
+          "year": 2022,
+          "month": 12,
+          "volume": 880
+        },
+        {
+          "year": 2023,
+          "month": 1,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 2,
+          "volume": 880
+        },
+        {
+          "year": 2023,
+          "month": 3,
+          "volume": 880
+        },
+        {
+          "year": 2023,
+          "month": 4,
+          "volume": 1000
+        },
+        {
+          "year": 2023,
+          "month": 5,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 6,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 7,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 8,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 9,
+          "volume": 1900
+        },
+        {
+          "year": 2023,
+          "month": 10,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 11,
+          "volume": 1600
+        },
+        {
+          "year": 2023,
+          "month": 12,
+          "volume": 1600
+        },
+        {
+          "year": 2024,
+          "month": 1,
+          "volume": 1900
+        },
+        {
+          "year": 2024,
+          "month": 2,
+          "volume": 1900
+        },
+        {
+          "year": 2024,
+          "month": 3,
+          "volume": 1600
+        },
+        {
+          "year": 2024,
+          "month": 4,
+          "volume": 1300
+        },
+        {
+          "year": 2024,
+          "month": 5,
+          "volume": 1300
+        },
+        {
+          "year": 2024,
+          "month": 6,
+          "volume": 1300
+        },
+        {
+          "year": 2024,
+          "month": 7,
+          "volume": 1300
+        },
+        {
+          "year": 2024,
+          "month": 8,
+          "volume": 1000
+        },
+        {
+          "year": 2024,
+          "month": 9,
+          "volume": 1000
+        },
+        {
+          "year": 2024,
+          "month": 10,
+          "volume": 1000
+        },
+        {
+          "year": 2024,
+          "month": 11,
+          "volume": 1600
+        },
+        {
+          "year": 2024,
+          "month": 12,
+          "volume": 1300
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "volume": 1600
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "volume": 880
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "volume": 720
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "volume": 720
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "volume": 880
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "volume": 480
+        }
+      ]
+    }
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Learn how to use NeuronWriter",
+        "searcher_goal": "The searcher wants practical guidance or a walkthrough on how the software works.",
+        "form": "video tutorial",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01",
+          "r04"
+        ],
+        "evidence": "Results r01 and r04 are explicitly titled as tutorials.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Evaluate NeuronWriter effectiveness",
+        "searcher_goal": "The searcher wants to know if the tool is worth buying based on user experiences and reviews.",
+        "form": "user review or testimonial",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r02",
+          "r04",
+          "r05",
+          "r06",
+          "r07",
+          "r08"
+        ],
+        "evidence": "Multiple results are reviews from AppSumo, Reddit, LinkedIn and YouTube focusing on whether the tool is 'the best' or 'ultimate'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Compare NeuronWriter with alternatives",
+        "searcher_goal": "The searcher wants to know how NeuronWriter stacks up against other SEO tools like SurferSEO or Frase.",
+        "form": "comparison article or video",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r03",
+          "r04",
+          "r08"
+        ],
+        "evidence": "Results explicitly compare the tool to SurferSEO, Frase, and provide a list of general alternatives.",
+        "basis": "model"
+      }
+    ],
+    "expected_genre": "Software evaluation and tutorial content",
+    "page_types": [
+      {
+        "page_type": "video",
+        "result_ids": [
+          "r01",
+          "r04",
+          "r05"
+        ]
+      },
+      {
+        "page_type": "user review page",
+        "result_ids": [
+          "r02",
+          "r07"
+        ]
+      },
+      {
+        "page_type": "blog post",
+        "result_ids": [
+          "r03",
+          "r08"
+        ]
+      },
+      {
+        "page_type": "forum thread",
+        "result_ids": [
+          "r06"
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "NLP and Semantic Optimization",
+        "result_ids": [
+          "r02",
+          "r08"
+        ]
+      },
+      {
+        "theme": "Comparison with competitors",
+        "result_ids": [
+          "r03",
+          "r04",
+          "r08"
+        ]
+      },
+      {
+        "theme": "User experience and interface",
+        "result_ids": [
+          "r08"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "SurferSEO",
+      "Frase",
+      "Scalenut"
+    ],
+    "subject_brands": [
+      "NeuronWriter"
+    ],
+    "ai_overview_signal": {
+      "present": true,
+      "interpretation": "The AI overview provides a comprehensive summary of features and pricing, suggesting the searcher is likely in the research/consideration phase of a purchase."
+    },
+    "article_fits": {
+      "value": true,
+      "reason": "A comprehensive review or comparison article would satisfy the primary commercial intent of the searchers."
+    },
+    "useful_elements": [
+      {
+        "element": "Feature comparison table",
+        "job": "Allows users to quickly see the differences between NeuronWriter and competitors like SurferSEO."
+      },
+      {
+        "element": "Pricing breakdown",
+        "job": "Clarifies the cost and credit limits for different plans."
+      },
+      {
+        "element": "Pros and Cons list",
+        "job": "Summarizes user sentiment from reviews."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Pure promotional copy",
+        "reason": "Searchers are looking for honest reviews and tutorials, not a sales page."
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "How much does NeuronWriter cost per month?",
+        "source": "paa",
+        "result_ids": []
+      },
+      {
+        "question": "What is NeuronWriter used for?",
+        "source": "paa",
+        "result_ids": []
+      },
+      {
+        "question": "Is neuron AI free?",
+        "source": "paa",
+        "result_ids": []
+      }
+    ],
+    "summary": "The SERP is dominated by software evaluation content, including reviews, comparisons, and tutorials. Users are primarily looking to validate the tool's effectiveness via peer reviews (Reddit, AppSumo) or learn its technical application through video guides.",
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 8,
+    "results_fetched": 2,
+    "has_ranks": true,
+    "traffic_known": 0,
+    "shared_results": [
+      "r04",
+      "r08"
+    ],
+    "words": {
+      "n": 2,
+      "min": 349,
+      "p10": 349,
+      "p25": 349,
+      "p50": 349,
+      "p75": 2217,
+      "p90": 2217,
+      "max": 2217
+    },
+    "chars": {
+      "n": 2,
+      "min": 1906,
+      "p10": 1906,
+      "p25": 1906,
+      "p50": 1906,
+      "p75": 13255,
+      "p90": 13255,
+      "max": 13255
+    },
+    "intents": {
+      "i1": {
+        "count": 2,
+        "coverage": 0.25,
+        "answer_share": 0.1667,
+        "traffic_share": null,
+        "ranks": [
+          1,
+          4
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      },
+      "i2": {
+        "count": 6,
+        "coverage": 0.75,
+        "answer_share": 0.6042,
+        "traffic_share": null,
+        "ranks": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "best_rank": 2,
+        "top3_count": 1,
+        "words": {
+          "n": 2,
+          "min": 349,
+          "p10": 349,
+          "p25": 349,
+          "p50": 349,
+          "p75": 2217,
+          "p90": 2217,
+          "max": 2217
+        },
+        "chars": {
+          "n": 2,
+          "min": 1906,
+          "p10": 1906,
+          "p25": 1906,
+          "p50": 1906,
+          "p75": 13255,
+          "p90": 13255,
+          "max": 13255
+        },
+        "elements": {
+          "faq": 0.5,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 0.5,
+          "videos": 0.0,
+          "n": 2
+        }
+      },
+      "i3": {
+        "count": 3,
+        "coverage": 0.375,
+        "answer_share": 0.2292,
+        "traffic_share": null,
+        "ranks": [
+          3,
+          4,
+          8
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 1,
+          "min": 2217,
+          "p10": 2217,
+          "p25": 2217,
+          "p50": 2217,
+          "p75": 2217,
+          "p90": 2217,
+          "max": 2217
+        },
+        "chars": {
+          "n": 1,
+          "min": 13255,
+          "p10": 13255,
+          "p25": 13255,
+          "p50": 13255,
+          "p75": 13255,
+          "p90": 13255,
+          "max": 13255
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      }
+    },
+    "page_types": [
+      {
+        "page_type": "video",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "page_type": "user review page",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          2,
+          7
+        ]
+      },
+      {
+        "page_type": "blog post",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          3,
+          8
+        ]
+      },
+      {
+        "page_type": "forum thread",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          6
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "Comparison with competitors",
+        "count": 3,
+        "coverage": 0.375,
+        "ranks": [
+          3,
+          4,
+          8
+        ]
+      },
+      {
+        "theme": "NLP and Semantic Optimization",
+        "count": 2,
+        "coverage": 0.25,
+        "ranks": [
+          2,
+          8
+        ]
+      },
+      {
+        "theme": "User experience and interface",
+        "count": 1,
+        "coverage": 0.125,
+        "ranks": [
+          8
+        ]
+      }
+    ],
+    "reader_questions": []
+  },
+  "form": {
+    "dominant_intent_id": "i2",
+    "dominant_intent_title": "Evaluate NeuronWriter effectiveness",
+    "dominant_intent_form": "user review or testimonial",
+    "dominant_intent_answer_share": 0.6042,
+    "dominant_intent_coverage": 0.75,
+    "top_page_type": "video",
+    "dominant_by_traffic_id": null,
+    "expected_genre": null,
+    "expected_genre_withheld": "genre not derived: dominant intent sample is insufficient_sample",
+    "article_fits": {
+      "value": true,
+      "reason": "A comprehensive review or comparison article would satisfy the primary commercial intent of the searchers."
+    },
+    "length_basis": "insufficient_sample",
+    "length_words": null,
+    "length_chars": null,
+    "length_sample_size": 2,
+    "useful_elements": [
+      {
+        "element": "Feature comparison table",
+        "job": "Allows users to quickly see the differences between NeuronWriter and competitors like SurferSEO."
+      },
+      {
+        "element": "Pricing breakdown",
+        "job": "Clarifies the cost and credit limits for different plans."
+      },
+      {
+        "element": "Pros and Cons list",
+        "job": "Summarizes user sentiment from reviews."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Pure promotional copy",
+        "reason": "Searchers are looking for honest reviews and tutorials, not a sales page."
+      }
+    ],
+    "warnings": [
+      {
+        "code": "consider_separate_pages",
+        "message": "3 intents hold at least 15% each. Consider separate pages instead of one."
+      }
+    ]
+  },
+  "model": "google/gemma-4-31b-it",
+  "demand": {
+    "volume": 720,
+    "cpc": 11.3,
+    "competition": 0.25,
+    "keyword_difficulty": 12,
+    "monthly": [
+      {
+        "year": 2018,
+        "month": 7,
+        "volume": 0
+      },
+      {
+        "year": 2018,
+        "month": 8,
+        "volume": 0
+      },
+      {
+        "year": 2018,
+        "month": 9,
+        "volume": 0
+      },
+      {
+        "year": 2018,
+        "month": 10,
+        "volume": 0
+      },
+      {
+        "year": 2018,
+        "month": 11,
+        "volume": 0
+      },
+      {
+        "year": 2018,
+        "month": 12,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 1,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 2,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 3,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 4,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 5,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 6,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 7,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 8,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 9,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 10,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 11,
+        "volume": 0
+      },
+      {
+        "year": 2019,
+        "month": 12,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 1,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 2,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 3,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 4,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 5,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 6,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 7,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 8,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 9,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 10,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 11,
+        "volume": 0
+      },
+      {
+        "year": 2020,
+        "month": 12,
+        "volume": 0
+      },
+      {
+        "year": 2021,
+        "month": 1,
+        "volume": 0
+      },
+      {
+        "year": 2021,
+        "month": 2,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 3,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 4,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 5,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 6,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 7,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 8,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 9,
+        "volume": 0
+      },
+      {
+        "year": 2021,
+        "month": 10,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 11,
+        "volume": 10
+      },
+      {
+        "year": 2021,
+        "month": 12,
+        "volume": 10
+      },
+      {
+        "year": 2022,
+        "month": 1,
+        "volume": 10
+      },
+      {
+        "year": 2022,
+        "month": 2,
+        "volume": 10
+      },
+      {
+        "year": 2022,
+        "month": 3,
+        "volume": 10
+      },
+      {
+        "year": 2022,
+        "month": 4,
+        "volume": 10
+      },
+      {
+        "year": 2022,
+        "month": 5,
+        "volume": 20
+      },
+      {
+        "year": 2022,
+        "month": 6,
+        "volume": 480
+      },
+      {
+        "year": 2022,
+        "month": 7,
+        "volume": 720
+      },
+      {
+        "year": 2022,
+        "month": 8,
+        "volume": 590
+      },
+      {
+        "year": 2022,
+        "month": 9,
+        "volume": 720
+      },
+      {
+        "year": 2022,
+        "month": 10,
+        "volume": 480
+      },
+      {
+        "year": 2022,
+        "month": 11,
+        "volume": 1600
+      },
+      {
+        "year": 2022,
+        "month": 12,
+        "volume": 880
+      },
+      {
+        "year": 2023,
+        "month": 1,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 2,
+        "volume": 880
+      },
+      {
+        "year": 2023,
+        "month": 3,
+        "volume": 880
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "volume": 1000
+      },
+      {
+        "year": 2023,
+        "month": 5,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 6,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 7,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 8,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 9,
+        "volume": 1900
+      },
+      {
+        "year": 2023,
+        "month": 10,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 11,
+        "volume": 1600
+      },
+      {
+        "year": 2023,
+        "month": 12,
+        "volume": 1600
+      },
+      {
+        "year": 2024,
+        "month": 1,
+        "volume": 1900
+      },
+      {
+        "year": 2024,
+        "month": 2,
+        "volume": 1900
+      },
+      {
+        "year": 2024,
+        "month": 3,
+        "volume": 1600
+      },
+      {
+        "year": 2024,
+        "month": 4,
+        "volume": 1300
+      },
+      {
+        "year": 2024,
+        "month": 5,
+        "volume": 1300
+      },
+      {
+        "year": 2024,
+        "month": 6,
+        "volume": 1300
+      },
+      {
+        "year": 2024,
+        "month": 7,
+        "volume": 1300
+      },
+      {
+        "year": 2024,
+        "month": 8,
+        "volume": 1000
+      },
+      {
+        "year": 2024,
+        "month": 9,
+        "volume": 1000
+      },
+      {
+        "year": 2024,
+        "month": 10,
+        "volume": 1000
+      },
+      {
+        "year": 2024,
+        "month": 11,
+        "volume": 1600
+      },
+      {
+        "year": 2024,
+        "month": 12,
+        "volume": 1300
+      },
+      {
+        "year": 2025,
+        "month": 1,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 2,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 3,
+        "volume": 1600
+      },
+      {
+        "year": 2025,
+        "month": 4,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 5,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 6,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 7,
+        "volume": 1000
+      },
+      {
+        "year": 2025,
+        "month": 8,
+        "volume": 880
+      },
+      {
+        "year": 2025,
+        "month": 9,
+        "volume": 720
+      },
+      {
+        "year": 2025,
+        "month": 10,
+        "volume": 720
+      },
+      {
+        "year": 2025,
+        "month": 11,
+        "volume": 880
+      },
+      {
+        "year": 2025,
+        "month": 12,
+        "volume": 880
+      },
+      {
+        "year": 2026,
+        "month": 1,
+        "volume": 880
+      },
+      {
+        "year": 2026,
+        "month": 2,
+        "volume": 590
+      },
+      {
+        "year": 2026,
+        "month": 3,
+        "volume": 720
+      },
+      {
+        "year": 2026,
+        "month": 4,
+        "volume": 590
+      },
+      {
+        "year": 2026,
+        "month": 5,
+        "volume": 590
+      },
+      {
+        "year": 2026,
+        "month": 6,
+        "volume": 480
+      },
+      {
+        "year": 2026,
+        "month": 7,
+        "volume": 480
+      },
+      {
+        "year": 2026,
+        "month": 8,
+        "volume": 480
+      }
+    ],
+    "seasonality": {
+      "months": 98,
+      "profile": {
+        "1": 1.143,
+        "2": 1.055,
+        "3": 1.185,
+        "4": 0.874,
+        "5": 0.874,
+        "6": 0.841,
+        "7": 0.841,
+        "8": 0.714,
+        "9": 1.094,
+        "10": 1.004,
+        "11": 1.234,
+        "12": 1.143
+      },
+      "peak_month": 11,
+      "low_month": 8,
+      "seasonality_index": 1.73,
+      "yoy_change": -0.401
+    }
+  }
+}

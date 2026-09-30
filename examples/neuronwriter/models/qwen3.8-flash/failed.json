@@ -1,0 +1,4 @@
+{
+  "model": "qwen/qwen3.8-flash",
+  "error": "LLM failed the JSON contract after 3 attempts: intent i1: unknown result_ids ['0', '1', '2']"
+}

@@ -25,6 +25,10 @@ EXAMPLES = [
     ("calcolo rata mutuo", "it", 2380),
     ("recette pâte à crêpes", "fr", 2250),
     ("meilleur aspirateur robot", "fr", 2250),
+    ("seo agency london", "en", 2826),
+    ("senuto", "pl", 2616),
+    ("neuronwriter", "en", 2840),
+    ("kindergeld", "de", 2276),
 ]
 # Re-running an existing example is skipped; delete its folder to refresh it.
 

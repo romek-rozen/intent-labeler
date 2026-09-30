@@ -1,0 +1,1802 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T10:56:22+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://www.arbeitsagentur.de/familie-und-kinder",
+        "rank": 1,
+        "domain": "www.arbeitsagentur.de",
+        "title": "Familie und Kinder",
+        "description": "Anträge auf Kindergeld und Kinderzuschlag sind immer kostenlos und können direkt bei der Familienkasse gestellt werden. · Nur die Familienkasse trifft ...",
+        "headings": [
+          "H2: Wichtiger Hinweis",
+          "H2: eServices der Familienkasse",
+          "H3: Ein Profil – viele Vorteile",
+          "H2: Schnell & direkt: Anträge online erledigen",
+          "H2: Kindergeld und Kinderzuschlag",
+          "H3: Kindergeld verstehen",
+          "H3: Kinderzuschlag verstehen",
+          "H3: Auszahlungstermine anzeigen",
+          "H2: Weitere Informationen für Familien",
+          "H3: Leistungen für Bildung und Teilhabe",
+          "H3: Unterstützung für Eltern",
+          "H3: Ihre Familienkasse vor Ort",
+          "H3: Weiterführende Links",
+          "H3: Downloads"
+        ],
+        "highlighted": [
+          "Kindergeld"
+        ],
+        "word_count": 257,
+        "char_count": 2034,
+        "digest": "headings: Wichtiger Hinweis; eServices der Familienkasse; Ein Profil – viele Vorteile; Schnell & direkt: Anträge online erledigen; Kindergeld und Kinderzuschlag; Kindergeld verstehen; Kinderzuschlag verstehen; Auszahlungstermine anzeigen | text: Zurzeit erhalten wir vermehrt Hinweise zu kostenpflichtigen Angeboten für die Antragstellung von Kindergeld und Kinderzuschlag. Wir weisen deshalb auf Fol",
+        "excerpt": "## Wichtiger Hinweis Zurzeit erhalten wir vermehrt Hinweise zu kostenpflichtigen Angeboten für die Antragstellung von Kindergeld und Kinderzuschlag. Wir weisen deshalb auf Folgendes hin: - Anträge auf Kindergeld und Kinderzuschlag sind immer kostenlos und können direkt bei der Familienkasse gestellt werden. - Nur die Familienkasse trifft Entscheidungen über die beiden vorgenannten Leistungen. Gewerbliche Unternehmen können darauf keinen Einfluss nehmen. - Die Familienkasse informiert über Kindergeld und berät zu Kinderzuschlag – **kostenlos** . ## eServices der Familienkasse ### Ein Profil – viele Vorteile Ihr Profil im Online-Konto der Bundesagentur für Arbeit ist Ihr digitaler Zugang zur Familienkasse. Mit Ihrem Profil können Sie vieles **direkt online erledigen** – schnell, rund um die Uhr und von überall. ## Schnell & direkt: Anträge online erledigen ## Kindergeld und Kinderzuschlag ### Kindergeld verstehen Kindergeld erhalten Sie für Kinder unter 18 Jahren, unter bestimmten Voraussetzungen auch länger. Informieren Sie sich, wie Sie Kindergeld beantragen und in welcher Höhe es ausgezahlt wird. ### Kinderzuschlag verstehen Der Kinderzuschlag unterstützt Familien mit kleinem Einkommen finanziell. Erfahren Sie, ob Sie die Leistung erhalten können und wie Sie sie beantragen. ### Auszahlungstermine anzeigen Erfahren Sie, zu welchen Terminen Kindergeld und Kinderzuschlag gezahlt werden. ## Weitere Informationen für Familien ### Leistungen für Bildung und Teilhabe Mit Leistungen",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 3,
+          "images": 7,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 141652.4421130065,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://www.bmbfsfj.bund.de/bmbfsfj/themen/familie/familienleistungen/kindergeld",
+        "rank": 2,
+        "domain": "www.bmbfsfj.bund.de",
+        "title": "Kindergeld - BMBFSFJ",
+        "description": "01.01.2026 — Kindergeld · für alle Kinder bis zum 18. Lebensjahr · für Kinder in Ausbildung bis zum 25. Lebensjahr · für arbeitslose Kinder bis zum 21.",
+        "headings": [
+          "H1: Kindergeld",
+          "H2: Verwandte Inhalte",
+          "H3: Weitere Informationen",
+          "H3: Publikationen",
+          "H3: Externe Links",
+          "H2: Seitenleiste: Soziale-Medien-Links"
+        ],
+        "highlighted": [
+          "für alle Kinder bis zum 18. Lebensjahr"
+        ],
+        "word_count": 278,
+        "char_count": 2142,
+        "digest": "headings: Kindergeld; Verwandte Inhalte; Weitere Informationen; Publikationen; Externe Links; Seitenleiste: Soziale-Medien-Links | text: Eltern, die im Inland wohnen und unbeschränkt einkommensteuerpflichtig sind, erhalten Kindergeld nach Paragraf 62 ff. EStG (Einkommensteuergesetz) als Steuervergütung. Das Kindergeld wird einkommensunabhängig gezahlt. Es beträgt zum 1. Januar 2026 **monatlich 259",
+        "excerpt": "Eltern, die im Inland wohnen und unbeschränkt einkommensteuerpflichtig sind, erhalten Kindergeld nach Paragraf 62 ff. EStG (Einkommensteuergesetz) als Steuervergütung. Das Kindergeld wird einkommensunabhängig gezahlt. Es beträgt zum 1. Januar 2026 **monatlich 259 Euro pro Kind**. Kindergeld gibt es grundsätzlich - für alle Kinder bis zum 18. Lebensjahr - für Kinder in Ausbildung bis zum 25. Lebensjahr - für arbeitslose Kinder bis zum 21. Lebensjahr. Für Kinder, die wegen fehlendem Ausbildungsplatz eine Berufsausbildung nicht beginnen oder fortsetzen können, gelten die oben genannten Regelungen für Kinder in Ausbildung. Nach Abschluss einer erstmaligen Berufsausbildung oder eines Erststudiums wird ein Kind nur berücksichtigt, wenn das Kind keiner Erwerbstätigkeit mit mehr als 20 Stunden regelmäßiger wöchentlicher Arbeitszeit nachgeht. Das Kindergeld wird an die Person ausgezahlt, in deren Obhut sich das Kind befindet. Lebt das Kind mit beiden Eltern zusammen, können diese bestimmen, wer von ihnen das Kindergeld erhalten soll. Eltern, die im Ausland wohnen und in Deutschland nach dem Einkommensteuergesetz nicht unbeschränkt steuerpflichtig sind, können unter bestimmten Voraussetzungen Kindergeld nach dem Bundeskindergeldgesetz (BKGG) erhalten. Dafür müssen sie zum Beispiel in einem Versicherungspflichtverhältnis zur Bundesagentur für Arbeit stehen, als Entwicklungshelfer oder Missionar tätig sein, eine Tätigkeit nach den Vorschriften des Beamtenrechts in einer Einrichtung außer",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 8,
+          "images": 1,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 58309.979746835306,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://familienportal.de/familienportal/familienleistungen/kindergeld/faq/was-ist-kindergeld--124914",
+        "rank": 3,
+        "domain": "familienportal.de",
+        "title": "Was ist Kindergeld?",
+        "description": "Das Kindergeld sichert die grundlegende Versorgung Ihrer Kinder ab der Geburt und mindestens bis zu deren 18. Geburtstag. Vom Kindergeld profitieren vor ...",
+        "headings": [
+          "H2: Sie befinden sich hier:",
+          "H1: Was ist Kindergeld?",
+          "H2: Wie hoch ist das Kindergeld?",
+          "H2: Wer kann Kindergeld bekommen?",
+          "H2: Was ist eine Berechtigten-Bestimmung?"
+        ],
+        "highlighted": [
+          "Kindergeld"
+        ],
+        "word_count": 365,
+        "char_count": 2769,
+        "digest": "headings: Sie befinden sich hier:; Was ist Kindergeld?; Wie hoch ist das Kindergeld?; Wer kann Kindergeld bekommen?; Was ist eine Berechtigten-Bestimmung? | text: Beratung vor Ort Finden Sie zuständige Behörden und Beratungsstellen. Das Kindergeld sichert die grundlegende Versorgung Ihrer Kinder ab der Geburt und mindestens bis zu deren 18. Geburtstag. Vom Kindergeld profitieren vor allem Familien",
+        "excerpt": "- Kontakt Wir beantworten Ihre Fragen. - Beratung vor Ort Finden Sie zuständige Behörden und Beratungsstellen. ## Sie befinden sich hier: # Was ist Kindergeld? Das Kindergeld sichert die grundlegende Versorgung Ihrer Kinder ab der Geburt und mindestens bis zu deren 18. Geburtstag. Vom Kindergeld profitieren vor allem Familien mit kleinen und mittleren Einkommen. Im Laufe eines Kalenderjahres erhalten Eltern zunächst das Kindergeld. Das Finanzamt prüft dann im Rahmen der jährlichen Einkommensteuerveranlagung, ob für die Eltern die Freibeträge für Kinder oder das ausbezahlte Kindergeld günstiger ist. Diese Prüfung erfolgt automatisch und muss nicht beantragt werden. ## Wie hoch ist das Kindergeld? Das Kindergeld beträgt derzeit - für alle Kinder jeweils 259 Euro monatlich. ## Wer kann Kindergeld bekommen? Kindergeld können bekommen: - Deutsche Staatsangehörige, die mit ihren Kindern in Deutschland leben. - Ausländische Staatsangehörige, die in Deutschland leben, unter bestimmten Bedingungen. - Deutsche Staatsangehörige, die im Ausland leben. Kindergeld erhalten Eltern. Dazu gehören auch Adoptiveltern. Kindergeld können unter bestimmten Voraussetzungen auch erhalten: Das Kindergeld ist geregelt im Einkommensteuergesetz (EStG) und im Bundeskindergeldgesetz (BKGG). ## Was ist eine Berechtigten-Bestimmung? Für ein Kind kann immer nur eine Person Kindergeld erhalten. Eltern, die nicht dauernd getrennt leben, können untereinander durch eine so genannte \"Berechtigten-Bestimmung\" festl",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 10,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 13686.346388421953,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.arbeitsagentur.de/datei/kg2-merkblattkindergeld_ba034475.pdf",
+        "rank": 4,
+        "domain": "www.arbeitsagentur.de",
+        "title": "Merkblatt Kindergeld",
+        "description": "Das Kindergeld ist eine staatliche Geldleistung an Eltern und wird in Höhe des sogenannten. ▻Existenzminimums eines Kindes gezahlt.",
+        "headings": [],
+        "highlighted": [
+          "Kindergeld"
+        ],
+        "word_count": 407704,
+        "char_count": 1980201,
+        "digest": "",
+        "excerpt": "%PDF-1.7 %���� 2150 0 obj < > endobj 2162 0 obj < >/Encrypt 2151 0 R/Filter/FlateDecode/ID[ < 237DFDC7FA17DF47AC3B00DE1A0079F6>]/Index[2150 84]/Info 2149 0 R/Length 88/Prev 2592217/Root 2152 0 R/Size 2234/Type/XRef/W[1 3 1]>>stream h�bbd`\u0010``b``7\u0006�L?A$� ��\u0005��\u001b��3@$�$��\u0000��\u0007�\u0002\u001b�$��N ��ۗ�����\u001bH h\u0006a��\u0017�*GI*��\u0019~�?\u0004\u0010`\u0000��\u000f endstream endobj startxref 0 %%EOF 2233 0 obj < >stream A\u0017@a���V�\u0013�uӕ�\u00014ʫi\u0015���\u0004��)I妐�K�� ��\u0013#2�/�G�)\u0000^\u0011��We���Y��K \u0010pF|���\u0004�w�\u0018��>i0��a}�e�\u0010 < ���\u0007�� ����G\u0006��B�g�5�s\u0004qKw�5��]��\u0014\u0001l�e�C�+���\u000f��L\u0001Th�i\b;�va�܂� ����\u000f�X��tL�\u0012�\u0019�\u0018A�\u0017\u0010-VӮ���E\u0007>�&\u0015�##��\u0019Ŏ$�D�� < \u0016+���\u0007\u0017v�q���Rq](k\u000f����'��\u0004��ǻL}o�|ﱐgI�Z��Uް[���\u0010B ��\u001b`�F�� �w`�\u001b1\u0014����lC��:�? �\u0012�����(�{r\u0015=�\u0015�\u0003\u0002L���/\u001aB=䶗�\u0016��D�W�$c� */H?� �E�W:�ާ,��o�8q\"����Ny�f�D-\u000e����� )��2\u0012�ƪ��r�*����\u000e�ՏKq�6� �\u000e�8����r�j�=�n&�d� Mйv�}ܪj5e�\u0004\u0014;b#�T\u0019F���d��0�� �;�K�\u0002���{�;kxp\u0000\u0016~t� �+�_ ��Hw�z\u0006����'M:�q,�~�Ij�$l�\u0016,ǾVi\u0018k��19��9���̛ײ�� S� �H^6\\�\u0004�U5Y$\"uƗ>V�X+~�M&&���r�%\u0011+���Qd�u\u0016�6��\u00199mЯS��\u0019�'\u0006\u0015. ��*j�\\̊��\u001am�`�a\u000e#|E�H�𪱺�+36�(h��c��Y\u00101���\\c����H\\_�� 9��G'P��\u0003��-��\u0005y�����?UJ\u0014ǒ�r�2\b�u���\u0010��!��l^w��3\u000f�/8l5���שׂH2�\u001a�\u0003\u0015�v�I�h� ;\u0010��?��B�D �ː\u00037T��T4�|�0ጌ�8\u000e^� s#`��~i\\ፘ\u0000t�\u001a�ɮ�6L�\u0005 < 8� \u000e\u0011^�Ho\\oT!0�T\u0001��G.)\u0006.�Z >>>/Filter/Standard/Length 256/O(��{��uHxj � s�\u0016R.,� _L��p�\u0002�2t��-SW\byq�\u0016�'J$�G\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000)/OE(po�[��Q\u0018Y\u0006�:�j��\u0019\\r6 5�e� �ʑMh)/P -1340/Perms(�ZV�VH���s����t�)/R 6/StmF/StdCF/StrF/StdCF/U(��t�\u0000M�_@\\n�6>!хߴ I\u0007��S���;\u0002G�f?ә������e\u00120�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": 7355.646986626089,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.kindergeld.org/",
+        "rank": 5,
+        "domain": "www.kindergeld.org",
+        "title": "Kindergeld 2026 - Aktuelle Tabelle mit Höhe & Auszahlung",
+        "description": "Zum Jahreswechsel 2025 / 2026 wurde das Kindergeld um 4 Euro auf 259 Euro pro Kind und Monat erhöht. Gleichzeitig stieg der Kinderfreibetrag um 156 Euro auf nun ...",
+        "headings": [
+          "H1: Kindergeld 2026 – Höhe und Auszahlung",
+          "H2: Kindergeld Erhöhung 2026",
+          "H3: Kinder-Sofortzuschlag",
+          "H2: Kindergeld Tabelle 2025 / 2026 – Wie viel Kindergeld gibt es?",
+          "H2: Kindergeld Höhe 2025 und 2026 nach Anzahl der Kinder",
+          "H2: Kindergeldanspruch",
+          "H3: Anspruch für minderjährige Kinder",
+          "H3: Volljährige Kinder",
+          "H4: Keine Altersbeschränkung für behinderte Kinder",
+          "H3: Kindergeldantrag stellen",
+          "H4: Rückwirkender Kindergeldantrag",
+          "H4: Antragsvordrucke",
+          "H3: Antrag bei Beamten und im öffentlichen Dienst",
+          "H3: Auszahlung",
+          "H2: Kindergeld oder Kinderfreibetrag?",
+          "H3: Was Sie sonst noch wissen sollten"
+        ],
+        "highlighted": [
+          "Kind und Monat"
+        ],
+        "word_count": 955,
+        "char_count": 7365,
+        "digest": "headings: Kindergeld 2026 – Höhe und Auszahlung; Kindergeld Erhöhung 2026; Kinder-Sofortzuschlag; Kindergeld Tabelle 2025 / 2026 – Wie viel Kindergeld gibt es?; Kindergeld Höhe 2025 und 2026 nach Anzahl der Kinder; Kindergeldanspruch; Anspruch für minderjährige Kinder; Volljährige Kinder | text: Zum Jahreswechsel 2025 / 2026 wurde das Kindergeld um 4 Euro auf 259 Euro pro Kind und Monat erhöht. Gl",
+        "excerpt": "# Kindergeld 2026 – Höhe und Auszahlung **Entgegen der weit verbreiteten Meinung, handelt es sich beim Kindergeld um keine Sozialleistung. Zwar wird es i. d. R. von den Familienkassen ausgezahlt, ist im Endeffekt aber eine steuerliche Ausgleichszahlung. Das Kindergeld soll das steuerliche Existenzminimum des Kindes freistellen und dient der Grundversorgung der in Deutschland lebenden Kinder vom Geburtsmonat an und wird längstens bis zum 25. Geburtstag gezahlt – bis zur Volljährigkeit ohne Bedingungen. Dabei entsteht der Anspruch automatisch, setzt aber einen schriftlichen Antrag voraus.** ## Kindergeld Erhöhung 2026 Zum Jahreswechsel 2025 / 2026 wurde das Kindergeld um 4 Euro auf 259 Euro pro Kind und Monat erhöht. Gleichzeitig stieg der Kinderfreibetrag um 156 Euro auf nun 9.756 Euro in 2026. ### Kinder-Sofortzuschlag Bedürftige Kinder, die auf die o.g. Sozialleistungen angewiesen sind, erhalten den Kindersofortzuschlag – seit 2025 beträgt dieser 25 Euro. Ursprünglich war dieser Sofortzuschlag als vorübergehende Entlastung bis zum Inkrafttreten der Kindergrundsicherung eingeführt worden. Da die Kindergrundsicherung nun offiziell nicht eingeführt wird, bleibt dieser Sofortzuschlag zunächst unbefristet bestehen. ## Kindergeld Tabelle 2025 / 2026 – Wie viel Kindergeld gibt es? Das Kindergeld wurde in 2026 um vier Euro **auf 259 Euro je Kind erhöht**. Davor fand die letzte Erhöhung zum 01.01.2025 statt. | | seit 2026 | 2025 | 2024 | |---|---|---|---| | je Kind | 259 Euro | 255 E",
+        "elements": {
+          "tables": 3,
+          "ordered_lists": 0,
+          "unordered_lists": 5,
+          "images": 5,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 128459.41760329157,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://www.berlin.de/sen/jugend/familie-und-kinder/finanzielle-leistungen/kindergeld/",
+        "rank": 6,
+        "domain": "www.berlin.de",
+        "title": "Kindergeld",
+        "description": "Die Auszahlung des Kindergeldes erfolgt in der Regel durch die Familienkassen bei den Agenturen für Arbeit. Im Rahmen einer Einkommensteuerveranlagung wird eine ...",
+        "headings": [
+          "H1: Kindergeld",
+          "H2: Inhaltsverzeichnis",
+          "H2: Kindergeld gibt es grundsätzlich für",
+          "H2: Höhe",
+          "H2: Beantragung",
+          "H2: Kinderzuschlag",
+          "H3: Kinderzuschlag",
+          "H3: Rechtsgrundlagen",
+          "H3: Mehr Infos",
+          "H2: Senatsverwaltung für Bildung, Jugend und Familie",
+          "H2: Weitere Informationen zu diesem Auftritt"
+        ],
+        "highlighted": [],
+        "word_count": 116,
+        "char_count": 855,
+        "digest": "headings: Kindergeld; Inhaltsverzeichnis; Kindergeld gibt es grundsätzlich für; Höhe; Beantragung; Kinderzuschlag; Kinderzuschlag; Rechtsgrundlagen | text: Für Kinder, die wegen fehlendem Ausbildungsplatz eine Berufsausbildung nicht beginnen oder fortsetzen können, gelten dieselben Regelungen wie für Kinder in Ausbildung. Das Kindergeld wird an die Person ausgezahlt, in deren Obhut sich das Kind b",
+        "excerpt": "Bild: wavebreak3/stock.adobe.com - alle Kinder bis zur Vollendung des zum 18. Lebensjahres, - Kinder in Ausbildung bis zur Vollendung des 25. Lebensjahres, - arbeitslose Kinder bis zum 21. Lebensjahr. Für Kinder, die wegen fehlendem Ausbildungsplatz eine Berufsausbildung nicht beginnen oder fortsetzen können, gelten dieselben Regelungen wie für Kinder in Ausbildung. Das Kindergeld wird an die Person ausgezahlt, in deren Obhut sich das Kind befindet. Lebt das Kind mit beiden Eltern zusammen, können diese bestimmen, wer von ihnen das Kindergeld erhalten soll. Die Auszahlung des Kindergeldes erfolgt in der Regel durch die Familienkassen bei den Agenturen für Arbeit. Im Rahmen einer Einkommensteuerveranlagung wird eine Günstigerprüfung durchgeführt. Wenn es finanziell vorteilhaft ist, werden statt des Kindergeldes Kinderfreibeträge berücksichtigt.",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 7,
+          "images": 7,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 8876.630975045264,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://web.arbeitsagentur.de/kiz/ui/start",
+        "rank": 7,
+        "domain": "web.arbeitsagentur.de",
+        "title": "Kinderzuschlag - Start - eServices - Bundesagentur für Arbeit",
+        "description": "Den Kinderzuschlag können Eltern nur bekommen, wenn sie genug für sich selbst verdienen, aber das Einkommen nicht oder nur knapp für ihre gesamte Familie reicht ...",
+        "headings": [],
+        "highlighted": [],
+        "word_count": null,
+        "char_count": null,
+        "digest": "",
+        "excerpt": "",
+        "elements": {},
+        "extractor": "",
+        "etv": 81955.66924712062,
+        "fetch_status": "error: URLError ([Errno 54] Connection reset by peer)"
+      }
+    ],
+    "keyword": "kindergeld",
+    "language": "de",
+    "location": "2276",
+    "people_also_ask": [
+      "Wie hoch ist das Kindergeld ab 01.01 2026?",
+      "Wer bekommt die 300 Euro pro Kind?",
+      "Wie hoch ist das Kindergeld für 8 Kinder?",
+      "Welches Land zahlt das höchste Kindergeld?"
+    ],
+    "related_searches": [
+      "Kindergeld Höhe",
+      "Kindergeld Familienkasse",
+      "Kindergeld beantragen",
+      "Kindergeld Hessen",
+      "Kindergeld Telefonnummer",
+      "Kindergeld über 18",
+      "Kindergeld 2027",
+      "Kindergeld online"
+    ],
+    "ai_overview": "Das Kindergeld in Deutschland beträgt aktuell 259 Euro pro Monat und Kind. ✅ Höhe & Auszahlung 💶 Betrag : 259 € je Kind (unabhängig von der Anzahl der Kinder). 📅 Zuständigkeit : Die Bundesagentur für Arbeit - Familienkasse zahlt das Geld aus. 🔄 Änderung 2027 : Ab 2027 ist eine schrittweise Umstellung auf eine automatische, antragslose Auszahlung geplant. 🗓 Anspruch & Dauer 👶 Bis 18 Jahre : Grundsätzlicher Anspruch für jedes Kind ab der Geburt. 🎓 Bis 25 Jahre : Bei Schulbildung, Ausbildung oder Studium. 💼 Bis 21 Jahre : Wenn das Kind arbeitsuchend ist. ♿ Unbegrenzt : Bei einer Behinderung (wenn diese vor dem 25. Lebensjahr eintrat). 💡 Wichtige Hinweise ⚖️ Günstigerprüfung : Das Finanzamt prüft bei der Steuererklärung automatisch, ob der Kinderfreibetrag vorteilhafter ist als das Kindergeld. 📉 Zusatzleistung : Für Geringverdiener gibt es ergänzend den Kinderzuschlag (bis zu 297 € monatlich). Wenn Sie möchten, dass ich Ihnen bei einem konkreten Anliegen helfe, verraten Sie mir:Das Alter Ihres Kindes\nOb es sich in einer Ausbildung / im Studium befindet\nOder ob es um einen Antrag geht",
+    "item_types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "top_stories",
+      "related_searches",
+      "knowledge_graph"
+    ],
+    "checked_at": "2026-09-30 10:55:30 +00:00",
+    "costs": {
+      "serp": 0.004,
+      "traffic": 0.01284,
+      "search_volume": 0.01212
+    },
+    "search_volume": {
+      "volume": 201000,
+      "cpc": 1.86,
+      "competition": 0.04,
+      "keyword_difficulty": 33,
+      "monthly": [
+        {
+          "year": 2018,
+          "month": 10,
+          "volume": 201000
+        },
+        {
+          "year": 2018,
+          "month": 11,
+          "volume": 165000
+        },
+        {
+          "year": 2018,
+          "month": 12,
+          "volume": 135000
+        },
+        {
+          "year": 2019,
+          "month": 1,
+          "volume": 201000
+        },
+        {
+          "year": 2019,
+          "month": 2,
+          "volume": 135000
+        },
+        {
+          "year": 2019,
+          "month": 3,
+          "volume": 135000
+        },
+        {
+          "year": 2019,
+          "month": 4,
+          "volume": 135000
+        },
+        {
+          "year": 2019,
+          "month": 5,
+          "volume": 165000
+        },
+        {
+          "year": 2019,
+          "month": 6,
+          "volume": 246000
+        },
+        {
+          "year": 2019,
+          "month": 7,
+          "volume": 246000
+        },
+        {
+          "year": 2019,
+          "month": 8,
+          "volume": 165000
+        },
+        {
+          "year": 2019,
+          "month": 9,
+          "volume": 201000
+        },
+        {
+          "year": 2019,
+          "month": 10,
+          "volume": 201000
+        },
+        {
+          "year": 2019,
+          "month": 11,
+          "volume": 201000
+        },
+        {
+          "year": 2019,
+          "month": 12,
+          "volume": 165000
+        },
+        {
+          "year": 2020,
+          "month": 1,
+          "volume": 165000
+        },
+        {
+          "year": 2020,
+          "month": 2,
+          "volume": 135000
+        },
+        {
+          "year": 2020,
+          "month": 3,
+          "volume": 135000
+        },
+        {
+          "year": 2020,
+          "month": 4,
+          "volume": 165000
+        },
+        {
+          "year": 2020,
+          "month": 5,
+          "volume": 201000
+        },
+        {
+          "year": 2020,
+          "month": 6,
+          "volume": 301000
+        },
+        {
+          "year": 2020,
+          "month": 7,
+          "volume": 246000
+        },
+        {
+          "year": 2020,
+          "month": 8,
+          "volume": 246000
+        },
+        {
+          "year": 2020,
+          "month": 9,
+          "volume": 246000
+        },
+        {
+          "year": 2020,
+          "month": 10,
+          "volume": 165000
+        },
+        {
+          "year": 2020,
+          "month": 11,
+          "volume": 165000
+        },
+        {
+          "year": 2020,
+          "month": 12,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 1,
+          "volume": 165000
+        },
+        {
+          "year": 2021,
+          "month": 2,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 3,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 4,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 5,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 6,
+          "volume": 110000
+        },
+        {
+          "year": 2021,
+          "month": 7,
+          "volume": 110000
+        },
+        {
+          "year": 2021,
+          "month": 8,
+          "volume": 110000
+        },
+        {
+          "year": 2021,
+          "month": 9,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 10,
+          "volume": 135000
+        },
+        {
+          "year": 2021,
+          "month": 11,
+          "volume": 110000
+        },
+        {
+          "year": 2021,
+          "month": 12,
+          "volume": 110000
+        },
+        {
+          "year": 2022,
+          "month": 1,
+          "volume": 135000
+        },
+        {
+          "year": 2022,
+          "month": 2,
+          "volume": 90500
+        },
+        {
+          "year": 2022,
+          "month": 3,
+          "volume": 110000
+        },
+        {
+          "year": 2022,
+          "month": 4,
+          "volume": 110000
+        },
+        {
+          "year": 2022,
+          "month": 5,
+          "volume": 110000
+        },
+        {
+          "year": 2022,
+          "month": 6,
+          "volume": 110000
+        },
+        {
+          "year": 2022,
+          "month": 7,
+          "volume": 135000
+        },
+        {
+          "year": 2022,
+          "month": 8,
+          "volume": 165000
+        },
+        {
+          "year": 2022,
+          "month": 9,
+          "volume": 201000
+        },
+        {
+          "year": 2022,
+          "month": 10,
+          "volume": 135000
+        },
+        {
+          "year": 2022,
+          "month": 11,
+          "volume": 201000
+        },
+        {
+          "year": 2022,
+          "month": 12,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 1,
+          "volume": 201000
+        },
+        {
+          "year": 2023,
+          "month": 2,
+          "volume": 110000
+        },
+        {
+          "year": 2023,
+          "month": 3,
+          "volume": 110000
+        },
+        {
+          "year": 2023,
+          "month": 4,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 5,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 6,
+          "volume": 135000
+        },
+        {
+          "year": 2023,
+          "month": 7,
+          "volume": 201000
+        },
+        {
+          "year": 2023,
+          "month": 8,
+          "volume": 201000
+        },
+        {
+          "year": 2023,
+          "month": 9,
+          "volume": 201000
+        },
+        {
+          "year": 2023,
+          "month": 10,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 11,
+          "volume": 165000
+        },
+        {
+          "year": 2023,
+          "month": 12,
+          "volume": 135000
+        },
+        {
+          "year": 2024,
+          "month": 1,
+          "volume": 165000
+        },
+        {
+          "year": 2024,
+          "month": 2,
+          "volume": 135000
+        },
+        {
+          "year": 2024,
+          "month": 3,
+          "volume": 110000
+        },
+        {
+          "year": 2024,
+          "month": 4,
+          "volume": 135000
+        },
+        {
+          "year": 2024,
+          "month": 5,
+          "volume": 135000
+        },
+        {
+          "year": 2024,
+          "month": 6,
+          "volume": 165000
+        },
+        {
+          "year": 2024,
+          "month": 7,
+          "volume": 246000
+        },
+        {
+          "year": 2024,
+          "month": 8,
+          "volume": 165000
+        },
+        {
+          "year": 2024,
+          "month": 9,
+          "volume": 165000
+        },
+        {
+          "year": 2024,
+          "month": 10,
+          "volume": 165000
+        },
+        {
+          "year": 2024,
+          "month": 11,
+          "volume": 301000
+        },
+        {
+          "year": 2024,
+          "month": 12,
+          "volume": 201000
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "volume": 301000
+        },
+        {
+          "year": 2025,
+          "month": 2,
+          "volume": 246000
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "volume": 165000
+        },
+        {
+          "year": 2025,
+          "month": 4,
+          "volume": 201000
+        },
+        {
+          "year": 2025,
+          "month": 5,
+          "volume": 301000
+        },
+        {
+          "year": 2025,
+          "month": 6,
+          "volume": 301000
+        },
+        {
+          "year": 2025,
+          "month": 7,
+          "volume": 246000
+        },
+        {
+          "year": 2025,
+          "month": 8,
+          "volume": 201000
+        },
+        {
+          "year": 2025,
+          "month": 9,
+          "volume": 165000
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "volume": 301000
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "volume": 201000
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "volume": 301000
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "volume": 201000
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "volume": 165000
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "volume": 165000
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "volume": 301000
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "volume": 135000
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "volume": 110000
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "volume": 165000
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "volume": 165000
+        }
+      ]
+    }
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Check entitlement and eligibility",
+        "searcher_goal": "Understand who is eligible for child benefit and under what conditions (age, education, etc.).",
+        "form": "informational guides and official definitions",
+        "intent_type": "informational",
+        "result_ids": [
+          "r02",
+          "r03",
+          "r05"
+        ],
+        "evidence": "Headings like 'Wer kann Kindergeld bekommen?' and discussions about age limits (18, 21, 25 years).",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Find benefit amounts and tables",
+        "searcher_goal": "Find out the current and future monthly amount of child benefit per child.",
+        "form": "data tables and updated lists",
+        "intent_type": "informational",
+        "result_ids": [
+          "r05"
+        ],
+        "evidence": "Title mentions 'Aktuelle Tabelle mit Höhe & Auszahlung' and amount details like 259 Euro.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Apply for child benefit",
+        "searcher_goal": "Access online portals or forms to submit a child benefit application.",
+        "form": "government e-service portals",
+        "intent_type": "transactional",
+        "result_ids": [
+          "r01",
+          "r07"
+        ],
+        "evidence": "Mentions of 'Anträge online erledigen' and 'eServices'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i4",
+        "title": "Learn about supplementary benefits",
+        "searcher_goal": "Determine if they qualify for 'Kinderzuschlag' (child supplement) in addition to child benefit.",
+        "form": "informational services and definitions",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01",
+          "r07"
+        ],
+        "evidence": "Direct mentions and dedicated links for 'Kinderzuschlag'.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "unassigned",
+        "title": "Unassigned results",
+        "searcher_goal": "the model did not place these results in any intent",
+        "intent_type": null,
+        "form": "",
+        "result_ids": [
+          "r04",
+          "r06"
+        ],
+        "evidence": "",
+        "basis": "code_fallback"
+      }
+    ],
+    "expected_genre": "official government information portal and informational guide",
+    "page_types": [],
+    "heading_themes": [
+      {
+        "theme": "Eligibility and age requirements",
+        "result_ids": [
+          "r02",
+          "r03",
+          "r05"
+        ]
+      },
+      {
+        "theme": "Benefit amounts and updates",
+        "result_ids": [
+          "r02",
+          "r05"
+        ]
+      },
+      {
+        "theme": "Application procedures and eServices",
+        "result_ids": [
+          "r01",
+          "r07"
+        ]
+      },
+      {
+        "theme": "Kinderzuschlag (Child Supplement)",
+        "result_ids": [
+          "r01",
+          "r07"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "Agentur für Arbeit",
+      "Bundesministerium für Familie, Senioren, Frauen und Jugend"
+    ],
+    "subject_brands": [
+      "Familienkasse"
+    ],
+    "ai_overview_signal": {
+      "present": true,
+      "interpretation": "The AI Overview provides a quick summary of current rates (259€), eligibility age, and upcoming 2027 changes, acting as a rapid answer for quick facts."
+    },
+    "article_fits": {
+      "value": true,
+      "reason": "An article could effectively synthesize the various conditions (age, education, income) and clearly explain the difference between Kindergeld and Kinderzuschlag."
+    },
+    "useful_elements": [
+      {
+        "element": "Comparison table",
+        "job": "showing differences between current and future benefit amounts"
+      },
+      {
+        "element": "Checklist",
+        "job": "helping parents determine if they meet eligibility requirements"
+      },
+      {
+        "element": "Online application link",
+        "job": "directing users to the official e-service"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Paid services",
+        "reason": "The official results emphasize that applications are always free via the Familienkasse."
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Wie hoch ist das Kindergeld ab 01.01 2026?",
+        "source": "paa",
+        "result_ids": [
+          "r02",
+          "r05"
+        ]
+      },
+      {
+        "question": "Wer bekommt die 300 Euro pro Kind?",
+        "source": "paa",
+        "result_ids": []
+      },
+      {
+        "question": "Wie hoch ist das Kindergeld für 8 Kinder?",
+        "source": "paa",
+        "result_ids": []
+      },
+      {
+        "question": "Welches Land zahlt das höchste Kindergeld?",
+        "source": "paa",
+        "result_ids": []
+      }
+    ],
+    "summary": "The search results are dominated by official German government sources (Arbeitsagentur, BMBFSFJ) providing essential information on 'Kindergeld' (child benefit). Users are looking for current benefit amounts, eligibility rules based on age and education, and how to apply via official e-services or the Familienkasse.",
+    "coverage_gap": [
+      "r04",
+      "r06"
+    ]
+  },
+  "metrics": {
+    "results_total": 7,
+    "results_fetched": 5,
+    "has_ranks": true,
+    "traffic_known": 7,
+    "shared_results": [
+      "r01",
+      "r05",
+      "r07"
+    ],
+    "words": {
+      "n": 5,
+      "min": 257,
+      "p10": 257,
+      "p25": 278,
+      "p50": 365,
+      "p75": 955,
+      "p90": 407704,
+      "max": 407704
+    },
+    "chars": {
+      "n": 5,
+      "min": 2034,
+      "p10": 2034,
+      "p25": 2142,
+      "p50": 2769,
+      "p75": 7365,
+      "p90": 1980201,
+      "max": 1980201
+    },
+    "intents": {
+      "i1": {
+        "count": 3,
+        "coverage": 0.4286,
+        "answer_share": 0.3571,
+        "traffic_share": 0.3094,
+        "ranks": [
+          2,
+          3,
+          5
+        ],
+        "best_rank": 2,
+        "top3_count": 2,
+        "words": {
+          "n": 3,
+          "min": 278,
+          "p10": 278,
+          "p25": 278,
+          "p50": 365,
+          "p75": 955,
+          "p90": 955,
+          "max": 955
+        },
+        "chars": {
+          "n": 3,
+          "min": 2142,
+          "p10": 2142,
+          "p25": 2142,
+          "p50": 2769,
+          "p75": 7365,
+          "p90": 7365,
+          "max": 7365
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 0.67,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.33,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 3
+        }
+      },
+      "i2": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.0714,
+        "traffic_share": 0.1459,
+        "ranks": [
+          5
+        ],
+        "best_rank": 5,
+        "top3_count": 0,
+        "words": {
+          "n": 1,
+          "min": 955,
+          "p10": 955,
+          "p25": 955,
+          "p50": 955,
+          "p75": 955,
+          "p90": 955,
+          "max": 955
+        },
+        "chars": {
+          "n": 1,
+          "min": 7365,
+          "p10": 7365,
+          "p25": 7365,
+          "p50": 7365,
+          "p75": 7365,
+          "p90": 7365,
+          "max": 7365
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 1.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i3": {
+        "count": 2,
+        "coverage": 0.2857,
+        "answer_share": 0.1429,
+        "traffic_share": 0.2539,
+        "ranks": [
+          1,
+          7
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "words": {
+          "n": 1,
+          "min": 257,
+          "p10": 257,
+          "p25": 257,
+          "p50": 257,
+          "p75": 257,
+          "p90": 257,
+          "max": 257
+        },
+        "chars": {
+          "n": 1,
+          "min": 2034,
+          "p10": 2034,
+          "p25": 2034,
+          "p50": 2034,
+          "p75": 2034,
+          "p90": 2034,
+          "max": 2034
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i4": {
+        "count": 2,
+        "coverage": 0.2857,
+        "answer_share": 0.1429,
+        "traffic_share": 0.2539,
+        "ranks": [
+          1,
+          7
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "words": {
+          "n": 1,
+          "min": 257,
+          "p10": 257,
+          "p25": 257,
+          "p50": 257,
+          "p75": 257,
+          "p90": 257,
+          "max": 257
+        },
+        "chars": {
+          "n": 1,
+          "min": 2034,
+          "p10": 2034,
+          "p25": 2034,
+          "p50": 2034,
+          "p75": 2034,
+          "p90": 2034,
+          "max": 2034
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "unassigned": {
+        "count": 2,
+        "coverage": 0.2857,
+        "answer_share": 0.2857,
+        "traffic_share": 0.0369,
+        "ranks": [
+          4,
+          6
+        ],
+        "best_rank": 4,
+        "top3_count": 0,
+        "words": {
+          "n": 1,
+          "min": 407704,
+          "p10": 407704,
+          "p25": 407704,
+          "p50": 407704,
+          "p75": 407704,
+          "p90": 407704,
+          "max": 407704
+        },
+        "chars": {
+          "n": 1,
+          "min": 1980201,
+          "p10": 1980201,
+          "p25": 1980201,
+          "p50": 1980201,
+          "p75": 1980201,
+          "p90": 1980201,
+          "max": 1980201
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.0,
+          "images": 0.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 0.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      }
+    },
+    "page_types": [],
+    "heading_themes": [
+      {
+        "theme": "Eligibility and age requirements",
+        "count": 3,
+        "coverage": 0.4286,
+        "ranks": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "theme": "Benefit amounts and updates",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          2,
+          5
+        ]
+      },
+      {
+        "theme": "Application procedures and eServices",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          7
+        ]
+      },
+      {
+        "theme": "Kinderzuschlag (Child Supplement)",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          7
+        ]
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Wie hoch ist das Kindergeld ab 01.01 2026?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          2,
+          5
+        ]
+      }
+    ]
+  },
+  "form": {
+    "dominant_intent_id": "i1",
+    "dominant_intent_title": "Check entitlement and eligibility",
+    "dominant_intent_form": "informational guides and official definitions",
+    "dominant_intent_answer_share": 0.3571,
+    "dominant_intent_coverage": 0.4286,
+    "top_page_type": null,
+    "dominant_by_traffic_id": "i1",
+    "expected_genre": "official government information portal and informational guide",
+    "expected_genre_withheld": null,
+    "article_fits": {
+      "value": true,
+      "reason": "An article could effectively synthesize the various conditions (age, education, income) and clearly explain the difference between Kindergeld and Kinderzuschlag."
+    },
+    "length_basis": "median_of_dominant_intent_pages",
+    "length_words": {
+      "p25": 278,
+      "p50": 365,
+      "p75": 955
+    },
+    "length_chars": {
+      "p25": 2142,
+      "p50": 2769,
+      "p75": 7365
+    },
+    "length_sample_size": 3,
+    "useful_elements": [
+      {
+        "element": "Comparison table",
+        "job": "showing differences between current and future benefit amounts"
+      },
+      {
+        "element": "Checklist",
+        "job": "helping parents determine if they meet eligibility requirements"
+      },
+      {
+        "element": "Online application link",
+        "job": "directing users to the official e-service"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Paid services",
+        "reason": "The official results emphasize that applications are always free via the Familienkasse."
+      }
+    ],
+    "warnings": [
+      {
+        "code": "mixed_serp",
+        "message": "No intent holds 40% of results. The page must serve several intents, or the query is poorly chosen."
+      },
+      {
+        "code": "unassigned_results",
+        "message": "The model did not place 2 result(s): r04, r06."
+      }
+    ]
+  },
+  "model": "google/gemma-4-26b-a4b-it",
+  "demand": {
+    "volume": 201000,
+    "cpc": 1.86,
+    "competition": 0.04,
+    "keyword_difficulty": 33,
+    "monthly": [
+      {
+        "year": 2018,
+        "month": 10,
+        "volume": 201000
+      },
+      {
+        "year": 2018,
+        "month": 11,
+        "volume": 165000
+      },
+      {
+        "year": 2018,
+        "month": 12,
+        "volume": 135000
+      },
+      {
+        "year": 2019,
+        "month": 1,
+        "volume": 201000
+      },
+      {
+        "year": 2019,
+        "month": 2,
+        "volume": 135000
+      },
+      {
+        "year": 2019,
+        "month": 3,
+        "volume": 135000
+      },
+      {
+        "year": 2019,
+        "month": 4,
+        "volume": 135000
+      },
+      {
+        "year": 2019,
+        "month": 5,
+        "volume": 165000
+      },
+      {
+        "year": 2019,
+        "month": 6,
+        "volume": 246000
+      },
+      {
+        "year": 2019,
+        "month": 7,
+        "volume": 246000
+      },
+      {
+        "year": 2019,
+        "month": 8,
+        "volume": 165000
+      },
+      {
+        "year": 2019,
+        "month": 9,
+        "volume": 201000
+      },
+      {
+        "year": 2019,
+        "month": 10,
+        "volume": 201000
+      },
+      {
+        "year": 2019,
+        "month": 11,
+        "volume": 201000
+      },
+      {
+        "year": 2019,
+        "month": 12,
+        "volume": 165000
+      },
+      {
+        "year": 2020,
+        "month": 1,
+        "volume": 165000
+      },
+      {
+        "year": 2020,
+        "month": 2,
+        "volume": 135000
+      },
+      {
+        "year": 2020,
+        "month": 3,
+        "volume": 135000
+      },
+      {
+        "year": 2020,
+        "month": 4,
+        "volume": 165000
+      },
+      {
+        "year": 2020,
+        "month": 5,
+        "volume": 201000
+      },
+      {
+        "year": 2020,
+        "month": 6,
+        "volume": 301000
+      },
+      {
+        "year": 2020,
+        "month": 7,
+        "volume": 246000
+      },
+      {
+        "year": 2020,
+        "month": 8,
+        "volume": 246000
+      },
+      {
+        "year": 2020,
+        "month": 9,
+        "volume": 246000
+      },
+      {
+        "year": 2020,
+        "month": 10,
+        "volume": 165000
+      },
+      {
+        "year": 2020,
+        "month": 11,
+        "volume": 165000
+      },
+      {
+        "year": 2020,
+        "month": 12,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 1,
+        "volume": 165000
+      },
+      {
+        "year": 2021,
+        "month": 2,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 3,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 4,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 5,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 6,
+        "volume": 110000
+      },
+      {
+        "year": 2021,
+        "month": 7,
+        "volume": 110000
+      },
+      {
+        "year": 2021,
+        "month": 8,
+        "volume": 110000
+      },
+      {
+        "year": 2021,
+        "month": 9,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 10,
+        "volume": 135000
+      },
+      {
+        "year": 2021,
+        "month": 11,
+        "volume": 110000
+      },
+      {
+        "year": 2021,
+        "month": 12,
+        "volume": 110000
+      },
+      {
+        "year": 2022,
+        "month": 1,
+        "volume": 135000
+      },
+      {
+        "year": 2022,
+        "month": 2,
+        "volume": 90500
+      },
+      {
+        "year": 2022,
+        "month": 3,
+        "volume": 110000
+      },
+      {
+        "year": 2022,
+        "month": 4,
+        "volume": 110000
+      },
+      {
+        "year": 2022,
+        "month": 5,
+        "volume": 110000
+      },
+      {
+        "year": 2022,
+        "month": 6,
+        "volume": 110000
+      },
+      {
+        "year": 2022,
+        "month": 7,
+        "volume": 135000
+      },
+      {
+        "year": 2022,
+        "month": 8,
+        "volume": 165000
+      },
+      {
+        "year": 2022,
+        "month": 9,
+        "volume": 201000
+      },
+      {
+        "year": 2022,
+        "month": 10,
+        "volume": 135000
+      },
+      {
+        "year": 2022,
+        "month": 11,
+        "volume": 201000
+      },
+      {
+        "year": 2022,
+        "month": 12,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 1,
+        "volume": 201000
+      },
+      {
+        "year": 2023,
+        "month": 2,
+        "volume": 110000
+      },
+      {
+        "year": 2023,
+        "month": 3,
+        "volume": 110000
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 5,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 6,
+        "volume": 135000
+      },
+      {
+        "year": 2023,
+        "month": 7,
+        "volume": 201000
+      },
+      {
+        "year": 2023,
+        "month": 8,
+        "volume": 201000
+      },
+      {
+        "year": 2023,
+        "month": 9,
+        "volume": 201000
+      },
+      {
+        "year": 2023,
+        "month": 10,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 11,
+        "volume": 165000
+      },
+      {
+        "year": 2023,
+        "month": 12,
+        "volume": 135000
+      },
+      {
+        "year": 2024,
+        "month": 1,
+        "volume": 165000
+      },
+      {
+        "year": 2024,
+        "month": 2,
+        "volume": 135000
+      },
+      {
+        "year": 2024,
+        "month": 3,
+        "volume": 110000
+      },
+      {
+        "year": 2024,
+        "month": 4,
+        "volume": 135000
+      },
+      {
+        "year": 2024,
+        "month": 5,
+        "volume": 135000
+      },
+      {
+        "year": 2024,
+        "month": 6,
+        "volume": 165000
+      },
+      {
+        "year": 2024,
+        "month": 7,
+        "volume": 246000
+      },
+      {
+        "year": 2024,
+        "month": 8,
+        "volume": 165000
+      },
+      {
+        "year": 2024,
+        "month": 9,
+        "volume": 165000
+      },
+      {
+        "year": 2024,
+        "month": 10,
+        "volume": 165000
+      },
+      {
+        "year": 2024,
+        "month": 11,
+        "volume": 301000
+      },
+      {
+        "year": 2024,
+        "month": 12,
+        "volume": 201000
+      },
+      {
+        "year": 2025,
+        "month": 1,
+        "volume": 301000
+      },
+      {
+        "year": 2025,
+        "month": 2,
+        "volume": 246000
+      },
+      {
+        "year": 2025,
+        "month": 3,
+        "volume": 165000
+      },
+      {
+        "year": 2025,
+        "month": 4,
+        "volume": 201000
+      },
+      {
+        "year": 2025,
+        "month": 5,
+        "volume": 301000
+      },
+      {
+        "year": 2025,
+        "month": 6,
+        "volume": 301000
+      },
+      {
+        "year": 2025,
+        "month": 7,
+        "volume": 246000
+      },
+      {
+        "year": 2025,
+        "month": 8,
+        "volume": 201000
+      },
+      {
+        "year": 2025,
+        "month": 9,
+        "volume": 165000
+      },
+      {
+        "year": 2025,
+        "month": 10,
+        "volume": 301000
+      },
+      {
+        "year": 2025,
+        "month": 11,
+        "volume": 201000
+      },
+      {
+        "year": 2025,
+        "month": 12,
+        "volume": 301000
+      },
+      {
+        "year": 2026,
+        "month": 1,
+        "volume": 201000
+      },
+      {
+        "year": 2026,
+        "month": 2,
+        "volume": 165000
+      },
+      {
+        "year": 2026,
+        "month": 3,
+        "volume": 165000
+      },
+      {
+        "year": 2026,
+        "month": 4,
+        "volume": 301000
+      },
+      {
+        "year": 2026,
+        "month": 5,
+        "volume": 135000
+      },
+      {
+        "year": 2026,
+        "month": 6,
+        "volume": 110000
+      },
+      {
+        "year": 2026,
+        "month": 7,
+        "volume": 165000
+      },
+      {
+        "year": 2026,
+        "month": 8,
+        "volume": 165000
+      }
+    ],
+    "seasonality": {
+      "months": 95,
+      "profile": {
+        "1": 1.129,
+        "2": 0.924,
+        "3": 0.745,
+        "4": 1.078,
+        "5": 0.966,
+        "6": 0.975,
+        "7": 1.112,
+        "8": 0.899,
+        "9": 0.899,
+        "10": 1.068,
+        "11": 1.129,
+        "12": 1.078
+      },
+      "peak_month": 1,
+      "low_month": 3,
+      "seasonality_index": 1.52,
+      "yoy_change": -0.15
+    }
+  }
+}

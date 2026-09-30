@@ -8,8 +8,8 @@ want an article at all.
 **Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** - bring your own
 OpenRouter key (and DataForSEO login for live Google results and page reading in 16 markets; a full
 run costs about half a US cent). The page has no server and
-stores no keys. Results you choose to make public are proposed as pull requests to
-[`community/`](community/).
+stores no keys. Results you choose to contribute are proposed as pull requests to
+[`community/`](community/) - collected, not published on the site until there is moderation.
 
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
@@ -24,23 +24,28 @@ writes a percentage.
 
 *Charts from the bundled synthetic example ([HTML report](docs/example-report.html), [Markdown](docs/example-report.md)).*
 
-**Live examples** in five markets (Google top 10, `openai/gpt-6-luna`, run on 2026-09-30) - each folder has
-`report.html`, `report.md`, `analysis.json` and the `snapshot.json` to re-run offline:
+**Live examples** in six markets (Google top 10, run on 2026-09-30). The main report uses
+`openai/gpt-6-luna` with reasoning off; `models/` in each folder holds the same data labeled by seven
+low-cost models (see `scripts/run_model_comparison.py`). Each folder also has `snapshot.json` to re-run offline:
 
-| Query | Market | Dominant intent -> form | Reference length | Warnings |
-|---|---|---|---|---|
-| [zagadki logiczne](examples/zagadki-logiczne/report.md) | PL | Kupno książek z zagadkami -> księgarniane listingi i strony produktów | 537 words | traffic_disagrees, wide_length_band |
-| [jak zrobić zakwas na chleb](examples/jak-zrobic-zakwas-na-chleb/report.md) | PL | Zrobić domowy zakwas żytni -> Przepis krok po kroku z harmonogramem dokarmiania i wskazówkami | 486 words | - |
-| [kalkulator raty kredytu](examples/kalkulator-raty-kredytu/report.md) | PL | Symulacja raty kredytu hipotecznego -> kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją | 2001 words | wide_length_band, serp_does_not_want_an_article |
-| [standing desk](examples/standing-desk/report.md) | US | Shop for a standing desk -> Retailer product-category listing | 423 words | wide_length_band |
-| [how to make sourdough starter](examples/how-to-make-sourdough-starter/report.md) | US | Make a starter from scratch -> Day-by-day starter recipe with measurements and readiness cues | n/a (insufficient_sample) | - |
-| [best running shoes](examples/best-running-shoes/report.md) | US | Compare top running shoes -> Editorial best-of roundup with category-based recommendations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
-| [Sauerteig ansetzen](examples/sauerteig-ansetzen/report.md) | DE | Sauerteigstarter selbst ansetzen -> Schritt-für-Schritt-Anleitung mit Tagesplan und kurzen Videos | n/a (insufficient_sample) | - |
-| [Wärmepumpe Kosten](examples/warmepumpe-kosten/report.md) | DE | Laufende Stromkosten abschätzen -> Rechenhilfe mit Verbrauchsbeispielen, Stromtarifen und Spartipps | 861 words | - |
-| [come fare il lievito madre](examples/come-fare-il-lievito-madre/report.md) | IT | Preparare il lievito madre in casa -> Ricetta guidata con dosi, passaggi e tempi di fermentazione | 1289 words | - |
-| [calcolo rata mutuo](examples/calcolo-rata-mutuo/report.md) | IT | Calcolare la rata del mutuo -> Calcolatore interattivo con stima della rata e piano di ammortamento | n/a (insufficient_sample) | - |
-| [recette pâte à crêpes](examples/recette-pate-a-crepes/report.md) | FR | Préparer une pâte à crêpes classique -> Recette illustrée avec ingrédients et étapes | 918 words | mixed_serp, consider_separate_pages |
-| [meilleur aspirateur robot](examples/meilleur-aspirateur-robot/report.md) | FR | Comparer les meilleurs modèles -> Comparatif de modèles testés avec critères et recommandations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
+| Query | Market | Volume / seasonality | Dominant intent -> form | Reference length | Warnings |
+|---|---|---|---|---|---|
+| [zagadki logiczne](examples/zagadki-logiczne/report.md) | PL | 8,100 / 1.66 | Kupno książek z zagadkami -> księgarniane listingi i strony produktów | 537 words | traffic_disagrees, wide_length_band |
+| [jak zrobić zakwas na chleb](examples/jak-zrobic-zakwas-na-chleb/report.md) | PL | 4,400 / 2.82 | Zrobić domowy zakwas żytni -> Przepis krok po kroku z harmonogramem dokarmiania i wskazówkami | 486 words | - |
+| [kalkulator raty kredytu](examples/kalkulator-raty-kredytu/report.md) | PL | 1,900 / 1.7 | Symulacja raty kredytu hipotecznego -> kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją | 2001 words | wide_length_band, serp_does_not_want_an_article |
+| [senuto](examples/senuto/report.md) | PL | 6,600 / 1.52 | Poznać platformę Senuto -> strona produktowa z opisem funkcji | 1525 words | - |
+| [standing desk](examples/standing-desk/report.md) | US | 135,000 / 1.23 | Shop for a standing desk -> Retailer product-category listing | 423 words | wide_length_band |
+| [how to make sourdough starter](examples/how-to-make-sourdough-starter/report.md) | US | 74,000 / 2.66 | Make a starter from scratch -> Day-by-day starter recipe with measurements and readiness cues | n/a (insufficient_sample) | - |
+| [best running shoes](examples/best-running-shoes/report.md) | US | 60,500 / 1.42 | Compare top running shoes -> Editorial best-of roundup with category-based recommendations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
+| [neuronwriter](examples/neuronwriter/report.md) | US | 720 / 1.73 | Review NeuronWriter's value -> hands-on review with pros, cons, and user experience | n/a (insufficient_sample) | consider_separate_pages |
+| [seo agency london](examples/seo-agency-london/report.md) | UK | 3,600 / 2.54 | Hire a London SEO agency -> Local agency service pages with services, process, and quote or audit calls to action | 803 words | mixed_serp, traffic_disagrees |
+| [Sauerteig ansetzen](examples/sauerteig-ansetzen/report.md) | DE | 74,000 / 2.6 | Sauerteigstarter selbst ansetzen -> Schritt-für-Schritt-Anleitung mit Tagesplan und kurzen Videos | n/a (insufficient_sample) | - |
+| [Wärmepumpe Kosten](examples/warmepumpe-kosten/report.md) | DE | 40,500 / 1.54 | Laufende Stromkosten abschätzen -> Rechenhilfe mit Verbrauchsbeispielen, Stromtarifen und Spartipps | 861 words | - |
+| [kindergeld](examples/kindergeld/report.md) | DE | 201,000 / 1.52 | Anspruch und Bezugsdauer -> Anspruchsübersicht mit Alters- und Lebenssituationen | n/a (spread_too_wide) | consider_separate_pages, traffic_disagrees |
+| [come fare il lievito madre](examples/come-fare-il-lievito-madre/report.md) | IT | 3,600 / 4.43 | Preparare il lievito madre in casa -> Ricetta guidata con dosi, passaggi e tempi di fermentazione | 1289 words | - |
+| [calcolo rata mutuo](examples/calcolo-rata-mutuo/report.md) | IT | 49,500 / 1.96 | Calcolare la rata del mutuo -> Calcolatore interattivo con stima della rata e piano di ammortamento | n/a (insufficient_sample) | - |
+| [recette pâte à crêpes](examples/recette-pate-a-crepes/report.md) | FR | 33,100 / 7.69 | Préparer une pâte à crêpes classique -> Recette illustrée avec ingrédients et étapes | 918 words | mixed_serp, consider_separate_pages |
+| [meilleur aspirateur robot](examples/meilleur-aspirateur-robot/report.md) | FR | 6,600 / 2.67 | Comparer les meilleurs modèles -> Comparatif de modèles testés avec critères et recommandations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
 
 ## What you get
 
@@ -54,6 +59,7 @@ writes a percentage.
 | Content form per page | tables, lists, images, video, FAQ, forms, calculator inputs - counted from HTML, and their prevalence per intent |
 | Page types | what each result is (category listing, buying guide, brand page with FAQ...), named freely |
 | Heading themes | topics the pages cover, with how many results cover each - what a complete answer addresses |
+| Search demand | monthly volume, CPC, keyword difficulty and seasonality (peak and low month, index, year over year) |
 | Brands, AI Overview | brands present in the results; what the AI Overview (or its absence) says |
 | Expected genre | the content genre the SERP expects, and whether an article fits at all |
 | Reference length | p25/p50/p75 in words and characters of the dominant intent's pages - or `null` and a reason |
@@ -78,7 +84,7 @@ and `INTENT_LLM_REASONING_EFFORT=low` (the defaults in `.env.example`).
 ## Use
 
 ```bash
-# 1. Live Google top 10 + traffic estimates (needs DataForSEO). Location 2616 = Poland, 2840 = US.
+# 1. Live Google top 10 + traffic + search volume (needs DataForSEO; about $0.03 in API costs). Location 2616 = Poland, 2840 = US.
 intent-labeler --keyword "zagadki logiczne" --language pl --location 2616 --save-snapshot
 
 # 2. Any set of pages - a competitor list, your own site section, 20 URLs from a client
@@ -160,7 +166,8 @@ The purple box is the only place a language model works; the green boxes are pla
    a 400-char digest (8 headings + 3 paragraphs), words, characters and a structural inventory
    (tables, lists, images, video, FAQ, forms) are recorded. Pages under 150 words are flagged `thin`
    and fall back to title + snippet.
-3. **Traffic** - one DataForSEO call estimates `etv` for every URL; unknown stays unknown.
+3. **Traffic and demand** - DataForSEO estimates `etv` for every URL (unknown stays unknown) and returns
+   the keyword's search volume with 8 years of monthly history; code derives seasonality.
 4. **Label** - one LLM call groups results into emergent intents and names each form and the genre.
    Invalid JSON goes back to the model with the exact error. Unplaced results land in `unassigned`.
 5. **Measure** - code computes coverage, answer and traffic shares, length distributions, element
