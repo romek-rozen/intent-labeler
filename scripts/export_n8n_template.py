@@ -1,7 +1,7 @@
 """Export the n8n template workflow and strip everything instance-specific.
 
-Usage: N8N_API_KEY=... python scripts/export_n8n_template.py [workflow_id] [base_url]
-Writes n8n-template/intent-labeler-google-sheets.json with credential references reduced to generic
+Usage: N8N_API_KEY=... python scripts/export_n8n_template.py [base_url]
+Writes every workflow in TEMPLATES to n8n-template/ with credential references reduced to generic
 names (no IDs, no account names), no node IDs and no pinned data. Fails if a known personal
 identifier is still in the file.
 """
@@ -15,17 +15,17 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "n8n-template" / "intent-labeler-google-sheets.json"
-WORKFLOW_ID = sys.argv[1] if len(sys.argv) > 1 else "fOsP70JjwnJjHhPO"
-BASE_URL = (sys.argv[2] if len(sys.argv) > 2 else "https://n8n.nimblio.work").rstrip("/")
-CREDENTIAL_NAMES = {"httpBasicAuth": "DataForSEO", "openRouterApi": "OpenRouter",
+TEMPLATES = {"fOsP70JjwnJjHhPO": "intent-labeler-google-sheets.json",
+             "TrPsqb5yieit1G00": "intent-labeler-webhook.json"}
+BASE_URL = (sys.argv[1] if len(sys.argv) > 1 else "https://n8n.nimblio.work").rstrip("/")
+CREDENTIAL_NAMES = {"httpBasicAuth": "DataForSEO", "dataForSeoApi": "DataForSEO API", "openRouterApi": "OpenRouter",
                     "googleSheetsOAuth2Api": "Google Sheets"}
 # The public, view-only template sheet is the one ID allowed in the file (users copy it).
 ALLOWED_SHEET = "1jgeI2wWxi5eD2d89ztmebuPbdXxdeBEOK-HXDM6FJJE"
 
 
-def main() -> None:
-    request = urllib.request.Request(f"{BASE_URL}/api/v1/workflows/{WORKFLOW_ID}",
+def export(workflow_id: str, out: Path) -> None:
+    request = urllib.request.Request(f"{BASE_URL}/api/v1/workflows/{workflow_id}",
                                      headers={"X-N8N-API-KEY": os.environ["N8N_API_KEY"]})
     with urllib.request.urlopen(request, timeout=60) as response:
         workflow = json.loads(response.read())
@@ -42,8 +42,13 @@ def main() -> None:
     sheets = set(re.findall(r"/d/([a-zA-Z0-9_-]{30,})", text)) - {ALLOWED_SHEET}
     if sheets or "@" in re.sub(r"https?://\S+", "", text).replace("@n8n", ""):
         raise SystemExit(f"personal identifiers left in the export: {sheets or 'an email address'}")
-    OUT.write_text(text + "\n", encoding="utf-8")
-    print(f"wrote {OUT.relative_to(ROOT)}: {len(template['nodes'])} nodes")
+    out.write_text(text + "\n", encoding="utf-8")
+    print(f"wrote {out.relative_to(ROOT)}: {len(template['nodes'])} nodes")
+
+
+def main() -> None:
+    for workflow_id, name in TEMPLATES.items():
+        export(workflow_id, ROOT / "n8n-template" / name)
 
 
 if __name__ == "__main__":

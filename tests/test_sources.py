@@ -90,3 +90,12 @@ def test_trafilatura_is_used_when_installed():
     ) + "</article><footer>Copyright footer links</footer></body></html>"
     data = page_source.extract_html(body)
     assert data["extractor"] == "trafilatura" and "Copyright" not in data["excerpt"]
+
+
+def test_traffic_matches_urls_that_dataforseo_lowercased(snapshot):
+    from intent_labeler.features import traffic
+    snapshot.results[0].url = "https://us.amazon.com/TIQLAB-Desk/dp/B0FS23WG9Q"
+    payload = {"tasks": [{"cost": 0.0126, "result": [{"items": [
+        {"target": snapshot.results[0].url.lower(), "metrics": {"organic": {"etv": 50.0, "count": 3}}}]}]}]}
+    traffic.apply_traffic(snapshot, location_code=2840, language_code="en", fetcher=lambda *a, **k: payload)
+    assert snapshot.results[0].etv == 50.0

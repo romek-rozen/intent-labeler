@@ -72,10 +72,13 @@ there is moderation. Review content before merging; never edit a contributor's n
 
 ## n8n template
 
-`n8n-template/` holds an n8n workflow export that runs the method on keywords from a Google Sheet. Its
+`n8n-template/` holds two n8n workflow exports: a Google Sheets batch (official Sheets nodes) and a
+webhook with two lanes (DataForSEO community nodes vs HTTP Request). Their
 Code nodes re-implement the counting rules in JavaScript (like `site/app.js`); keep all three in step
-with `features/metrics` and `features/form_decision`. The live copy is workflow `fOsP70JjwnJjHhPO` in
-the "Intent Labeler" folder on n8n.nimblio.work; export it again after editing (credentials stripped).
+with `features/metrics` and `features/form_decision`. The live copies are workflows `fOsP70JjwnJjHhPO` (Sheets)
+and `TrPsqb5yieit1G00` (webhook) in the "Intent Labeler" folder on n8n.nimblio.work; run
+`scripts/export_n8n_template.py` after editing (credentials stripped). DataForSEO returns traffic
+targets lowercased: match URLs case-insensitively everywhere.
 
 ## Changing behaviour
 

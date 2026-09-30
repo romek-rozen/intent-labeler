@@ -43,7 +43,8 @@ def parse_response(payload: dict) -> dict[str, float | None]:
             for item in result.get("items") or []:
                 organic = (item.get("metrics") or {}).get("organic") or {}
                 known = bool(organic.get("count"))
-                out[str(item.get("target") or "")] = float(organic.get("etv") or 0) if known else None
+                # DataForSEO returns targets lowercased, so keys are compared lowercased.
+                out[str(item.get("target") or "").lower()] = float(organic.get("etv") or 0) if known else None
     return out
 
 
@@ -56,5 +57,5 @@ def apply_traffic(snapshot: Snapshot, *, location_code: int, language_code: str,
     snapshot.costs["traffic"] = float(((payload.get("tasks") or [{}])[0]).get("cost") or 0)
     estimates = parse_response(payload)
     for item in snapshot.results:
-        item.etv = estimates.get(item.url)
+        item.etv = estimates.get(item.url.lower())
     return snapshot

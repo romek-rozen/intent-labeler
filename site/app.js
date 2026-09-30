@@ -210,9 +210,9 @@ async function fetchTraffic(results) {
   const etv = {};
   for (const item of r.items || []) {
     const organic = item.metrics?.organic || {};
-    etv[item.target] = organic.count ? Number(organic.etv || 0) : null;
+    etv[String(item.target).toLowerCase()] = organic.count ? Number(organic.etv || 0) : null;
   }
-  results.forEach((x) => { x.etv = etv[x.url] ?? null; });
+  results.forEach((x) => { x.etv = etv[x.url.toLowerCase()] ?? null; // DataForSEO lowercases targets });
 }
 
 // Pages through DataForSEO OnPage content parsing: the browser cannot fetch other sites itself
