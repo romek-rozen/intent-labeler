@@ -4,6 +4,7 @@
 
 **Good to know**
 * A full run costs about $0.03 per keyword in API fees (DataForSEO about $0.029, OpenRouter about $0.001). SERP and grouping only: about $0.003.
+* The model runs in a Basic LLM Chain, which does not report its cost: check it in your OpenRouter activity.
 * The model only **groups** results. Every number is **counted** in Code nodes, so each figure in the sheet can be recomputed by hand.
 
 ### Who's it for
@@ -17,7 +18,7 @@ SEO specialists, content strategists and agencies who plan pages and briefs from
 
 ### How to use
 1. Copy the template sheet (link in the Setup note) and paste its URL into **Config**.
-2. Add DataForSEO (HTTP Basic Auth), OpenRouter and Google Sheets credentials.
+2. Install the verified DataForSEO node, then add DataForSEO, OpenRouter and Google Sheets credentials.
 3. Add keywords with country and language codes, then run.
 
 ### Requirements

@@ -94,11 +94,11 @@
         "location_name": "={{ $json.location_name }}",
         "language_name": "={{ $json.language_name }}",
         "depth": 10,
-        "max_crawl_pages": {},
-        "browser_screen_width": {},
-        "browser_screen_height": {},
-        "browser_screen_resolution_ratio": {},
-        "people_also_ask_click_depth": {}
+        "max_crawl_pages": "",
+        "browser_screen_width": "",
+        "browser_screen_height": "",
+        "browser_screen_resolution_ratio": "",
+        "people_also_ask_click_depth": ""
       },
       "credentials": {
         "dataForSeoApi": {
@@ -174,9 +174,9 @@
       "parameters": {
         "operation": "get-live-parsed-content",
         "url_required": "={{ $json.url }}",
-        "browser_screen_width": {},
-        "browser_screen_height": {},
-        "browser_screen_scale_factor": {},
+        "browser_screen_width": "",
+        "browser_screen_height": "",
+        "browser_screen_scale_factor": "",
         "markdown_view": true
       },
       "credentials": {
@@ -375,39 +375,7 @@
         -144
       ],
       "parameters": {
-        "jsCode": "// The model sees titles, snippets, highlighted phrases and page digests - never word counts, traffic or other numbers.\nconst state = $input.first().json;\nconst cfg = $('Config [nodes]').first().json;\nconst payload = {\n  source: 'serp', keyword: state.keyword, language: state.language_name, brief: '', serp_features: state.features,\n  results: state.results.map(r => ({ result_id: r.result_id, rank: r.rank, url: r.url, domain: r.domain, title: r.title, description: r.description, highlighted: r.highlighted, digest: r.fetch_status === 'ok' ? r.digest : '' }))\n};\nconst body = {\n  model: cfg.model, max_tokens: 12000, reasoning: { enabled: false }, usage: { include: true }, response_format: { type: 'json_object' },\n  messages: [\n    { role: 'system', content: cfg.system_prompt },\n    { role: 'user', content: 'Read these results and return the JSON object defined by your instructions.\\n\\n' + JSON.stringify(payload) }\n  ]\n};\nreturn [{ json: { state, body } }];"
-      }
-    },
-    {
-      "name": "OpenRouter: group into intents [nodes]",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.5,
-      "position": [
-        3520,
-        -144
-      ],
-      "parameters": {
-        "method": "POST",
-        "url": "https://openrouter.ai/api/v1/chat/completions",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "openRouterApi",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json.body) }}",
-        "options": {
-          "response": {
-            "response": {
-              "neverError": true
-            }
-          },
-          "timeout": 180000
-        }
-      },
-      "credentials": {
-        "openRouterApi": {
-          "id": "",
-          "name": "OpenRouter"
-        }
+        "jsCode": "// The model sees titles, snippets, highlighted phrases and page digests - never word counts, traffic or other numbers.\nconst state = $input.first().json;\nconst cfg = $('Config [nodes]').first().json;\nconst payload = {\n  source: 'serp', keyword: state.keyword, language: state.language_name, brief: '', serp_features: state.features,\n  results: state.results.map(r => ({ result_id: r.result_id, rank: r.rank, url: r.url, domain: r.domain, title: r.title, description: r.description, highlighted: r.highlighted, digest: r.fetch_status === 'ok' ? r.digest : '' }))\n};\nconst body = {\n  model: cfg.model, max_tokens: 12000, reasoning: { enabled: false }, usage: { include: true }, response_format: { type: 'json_object' },\n  messages: [\n    { role: 'system', content: cfg.system_prompt },\n    { role: 'user', content: 'Read these results and return the JSON object defined by your instructions.\\n\\n' + JSON.stringify(payload) }\n  ]\n};\nreturn [{ json: { state, user: body.messages[1].content } }];"
       }
     },
     {
@@ -419,7 +387,7 @@
         -144
       ],
       "parameters": {
-        "jsCode": "// The model grouped; this node counts. Coverage is unsplit, share splits a result that serves k intents 1/k to each,\n// traffic share uses only known traffic. No reference length without at least 3 measured pages and a spread under 50x.\nconst s = JSON.parse(JSON.stringify($('Build prompt [nodes]').first().json.state));\nconst resp = $input.first().json;\nconst usage = resp.usage || {};\ns.cost.model += Number(usage.cost || 0);\ns.tokens.in += Number(usage.prompt_tokens || 0);\ns.tokens.out += Number(usage.completion_tokens || 0);\nconst FENCE = String.fromCharCode(96).repeat(3);\nlet labels;\ntry {\n  let raw = String((((resp.choices || [])[0] || {}).message || {}).content || '').trim();\n  if (raw.startsWith(FENCE)) raw = raw.replace(/^[^\\n]*\\n/, '').split(FENCE)[0];\n  labels = JSON.parse(raw);\n  if (!Array.isArray(labels.intents) || !labels.intents.length) throw new Error('no intents in the answer');\n} catch (e) {\n  s.error = 'model: ' + ((resp.error && resp.error.message) || e.message);\n  return [{ json: s }];\n}\nconst ids = s.results.map(r => r.result_id);\nconst known = new Set(ids);\nconst placed = new Set();\nfor (const it of labels.intents) {\n  it.result_ids = [...new Set((it.result_ids || []).map(String))].filter(id => known.has(id));\n  it.result_ids.forEach(id => placed.add(id));\n}\nlabels.intents = labels.intents.filter(it => it.result_ids.length);\nconst missing = ids.filter(id => !placed.has(id));\nif (missing.length) labels.intents.push({ title: 'Unassigned results', searcher_goal: 'the model did not place these results', form: '', result_ids: missing, fallback: true });\nconst byId = Object.fromEntries(s.results.map(r => [r.result_id, r]));\nconst k = {};\nlabels.intents.forEach(it => it.result_ids.forEach(id => (k[id] = (k[id] || 0) + 1)));\nconst trafficTotal = s.results.filter(r => r.etv != null).reduce((a, r) => a + r.etv, 0);\nconst n = s.results.length;\nconst nearest = (arr, p) => (arr.length ? arr[Math.max(0, Math.min(arr.length - 1, Math.ceil(p / 100 * arr.length) - 1))] : null);\nconst rows = labels.intents.map(it => {\n  const pages = it.result_ids.map(id => byId[id]);\n  const words = pages.filter(p => p.fetch_status === 'ok').map(p => p.words).sort((a, b) => a - b);\n  return {\n    title: it.title || '', intent_type: it.intent_type || '', searcher_goal: it.searcher_goal || '', form: it.form || '', evidence: it.evidence || '', fallback: !!it.fallback,\n    coverage: it.result_ids.length / n, share: it.result_ids.reduce((a, id) => a + 1 / k[id], 0) / n,\n    traffic: trafficTotal ? it.result_ids.reduce((a, id) => a + (byId[id].etv || 0) / k[id], 0) / trafficTotal : null,\n    ranks: pages.map(p => p.rank).sort((a, b) => a - b), words, median_words: nearest(words, 50), result_ids: it.result_ids\n  };\n});\nconst real = rows.filter(r => !r.fallback);\nconst top = real.slice().sort((a, b) => b.share - a.share || (b.traffic || 0) - (a.traffic || 0))[0];\nconst w = top ? top.words : [];\nlet basis = 'median_of_dominant_intent_pages';\nif (w.length < 3) basis = 'insufficient_sample';\nelse if (w[w.length - 1] / w[0] > 50) basis = 'spread_too_wide';\nconst reliable = basis === 'median_of_dominant_intent_pages';\nconst warnings = [];\nif (top && top.share < 0.4 && top.coverage < 0.5) warnings.push('mixed_serp');\nif (real.filter(r => r.share >= 0.15).length >= 3) warnings.push('consider_separate_pages');\nconst byTraffic = real.filter(r => r.traffic != null).sort((a, b) => b.traffic - a.traffic)[0];\nif (byTraffic && top && byTraffic !== top) warnings.push('traffic_disagrees');\nif (labels.article_fits && labels.article_fits.value === false) warnings.push('serp_does_not_want_an_article');\nif (missing.length) warnings.push('unassigned_results');\ns.labels = labels;\ns.rows = rows;\ns.decision = {\n  dominant: top ? top.title : '', form: top ? top.form : '', share: top ? top.share : null,\n  length: reliable ? nearest(w, 50) : null, basis, genre: reliable ? (labels.expected_genre || '') : '',\n  article_fits: labels.article_fits ? labels.article_fits.value : null, warnings\n};\nreturn [{ json: s }];"
+        "jsCode": "// The model grouped; this node counts. Coverage is unsplit, share splits a result that serves k intents 1/k to each,\n// traffic share uses only known traffic. No reference length without at least 3 measured pages and a spread under 50x.\nconst s = JSON.parse(JSON.stringify($('Build prompt [nodes]').first().json.state));\nconst resp = $input.first().json;\n// The Basic LLM Chain reports neither cost nor tokens: unknown, not zero (check them in your OpenRouter activity).\ns.cost.model = null;\ns.tokens = { in: null, out: null };\nconst FENCE = String.fromCharCode(96).repeat(3);\nlet labels;\ntry {\n  let raw = String(resp.text || '').trim();\n  if (raw.startsWith(FENCE)) raw = raw.replace(/^[^\\n]*\\n/, '').split(FENCE)[0];\n  // With response format json_object the chain already returns the parsed object.\n  labels = Array.isArray(resp.intents) ? resp : JSON.parse(raw);\n  if (!Array.isArray(labels.intents) || !labels.intents.length) throw new Error('no intents in the answer');\n} catch (e) {\n  s.error = 'model: ' + (typeof resp.error === 'string' ? resp.error : (resp.error && resp.error.message) || e.message);\n  return [{ json: s }];\n}\nconst ids = s.results.map(r => r.result_id);\nconst known = new Set(ids);\nconst placed = new Set();\nfor (const it of labels.intents) {\n  it.result_ids = [...new Set((it.result_ids || []).map(String))].filter(id => known.has(id));\n  it.result_ids.forEach(id => placed.add(id));\n}\nlabels.intents = labels.intents.filter(it => it.result_ids.length);\nconst missing = ids.filter(id => !placed.has(id));\nif (missing.length) labels.intents.push({ title: 'Unassigned results', searcher_goal: 'the model did not place these results', form: '', result_ids: missing, fallback: true });\nconst byId = Object.fromEntries(s.results.map(r => [r.result_id, r]));\nconst k = {};\nlabels.intents.forEach(it => it.result_ids.forEach(id => (k[id] = (k[id] || 0) + 1)));\nconst trafficTotal = s.results.filter(r => r.etv != null).reduce((a, r) => a + r.etv, 0);\nconst n = s.results.length;\nconst nearest = (arr, p) => (arr.length ? arr[Math.max(0, Math.min(arr.length - 1, Math.ceil(p / 100 * arr.length) - 1))] : null);\nconst rows = labels.intents.map(it => {\n  const pages = it.result_ids.map(id => byId[id]);\n  const words = pages.filter(p => p.fetch_status === 'ok').map(p => p.words).sort((a, b) => a - b);\n  return {\n    title: it.title || '', intent_type: it.intent_type || '', searcher_goal: it.searcher_goal || '', form: it.form || '', evidence: it.evidence || '', fallback: !!it.fallback,\n    coverage: it.result_ids.length / n, share: it.result_ids.reduce((a, id) => a + 1 / k[id], 0) / n,\n    traffic: trafficTotal ? it.result_ids.reduce((a, id) => a + (byId[id].etv || 0) / k[id], 0) / trafficTotal : null,\n    ranks: pages.map(p => p.rank).sort((a, b) => a - b), words, median_words: nearest(words, 50), result_ids: it.result_ids\n  };\n});\nconst real = rows.filter(r => !r.fallback);\nconst top = real.slice().sort((a, b) => b.share - a.share || (b.traffic || 0) - (a.traffic || 0))[0];\nconst w = top ? top.words : [];\nlet basis = 'median_of_dominant_intent_pages';\nif (w.length < 3) basis = 'insufficient_sample';\nelse if (w[w.length - 1] / w[0] > 50) basis = 'spread_too_wide';\nconst reliable = basis === 'median_of_dominant_intent_pages';\nconst warnings = [];\nif (top && top.share < 0.4 && top.coverage < 0.5) warnings.push('mixed_serp');\nif (real.filter(r => r.share >= 0.15).length >= 3) warnings.push('consider_separate_pages');\nconst byTraffic = real.filter(r => r.traffic != null).sort((a, b) => b.traffic - a.traffic)[0];\nif (byTraffic && top && byTraffic !== top) warnings.push('traffic_disagrees');\nif (labels.article_fits && labels.article_fits.value === false) warnings.push('serp_does_not_want_an_article');\nif (missing.length) warnings.push('unassigned_results');\ns.labels = labels;\ns.rows = rows;\ns.decision = {\n  dominant: top ? top.title : '', form: top ? top.form : '', share: top ? top.share : null,\n  length: reliable ? nearest(w, 50) : null, basis, genre: reliable ? (labels.expected_genre || '') : '',\n  article_fits: labels.article_fits ? labels.article_fits.value : null, warnings\n};\nreturn [{ json: s }];"
       }
     },
     {
@@ -431,7 +399,7 @@
         64
       ],
       "parameters": {
-        "jsCode": "// Response for the caller: decision first, then intents and results. Unknown numbers stay null.\nconst s = $input.first().json;\nconst c = s.cost || {};\nconst dfs = (c.serp || 0) + (c.pages || 0) + (c.volume || 0) + (c.traffic || 0);\nconst r6 = v => (v == null ? null : Math.round(v * 1e6) / 1e6);\nreturn [{ json: {\n  keyword: s.keyword, location_name: s.location_name, language_name: s.language_name, model: $('Config [nodes]').first().json.model,\n  ok: !s.error, error: s.error || null,\n  decision: s.decision || null, summary: (s.labels && s.labels.summary) || null, demand: s.demand || null,\n  intents: (s.rows || []).map(r => ({ title: r.title, intent_type: r.intent_type, searcher_goal: r.searcher_goal, form: r.form, coverage: r.coverage, share: r.share, traffic_share: r.traffic, ranks: r.ranks, median_words: r.median_words ?? null, evidence: r.evidence })),\n  results: (s.results || []).map(r => ({ rank: r.rank, url: r.url, title: r.title, domain: r.domain, words: r.words, fetch_status: r.fetch_status, etv: r.etv, elements: r.elements, intents: (s.rows || []).filter(x => x.result_ids.includes(r.result_id)).map(x => x.title) })),\n  serp_features: s.features,\n  cost_usd: { dataforseo: r6(dfs), openrouter: r6(c.model || 0), total: r6(dfs + (c.model || 0)), steps: c },\n  tokens: s.tokens\n} }];"
+        "jsCode": "// Response for the caller: decision first, then intents and results. Unknown numbers stay null.\nconst s = $input.first().json;\nconst c = s.cost || {};\nconst dfs = (c.serp || 0) + (c.pages || 0) + (c.volume || 0) + (c.traffic || 0);\nconst r6 = v => (v == null ? null : Math.round(v * 1e6) / 1e6);\nreturn [{ json: {\n  keyword: s.keyword, location_name: s.location_name, language_name: s.language_name, model: $('Config [nodes]').first().json.model,\n  ok: !s.error, error: s.error || null,\n  decision: s.decision || null, summary: (s.labels && s.labels.summary) || null, demand: s.demand || null,\n  intents: (s.rows || []).map(r => ({ title: r.title, intent_type: r.intent_type, searcher_goal: r.searcher_goal, form: r.form, coverage: r.coverage, share: r.share, traffic_share: r.traffic, ranks: r.ranks, median_words: r.median_words ?? null, evidence: r.evidence })),\n  results: (s.results || []).map(r => ({ rank: r.rank, url: r.url, title: r.title, domain: r.domain, words: r.words, fetch_status: r.fetch_status, etv: r.etv, elements: r.elements, intents: (s.rows || []).filter(x => x.result_ids.includes(r.result_id)).map(x => x.title) })),\n  serp_features: s.features,\n  cost_usd: { dataforseo: r6(dfs), openrouter: c.model == null ? null : r6(c.model), total: c.model == null ? null : r6(dfs + c.model), steps: c },\n  tokens: s.tokens\n} }];"
       }
     },
     {
@@ -946,7 +914,7 @@
         -416
       ],
       "parameters": {
-        "content": "# Lane A - DataForSEO community nodes\nSame analysis with the verified DataForSEO nodes (`n8n-nodes-dataforseo`, built by DataForSEO, verified by n8n). Works on n8n Cloud and self-hosted: install once from the nodes panel. Credential: DataForSEO API.\n\nPOST to `/webhook/intent-labeler-nodes`",
+        "content": "# Lane A - DataForSEO community nodes\nSame analysis with the verified DataForSEO nodes (`n8n-nodes-dataforseo`, built by DataForSEO, verified by n8n). Works on n8n Cloud and self-hosted: install once from the nodes panel. Credential: DataForSEO API.\n\nPOST to `/webhook/intent-labeler-nodes`\n\nThe model runs in the **Labeler** (Basic LLM Chain + OpenRouter Chat Model). It does not report cost, so `cost_usd.openrouter` is null here; lane B measures it and switches reasoning off.",
         "height": 300,
         "width": 640,
         "color": 5
@@ -1080,16 +1048,19 @@
       }
     },
     {
-      "name": "OpenRouter Chat Model",
+      "name": "OpenRouter Chat Model [nodes]",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        2944,
-        384
+        3520,
+        56
       ],
       "parameters": {
-        "model": "openai/gpt-6-luna",
-        "options": {}
+        "model": "={{ $('Config [nodes]').first().json.model }}",
+        "options": {
+          "responseFormat": "json_object",
+          "maxTokens": 12000
+        }
       },
       "credentials": {
         "openRouterApi": {
@@ -1099,14 +1070,26 @@
       }
     },
     {
-      "name": "Labeler",
+      "name": "Labeler: group into intents [nodes]",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
+      "onError": "continueRegularOutput",
       "position": [
-        3264,
-        288
+        3520,
+        -144
       ],
       "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.user }}",
+        "hasOutputParser": false,
+        "messages": {
+          "messageValues": [
+            {
+              "type": "SystemMessagePromptTemplate",
+              "message": "={{ $('Config [nodes]').first().json.system_prompt }}"
+            }
+          ]
+        },
         "batching": {}
       }
     }
@@ -1309,18 +1292,7 @@
       "main": [
         [
           {
-            "node": "OpenRouter: group into intents [nodes]",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenRouter: group into intents [nodes]": {
-      "main": [
-        [
-          {
-            "node": "Validate and count [nodes]",
+            "node": "Labeler: group into intents [nodes]",
             "type": "main",
             "index": 0
           }
@@ -1586,11 +1558,22 @@
         ]
       ]
     },
-    "OpenRouter Chat Model": {
+    "Labeler: group into intents [nodes]": {
+      "main": [
+        [
+          {
+            "node": "Validate and count [nodes]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model [nodes]": {
       "ai_languageModel": [
         [
           {
-            "node": "Labeler",
+            "node": "Labeler: group into intents [nodes]",
             "type": "ai_languageModel",
             "index": 0
           }
