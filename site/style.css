@@ -302,3 +302,7 @@ ul.plain li { margin-bottom: 6px; }
 .pg-output table th { white-space: nowrap; font-size: 0.9rem; }
 .pg-output table td { overflow-wrap: break-word; }
 .pg-output .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.star-count { display: inline-block; margin-left: 8px; padding: 0 7px; border-radius: 999px; font-size: 0.85em;
+  background: var(--card); color: var(--ink); border: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+.top nav .star-count { background: transparent; color: inherit; border-color: currentColor; }

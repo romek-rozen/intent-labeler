@@ -129,7 +129,7 @@ def themed_report(html: str, folders: list[Path], index: int, runs: list[dict] |
     header = ('<header class="top"><a class="brand" href="../index.html">Intent Labeler</a><nav>'
               '<a href="../index.html#how">How it works</a><a href="../index.html#examples">Examples</a>'
               '<a href="../index.html#try">Try it</a>'
-              '<a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>'
+              '<a href="https://github.com/romek-rozen/intent-labeler">&#9733; Star on GitHub</a>'
               '<a class="nav-sponsor" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor</a></nav></header>')
     keyword = _keyword(folders[index])
     og = ('<meta property="og:type" content="article">'

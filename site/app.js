@@ -32,6 +32,18 @@ serp.insertAdjacentHTML("afterend", `<p class="serp-note">Result 4 serves two in
 // The hero shows the finished reading: results already sorted into intents, with the numbers.
 serp.classList.add("grouped", "settled");
 
+// ------------------------------------------------------------ stars ----
+// Live star count from the public GitHub API (no key, 60 calls an hour per visitor is plenty).
+let starCount = "";
+fetch("https://api.github.com/repos/romek-rozen/intent-labeler", { signal: AbortSignal.timeout(8000) })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((repo) => {
+    if (!repo || repo.stargazers_count == null) return;
+    starCount = repo.stargazers_count.toLocaleString("en");
+    document.querySelectorAll(".star-count").forEach((el) => { el.textContent = starCount; el.hidden = false; });
+  })
+  .catch(() => { /* offline or rate-limited: the button still works without a number */ });
+
 // ------------------------------------------------------------ examples ----
 // Every card carries the same pill row (facts), then warnings in their own style, so cards align.
 $("#exampleList").innerHTML = data.examples.map((ex) => {
@@ -469,6 +481,7 @@ function shareBox(run) {
     <p id="contributeStatus">Sending...</p>
     <p>If this was useful, you can support the work on the tool.</p>
     <a class="btn primary" href="https://github.com/sponsors/romek-rozen" target="_blank" rel="noopener">&#10084; Sponsor This Project</a>
+    <a class="btn star-btn" href="https://github.com/romek-rozen/intent-labeler" target="_blank" rel="noopener">&#9733; Star on GitHub${starCount ? ` <span class="star-count">${starCount}</span>` : ""}</a>
     <a class="btn" href="${blob}" download="${esc(name)}">Download the JSON</a>
   </div>`;
 }
