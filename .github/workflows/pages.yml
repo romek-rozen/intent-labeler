@@ -3,7 +3,7 @@ name: Pages
 on:
   push:
     branches: [main]
-    paths: ["site/**", "examples/**", "scripts/build_site.py",
+    paths: ["site/**", "examples/**", "community/**", "scripts/build_site.py",
             "src/intent_labeler/features/intent_labeling/prompts/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 

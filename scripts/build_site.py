@@ -53,6 +53,19 @@ def hero_data(folder: Path) -> dict:
     }
 
 
+def community_records() -> list[dict]:
+    """Merged community results, newest first. Invalid files are skipped, not fatal."""
+    records = []
+    for path in sorted((ROOT / "community").glob("*.json")):
+        try:
+            record = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            continue
+        if record.get("schema") == "intent-labeler/community/1":
+            records.append(record)
+    return sorted(records, key=lambda r: r.get("date", ""), reverse=True)
+
+
 def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -62,7 +75,8 @@ def main() -> None:
     for folder in folders:
         shutil.copy(folder / "report.html", OUT / "examples" / f"{folder.name}.html")
     data = {"examples": [example_summary(f) for f in folders],
-            "hero": hero_data(ROOT / "examples" / HERO_EXAMPLE)}
+            "hero": hero_data(ROOT / "examples" / HERO_EXAMPLE),
+            "community": community_records()}
     (OUT / "data.json").write_text(json.dumps(data, ensure_ascii=False))
     shutil.copy(PROMPT, OUT / "prompt.md")
     shutil.copy(ROOT / "examples/standing-desk/snapshot.json", OUT / "sample-snapshot.json")

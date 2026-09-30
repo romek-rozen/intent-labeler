@@ -59,6 +59,10 @@ Rules:
 contract and the coverage/share rules in JavaScript - when you change those in Python, change them
 there too. Never put an API key in the site.
 
+`community/` holds public playground results merged from pull requests. `tests/test_community.py`
+validates them (shape, known result IDs, no secrets). Review content before merging; never edit a
+contributor's numbers.
+
 ## Changing behaviour
 
 - Wrong interpretation by the model -> change the prompt, not the code.

@@ -70,18 +70,71 @@ $("#exampleList").innerHTML = data.examples.map((ex) => `
     <span>${ex.warnings.map((w) => `<span class="tag">${esc(w.replaceAll("_", " "))}</span>`).join("")}</span>
   </a>`).join("");
 
+// ---------------------------------------------------------- community ----
+if (data.community?.length) {
+  $("#community").hidden = false;
+  $("#navCommunity").hidden = false;
+  $("#communityList").innerHTML = data.community.map((c) => `
+    <article class="example">
+      <span class="q">${esc(c.keyword)}</span>
+      <span class="market">Google ${esc(c.market)}, ${c.results.length} results, ${esc(c.date)}</span>
+      <span class="stack" aria-hidden="true">${c.intents.map((it, i) => `<span style="flex:${it.share};background:${color(i)}"></span>`).join("")}</span>
+      <p class="dom">${c.intents.map((it) => `<b>${esc(it.title)}</b> ${pct(it.share)}<br>`).join("")}</p>
+      <p class="meta">Model ${esc(c.model)}${c.shared_by ? `, shared by ${esc(c.shared_by)}` : ""}</p>
+    </article>`).join("");
+}
+
 // ---------------------------------------------------------- playground ----
-const KEY_STORE = "intent-labeler-openrouter-key";
-const keyInput = $("#pgKey");
+// Markets: DataForSEO location code + the languages Google serves there.
+const MARKETS = [
+  ["United States", 2840, ["en", "es"]], ["United Kingdom", 2826, ["en"]], ["Poland", 2616, ["pl"]],
+  ["Germany", 2276, ["de"]], ["Austria", 2040, ["de"]], ["Switzerland", 2756, ["de", "fr", "it"]],
+  ["France", 2250, ["fr"]], ["Italy", 2380, ["it"]], ["Spain", 2724, ["es"]],
+  ["Netherlands", 2528, ["nl"]], ["Czechia", 2203, ["cs"]], ["Slovakia", 2703, ["sk"]],
+  ["Sweden", 2752, ["sv"]], ["Canada", 2124, ["en", "fr"]], ["Australia", 2036, ["en"]], ["India", 2356, ["en", "hi"]],
+];
+const LANGUAGE_NAMES = { en: "English", es: "Spanish", pl: "Polish", de: "German", fr: "French", it: "Italian",
+  nl: "Dutch", cs: "Czech", sk: "Slovak", sv: "Swedish", hi: "Hindi" };
+const country = $("#pgCountry"), language = $("#pgLanguage");
+country.innerHTML = MARKETS.map(([name, code]) => `<option value="${code}">${name}</option>`).join("");
+function fillLanguages() {
+  const langs = MARKETS.find(([, code]) => String(code) === country.value)[2];
+  language.innerHTML = langs.map((l) => `<option value="${l}">${LANGUAGE_NAMES[l]}</option>`).join("");
+}
+country.addEventListener("change", fillLanguages);
+fillLanguages();
+const marketName = () => country.selectedOptions[0].textContent;
+
+const sourceMode = () => document.querySelector('input[name="source"]:checked').value;
+document.querySelectorAll('input[name="source"]').forEach((el) => el.addEventListener("change", () => {
+  $("#dfsFields").hidden = sourceMode() !== "dataforseo";
+  $("#pasteFields").hidden = sourceMode() !== "paste";
+}));
+
+// Keys: kept in memory; in localStorage only when the visitor ticks "remember".
+const STORE = { openrouter: "intent-labeler-openrouter-key", dfsLogin: "intent-labeler-dfs-login", dfsPassword: "intent-labeler-dfs-password" };
+const keyFields = { openrouter: $("#pgKey"), dfsLogin: $("#pgDfsLogin"), dfsPassword: $("#pgDfsPassword") };
 try {
-  const saved = localStorage.getItem(KEY_STORE);
-  if (saved) { keyInput.value = saved; $("#pgRemember").checked = true; }
-} catch { /* storage blocked: the key simply is not remembered */ }
+  let any = false;
+  for (const [k, el] of Object.entries(keyFields)) {
+    const v = localStorage.getItem(STORE[k]);
+    if (v) { el.value = v; any = true; }
+  }
+  $("#pgRemember").checked = any;
+} catch { /* storage blocked: nothing is remembered */ }
+function saveKeys() {
+  try {
+    for (const [k, el] of Object.entries(keyFields)) {
+      if ($("#pgRemember").checked && el.value) localStorage.setItem(STORE[k], el.value.trim());
+      else localStorage.removeItem(STORE[k]);
+    }
+  } catch { /* storage blocked */ }
+}
 
 $("#pgLoad").addEventListener("click", async () => {
   const snap = await fetch("sample-snapshot.json").then((r) => r.json());
   $("#pgKeyword").value = snap.keyword;
-  $("#pgLanguage").value = snap.language;
+  country.value = "2840"; fillLanguages(); language.value = "en";
   $("#pgResults").value = snap.results.map((r) => [r.title, r.url, r.description].join(" | ")).join("\n");
 });
 
@@ -93,6 +146,57 @@ function parseResults(text) {
     return { result_id: `r${String(i + 1).padStart(2, "0")}`, rank: i + 1, url, domain, title,
              description: rest.join(" | ").slice(0, 220), highlighted: [], digest: "" };
   });
+}
+
+// DataForSEO straight from the browser (their API allows it: CORS *).
+async function dataforseo(path, task) {
+  const auth = btoa(`${keyFields.dfsLogin.value.trim()}:${keyFields.dfsPassword.value.trim()}`);
+  const res = await fetch(`https://api.dataforseo.com/v3/${path}`, {
+    method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
+    body: JSON.stringify([task]),
+  });
+  const body = await res.json().catch(() => ({}));
+  const t = body?.tasks?.[0];
+  if (!res.ok || body.status_code !== 20000 || !t || t.status_code !== 20000) {
+    throw new Error(`DataForSEO: ${t?.status_message || body?.status_message || res.status}`);
+  }
+  return t.result?.[0] || {};
+}
+
+async function fetchSerp(keyword) {
+  const r = await dataforseo("serp/google/organic/live/advanced", {
+    keyword, location_code: Number(country.value), language_code: language.value, device: "desktop", depth: 10,
+  });
+  const features = { people_also_ask: [], related_searches: [], ai_overview: "", item_types: r.item_types || [] };
+  const results = [];
+  for (const item of r.items || []) {
+    if (item.type === "organic" && results.length < 10) {
+      results.push({ result_id: `r${String(results.length + 1).padStart(2, "0")}`, rank: item.rank_group,
+        url: item.url, domain: (item.domain || "").replace(/^www\./, ""), title: item.title || "",
+        description: (item.description || "").slice(0, 220), highlighted: (item.highlighted || []).slice(0, 4), digest: "" });
+    } else if (item.type === "people_also_ask") {
+      features.people_also_ask.push(...(item.items || []).map((q) => q.title).filter(Boolean));
+    } else if (item.type === "related_searches") {
+      features.related_searches.push(...(item.items || []).filter(Boolean));
+    } else if (item.type === "ai_overview") {
+      features.ai_overview = [item.text, ...(item.items || []).map((s) => `${s.title || ""} ${s.text || ""}`)].join(" ").slice(0, 4000);
+    }
+  }
+  if (!results.length) throw new Error("DataForSEO returned no organic results for this query and market");
+  return { results, features };
+}
+
+async function fetchTraffic(results) {
+  // Unknown is not zero: a page with no known keywords gets etv null.
+  const r = await dataforseo("dataforseo_labs/google/bulk_traffic_estimation/live", {
+    targets: results.map((x) => x.url), location_code: Number(country.value), language_code: language.value, item_types: ["organic"],
+  });
+  const etv = {};
+  for (const item of r.items || []) {
+    const organic = item.metrics?.organic || {};
+    etv[item.target] = organic.count ? Number(organic.etv || 0) : null;
+  }
+  results.forEach((x) => { x.etv = etv[x.url] ?? null; });
 }
 
 function validate(labels, ids) {
@@ -112,15 +216,18 @@ function validate(labels, ids) {
 }
 
 function measure(labels, results) {
-  // Same rules as features/metrics: coverage unsplit, share split 1/k.
+  // Same rules as features/metrics: coverage unsplit, share and traffic split 1/k, unknown traffic left out.
   const k = {};
   labels.intents.forEach((it) => it.result_ids.forEach((id) => (k[id] = (k[id] || 0) + 1)));
-  const rank = Object.fromEntries(results.map((r) => [r.result_id, r.rank]));
+  const byId = Object.fromEntries(results.map((r) => [r.result_id, r]));
+  const known = results.filter((r) => r.etv != null);
+  const trafficTotal = known.reduce((s, r) => s + r.etv, 0);
   return labels.intents.map((it) => ({
     ...it,
     coverage: it.result_ids.length / results.length,
     share: it.result_ids.reduce((s, id) => s + 1 / k[id], 0) / results.length,
-    ranks: it.result_ids.map((id) => rank[id]).sort((a, b) => a - b),
+    traffic: trafficTotal ? it.result_ids.reduce((s, id) => s + (byId[id].etv ?? 0) / k[id], 0) / trafficTotal : null,
+    ranks: it.result_ids.map((id) => byId[id].rank).sort((a, b) => a - b),
   }));
 }
 
@@ -151,14 +258,48 @@ async function callModel({ key, model, payload }) {
   throw new Error(`the model failed the JSON contract three times: ${lastError}`);
 }
 
-function render(keyword, results, labels) {
-  const rows = measure(labels, results);
+// ------------------------------------------------------------- sharing ----
+const slugify = (s) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function publicRecord(run) {
+  // Only what is safe to publish. Never keys, never anything typed into key fields.
+  return {
+    schema: "intent-labeler/community/1",
+    keyword: run.keyword, market: run.market, location_code: run.location, language: run.language,
+    source: run.source, model: run.model, date: new Date().toISOString().slice(0, 10), shared_by: "",
+    summary: run.labels.summary || "", expected_genre: run.labels.expected_genre || "",
+    results: run.results.map((r) => ({ id: r.result_id, rank: r.rank, url: r.url, title: r.title })),
+    intents: run.rows.map((r) => ({ title: r.title, searcher_goal: r.searcher_goal || "", form: r.form || "",
+      result_ids: r.result_ids, coverage: +r.coverage.toFixed(4), share: +r.share.toFixed(4),
+      traffic_share: r.traffic == null ? null : +r.traffic.toFixed(4) })),
+  };
+}
+
+function shareBox(run) {
+  const record = publicRecord(run);
+  const json = JSON.stringify(record, null, 2);
+  const name = `${slugify(record.market)}-${slugify(record.keyword)}-${record.date}.json`;
+  const url = `https://github.com/romek-rozen/intent-labeler/new/main/community?filename=${encodeURIComponent(name)}&value=${encodeURIComponent(json)}`;
+  const blob = URL.createObjectURL(new Blob([json], { type: "application/json" }));
+  const tooLong = url.length > 7500;
+  return `<div class="share-box">
+    <h3>Propose this result for the gallery</h3>
+    <p>This opens GitHub with the file <code>community/${esc(name)}</code> filled in. GitHub will fork the repository and open a pull request for you. You can add your name in <code>shared_by</code> before you submit. The file contains the query, market, results and intents - no keys.</p>
+    ${tooLong ? `<p class="hint">This result is too long for a link. Download the file and upload it at the same address.</p>` :
+      `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Propose it for the gallery</a>`}
+    <a class="btn" href="${blob}" download="${esc(name)}">Download the JSON</a>
+  </div>`;
+}
+
+function render(run) {
+  const { keyword, results, labels, rows } = run;
   const out = $("#pgOutput");
   const top = [...rows].filter((r) => !r.fallback).sort((a, b) => b.share - a.share)[0];
   const fits = labels.article_fits || {};
+  const hasTraffic = rows.some((r) => r.traffic != null);
   out.hidden = false;
   out.innerHTML = `
-    <h3>${esc(keyword)}</h3>
+    <h3>${esc(keyword)} <span class="hint">Google ${esc(run.market)}, ${results.length} results</span></h3>
     <p class="pg-summary">${esc(labels.summary || "")}</p>
     <p>Dominant intent: <b>${esc(top?.title)}</b>, answered by <b>${esc(top?.form || "-")}</b>.
        ${labels.expected_genre ? `Expected genre: ${esc(labels.expected_genre)}.` : ""}
@@ -168,35 +309,52 @@ function render(keyword, results, labels) {
         <span class="name">${esc(r.title)}<small>${esc(r.form || "")}</small></span>
         <span class="track"><span class="fill" style="width:var(--w)"></span><span class="val">${pct(r.share)}</span></span>
       </div>`).join("")}</div>
-    <table><tr><th>Intent</th><th>Coverage</th><th>Share</th><th>Ranks</th><th>Searcher goal</th></tr>
+    <table><tr><th>Intent</th><th>Coverage</th><th>Share</th>${hasTraffic ? "<th>Traffic</th>" : ""}<th>Ranks</th><th>Searcher goal</th></tr>
       ${rows.map((r, i) => `<tr><td><span class="sw" style="--c:${r.fallback ? "var(--rule)" : color(i)}"></span>${esc(r.title)}</td>
-        <td>${pct(r.coverage)}</td><td>${pct(r.share)}</td><td>${r.ranks.join(", ")}</td><td>${esc(r.searcher_goal)}</td></tr>`).join("")}
+        <td>${pct(r.coverage)}</td><td>${pct(r.share)}</td>${hasTraffic ? `<td>${pct(r.traffic)}</td>` : ""}<td>${r.ranks.join(", ")}</td><td>${esc(r.searcher_goal)}</td></tr>`).join("")}
     </table>
-    ${(labels.reader_questions || []).length ? `<h3 style="margin-top:24px">Reader questions</h3><ul>${labels.reader_questions.map((q) => `<li>${esc(q.question)}</li>`).join("")}</ul>` : ""}`;
+    <h3 style="margin-top:24px">Results</h3>
+    <table class="results-list">${results.map((r) => `<tr><td>${r.rank}</td><td><a href="${esc(r.url)}" rel="noopener">${esc(r.title || r.url)}</a><br><span class="hint">${esc(r.domain)}</span></td>
+      <td>${esc(rows.filter((x) => x.result_ids.includes(r.result_id)).map((x) => x.title).join("; "))}</td></tr>`).join("")}</table>
+    ${(labels.reader_questions || []).length ? `<h3 style="margin-top:24px">Reader questions</h3><ul>${labels.reader_questions.map((q) => `<li>${esc(q.question)}</li>`).join("")}</ul>` : ""}
+    ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing was published. Choose "Public" before running to propose it for the gallery.</p>`}`;
 }
 
 $("#playground").addEventListener("submit", async (event) => {
   event.preventDefault();
   const status = $("#pgStatus");
-  const key = keyInput.value.trim();
-  const results = parseResults($("#pgResults").value);
+  const fail = (msg) => { status.textContent = msg; status.classList.add("error"); };
   status.classList.remove("error");
-  if (results.length < 2) { status.textContent = "Add at least two results, one per line."; status.classList.add("error"); return; }
-  try {
-    if ($("#pgRemember").checked) localStorage.setItem(KEY_STORE, key);
-    else localStorage.removeItem(KEY_STORE);
-  } catch { /* storage blocked */ }
-  const payload = { source: "serp", keyword: $("#pgKeyword").value.trim(), language: $("#pgLanguage").value.trim() || "en",
-    brief: "", serp_features: { people_also_ask: [], related_searches: [], ai_overview: "", item_types: [] }, results };
+  const keyword = $("#pgKeyword").value.trim();
+  const mode = sourceMode();
+  if (mode === "dataforseo" && (!keyFields.dfsLogin.value.trim() || !keyFields.dfsPassword.value.trim())) {
+    return fail("Enter your DataForSEO login and API password, or switch to pasting results.");
+  }
+  saveKeys();
   $("#pgRun").disabled = true;
-  status.textContent = `Asking ${$("#pgModel").value} to group ${results.length} results. This usually takes a few seconds; slower models can take a minute.`;
   try {
-    const labels = await callModel({ key, model: $("#pgModel").value.trim(), payload });
+    let results, features = { people_also_ask: [], related_searches: [], ai_overview: "", item_types: [] };
+    if (mode === "dataforseo") {
+      status.textContent = `Fetching Google's top ten for "${keyword}" in ${marketName()}...`;
+      ({ results, features } = await fetchSerp(keyword));
+      if ($("#pgTraffic").checked) {
+        status.textContent = "Estimating traffic per URL...";
+        await fetchTraffic(results);
+      }
+    } else {
+      results = parseResults($("#pgResults").value);
+      if (results.length < 2) throw new Error("add at least two results, one per line");
+    }
+    const payload = { source: "serp", keyword, language: language.value, brief: "", serp_features: features, results };
+    status.textContent = `Asking ${$("#pgModel").value} to group ${results.length} results. This usually takes a few seconds; slower models can take a minute.`;
+    const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: $("#pgModel").value.trim(), payload });
+    const run = { keyword, results, labels, rows: measure(labels, results), market: marketName(),
+      location: Number(country.value), language: language.value, source: mode, model: $("#pgModel").value.trim(),
+      visibility: document.querySelector('input[name="visibility"]:checked').value };
     status.textContent = "Done. The groups come from the model; every percentage below was computed in your browser.";
-    render(payload.keyword, results, labels);
+    render(run);
   } catch (e) {
-    status.textContent = `Could not label the results: ${e.message}. Check the key and the model name, then try again.`;
-    status.classList.add("error");
+    fail(`Could not finish: ${e.message}. Check the keys, the query and the market, then try again.`);
   } finally {
     $("#pgRun").disabled = false;
   }

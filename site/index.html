@@ -19,6 +19,7 @@
     <a href="#how">How it works</a>
     <a href="#examples">Examples</a>
     <a href="#try">Try it</a>
+    <a href="#community" id="navCommunity" hidden>Community</a>
     <a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>
   </nav>
 </header>
@@ -76,28 +77,71 @@
 
   <section id="try" class="band">
     <div class="wrap">
-      <h2>Try it with your own key</h2>
-      <p>This page has no server. Your OpenRouter key goes from your browser straight to OpenRouter and nowhere else. Paste results from any search, or load the standing desk example. Pages are not fetched here, so the model works from titles and snippets and there is no length measurement. For the full analysis, run the command line tool.</p>
+      <h2>Try it with your own keys</h2>
+      <p>Fetch Google's live top ten through your DataForSEO account, or paste results from any search. The model runs on your OpenRouter key. A typical run costs well under one US cent in model tokens, plus DataForSEO's own price for the SERP call.</p>
+
+      <aside class="keys-note" aria-label="How your keys are handled">
+        <h3>We do not store your keys</h3>
+        <p>This page has no server. Your keys go from your browser straight to OpenRouter and DataForSEO, and nowhere else - not to us, not to GitHub. They live in this tab and are gone when you close it. Only if you tick "remember" are they kept in this browser's local storage, on your device. You can read every line that handles them in <a href="https://github.com/romek-rozen/intent-labeler/blob/main/site/app.js">app.js</a>.</p>
+      </aside>
 
       <form id="playground" class="playground" autocomplete="off">
+        <fieldset class="source">
+          <legend>Where the results come from</legend>
+          <label class="check"><input type="radio" name="source" value="dataforseo" checked> Live Google results via DataForSEO</label>
+          <label class="check"><input type="radio" name="source" value="paste"> Paste results myself</label>
+        </fieldset>
+
         <div class="field-row">
-          <label>Query <input id="pgKeyword" required placeholder="standing desk"></label>
-          <label>Answer language <input id="pgLanguage" value="en" size="4"></label>
+          <label class="grow">Query <input id="pgKeyword" required placeholder="standing desk"></label>
+          <label>Country
+            <select id="pgCountry"></select>
+          </label>
+          <label>Language
+            <select id="pgLanguage"></select>
+          </label>
         </div>
-        <label>Results, one per line: <span class="hint">title | url | snippet</span>
-          <textarea id="pgResults" rows="9" required placeholder="The 3 Best Standing Desks in 2026 | https://www.nytimes.com/wirecutter/... | We tested 30 desks..."></textarea>
-        </label>
-        <button id="pgLoad" class="btn small" type="button">Load the standing desk example</button>
+
+        <div id="dfsFields" class="field-group">
+          <div class="field-row">
+            <label class="grow">DataForSEO login <input id="pgDfsLogin" autocomplete="off" placeholder="you@example.com"></label>
+            <label class="grow">DataForSEO API password <input id="pgDfsPassword" type="password" autocomplete="off"></label>
+          </div>
+          <label class="check"><input id="pgTraffic" type="checkbox" checked> Also estimate traffic per URL (one extra DataForSEO Labs call)</label>
+          <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password.</p>
+        </div>
+
+        <div id="pasteFields" class="field-group" hidden>
+          <label>Results, one per line: <span class="hint">title | url | snippet</span>
+            <textarea id="pgResults" rows="9" placeholder="The 3 Best Standing Desks in 2026 | https://www.nytimes.com/wirecutter/... | We tested 30 desks..."></textarea>
+          </label>
+          <button id="pgLoad" class="btn small" type="button">Load the standing desk example</button>
+        </div>
+
         <div class="field-row">
           <label class="grow">OpenRouter API key <input id="pgKey" type="password" required placeholder="sk-or-..."></label>
           <label>Model <input id="pgModel" value="openai/gpt-6-luna"></label>
         </div>
-        <label class="check"><input id="pgRemember" type="checkbox"> Remember the key in this browser</label>
+        <label class="check"><input id="pgRemember" type="checkbox"> Remember my keys in this browser</label>
+
+        <fieldset class="share">
+          <legend>Who can see the result</legend>
+          <label class="check"><input type="radio" name="visibility" value="private" checked> Private - it stays in this tab</label>
+          <label class="check"><input type="radio" name="visibility" value="public"> Public - let me propose it for the community gallery</label>
+          <p class="hint">Public results are never sent automatically. After the run you get a button that opens a pull request on GitHub with the query, market, intents and numbers - no keys. It appears in the gallery once accepted.</p>
+        </fieldset>
+
         <button class="btn primary" type="submit" id="pgRun">Label the intents</button>
         <p id="pgStatus" class="status" role="status"></p>
       </form>
       <div id="pgOutput" class="pg-output" hidden></div>
     </div>
+  </section>
+
+  <section id="community" class="wrap" hidden>
+    <h2>Shared by the community</h2>
+    <p>Results people ran in the playground and chose to publish. Each one came in as a pull request.</p>
+    <div id="communityList" class="examples"></div>
   </section>
 
   <section class="wrap run">

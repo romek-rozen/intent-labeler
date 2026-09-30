@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- GitHub Pages site with an animated SERP, twelve live examples in five markets and a playground.
+- Playground: live Google top 10 via the visitor's DataForSEO account (16 markets, language per
+  market), optional traffic estimate, OpenRouter labeling; keys never leave the browser.
+- Public results as pull requests to `community/`, validated by `tests/test_community.py`, shown in
+  a community gallery. CI runs the tests on every pull request.
+
 ## 0.3.0 - 2026-09-30
 
 - Content form per page counted from HTML (tables, lists, images, video, FAQ, forms, calculator

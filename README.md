@@ -5,8 +5,10 @@ Label the **search intent** behind a Google results page (or any set of web page
 traffic), in what form each is answered, how long the winning pages are, and when the query does not
 want an article at all.
 
-**Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** (bring your own
-OpenRouter key; the page has no server).
+**Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** - bring your own
+OpenRouter key (and DataForSEO login for live Google results in 16 markets). The page has no server and
+stores no keys. Results you choose to make public are proposed as pull requests to
+[`community/`](community/).
 
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
