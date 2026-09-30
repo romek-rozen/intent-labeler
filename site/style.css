@@ -289,3 +289,4 @@ ul.plain li { margin-bottom: 6px; }
 .strip .pt { position: absolute; top: 5px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--c); opacity: .85; border: 2px solid var(--paper); }
 .strip .med { position: absolute; top: 0; width: 2px; height: 22px; margin-left: -1px; background: var(--ink); }
 @media (max-width: 860px) { .strip { grid-template-columns: 1fr; gap: 4px; } }
+.strip .line { margin-right: 8px; } .pg-output { overflow-x: hidden; }
