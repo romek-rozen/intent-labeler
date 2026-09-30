@@ -1,0 +1,1097 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T09:12:22+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://kalkulatory.gofin.pl/kalkulatory/kalkulator-kredytowy",
+        "rank": 1,
+        "domain": "kalkulatory.gofin.pl",
+        "title": "Kalkulator kredytowy - Wydawnictwo Podatkowe GOFIN",
+        "description": "Kalkulator kredytowy oblicza wysokość poszczególnych rat kredytu przy założonym oprocentowaniu nominalnym, okresie kredytowania oraz rodzaju rat.",
+        "headings": [
+          "H1: KALKULATORY",
+          "H2: Pozostałe kalkulatory",
+          "H3: Kalkulator kredytowy"
+        ],
+        "highlighted": [
+          "Kalkulator kredytowy oblicza wysokość poszczególnych rat kredytu"
+        ],
+        "word_count": 447,
+        "char_count": 3533,
+        "digest": "headings: KALKULATORY; Pozostałe kalkulatory; Kalkulator kredytowy | text: Prosimy o zapoznanie się z poniższymi informacjami oraz wyrażenie dobrowolnej zgody poprzez kliknięcie przycisku \"Zgadzam się\". Serwis internetowy, z którego Pani/Pan korzysta używa plików cookies w celu: Są to pliki instalowane w urządzeniach końcowych osób korzystających z Serwisu, w celu administrowania Serwisem, dostoso",
+        "excerpt": "Prosimy o zapoznanie się z poniższymi informacjami oraz wyrażenie dobrowolnej zgody poprzez kliknięcie przycisku \"Zgadzam się\". Pamiętaj, że zawsze możesz wycofać zgodę. Serwis internetowy, z którego Pani/Pan korzysta używa plików cookies w celu: - niezbędnego zapewnienia prawidłowego działania Serwisów (utrzymania sesji), - realizacji funkcjonalności ułatwiających obsługę Serwisu, - dopasowania reklam w serwisach społecznościowych, - analizy statystyk ruchu i reklam w Serwisach, - zbierania i przetwarzania danych w celu wyświetlenia reklam produktów własnych i klientów reklamowych oraz do śledzenia użytkowników, kliknięć i konwersji wyświetlanych reklam. Są to pliki instalowane w urządzeniach końcowych osób korzystających z Serwisu, w celu administrowania Serwisem, dostosowania treści Serwisu do preferencji użytkownika, utrzymania sesji użytkownika oraz dla celów statystycznych i targetowania reklamy (dostosowania treści reklamy do indywidualnych potrzeb użytkownika). Informujemy, że istnieje możliwość określenia przez użytkownika Serwisu warunków przechowywania lub uzyskiwania dostępu do informacji zawartych w plikach cookies za pomocą ustawień przeglądarki lub konfiguracji usługi. Szczegółowe informacje na ten temat dostępne są u producenta przeglądarki, u dostawcy usługi dostępu do internetu oraz w Polityce prywatności i plików cookies. Administratorem Pana/Pani danych osobowych w związku z korzystaniem z Serwisu internetowego i jego usług jest Wydawnictwo Podatkowe GOFIN",
+        "elements": {
+          "tables": 1,
+          "ordered_lists": 1,
+          "unordered_lists": 25,
+          "images": 4,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 29218.74911671877,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://mfinanse.pl/kredyt-hipoteczny-kalkulator-zdolnosci-kredytowej-podwojne-kalkulatory/",
+        "rank": 2,
+        "domain": "mfinanse.pl",
+        "title": "Kredyt hipoteczny - kalkulator rat kredytu hipotecznego",
+        "description": "Kredyt hipoteczny w pigułce. Kalkulator obliczania zdolności kredytowej. Oblicz swoją ratę i poznaj oferty wielu banków.",
+        "headings": [
+          "H1: Kredyt hipoteczny - kalkulator rat kredytu hipotecznego",
+          "H2: Kalkulator raty kredytu hipotecznego",
+          "H2: Zobacz najlepsze wyniki symulacji.",
+          "H2: Kalkulator zdolności kredytowej",
+          "H2: Bezpłatna konsultacja w placówkach mFinanse",
+          "H2: Banki, z którymi współpracujemy",
+          "H2: Kredyt hipoteczny z mFinanse to:",
+          "H2: Najczęściej zadawane pytania",
+          "H2: Masz więcej pytań? Zapytaj eksperta mFinanse",
+          "H2: **Co to jest rata kredytu hipotecznego?**",
+          "H2: **Rodzaje rat kredytu hipotecznego: raty równe i malejące**",
+          "H2: **Jak oszacować swoją ratę kredytu hipotecznego?**",
+          "H2: **Kalkulator raty kredytu hipotecznego. Co to jest?**",
+          "H2: **Czy korzystając z kalkulatora trzeba podać dane osobowe?**",
+          "H2: **Jak odczytywać wyniki z kalkulatora raty hipotecznej?**",
+          "H2: **Kalkulator raty kredyt hipotecznego jako porównywarka ofert**",
+          "H2: **Obliczanie raty kredytu hipotecznego za pomocą kalkulatora**",
+          "H2: **Zabezpieczenie spłaty kredytu hipotecznego**",
+          "H2: **Co zrobić, jeśli mamy problem ze spłatą kredytu hipotecznego?**",
+          "H2: **Okres kredytowania – jak obniżyć miesięczne raty?**",
+          "H2: **Ile trzeba czekać na decyzję kredytową banku?**",
+          "H2: **Oprocentowanie kredytu hipotecznego**",
+          "H2: **Kalkulator raty kredytu hipotecznego a WIBOR**",
+          "H2: **Zalety kalkulatora raty kredytu hipotecznego**",
+          "H2: **Jak obliczyć ratę kredytu hipotecznego korzystając z kalkulatora raty?**",
+          "H2: **Czy kalkulator raty uwzględnia wkład własny?**",
+          "H2: **Mamy wyniki symulacji kredytu. Co dalej?**",
+          "H2: **Wkład własny**",
+          "H2: **Wcześniejsza spłata kredytu hipotecznego**",
+          "H2: **Warunki zatrudnienia a kredyt hipoteczny**",
+          "H2: **Kalkulator kredytu hipotecznego PKO BP, Erste, Millenium i innych banków**"
+        ],
+        "highlighted": [
+          "Kalkulator obliczania zdolności kredytowej"
+        ],
+        "word_count": 3456,
+        "char_count": 25861,
+        "digest": "headings: Kredyt hipoteczny - kalkulator rat kredytu hipotecznego; Kalkulator raty kredytu hipotecznego; Zobacz najlepsze wyniki symulacji.; Kalkulator zdolności kredytowej; Bezpłatna konsultacja w placówkach mFinanse; Banki, z którymi współpracujemy; Kredyt hipoteczny z mFinanse to:; Najczęściej zadawane pytania | text: – sprawdź w**kalkulatorze hipotecznym** , jak zmienia się wysokość rat Jest t",
+        "excerpt": "# Kredyt hipoteczny - kalkulator rat kredytu hipotecznego ## Kalkulator raty kredytu hipotecznego ## Zobacz najlepsze wyniki symulacji. ## Kalkulator zdolności kredytowej ## Bezpłatna konsultacja w placówkach mFinanse ## Banki, z którymi współpracujemy ## Kredyt hipoteczny z mFinanse to: - bezpłatna konsultacja z ekspertem kredytowym - dopasowana oferta mBanku oraz wielu innych banków –wstępne kalkulacje od razu w **kalkulatorze raty kredytu hipotecznego** - szeroki wachlarz celów kredytowania: na dom, mieszkanie, działkę, remont lub budowę - intuicyjne w obsłudze kalkulatory: **kalkulator wstępnej zdolności kredytowej** i**kalkulator hipoteczny** – wystarczy kilka informacji, aby poznać Twoje możliwości - możliwość spłaty nawet do 35 lat w ratach równych lub malejących – sprawdź w**kalkulatorze hipotecznym** , jak zmienia się wysokość rat - kredyt w PLN lub walutach obcych dla osób osiągających dochód za granicą - atrakcyjne i elastyczne warunki kredytowania: możliwość wcześniejszej całkowitej lub częściowej spłaty kredytu, możliwość pokrycia z kwoty kredytu opłat okołokredytowych - możliwość kredytowania nawet do 90% wartości nieruchomości (**kalkulator kredytu hipotecznego** przeprowadza symulację uwzględniając 10% wkładu własnego) ## Najczęściej zadawane pytania Jest to długoterminowy kredyt, którego zabezpieczeniem jest nieruchomość. Może on być wykorzystywany w następujących celach: - zakup nieruchomości na rynku wtórnym i pierwotnym - budowa i rozbudowa domów - remont ",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 30,
+          "images": 141,
+          "videos": 0,
+          "faq": 0,
+          "forms": 16,
+          "inputs": 3
+        },
+        "extractor": "trafilatura",
+        "etv": 40154.886963784695,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://uokik.gov.pl/public/kalkulator-zmiany-oprocentowania/",
+        "rank": 3,
+        "domain": "uokik.gov.pl",
+        "title": "Kalkulator zmiany oprocentowania kredytu hipotecznego",
+        "description": "Wpisz parametry swojego kredytu (znajdziesz je kontaktując się z bankiem lub w swojej umowie) i porównaj raty. Kalkulator pozwala obliczyć orientacyjną ...",
+        "headings": [
+          "H2: Kalkulacja wykonana  o godzinie",
+          "H1: Kalkulator zmiany oprocentowania kredytu hipotecznego",
+          "H3: 1 690,52 PLN",
+          "H6: rata kapitałowa",
+          "H6: Rata odsetkowa"
+        ],
+        "highlighted": [
+          "Wpisz parametry swojego kredytu"
+        ],
+        "word_count": 403,
+        "char_count": 2058,
+        "digest": "headings: Kalkulacja wykonana  o godzinie; Kalkulator zmiany oprocentowania kredytu hipotecznego; 1 690,52 PLN; rata kapitałowa; Rata odsetkowa | text: Podana wielkość rat może nie uwzględniać innych opłat takich jak dodatkowe Zmiana wysokości raty malejącej przy założeniu niezmiennego oprocentowania Jak zmieni się rata przy zmianie stopy procentowej?",
+        "excerpt": "## Kalkulacja wykonana o godzinie na stronie finanse.uokik.gov.pl. # Kalkulator zmiany oprocentowania kredytu hipotecznego ### 1 690,52 PLN 223 ###### rata kapitałowa ###### Rata odsetkowa Podana wielkość rat może nie uwzględniać innych opłat takich jak dodatkowe ubezpieczenia lub prowizje, które może mieć kredytobiorca. Zmiana wysokości raty malejącej przy założeniu niezmiennego oprocentowania Wysokość pierwszej raty malejącej 1 800,00 PLN Wysokość raty malejącej za **5 lat**1 800,00 PLN Wysokość raty malejącej za **10 lat**1 800,00 PLN Wysokość raty malejącej za **15 lat**1 800,00 PLN Wysokość ostatniej raty malejącej 1 800,00 PLN Jak zmieni się rata przy zmianie stopy procentowej? ZMIANAROCZNA ZMIANA WYSOKOŚĆ RATYSUMA RAT Oprocentowanie spada o **2,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie spada o **1,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oproc. kredytu na obecnym poziomie + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie wzrasta o **1,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie wzrasta o **2,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie wzrasta o **3,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN ZMIANAROCZNA ZMIANA WYSOKOŚĆ RATYSUMA RAT Oprocentowanie spada o **2,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie spada o **1,5%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie spada o **1,0%** + 0,00 PLN+ 0,00 PLN + 0,00 PLN+ 0,00 PLN Oprocentowanie spada o **0,5%** + 0,00 PLN+ 0,00",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 1,
+          "images": 12,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 27891.92828297615,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.bankier.pl/smart/narzedzia/kalkulator-kredytu-hipotecznego-raty-koszt",
+        "rank": 4,
+        "domain": "www.bankier.pl",
+        "title": "Kalkulator kredytowy - kalkulator rat kredytu hipotecznego",
+        "description": "Kalkulator kredytu hipotecznego pozwala wyliczyć, jaka będzie rata zobowiązania i ile łącznie oddasz bankowi przez cały okres spłaty.",
+        "headings": [
+          "H1: Kalkulator kredytowy - kalkulator rat kredytu hipotecznego",
+          "H2: Poradniki finansowe - kredyty hipoteczne"
+        ],
+        "highlighted": [
+          "Kalkulator kredytu"
+        ],
+        "word_count": 4798,
+        "char_count": 36032,
+        "digest": "headings: Kalkulator kredytowy - kalkulator rat kredytu hipotecznego; Poradniki finansowe - kredyty hipoteczne | text: Skorzystaj z kalkulatora hipotecznego, oblicz ratę i wybierz najlepszą ofertę dla siebie Sprawdź swoją zdolność kredytową szybko i bez stresu. Zostaw numer – oddzwonimy i pomożemy z formalnościami!",
+        "excerpt": "# Kalkulator kredytowy - kalkulator rat kredytu hipotecznego Skorzystaj z kalkulatora hipotecznego, oblicz ratę i wybierz najlepszą ofertę dla siebie Sprawdź swoją zdolność kredytową szybko i bez stresu. Zostaw numer – oddzwonimy i pomożemy z formalnościami! Kalkulator kredytu hipotecznego pozwala wyliczyć, jaka będzie rata zobowiązania i ile łącznie oddasz bankowi przez cały okres spłaty. Z jego pomocą możesz sprawdzić kilka wariantów spłaty kredytu. Zwróć uwagę, że wydłużenie okresu spłaty obniża wysokość płaconej raty, ale zwiększa sumę zapłaconych odsetek. Jeśli wybierzesz ratę malejącą, to pierwsze płatności będą wyższe, ale łączny koszt pożyczonego pieniądza spadnie. Nie zapomnij, że obliczenia i harmonogram opierają się na założeniu, że oprocentowanie jest stałe w całym okresie kredytowania. Są zatem tylko wstępną symulacją przydatną przy podejmowaniu wstępnej decyzji, na jaki kredyt cię stać. Ranking ma charakter informacyjny i nie stanowi rekomendacji ani pełnego przeglądu rynku. Nie stanowi również porady finansowej ani oferty w rozumieniu przepisów KC. Publikacja zawiera informacje dotyczące produktów naszych partnerów, z którymi współpracujemy na podstawie zawieranych umów. Współpraca ta może wpływać na kolejność prezentowanych produktów. Szczegółowe aspekty tworzenia, publikowania oraz aktualizacji rankingów produktów finansowych znajdziesz w naszej „Polityce tworzenia i publikowania rankingów produktów finansowych w serwisach Bonnier Business (Polska) Sp. z o.o.",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 23,
+          "images": 130,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 1
+        },
+        "extractor": "trafilatura",
+        "etv": 21433.88500112295,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.erste.pl/klient-indywidualny/kredyty/kredyt-mieszkaniowy",
+        "rank": 5,
+        "domain": "www.erste.pl",
+        "title": "Kredyt hipoteczny – mieszkaniowy, kalkulator zdolności ...",
+        "description": "Kalkulator kredytu mieszkaniowego. Oblicz swoją ratę. Nie jestem klientem ... Raty malejące – jeśli raty Twojego kredytu są coraz niższe. Równe. Malejące.",
+        "headings": [
+          "H2: Planujesz kredyt hipoteczny?",
+          "H2: Masz kredyt hipoteczny w Erste?",
+          "H2: Na jaki cel możesz wziąć",
+          "H2: Kalkulator kredytu mieszkaniowego",
+          "H3: Nie jestem klientem",
+          "H3: Jestem klientem",
+          "H2: Parametry kredytu mieszkaniowego",
+          "H2: Więcej o kredycie mieszkaniowym",
+          "H3: Kwota kredytu",
+          "H3: Oprocentowanie",
+          "H3: Wskaźnik referencyjny",
+          "H4: Wskaźnik referencyjny, który jest podstawą oprocentowania zmiennego dla kredytu hipotecznego",
+          "H4: Jakie są różnice pomiędzy POLSTR 1M Stopa Składana a WIBOR 3M?",
+          "H3: Dodatkowe informacje",
+          "H3: Zabezpieczenie kredytu",
+          "H2: Dowiedz się jak otrzymać kredyt hipoteczny",
+          "H2: Opłaty i dokumenty",
+          "H2: Sprawdź inne produkty z naszej oferty",
+          "H2: Przykład reprezentatywny dla kredytu mieszkaniowego",
+          "H2: Informacje do przykładów reprezentatywnych",
+          "H2: Informacje dodatkowe"
+        ],
+        "highlighted": [
+          "Kalkulator kredytu mieszkaniowego"
+        ],
+        "word_count": 2001,
+        "char_count": 15022,
+        "digest": "headings: Planujesz kredyt hipoteczny?; Masz kredyt hipoteczny w Erste?; Na jaki cel możesz wziąć; Kalkulator kredytu mieszkaniowego; Nie jestem klientem; Jestem klientem; Parametry kredytu mieszkaniowego; Więcej o kredycie mieszkaniowym | text: Opcja \"kredyt hipoteczny\" pod numerem 1 9999 lub +48 61 81 1 9999 (dla połączeń z zagranicy) jest dostępna w dni robocze w godzinach Dodatkowo do 30% poży",
+        "excerpt": "- **Okres kredytowania** do 30 lat. Spłata w ratach**równych lub malejących** - **Elastyczne warunki** – finansujemy do 90% wartości nieruchomości - **Oprocentowanie stałe** w okresie pierwszych 5 lat**lub zmienne** - Oferta specjalna dla **klientów Erste Platinum Sprawdź tutaj Uruchomi się w nowym oknie** ## Planujesz kredyt hipoteczny? - ### Porozmawiaj ze specjalistąZadzwoń pod numer **61 885 15 96** w godzinach 8:00 -18:00 od poniedziałku do piątku - nasz specjalista przedstawi szczegóły oferty.Możesz też zostawić nam swój numer - oddzwonimy. ## Masz kredyt hipoteczny w Erste? Opcja \"kredyt hipoteczny\" pod numerem 1 9999 lub +48 61 81 1 9999 (dla połączeń z zagranicy) jest dostępna w dni robocze w godzinach **od 8:00 do 18:00**. Koszt połączenia zgodny z taryfą danego operatora. ## Na jaki cel możesz wziąć kredyt mieszkaniowy (RRSO 7,69%) - ### Na zakup nieruchomościKredyt mieszkaniowy możesz przeznaczyć na zakup: - mieszkania - domu - lub działki - ### Na budowę domuPlanujesz budowę domu? Sprawdź czy możesz ją sfinansować. - ### Na inny celKredyt mieszkaniowy możesz przeznaczyć na dowolny cel m.in: - spłatę kredytu mieszkaniowego w innym banku, - remont domu lub mieszkania, Dodatkowo do 30% pożyczonych pieniędzy możesz przeznaczyć na: - wyposażenie mieszkania lub domu - dowolne cele nie mieszkaniowe ## Kalkulator kredytu mieszkaniowego Oblicz swoją ratę ### Nie jestem klientem Oblicz swoją ratę Sprawdź zdolność kredytową Symulacja ma charakter informacyjny i nie stanowi ",
+        "elements": {
+          "tables": 2,
+          "ordered_lists": 10,
+          "unordered_lists": 35,
+          "images": 20,
+          "videos": 0,
+          "faq": 1,
+          "forms": 6,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 23685.568895995617,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://notus.pl/kalkulatory-kredytowe/kalkulator-raty-kredytowej/",
+        "rank": 6,
+        "domain": "notus.pl",
+        "title": "Kalkulator kredytu hipotecznego - oblicz ratę kredytu",
+        "description": "Kalkulator hipoteczny pozwala oszacować wysokość miesięcznych rat kredytu wraz z odsetkami. Jest to proste narzędzie dostępne online. Mogą z niego skorzystać ...",
+        "headings": [
+          "H1: Kalkulator **kredytu hipotecznego – oblicz ratę kredytu hipotecznego**",
+          "H2: **Czym jest kredyt hipoteczny?**",
+          "H2: **Jakie warunki trzeba spełnić, starając się o kredyt na mieszkanie lub dom?**",
+          "H3: **Wysokość miesięcznej raty kredytu a zdolność kredytowa**",
+          "H3: **Kredyt na dom lub mieszkanie a wkład własny**",
+          "H3: **Rodzinny kredyt mieszkaniowy**",
+          "H2: **Dlaczego warto obliczyć ratę kredytu hipotecznego przed złożeniem wniosku?**",
+          "H2: **Jak działa kalkulator kredytu hipotecznego?**",
+          "H2: **Jakie dane uwzględnia kalkulator kredytowy?**",
+          "H2: **Czy spłaty kredytu hipotecznego będą takie same, jak obliczy kalkulator?**",
+          "H2: **Co wpływa na całkowity koszt kredytu mieszkaniowego?**",
+          "H3: **Zmiany oprocentowania kredytu hipotecznego a wysokość odsetek**",
+          "H3: **Inne parametry kredytu – raty stałe i malejące**",
+          "H3: **Pozostałe możliwe koszty kredytu hipotecznego**",
+          "H2: **Kalkulator kredytu hipotecznego – FAQ**"
+        ],
+        "highlighted": [
+          "Kalkulator hipoteczny pozwala oszacować wysokość miesięcznych rat kredytu wraz z odsetkami"
+        ],
+        "word_count": 1524,
+        "char_count": 11881,
+        "digest": "headings: Kalkulator **kredytu hipotecznego – oblicz ratę kredytu hipotecznego**; **Czym jest kredyt hipoteczny?**; **Jakie warunki trzeba spełnić, starając się o kredyt na mieszkanie lub dom?**; **Wysokość miesięcznej raty kredytu a zdolność kredytowa**; **Kredyt na dom lub mieszkanie a wkład własny**; **Rodzinny kredyt mieszkaniowy**; **Dlaczego warto obliczyć ratę kredytu hipotecznego przed zło",
+        "excerpt": "# Kalkulator **kredytu hipotecznego – oblicz ratę kredytu hipotecznego** Kredyt zabezpieczony hipoteką jest pożyczką długoterminową, dlatego decyzję o jego zaciągnięciu warto dokładnie przemyśleć. Zanim zdecydujesz się na złożenie wniosku, możesz uzyskać wstępne informacje dotyczące wysokości przyszłych rat. Pozwala na to m.in. kalkulator kredytu hipotecznego. Przybliżamy szczegóły dotyczące działania takiego narzędzia i samych kredytów! ## **Czym jest kredyt hipoteczny?** Zgodnie z definicją kredyt hipoteczny jest długoterminowym kredytem bankowym – można uzyskać go wyłącznie w banku, a instytucje prywatne (parabanki) go nie udzielają. Pożyczka taka zabezpieczona jest ustanowioną hipoteką wpisaną do księgi wieczystej danej nieruchomości. Celem hipoteki jest zwiększenie bezpieczeństwa kredytu dla banku. Kredyt taki jest pożyczką celową. W odróżnieniu od kredytu gotówkowego nie możesz więc przeznaczyć pozyskanego finansowania na cokolwiek, a jedynie na konkretny cel. Może nim być zakup mieszkania lub domu, nabycie działki i budowa, zakup lokalu, modernizacja, remont lub doposażenie. Co ważne, już na etapie składania wniosku musisz dokładnie wiedzieć, jaką nieruchomość chcesz kupić oraz znać jej dokładną wartość. ## **Jakie warunki trzeba spełnić, starając się o kredyt na mieszkanie lub dom?** Kredyt na dom lub mieszkanie spłaca się przez wiele lat – maksymalnie 35 lat. Ze względu na jego przeznaczenie, jakim jest zakup lub budowa nieruchomości, jego wartość jest zwykle bardzo ",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 4,
+          "images": 2,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 6460.30497866869,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://www.ing.pl/indywidualni/kredyty-i-pozyczki/kredyt-hipoteczny/kalkulator-kredytowy",
+        "rank": 7,
+        "domain": "www.ing.pl",
+        "title": "Kalkulator kredytowy ING - oblicz ratę kredytu hipotecznego",
+        "description": "Kalkulator kredytowy pomoże Ci wyliczyć orientacyjną ratę kredytu hipotecznego na Twoje nowe mieszkanie oraz sprawdzić zdolność kredytową.",
+        "headings": [
+          "H1: Kalkulator kredytowy",
+          "H2: Oblicz ratę i zdolność kredytową",
+          "H3: Kalkulator kredytu hipotecznego jest chwilowo niedostępny :(",
+          "H2: **Nasz ekspert hipoteczny oszacuje Twoją zdolność kredytową i pomoże Ci złożyć wniosek**",
+          "H2: Wybierz temat rozmowy",
+          "H3: Nie mam jeszcze kredytu hipotecznego w ING",
+          "H3: Mam już kredyt hipoteczny w ING",
+          "H2: Spotkanie w sprawie nowego kredytu",
+          "H3: Umów kontakt lub spotkanie wideo z naszym ekspertem hipotecznym",
+          "H3: Potrzebujesz szybkiej rozmowy?",
+          "H2: Spotkanie w sprawie posiadanego kredytu",
+          "H3: Umów spotkanie z ekspertem hipotecznym ING",
+          "H2: Przykłady reprezentatywne",
+          "H3: Oferty z oprocentowaniem zmiennym",
+          "H2: Jesień na swoim łatwy start – edycja 1 - Łatwy start",
+          "H2: Jesień na swoim lekka rata – edycja 1 - Lekka rata",
+          "H2: Oferta Kredyt hipoteczny na dom energooszczędny",
+          "H2: Oferta Kredyt hipoteczny na energooszczędną modernizację nieruchomości",
+          "H2: Oferta standardowa",
+          "H2: Oferta standardowa - łatwy start",
+          "H2: Oferta standardowa - lekka rata",
+          "H3: Oferty z oprocentowaniem stałym przez 5 lat",
+          "H2: Jesień na swoim łatwy start – edycja 1",
+          "H2: Jesień na swoim lekka rata – edycja 1",
+          "H2: Oferta Kredyt hipoteczny na dom energooszczędny",
+          "H2: Oferta Kredyt hipoteczny na energooszczędną modernizację nieruchomości",
+          "H2: Oferta standardowa",
+          "H2: Oferta standardowa - Łatwy start",
+          "H2: Oferta standardowa - Lekka rata"
+        ],
+        "highlighted": [
+          "Kalkulator kredytowy pomoże Ci wyliczyć orientacyjną ratę kredytu hipotecznego"
+        ],
+        "word_count": 3987,
+        "char_count": 26927,
+        "digest": "headings: Kalkulator kredytowy; Oblicz ratę i zdolność kredytową; Kalkulator kredytu hipotecznego jest chwilowo niedostępny :(; **Nasz ekspert hipoteczny oszacuje Twoją zdolność kredytową i pomoże Ci złożyć wniosek**; Wybierz temat rozmowy; Nie mam jeszcze kredytu hipotecznego w ING; Mam już kredyt hipoteczny w ING; Spotkanie w sprawie nowego kredytu | text: Chcę wziąć kredyt hipoteczny - poznać o",
+        "excerpt": "# Kalkulator kredytowy ## Oblicz ratę i zdolność kredytową ### Kalkulator kredytu hipotecznego jest chwilowo niedostępny :( Pracujemy nad jego przywróceniem. Przepraszamy za utrudnienia. ## **Nasz ekspert hipoteczny oszacuje Twoją zdolność kredytową i pomoże Ci złożyć wniosek** ## Wybierz temat rozmowy ### Nie mam jeszcze kredytu hipotecznego w ING Chcę wziąć kredyt hipoteczny - poznać ofertę, sprawdzić zdolność kredytową lub złożyć wniosek. ### Mam już kredyt hipoteczny w ING Chcę porozmawiać o swoim kredycie lub załatwić sprawę związaną z jego obsługą. ## Spotkanie w sprawie nowego kredytu ### Umów kontakt lub spotkanie wideo z naszym ekspertem hipotecznym Poznasz naszą ofertę, sprawdzisz zdolność kredytową i złożysz wniosek. Dowiedz się więcej o spotkaniu wideo ### Potrzebujesz szybkiej rozmowy? Nasi eksperci są do Twojej dyspozycji: od poniedziałku do piątku w godzinach 9:00-20:00 w soboty w godzinach 12:00-16:00 ## Spotkanie w sprawie posiadanego kredytu ### Umów spotkanie z ekspertem hipotecznym ING Będzie ono dotyczyć informacji lub obsługi Twojego kredytu. Potrzebujesz gotówki na dowolny cel? Sprawdź ofertę pożyczki gotówkowej. ## Przykłady reprezentatywne ### Oferty z oprocentowaniem zmiennym Rzeczywista Roczna Stopa Oprocentowania (RRSO) 6,06%, dla kredytu hipotecznego w ofercie Jesień na swoim łatwy start – edycja 1 z oprocentowaniem zmiennym, przy założeniach: okres kredytowania 16 lat i 11 miesięcy, całkowita kwota kredytu zabezpieczonego hipoteką (bez kredytowan",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 2,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 20607.695745289326,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r08",
+        "url": "https://www.pkobp.pl/klient-indywidualny/kredyty-pozyczki/kredyt-hipoteczny?srsltid=AU7gw4V3vGKQ3N5muzWBCDgPPnV8igFnNNpBJHdesxfidBO23VwZF5Fx",
+        "rank": 8,
+        "domain": "www.pkobp.pl",
+        "title": "Kredyt hipoteczny Własny Kąt",
+        "description": "Kredyt hipoteczny na budowę lub zakup domu, mieszkania lub działki ✓ Sprawdź korzystne warunki kredytów i oblicz ratę przy pomocy kalkulatora kredytu ...",
+        "headings": [
+          "H2: Co zyskujesz z kredytem hipotecznym?",
+          "H3: Indywidualna marża",
+          "H3: Bez zaświadczenia o zatrudnieniu od pracodawcy",
+          "H3: W oddziale i online",
+          "H3: Część kredytu na dowolny cel",
+          "H3: Dopasowany czas spłaty",
+          "H2: Weź kredyt hipoteczny",
+          "H3: Online",
+          "H3: W oddziale",
+          "H2: Zobacz, jak wziąć kredyt hipoteczny online",
+          "H2: Ile zapłacisz?",
+          "H3: Ocena wartości nieruchomości",
+          "H3: Pozostałe opłaty",
+          "H2: Pytania i odpowiedzi",
+          "H2: Dokumenty do pobrania"
+        ],
+        "highlighted": [
+          "oblicz ratę przy pomocy kalkulatora kredytu"
+        ],
+        "word_count": 1558,
+        "char_count": 11522,
+        "digest": "headings: Co zyskujesz z kredytem hipotecznym?; Indywidualna marża; Bez zaświadczenia o zatrudnieniu od pracodawcy; W oddziale i online; Część kredytu na dowolny cel; Dopasowany czas spłaty; Weź kredyt hipoteczny; Online | text: Od 3 września oferujemy kredyty hipoteczne z uwzględnieniem wskaźnika referencyjnego Możesz mieć niższą marżę, jeśli masz lub będziesz mieć inne produkty w banku Teraz wys",
+        "excerpt": "**Ważne** Od 3 września oferujemy kredyty hipoteczne z uwzględnieniem wskaźnika referencyjnego **POLSTR 1M Stopa Składana**. ## Co zyskujesz z kredytem hipotecznym? ### Indywidualna marża Możesz mieć niższą marżę, jeśli masz lub będziesz mieć inne produkty w banku ### Bez zaświadczenia o zatrudnieniu od pracodawcy Teraz wystarczy tylko Twoje oświadczenie, które wypełnisz, kiedy będziesz wnioskować o kredyt ### W oddziale i online Złóż wniosek o kredyt hipoteczny w dowolnym oddziale lub online ### Część kredytu na dowolny cel Przeznaczysz do 25% kwoty na co tylko chcesz ### Dopasowany czas spłaty Raty rozłożysz nawet na 35 lat **Teraz oprocentowanie stałe niższe o 0,8 p.p. przez 5 lat**(oferta dotyczy formularzy informacyjnych wygenerowanych od 18.09 do 2.10.2026 r., a także propozycji cenowych Cyfrowego Kredytu Hipotecznego przedstawionych od 18.09 do 2.10.2026 r.) ## Weź kredyt hipoteczny ### Online - 1#### Oblicz ratęPrzejdź do kalkulatora i wybierz **Sprawdź propozycję online.** Jeśli jesteś naszym klientem, możesz zalogować się do serwisu iPKO. Odpowiedz na kilka pytań i sprawdź propozycję kredytu dopasowaną do Twoich potrzeb. - 2#### Złóż wniosekGdy zweryfikujemy wniosek, przekażemy Ci decyzję w serwisie iPKO i e-mailem - 3#### Zatwierdź umowęPodpisz umowę i uruchom kredyt online bez wychodzenia z domu ### W oddziale - 1#### Porozmawiaj z ekspertemWybierz dogodny termin i porozmawiaj z naszym ekspertem – przez telefon lub w wybranym oddziale. Przygotujemy dla Ciebie prop",
+        "elements": {
+          "tables": 1,
+          "ordered_lists": 0,
+          "unordered_lists": 16,
+          "images": 50,
+          "videos": 0,
+          "faq": 1,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r09",
+        "url": "https://www.lendi.pl/kredyty-hipoteczne",
+        "rank": 9,
+        "domain": "www.lendi.pl",
+        "title": "Kalkulator rat kredytu hipotecznego - ranking [2026]",
+        "description": "Najprostszym sposobem jest skorzystanie z kalkulatora rat kredytu hipotecznego. Wystarczy wpisać: wartość nieruchomości, wkład własny, wysokość kredytu, okres ...",
+        "headings": [
+          "H1: Kredyt hipoteczny • kalkulator i ranking 2026. Oblicz raty kredytu!",
+          "H2: Skorzystaj z kalkulatora rat, porównaj oferty i umów spotkanie z ekspertem finansowym Lendi",
+          "H2: Jak analizować koszty i RRSO w kalkulatorze rat?",
+          "H3: Jakie korzyści oferuje ekspert finansowy?",
+          "H3: Bezpieczna droga do własnego mieszkania",
+          "H3: Porównanie kredytów hipotecznych z wiodących banków",
+          "H3: Darmowe wsparcie eksperta na każdym kroku",
+          "H3: Przydatne i aktualne porady dla kredytobiorców",
+          "H3: Wszystkie potrzebne wyliczenia w jednym miejscu",
+          "H2: Kompleksowy poradnik kredytobiorcy 2026 - co musisz wiedzieć?",
+          "H2: Często zadawane pytania",
+          "H2: Praktyczne wskazówki dla starających się o kredyt",
+          "H2: Ile wyniesie miesięczna rata kredytu hipotecznego?<sup>*</sup>",
+          "H3: Najkorzystniejsza oferta dla: kredyt hipoteczny 200 000 zł na 10 lat",
+          "H2: BOŚ Bank • Kredyt hipoteczny",
+          "H2: Twój Dom Plus",
+          "H2: Ile trzeba zarabiać, żeby dostać kredyt hipoteczny?"
+        ],
+        "highlighted": [
+          "rat kredytu",
+          "kredytu"
+        ],
+        "word_count": 619,
+        "char_count": 4871,
+        "digest": "headings: Kredyt hipoteczny • kalkulator i ranking 2026. Oblicz raty kredytu!; Skorzystaj z kalkulatora rat, porównaj oferty i umów spotkanie z ekspertem finansowym Lendi; Jak analizować koszty i RRSO w kalkulatorze rat?; Jakie korzyści oferuje ekspert finansowy?; Bezpieczna droga do własnego mieszkania; Porównanie kredytów hipotecznych z wiodących banków; Darmowe wsparcie eksperta na każdym kroku",
+        "excerpt": "# Kredyt hipoteczny • kalkulator i ranking 2026. Oblicz raty kredytu! ## Skorzystaj z kalkulatora rat, porównaj oferty i umów spotkanie z ekspertem finansowym Lendi ## Jak analizować koszty i RRSO w kalkulatorze rat? W kalkulatorze rat kredytów hipotecznych istnieje możliwość **porównania ofert pod różnymi kątami**. Istotne jest przede wszystkim spojrzenie na koszt całkowity. Różnica w całkowitym koszcie kredytu między najtańszą a najdroższą ofertą w rankingu wynosi kilkadziesiąt tysięcy złotych. Dlatego **ranking kredytu hipotecznego** jest uporządkowany według rosnącego kosztu całkowitego kredytu. Dodatkowo, warto zestawić wyniki pod względem wysokości miesięcznych rat, aby ocenić, jakie obciążenie finansowe poniesiemy miesięcznie. Należy również zwrócić uwagę na wysokość RRSO, co może dostarczyć dodatkowych informacji. Zyskując informacje z kalkulatora, kredytobiorca może lepiej przygotować się finansowo do ewentualnego zobowiązania. Należy pamiętać, że parametry podane przez kalkulator rat kredytu hipotecznego są jedynie symulacją i mogą różnić się od aktualnych ofert przygotowywanych przez banki, które uwzględniają, między innymi, zdolność kredytową klienta. Dlatego uzyskane wyniki należy traktować wyłącznie orientacyjnie, gdyż ostateczne warunki wybranego kredytu hipotecznego mogą być inne. Aby uzyskać wiążące oferty, zaleca się kontakt z konkretnymi bankami. ### Jakie korzyści oferuje ekspert finansowy? Eksperci oferują **bezpłatne wsparcie na każdym etapie** - od osza",
+        "elements": {
+          "tables": 1,
+          "ordered_lists": 0,
+          "unordered_lists": 19,
+          "images": 32,
+          "videos": 0,
+          "faq": 1,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 23409.732900619507,
+        "fetch_status": "ok"
+      }
+    ],
+    "keyword": "kalkulator raty kredytu",
+    "language": "pl",
+    "location": "2616",
+    "people_also_ask": [
+      "Jak samemu obliczyć ratę kredytu?",
+      "Ile wynosi rata kredytu 300.000 zł na 30 lat?",
+      "Ile wynosi rata kredytu 200 tys. na 10 lat?",
+      "Ile wynosi rata kredytu 500 tys. na 35 lat?"
+    ],
+    "related_searches": [
+      "Kalkulator raty kredytu hipotecznego",
+      "Szczegółowy kalkulator kredytu hipotecznego",
+      "Kalkulator raty kredytu gotówkowego",
+      "Kalkulator raty kredytu PKO",
+      "Kalkulator zdolności kredytowej",
+      "Kalkulator nadpłaty kredytu hipotecznego",
+      "Kalkulator zdolności kredytu hipotecznego",
+      "Darmowy kalkulator kredytu hipotecznego"
+    ],
+    "ai_overview": "Możesz obliczyć orientacyjną ratę za pomocą Kalkulatora kredytu hipotecznego Bankier.pl. Jak działa kalkulator rat kredytu? Wpisujesz dane : podajesz kwotę kredytu, okres spłaty (np. w latach) oraz oprocentowanie. Wybierasz rodzaj rat : równe (anuitetowe) lub malejące (kapitałowe). Wynik symulacji : narzędzie pokazuje wysokość miesięcznej raty oraz łączny koszt odsetek. Co warto przygotować przed obliczeniami? Kwotę potrzebną na wkład własny (zazwyczaj minimum 10% wartości nieruchomości). Szacowaną wartość kupowanej nieruchomości. Aktualne stawki oprocentowania zmiennego lub stałego oferowane przez banki. Jeśli podasz mi planowaną kwotę kredytu, okres spłaty oraz szacowane oprocentowanie, pomogę Ci wstępnie oszacować wysokość raty.",
+    "item_types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "related_searches"
+    ],
+    "checked_at": "2026-09-30 09:12:08 +00:00"
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Obliczenie raty kredytu",
+        "searcher_goal": "Wyszukujący chce obliczyć wysokość raty na podstawie kwoty, oprocentowania, okresu spłaty i rodzaju rat.",
+        "form": "interaktywny kalkulator rat z parametrami kredytu",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01"
+        ],
+        "evidence": "GOFIN udostępnia kalkulator obliczający poszczególne raty na podstawie oprocentowania, okresu kredytowania i rodzaju rat.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Symulacja raty kredytu hipotecznego",
+        "searcher_goal": "Wyszukujący chce oszacować ratę kredytu mieszkaniowego, a często także sprawdzić zdolność kredytową lub porównać oferty.",
+        "form": "kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r02",
+          "r04",
+          "r05",
+          "r06",
+          "r07",
+          "r08",
+          "r09"
+        ],
+        "evidence": "Wyniki oferują kalkulatory kredytu hipotecznego, a część z nich dodatkowo pokazuje zdolność kredytową, oferty banków lub kontakt z ekspertem.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Sprawdzenie wpływu zmiany oprocentowania",
+        "searcher_goal": "Wyszukujący chce sprawdzić, jak zmiana oprocentowania wpłynie na ratę już spłacanego kredytu hipotecznego.",
+        "form": "kalkulator scenariuszy zmiany oprocentowania",
+        "intent_type": "informational",
+        "result_ids": [
+          "r03"
+        ],
+        "evidence": "Kalkulator UOKiK pozwala wprowadzić parametry istniejącego kredytu i porównać raty, w tym sprawdzić wpływ zmiany stopy procentowej.",
+        "basis": "model"
+      }
+    ],
+    "expected_genre": "Zestaw narzędzi finansowych, głównie kalkulatory online, z dodatkowymi elementami porównania ofert i poradnictwa hipotecznego",
+    "page_types": [
+      {
+        "page_type": "Kalkulator kredytowy",
+        "result_ids": [
+          "r01"
+        ]
+      },
+      {
+        "page_type": "Kalkulator hipoteczny z ofertami lub poradnictwem",
+        "result_ids": [
+          "r02",
+          "r04",
+          "r06",
+          "r09"
+        ]
+      },
+      {
+        "page_type": "Kalkulator zmiany oprocentowania",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "page_type": "Strona produktu bankowego z kalkulatorem",
+        "result_ids": [
+          "r05",
+          "r08"
+        ]
+      },
+      {
+        "page_type": "Strona banku z kalkulatorem i kontaktem z ekspertem",
+        "result_ids": [
+          "r07"
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "Obliczanie raty kredytu hipotecznego",
+        "result_ids": [
+          "r02",
+          "r04",
+          "r05",
+          "r06",
+          "r07",
+          "r09"
+        ]
+      },
+      {
+        "theme": "Zdolność kredytowa",
+        "result_ids": [
+          "r02",
+          "r04",
+          "r05",
+          "r06",
+          "r07"
+        ]
+      },
+      {
+        "theme": "Parametry kredytu mieszkaniowego",
+        "result_ids": [
+          "r05"
+        ]
+      },
+      {
+        "theme": "Warunki uzyskania kredytu i wkład własny",
+        "result_ids": [
+          "r06",
+          "r09"
+        ]
+      },
+      {
+        "theme": "Porównanie ofert, koszty i RRSO",
+        "result_ids": [
+          "r04",
+          "r09"
+        ]
+      },
+      {
+        "theme": "Wpływ zmiany oprocentowania na ratę",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "theme": "Rodzaje rat kredytowych",
+        "result_ids": [
+          "r01",
+          "r03",
+          "r05"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "GOFIN",
+      "mFinanse",
+      "UOKiK",
+      "Bankier.pl",
+      "Erste",
+      "Notus",
+      "ING",
+      "PKO Bank Polski",
+      "Lendi"
+    ],
+    "subject_brands": [],
+    "ai_overview_signal": {
+      "present": true,
+      "interpretation": "Przegląd AI kieruje do kalkulatora hipotecznego Bankier.pl i objaśnia podstawowe dane wejściowe, rodzaje rat oraz wynik symulacji. Potwierdza oczekiwanie na natychmiastowe narzędzie obliczeniowe, a nie sam opis kredytu."
+    },
+    "article_fits": {
+      "value": false,
+      "reason": "Główną potrzebę najlepiej zaspokaja interaktywny kalkulator, który przelicza ratę po zmianie parametrów; artykuł może jedynie objaśnić wyniki lub uzupełnić narzędzie."
+    },
+    "useful_elements": [
+      {
+        "element": "Interaktywny kalkulator kwoty, oprocentowania i okresu spłaty",
+        "job": "Pozwala szybko obliczyć orientacyjną ratę dla własnych parametrów."
+      },
+      {
+        "element": "Przełącznik rat równych i malejących",
+        "job": "Umożliwia porównanie wysokości rat i kosztu odsetek dla różnych sposobów spłaty."
+      },
+      {
+        "element": "Tabela harmonogramu rat i kosztu całkowitego",
+        "job": "Pokazuje, jak rozkładają się raty oraz ile wyniesie suma odsetek lub spłat."
+      },
+      {
+        "element": "Pola wkładu własnego i wartości nieruchomości",
+        "job": "Pomagają oszacować parametry kredytu mieszkaniowego i potrzebną kwotę finansowania."
+      },
+      {
+        "element": "Porównanie scenariuszy oprocentowania",
+        "job": "Ułatwia ocenę, jak zmiana stopy procentowej wpłynie na ratę."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Sam artykuł opisowy bez kalkulatora",
+        "reason": "Nie pozwoli wyszukującemu obliczyć raty dla własnej kwoty, okresu i oprocentowania."
+      },
+      {
+        "element": "Ogólna oferta kredytowa bez wyniku symulacji",
+        "reason": "Nie odpowiada bezpośrednio na potrzebę sprawdzenia wysokości raty."
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Jak samemu obliczyć ratę kredytu?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r04"
+        ]
+      },
+      {
+        "question": "Ile wynosi rata kredytu 300 000 zł na 30 lat?",
+        "source": "paa",
+        "result_ids": [
+          "r04",
+          "r06",
+          "r07"
+        ]
+      },
+      {
+        "question": "Ile wynosi rata kredytu 200 tys. zł na 10 lat?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r04"
+        ]
+      },
+      {
+        "question": "Ile wynosi rata kredytu 500 tys. zł na 35 lat?",
+        "source": "paa",
+        "result_ids": [
+          "r04",
+          "r06",
+          "r09"
+        ]
+      },
+      {
+        "question": "Jak zmieni się rata przy zmianie stopy procentowej?",
+        "source": "heading",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "question": "Jakie dane są potrzebne do obliczenia raty kredytu hipotecznego?",
+        "source": "related",
+        "result_ids": [
+          "r04",
+          "r06",
+          "r09"
+        ]
+      }
+    ],
+    "summary": "Wyniki odpowiadają przede wszystkim na potrzebę obliczenia raty, zwłaszcza kredytu hipotecznego, i wskazują na kalkulator jako oczekiwaną formę odpowiedzi. Część stron rozszerza symulację o zdolność kredytową, porównanie ofert lub kontakt z doradcą, a kalkulator UOKiK obsługuje odrębny scenariusz zmiany oprocentowania.",
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 9,
+    "results_fetched": 9,
+    "has_ranks": true,
+    "traffic_known": 8,
+    "shared_results": [],
+    "words": {
+      "n": 9,
+      "min": 403,
+      "p10": 403,
+      "p25": 619,
+      "p50": 1558,
+      "p75": 3456,
+      "p90": 4798,
+      "max": 4798
+    },
+    "chars": {
+      "n": 9,
+      "min": 2058,
+      "p10": 2058,
+      "p25": 4871,
+      "p50": 11881,
+      "p75": 25861,
+      "p90": 36032,
+      "max": 36032
+    },
+    "intents": {
+      "i1": {
+        "count": 1,
+        "coverage": 0.1111,
+        "answer_share": 0.1111,
+        "traffic_share": 0.1515,
+        "ranks": [
+          1
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "words": {
+          "n": 1,
+          "min": 447,
+          "p10": 447,
+          "p25": 447,
+          "p50": 447,
+          "p75": 447,
+          "p90": 447,
+          "max": 447
+        },
+        "chars": {
+          "n": 1,
+          "min": 3533,
+          "p10": 3533,
+          "p25": 3533,
+          "p50": 3533,
+          "p75": 3533,
+          "p90": 3533,
+          "max": 3533
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 1.0,
+          "tables": 1.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i2": {
+        "count": 7,
+        "coverage": 0.7778,
+        "answer_share": 0.7778,
+        "traffic_share": 0.7039,
+        "ranks": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "best_rank": 2,
+        "top3_count": 1,
+        "words": {
+          "n": 7,
+          "min": 619,
+          "p10": 619,
+          "p25": 1524,
+          "p50": 2001,
+          "p75": 3987,
+          "p90": 4798,
+          "max": 4798
+        },
+        "chars": {
+          "n": 7,
+          "min": 4871,
+          "p10": 4871,
+          "p25": 11522,
+          "p50": 15022,
+          "p75": 26927,
+          "p90": 36032,
+          "max": 36032
+        },
+        "elements": {
+          "faq": 0.43,
+          "forms": 0.71,
+          "images": 1.0,
+          "inputs": 0.29,
+          "ordered_lists": 0.14,
+          "tables": 0.43,
+          "unordered_lists": 0.86,
+          "videos": 0.0,
+          "n": 7
+        }
+      },
+      "i3": {
+        "count": 1,
+        "coverage": 0.1111,
+        "answer_share": 0.1111,
+        "traffic_share": 0.1446,
+        "ranks": [
+          3
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 1,
+          "min": 403,
+          "p10": 403,
+          "p25": 403,
+          "p50": 403,
+          "p75": 403,
+          "p90": 403,
+          "max": 403
+        },
+        "chars": {
+          "n": 1,
+          "min": 2058,
+          "p10": 2058,
+          "p25": 2058,
+          "p50": 2058,
+          "p75": 2058,
+          "p90": 2058,
+          "max": 2058
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      }
+    },
+    "page_types": [
+      {
+        "page_type": "Kalkulator hipoteczny z ofertami lub poradnictwem",
+        "count": 4,
+        "coverage": 0.4444,
+        "ranks": [
+          2,
+          4,
+          6,
+          9
+        ]
+      },
+      {
+        "page_type": "Strona produktu bankowego z kalkulatorem",
+        "count": 2,
+        "coverage": 0.2222,
+        "ranks": [
+          5,
+          8
+        ]
+      },
+      {
+        "page_type": "Kalkulator kredytowy",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          1
+        ]
+      },
+      {
+        "page_type": "Kalkulator zmiany oprocentowania",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          3
+        ]
+      },
+      {
+        "page_type": "Strona banku z kalkulatorem i kontaktem z ekspertem",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          7
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "Obliczanie raty kredytu hipotecznego",
+        "count": 6,
+        "coverage": 0.6667,
+        "ranks": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          9
+        ]
+      },
+      {
+        "theme": "Zdolność kredytowa",
+        "count": 5,
+        "coverage": 0.5556,
+        "ranks": [
+          2,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "theme": "Rodzaje rat kredytowych",
+        "count": 3,
+        "coverage": 0.3333,
+        "ranks": [
+          1,
+          3,
+          5
+        ]
+      },
+      {
+        "theme": "Warunki uzyskania kredytu i wkład własny",
+        "count": 2,
+        "coverage": 0.2222,
+        "ranks": [
+          6,
+          9
+        ]
+      },
+      {
+        "theme": "Porównanie ofert, koszty i RRSO",
+        "count": 2,
+        "coverage": 0.2222,
+        "ranks": [
+          4,
+          9
+        ]
+      },
+      {
+        "theme": "Parametry kredytu mieszkaniowego",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          5
+        ]
+      },
+      {
+        "theme": "Wpływ zmiany oprocentowania na ratę",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          3
+        ]
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "Ile wynosi rata kredytu 300 000 zł na 30 lat?",
+        "count": 3,
+        "coverage": 0.3333,
+        "ranks": [
+          4,
+          6,
+          7
+        ]
+      },
+      {
+        "question": "Ile wynosi rata kredytu 500 tys. zł na 35 lat?",
+        "count": 3,
+        "coverage": 0.3333,
+        "ranks": [
+          4,
+          6,
+          9
+        ]
+      },
+      {
+        "question": "Jakie dane są potrzebne do obliczenia raty kredytu hipotecznego?",
+        "count": 3,
+        "coverage": 0.3333,
+        "ranks": [
+          4,
+          6,
+          9
+        ]
+      },
+      {
+        "question": "Jak samemu obliczyć ratę kredytu?",
+        "count": 2,
+        "coverage": 0.2222,
+        "ranks": [
+          1,
+          4
+        ]
+      },
+      {
+        "question": "Ile wynosi rata kredytu 200 tys. zł na 10 lat?",
+        "count": 2,
+        "coverage": 0.2222,
+        "ranks": [
+          1,
+          4
+        ]
+      },
+      {
+        "question": "Jak zmieni się rata przy zmianie stopy procentowej?",
+        "count": 1,
+        "coverage": 0.1111,
+        "ranks": [
+          3
+        ]
+      }
+    ]
+  },
+  "form": {
+    "dominant_intent_id": "i2",
+    "dominant_intent_title": "Symulacja raty kredytu hipotecznego",
+    "dominant_intent_form": "kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją",
+    "dominant_intent_answer_share": 0.7778,
+    "dominant_intent_coverage": 0.7778,
+    "top_page_type": "Kalkulator hipoteczny z ofertami lub poradnictwem",
+    "dominant_by_traffic_id": "i2",
+    "expected_genre": "Zestaw narzędzi finansowych, głównie kalkulatory online, z dodatkowymi elementami porównania ofert i poradnictwa hipotecznego",
+    "expected_genre_withheld": null,
+    "article_fits": {
+      "value": false,
+      "reason": "Główną potrzebę najlepiej zaspokaja interaktywny kalkulator, który przelicza ratę po zmianie parametrów; artykuł może jedynie objaśnić wyniki lub uzupełnić narzędzie."
+    },
+    "length_basis": "median_of_dominant_intent_pages",
+    "length_words": {
+      "p25": 1524,
+      "p50": 2001,
+      "p75": 3987
+    },
+    "length_chars": {
+      "p25": 11522,
+      "p50": 15022,
+      "p75": 26927
+    },
+    "length_sample_size": 7,
+    "useful_elements": [
+      {
+        "element": "Interaktywny kalkulator kwoty, oprocentowania i okresu spłaty",
+        "job": "Pozwala szybko obliczyć orientacyjną ratę dla własnych parametrów."
+      },
+      {
+        "element": "Przełącznik rat równych i malejących",
+        "job": "Umożliwia porównanie wysokości rat i kosztu odsetek dla różnych sposobów spłaty."
+      },
+      {
+        "element": "Tabela harmonogramu rat i kosztu całkowitego",
+        "job": "Pokazuje, jak rozkładają się raty oraz ile wyniesie suma odsetek lub spłat."
+      },
+      {
+        "element": "Pola wkładu własnego i wartości nieruchomości",
+        "job": "Pomagają oszacować parametry kredytu mieszkaniowego i potrzebną kwotę finansowania."
+      },
+      {
+        "element": "Porównanie scenariuszy oprocentowania",
+        "job": "Ułatwia ocenę, jak zmiana stopy procentowej wpłynie na ratę."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Sam artykuł opisowy bez kalkulatora",
+        "reason": "Nie pozwoli wyszukującemu obliczyć raty dla własnej kwoty, okresu i oprocentowania."
+      },
+      {
+        "element": "Ogólna oferta kredytowa bez wyniku symulacji",
+        "reason": "Nie odpowiada bezpośrednio na potrzebę sprawdzenia wysokości raty."
+      }
+    ],
+    "warnings": [
+      {
+        "code": "wide_length_band",
+        "message": "p10-p90 spans 619-4798 words. The median says little - look at the pages one by one."
+      },
+      {
+        "code": "serp_does_not_want_an_article",
+        "message": "Główną potrzebę najlepiej zaspokaja interaktywny kalkulator, który przelicza ratę po zmianie parametrów; artykuł może jedynie objaśnić wyniki lub uzupełnić narzędzie."
+      }
+    ]
+  }
+}

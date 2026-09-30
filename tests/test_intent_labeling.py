@@ -70,3 +70,13 @@ def test_cache_is_used_on_second_call(snapshot, fake_chat, tmp_path):
     label(snapshot, chat=fake_chat, cache_dir=tmp_path)
     _, cache_hit = label(snapshot, chat=fake_chat, cache_dir=tmp_path)
     assert cache_hit and len(fake_chat.calls) == 1
+
+
+def test_themes_page_types_and_brands_are_validated(labels_raw):
+    labels_raw["heading_themes"].append({"theme": "Bad", "result_ids": ["r99"]})
+    with pytest.raises(ValueError, match="unknown result_ids"):
+        validate(copy.deepcopy(labels_raw), IDS)
+    labels_raw["heading_themes"].pop()
+    labels_raw["competitor_brands"] += ["Brand B", " "]
+    data = validate(labels_raw, IDS)
+    assert data["competitor_brands"] == ["Brand B", "Brand D"]

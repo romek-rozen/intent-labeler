@@ -67,3 +67,19 @@ def test_article_does_not_fit_is_a_warning(snapshot, labels_raw):
     labels_raw["article_fits"] = {"value": False, "reason": "all shop listings"}
     _, _, form = run(snapshot, labels_raw)
     assert {"code": "serp_does_not_want_an_article", "message": "all shop listings"} in form["warnings"]
+
+
+def test_coverage_is_not_split_and_themes_are_counted(snapshot, labels_raw):
+    _, measured, form = run(snapshot, labels_raw)
+    assert measured["intents"]["i1"]["coverage"] == 0.4  # r07 counted whole
+    assert measured["heading_themes"][0] == {"theme": "Electric vs manual lift", "count": 4,
+                                             "coverage": 0.4, "ranks": [2, 3, 6, 8]}
+    assert form["top_page_type"] in ("shop category listing", "guide")
+
+
+def test_overlapping_serp_is_not_called_mixed(snapshot, labels_raw):
+    for intent in labels_raw["intents"]:
+        intent["result_ids"] = IDS[:8]
+    _, _, form = run(snapshot, labels_raw)
+    assert form["dominant_intent_answer_share"] < 0.4
+    assert "mixed_serp" not in [w["code"] for w in form["warnings"]]

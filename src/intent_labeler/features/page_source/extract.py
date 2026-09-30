@@ -1,12 +1,20 @@
-"""Extract readable signals from raw HTML with the standard library only.
+"""Extract readable signals and a structural inventory from raw HTML.
 
-This is deliberately simple: the labeler needs the page's promise (title,
-description, headings) and its size, not a perfect article extraction.
+Text: trafilatura when installed (`pip install intent-labeler[extract]`) -
+it strips menus, footers and cookie walls far better, which matters for word
+counts. Without it, a standard-library parser keeps the core dependency-free.
+The parser always runs for title, meta description and the element inventory,
+which trafilatura does not report.
 """
 from __future__ import annotations
 
 import re
 from html.parser import HTMLParser
+
+try:  # optional extra
+    import trafilatura
+except ImportError:  # pragma: no cover - depends on the environment
+    trafilatura = None
 
 SKIP_TAGS = {"script", "style", "noscript", "svg", "nav", "footer", "header", "form", "iframe"}
 HEADING_TAGS = {"h1", "h2", "h3"}
@@ -18,6 +26,10 @@ DIGEST_CHARS = 400
 DIGEST_HEADINGS = 8
 DIGEST_PARAGRAPHS = 3
 MIN_PARAGRAPH_WORDS = 8
+VIDEO_HOSTS = ("youtube.com", "youtube-nocookie.com", "vimeo.com", "wistia", "player.")
+FAQ_SCHEMA = re.compile(r'"@type"\s*:\s*"FAQPage"')
+ELEMENT_KEYS = ("tables", "ordered_lists", "unordered_lists", "images", "videos",
+                "faq", "forms", "inputs")
 WORD = re.compile(r"\w+", re.UNICODE)
 
 
@@ -32,12 +44,17 @@ class _Parser(HTMLParser):
         self._paragraph: list[str] | None = None
         self._skip = 0
         self._tag_stack: list[str] = []
+        self.elements = dict.fromkeys(ELEMENT_KEYS, 0)
         self._buffer: list[str] = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == "meta" and (attrs.get("name") or "").lower() == "description":
             self.description = (attrs.get("content") or "").strip()
+        # Forms and number inputs live inside <form>, which is skipped for
+        # text; count them anyway. Search boxes are text inputs and are ignored.
+        if not self._skip or tag in ("form", "input"):
+            self._count(tag, attrs)
         if tag in SKIP_TAGS:
             self._skip += 1
         if tag == "p" and not self._skip:
@@ -45,6 +62,25 @@ class _Parser(HTMLParser):
         if tag in HEADING_TAGS or tag == "title":
             self._tag_stack.append(tag)
             self._buffer = []
+
+    def _count(self, tag: str, attrs: dict) -> None:
+        if tag == "table":
+            self.elements["tables"] += 1
+        elif tag == "ol":
+            self.elements["ordered_lists"] += 1
+        elif tag == "ul":
+            self.elements["unordered_lists"] += 1
+        elif tag == "img":
+            self.elements["images"] += 1
+        elif tag == "video" or (tag == "iframe" and any(
+                host in (attrs.get("src") or "") for host in VIDEO_HOSTS)):
+            self.elements["videos"] += 1
+        elif tag == "form":
+            self.elements["forms"] += 1
+        elif tag == "details":
+            self.elements["faq"] += 1
+        elif tag == "input" and (attrs.get("type") or "") in ("number", "range"):
+            self.elements["inputs"] += 1
 
     def handle_endtag(self, tag):
         if tag == "p" and self._paragraph is not None:
@@ -71,16 +107,45 @@ class _Parser(HTMLParser):
                 self._paragraph.append(data)
 
 
-def extract_html(html: str, *, excerpt_chars: int = 1500) -> dict:
+def _trafilatura_text(html: str) -> tuple[str, list[str], list[str]] | None:
+    """(text, headings, paragraphs) from trafilatura markdown, or None."""
+    if trafilatura is None:
+        return None
+    markdown = trafilatura.extract(html, output_format="markdown", include_tables=True,
+                                   include_links=False, favor_recall=True) or ""
+    if not markdown.strip():
+        return None
+    headings, paragraphs = [], []
+    for line in markdown.splitlines():
+        line = line.strip()
+        if line.startswith("#"):
+            level = len(line) - len(line.lstrip("#"))
+            headings.append(f"H{min(level, 6)}: {line.lstrip('#').strip()}")
+        elif line and not line.startswith(("|", "-", "*", ">")) and len(line.split()) >= MIN_PARAGRAPH_WORDS:
+            paragraphs.append(line)
+    return " ".join(markdown.split()), headings, paragraphs
+
+
+def extract_html(html: str, *, excerpt_chars: int = 1500, use_trafilatura: bool = True) -> dict:
     parser = _Parser()
     parser.feed(html)
+    if FAQ_SCHEMA.search(html):
+        parser.elements["faq"] = max(parser.elements["faq"], 1)
     text = " ".join(" ".join(parser.text).split())
+    headings, paragraphs, extractor = parser.headings, parser.paragraphs, "stdlib"
+    extracted = _trafilatura_text(html) if use_trafilatura else None
+    if extracted:
+        text, found_headings, paragraphs = extracted
+        headings = found_headings or headings
+        extractor = "trafilatura"
     return {
-        "digest": make_digest(parser.headings, parser.paragraphs),
+        "extractor": extractor,
+        "elements": parser.elements,
+        "digest": make_digest(headings, paragraphs),
         "char_count": len(text),
         "title": parser.title,
         "description": parser.description,
-        "headings": parser.headings[:60],
+        "headings": headings[:60],
         "word_count": len(WORD.findall(text)),
         "excerpt": text[:excerpt_chars],
     }

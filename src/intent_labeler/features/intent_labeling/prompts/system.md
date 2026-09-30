@@ -17,6 +17,11 @@ Return exactly one JSON object with these keys and nothing else:
 {
   "intents": [{"intent_id": "i1", "title": "name of the intent, up to 6 words", "searcher_goal": "one sentence: what the searcher wants", "form": "short free phrase: the form that answers this intent best", "intent_type": "informational|commercial|transactional|navigational|local|null", "result_ids": ["r01"], "evidence": "what in the results shows this"}],
   "expected_genre": "the content genre this SERP expects, named freely",
+  "page_types": [{"page_type": "what the page is, named freely", "result_ids": ["r01"]}],
+  "heading_themes": [{"theme": "a topic the pages cover in their headings", "result_ids": ["r01"]}],
+  "competitor_brands": ["brands that sell or publish in these results"],
+  "subject_brands": ["brands that are the subject of the query itself, if any"],
+  "ai_overview_signal": {"present": false, "interpretation": "what the AI Overview (or its absence) says about the expected answer"},
   "article_fits": {"value": true, "reason": "whether a written article can serve the main intent at all"},
   "useful_elements": [{"element": "", "job": ""}],
   "avoid": [{"element": "", "reason": ""}],
@@ -28,6 +33,10 @@ Rules the program enforces and will reject you for breaking:
 - `intent_id` values are unique;
 - every `result_ids` entry exists in the input;
 - `reader_questions[].source` is exactly one of `paa`, `related`, `heading`.
+
+`page_types` says what each result is (shop category page, product page, buying guide, brand page with FAQ, forum thread, video, PDF...), named freely; every result belongs to exactly one page type.
+
+`heading_themes` lists the topics the pages cover, read from their digests and titles - what a complete answer is expected to address. Each theme points to the results that cover it. Not an outline and not an order.
 
 `intent_type` is an optional coarse tag for filtering. Decide the intents first; add the tag only when one of the listed values fits cleanly, otherwise null. Never let it shape the grouping.
 

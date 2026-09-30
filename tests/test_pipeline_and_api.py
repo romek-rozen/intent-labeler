@@ -13,7 +13,7 @@ def test_pipeline_output_is_json_and_renders(snapshot, fake_chat):
     html = report.render_html(result)
     assert "<svg" in html and "Compare and choose a desk" in html and "<title>Intent Report</title>" in html
     assert "1,200 words" in html and "Share of traffic per intent" in html
-    assert "| Buy a desk now | shop category listing | 40% |" in report.render_markdown(result)
+    assert "| Buy a desk now | shop category listing | 40% | 40% |" in report.render_markdown(result)
 
 
 def test_api_snapshot_endpoint(snapshot, fake_chat, monkeypatch):
@@ -30,7 +30,7 @@ def test_api_snapshot_endpoint(snapshot, fake_chat, monkeypatch):
 
 def test_api_html_upload(fake_chat, monkeypatch, labels_raw):
     monkeypatch.setenv("INTENT_LLM_MODEL", "test-model")
-    one = {**labels_raw, "reader_questions": [],
+    one = {**labels_raw, "reader_questions": [], "page_types": [], "heading_themes": [],
            "intents": [{**labels_raw["intents"][0], "result_ids": ["p01", "p02"]}]}
     monkeypatch.setattr(api_module.llm, "openai_chat", lambda config: (lambda s, u: json.dumps(one)))
     client = TestClient(api_module.app)

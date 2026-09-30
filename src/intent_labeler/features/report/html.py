@@ -31,6 +31,17 @@ def _swatch(index: int, intent: dict) -> str:
     return f'<span class="sw" style="background:{color}"></span>'
 
 
+ELEMENT_LABELS = {"tables": "table", "ordered_lists": "numbered list", "unordered_lists": "list",
+                  "images": "images", "videos": "video", "faq": "FAQ", "forms": "form",
+                  "inputs": "calculator inputs"}
+
+
+def _elements(item: dict) -> str:
+    found = item.get("elements") or {}
+    parts = [f"{ELEMENT_LABELS.get(k, k)} {v}" for k, v in found.items() if v]
+    return escape(" · ".join(parts)) or "-"
+
+
 def _etv(item: dict) -> str:
     return "-" if item["etv"] is None else f"{item['etv']:,.0f}"
 
@@ -53,8 +64,9 @@ def render_html(analysis: dict) -> str:
     share = form["dominant_intent_answer_share"]
     cards = [
         (escape(form["dominant_intent_title"] or "n/a"),
-         f"dominant intent · {share * 100:.0f}% of results" if share is not None else "dominant intent"),
+         f"dominant intent · covers {form['dominant_intent_coverage'] * 100:.0f}% of results" if share is not None else "dominant intent"),
         (escape(form["dominant_intent_form"] or "n/a"), "form that answers it"),
+        (escape(form.get("top_page_type") or "n/a"), "most common page type"),
         (escape(form["expected_genre"] or "withheld" if form["expected_genre_withheld"] else form["expected_genre"] or "n/a"),
          "genre the SERP expects"),
         (length_value, length_label),
@@ -68,7 +80,7 @@ def render_html(analysis: dict) -> str:
         rows.append(
             f"<tr><td>{_swatch(index, intent)}{escape(intent['title'])}</td>"
             f"<td>{escape(intent.get('form') or '-')}</td>"
-            f"<td>{row['answer_share'] * 100:.0f}%</td><td>{traffic}</td>"
+            f"<td>{row['coverage'] * 100:.0f}%</td><td>{row['answer_share'] * 100:.0f}%</td><td>{traffic}</td>"
             f"<td>{', '.join(map(str, row['ranks'])) or '-'}</td>"
             f"<td>{row['words'].get('p50') or '-'}</td>"
             f"<td>{escape(intent['searcher_goal'])}</td></tr>")
@@ -82,14 +94,37 @@ def render_html(analysis: dict) -> str:
         f"<br><span class=note>{escape(item['domain'])}</span></td>"
         f"<td>{escape('; '.join(intent_of.get(item['result_id'], [])))}</td>"
         f"<td>{item['word_count'] or '-'}</td>"
+        f"<td class=note>{_elements(item) if item['fetch_status'] == 'ok' else '-'}</td>"
         f"<td>{_etv(item)}</td>"
         f"<td>{escape(item['fetch_status'])}</td></tr>" for item in results)
     elements = "".join(f"<li><b>{escape(e['element'])}</b> - {escape(str(e.get('job', '')))}</li>"
                        for e in form["useful_elements"]) or "<li>-</li>"
     avoid = "".join(f"<li><b>{escape(e['element'])}</b> - {escape(str(e.get('reason', '')))}</li>"
                     for e in form["avoid"]) or "<li>-</li>"
-    questions = "".join(f"<li>{escape(q['question'])} <span class=note>({q['source']})</span></li>"
-                        for q in labels.get("reader_questions") or []) or "<li>-</li>"
+    covered = {q["question"]: q for q in metrics.get("reader_questions") or []}
+    questions = "".join(
+        f"<li>{escape(q['question'])} <span class=note>({q['source']}"
+        + (f" · {covered[q['question']]['count']} results" if q["question"] in covered else "")
+        + ")</span></li>" for q in labels.get("reader_questions") or []) or "<li>-</li>"
+
+    def coverage_table(rows: list[dict], name: str, header: str) -> str:
+        if not rows:
+            return "<p class=note>-</p>"
+        body = "".join(f"<tr><td>{escape(r[name])}</td><td>{r['count']} ({r['coverage'] * 100:.0f}%)</td>"
+                       f"<td>{', '.join(map(str, r['ranks'])) or '-'}</td></tr>" for r in rows)
+        return f"<table><tr><th>{header}</th><th>Results</th><th>Ranks</th></tr>{body}</table>"
+
+    keys = [k for k in ELEMENT_LABELS if any((metrics["intents"][i["intent_id"]].get("elements") or {}).get(k)
+                                             for i in intents)]
+    prevalence_rows = "".join(
+        f"<tr><td>{escape(i['title'])}</td>"
+        + "".join(f"<td>{(metrics['intents'][i['intent_id']].get('elements') or {}).get(k, 0) * 100:.0f}%</td>" for k in keys)
+        + f"<td>{(metrics['intents'][i['intent_id']].get('elements') or {}).get('n', 0)}</td></tr>"
+        for i in intents if metrics["intents"][i["intent_id"]].get("elements"))
+    prevalence = (f"<table><tr><th>Intent</th>{''.join(f'<th>{ELEMENT_LABELS[k]}</th>' for k in keys)}<th>pages</th></tr>"
+                  f"{prevalence_rows}</table>") if prevalence_rows else "<p class=note>No measured pages.</p>"
+    brands = labels.get("competitor_brands") or []
+    signal = labels.get("ai_overview_signal") or {}
     traffic_chart = ""
     if metrics["traffic_known"]:
         traffic_chart = (f"<h2>Share of traffic per intent</h2><p class=note>Estimated traffic (etv) of the "
@@ -106,7 +141,7 @@ def render_html(analysis: dict) -> str:
 <div class="cards">{''.join(f'<div class="card"><b>{v}</b><span>{k}</span></div>' for v, k in cards)}</div>
 {f'<h2>Warnings</h2><div class="panel warn"><ul>{warnings}</ul></div>' if warnings else ''}
 <h2>Share of results per intent</h2>
-<p class="note">A result serving two intents counts half to each, so shares add up to 100%.</p>
+<p class="note">Share: a result serving two intents counts half to each, so shares add up to 100%. Coverage (in the table below) counts every page that addresses the intent.</p>
 <div class="panel">{charts.share_bars(intents, metrics)}</div>
 {traffic_chart}
 <h2>Which result serves which intent</h2>
@@ -114,9 +149,16 @@ def render_html(analysis: dict) -> str:
 <h2>Length of pages per intent</h2>
 <p class="note">Dots are pages, the dark tick is the median. Thin and unfetched pages are left out.</p>
 <div class="panel">{charts.length_strips(intents, results)}</div>
-<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Form</th><th>Answers</th><th>Traffic</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(rows)}</table></div>
+<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Form</th><th>Coverage</th><th>Share</th><th>Traffic</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(rows)}</table></div>
+<h2>Content form on the pages</h2><p class="note">Share of measured pages per intent that contain each element, counted from HTML.</p>
+<div class="panel">{prevalence}</div>
+<h2>Page types</h2><div class="panel">{coverage_table(metrics.get('page_types') or [], 'page_type', 'Page type')}</div>
+<h2>Heading themes</h2><p class="note">Topics the pages cover - what a complete answer is expected to address. Not an outline.</p>
+<div class="panel">{coverage_table(metrics.get('heading_themes') or [], 'theme', 'Theme')}</div>
 <h2>Recommended elements</h2><div class="panel"><b>Use</b><ul>{elements}</ul><b>Avoid</b><ul>{avoid}</ul></div>
 <h2>Reader questions</h2><div class="panel"><ul>{questions}</ul></div>
-<h2>All results</h2><div class="panel"><table><tr><th>#</th><th>Page</th><th>Intents</th><th>Words</th><th>Traffic</th><th>Fetch</th></tr>{result_rows}</table></div>
+<h2>Brands and AI Overview</h2><div class="panel"><p><b>Brands in the results:</b> {escape(', '.join(brands)) or '-'}</p>
+<p><b>AI Overview:</b> {'present' if signal.get('present') else 'absent'}. {escape(signal.get('interpretation') or '')}</p></div>
+<h2>All results</h2><div class="panel"><table><tr><th>#</th><th>Page</th><th>Intents</th><th>Words</th><th>Content form</th><th>Traffic</th><th>Fetch</th></tr>{result_rows}</table></div>
 <p class="note">Generated by intent-labeler. The model only groups results; every number is computed by code.</p>
 </main></body></html>"""

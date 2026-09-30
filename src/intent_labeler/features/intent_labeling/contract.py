@@ -74,6 +74,18 @@ def validate(data: object, result_ids: list[str]) -> dict:
                                 "reason": _text(fits.get("reason"))}
     else:
         data["article_fits"] = {"value": fits if isinstance(fits, bool) else None, "reason": ""}
+    for key, name in (("page_types", "page_type"), ("heading_themes", "theme")):
+        rows = []
+        for row in _list(data, key, "root"):
+            if isinstance(row, dict) and _text(row.get(name)):
+                rows.append({name: _text(row[name]), "result_ids": _ids(row, known, key)})
+        data[key] = rows
+    for key in ("competitor_brands", "subject_brands"):
+        data[key] = list(dict.fromkeys(_text(item) for item in _list(data, key, "root") if _text(item)))
+    signal = data.get("ai_overview_signal")
+    signal = signal if isinstance(signal, dict) else {}
+    data["ai_overview_signal"] = {"present": bool(signal.get("present")),
+                                  "interpretation": _text(signal.get("interpretation"))}
     for key in ("useful_elements", "avoid"):
         data[key] = [item for item in _list(data, key, "root")
                      if isinstance(item, dict) and _text(item.get("element"))]

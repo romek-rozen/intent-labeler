@@ -14,7 +14,14 @@ Two shares, both from data:
                  enter neither numerator nor denominator - never as zero. The
                  coverage (`traffic_known` / total) is reported with it.
 
-When the two disagree it is a signal, not an error: a topic served by many
+Plus `coverage`: results serving the intent / all results, NOT split. On a
+heavily overlapping SERP (one page = offer + guide + FAQ) intents can cover
+94%, 82% and 76% of results at once; the split share would show them as ~25%
+each and call the SERP mixed. Coverage answers "how many pages address this",
+share answers "how the results divide". Themes, questions and page types get
+coverage and ranks the same way.
+
+When the two shares disagree it is a signal, not an error: a topic served by many
 weak pages versus one served by a single strong page.
 
 Thin and failed pages are excluded from length statistics.
@@ -49,6 +56,16 @@ def distribution(values: list[int | None]) -> dict:
             "max": max(clean)}
 
 
+def element_prevalence(members: list) -> dict:
+    """Share of measured pages that contain each element at least once."""
+    measured = [item for item in members if item.fetch_status == "ok" and item.elements]
+    if not measured:
+        return {}
+    keys = sorted({key for item in measured for key in item.elements})
+    return {key: round(sum(1 for item in measured if item.elements.get(key)) / len(measured), 2)
+            for key in keys} | {"n": len(measured)}
+
+
 def multiplicity(labels: dict) -> dict[str, int]:
     counts: dict[str, int] = {}
     for intent in labels["intents"]:
@@ -75,6 +92,7 @@ def measure(snapshot: Snapshot, labels: dict) -> dict:
                           for item in members if item.result_id in known)
         intents[intent["intent_id"]] = {
             "count": len(members),
+            "coverage": round(len(members) / total, 4) if total else 0.0,
             "answer_share": round(sum(1 / split[item.result_id] for item in members) / total, 4)
             if total else 0.0,
             "traffic_share": round(own_traffic / traffic_total, 4) if traffic_total else None,
@@ -83,7 +101,17 @@ def measure(snapshot: Snapshot, labels: dict) -> dict:
             "top3_count": sum(1 for rank in ranks if rank <= 3),
             "words": distribution([item.word_count for item in members if measured(item)]),
             "chars": distribution([item.char_count for item in members if measured(item)]),
+            "elements": element_prevalence(members),
         }
+    def covered(rows: list[dict], name: str) -> list[dict]:
+        out = []
+        for row in rows:
+            members = [by_id[r] for r in row["result_ids"] if r in by_id]
+            ranks = sorted(item.rank for item in members if item.rank is not None)
+            out.append({name: row[name], "count": len(members),
+                        "coverage": round(len(members) / total, 4) if total else 0.0, "ranks": ranks})
+        return sorted(out, key=lambda row: -row["count"])
+
     return {
         "results_total": total,
         "results_fetched": sum(1 for item in snapshot.results if measured(item)),
@@ -93,4 +121,8 @@ def measure(snapshot: Snapshot, labels: dict) -> dict:
         "words": distribution([item.word_count for item in snapshot.results if measured(item)]),
         "chars": distribution([item.char_count for item in snapshot.results if measured(item)]),
         "intents": intents,
+        "page_types": covered(labels.get("page_types") or [], "page_type"),
+        "heading_themes": covered(labels.get("heading_themes") or [], "theme"),
+        "reader_questions": covered([q for q in labels.get("reader_questions") or []
+                                     if q.get("result_ids")], "question"),
     }

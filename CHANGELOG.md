@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 - 2026-09-30
+
+- Content form per page counted from HTML (tables, lists, images, video, FAQ, forms, calculator
+  inputs) with prevalence per intent.
+- Optional trafilatura text extraction (`[extract]` extra); stdlib parser as fallback.
+- Back from the SERP reader: page types, heading themes with coverage, reader questions with coverage,
+  competitor/subject brands, AI Overview signal.
+- `coverage` (unsplit) next to the split `answer_share`; `mixed_serp` no longer fires on overlap.
+- Six live examples in `examples/`.
+
 ## 0.2.0 - 2026-09-30
 
 Aligned with the original intent method (clustering + counting), not only the later SERP reader.

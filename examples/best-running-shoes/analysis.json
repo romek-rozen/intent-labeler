@@ -1,0 +1,845 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T09:13:42+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://www.youtube.com/shorts/1mQ8MBn7TQA",
+        "rank": 1,
+        "domain": "www.youtube.com",
+        "title": "The 15 Best Running Shoes of 2026. #runningshoes ...",
+        "description": "The 15 Best Running Shoes of 2026. Our Favorite New Shoes All Cost $200 and Up. But You Don't Have to Spend That Much.",
+        "headings": [],
+        "highlighted": [
+          "The 15 Best Running Shoes of 2026"
+        ],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://eu.puma.com/sk/en/articles/best-running-shoes?srsltid=AU7gw4XsFX7tIjSGukFLs84RlAHoOld8AsmfvyODg1nSZb7O1oN56kkf",
+        "rank": 2,
+        "domain": "eu.puma.com",
+        "title": "Best Running Shoes | Puma Slovakia",
+        "description": "The Deviate NITROTM Elite is the top choice for most marathon runners, offering a lightweight, controlled ride over long distances.",
+        "headings": [
+          "H1: Best PUMA Running Shoes: Which Model Should You Choose?",
+          "H2: What is PUMA NITRO™ technology?",
+          "H2: Best PUMA running shoes at a glance",
+          "H2: PUMA Fast-R NITRO™ Elite",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA Deviate & Deviate Elite",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA Deviate NITRO™ Pure",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA Velocity NITRO™",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA ForeverRun NITRO™",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA MagMax NITRO™",
+          "H3: What kind of runner are these ideal for?",
+          "H2: PUMA running shoes fit and sizing",
+          "H2: Our recommendations",
+          "H2: Conclusion",
+          "H2: Frequently asked questions",
+          "H3: **How to choose the right PUMA shoes for running?**",
+          "H3: **Are PUMA running shoes durable?**",
+          "H3: **Which PUMA running shoes are best for wide feet?**",
+          "H3: **Does PUMA make trail running shoes?**",
+          "H3: **What is a carbon plate in running shoes?**",
+          "H3: **What are the pros and cons of PUMA running shoes?**",
+          "H3: **Which PUMA running shoes are best for a marathon?**",
+          "H3: **Are there different PUMA running shoes for men and women?**"
+        ],
+        "highlighted": [
+          "The Deviate NITROTM Elite"
+        ],
+        "word_count": 2681,
+        "char_count": 16153,
+        "digest": "headings: Best PUMA Running Shoes: Which Model Should You Choose?; What is PUMA NITRO™ technology?; Best PUMA running shoes at a glance; PUMA Fast-R NITRO™ Elite; What kind of runner are these ideal for?; PUMA Deviate & Deviate Elite; What kind of runner are these ideal for?; PUMA Deviate NITRO™ Pure | text: When choosing running shoes, it's pretty obvious that the main thing you have to consider ",
+        "excerpt": "# Best PUMA Running Shoes: Which Model Should You Choose? When choosing running shoes, it's pretty obvious that the main thing you have to consider is how you're going to use them. Not all shoes are made equal. Some are built for speed, like lightweight race-day shoes. Others are designed to handle everyday training. Then there are shoes made for recovery runs or long miles, where cushioning and comfort matter most. Each one feels different once you get out on the road. PUMA has you covered, whatever kind of runner you are. With decades of experience designing performance footwear, they develop running shoes for different distances and training styles. Many models share technologies like NITRO™, but each one is tuned for a different type of run. This guide compares PUMA's key running shoes to help you find the best pair for your running goals. ## What is PUMA NITRO™ technology? PUMA NITRO™ technology is PUMA's nitrogen-infused ultra-light foam cushioning system, designed to make running shoes more responsive and energy efficient. The foam compresses when your foot lands, absorbs impact, then returns much of that energy during push-off to create a softer, propulsive ride. Different versions of NITRO™ foam are tuned for different purposes, whether that's delivering maximum speed on race day or balanced cushioning for daily miles. Explore the full PUMA NITRO™ technology page for a deeper look. ## Best PUMA running shoes at a glance If you're comparing PUMA running shoes, choose ",
+        "elements": {
+          "tables": 2,
+          "ordered_lists": 2,
+          "unordered_lists": 1,
+          "images": 9,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://www.facebook.com/groups/1584157025035146/posts/23964768009880728/",
+        "rank": 3,
+        "domain": "www.facebook.com",
+        "title": "what's the best brand of training and running shoes can you ...",
+        "description": "Best running shoes for knee support. Nike Training shoes, ASICS, and Under Armour. did test runs of ASICS, Hoka and Mizuno. Which brand of  ...",
+        "headings": [],
+        "highlighted": [
+          "Nike Training shoes, ASICS, and Under Armour"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.reddit.com/r/beginnerrunning/comments/1kejrmg/what_is_the_best_daily_running_shoes_below_10k/",
+        "rank": 4,
+        "domain": "www.reddit.com",
+        "title": "What is the best daily running shoes below 10k",
+        "description": "a friend recommend HOKA's with the soft bottom. You can go for asics novablast 5 or superblast 2 too!",
+        "headings": [],
+        "highlighted": [
+          "HOKA's with the soft bottom"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.reviewed.com/health/best-right-now/best-trail-running-shoes",
+        "rank": 5,
+        "domain": "www.reviewed.com",
+        "title": "The Best Trail Running Shoes of 2026",
+        "description": "Sep 25, 2023 — The Nike Ultrafly is a reliable, comfortable, and functional trail running shoe that every mountain lover should consider. 80% of them ...",
+        "headings": [
+          "H1: The Best Trail Running Shoes of 2026",
+          "H2: Nike Ultrafly Women's Trail Running Shoes",
+          "H4: Pros",
+          "H4: Cons",
+          "H2: Hoka One One Speedgoat 4 Men’s Shoes",
+          "H4: Pros",
+          "H4: Cons",
+          "H2: Topo Athletic Men's MTN Racer 2 Trail Running Shoes",
+          "H4: Pros",
+          "H4: Cons",
+          "H2: Altra Women’s Lone Peak 6",
+          "H4: Pros",
+          "H4: Cons",
+          "H2: Salomon Women’s Speedcross 5",
+          "H4: Pros",
+          "H4: Cons",
+          "H2: More Articles You Might Enjoy",
+          "H2: Meet the writer",
+          "H2: Checking our work."
+        ],
+        "highlighted": [
+          "Nike Ultrafly"
+        ],
+        "word_count": 671,
+        "char_count": 3865,
+        "digest": "headings: The Best Trail Running Shoes of 2026; Nike Ultrafly Women's Trail Running Shoes; Pros; Cons; Hoka One One Speedgoat 4 Men’s Shoes; Pros; Cons; Topo Athletic Men's MTN Racer 2 Trail Running Shoes | text: Products are chosen independently by our editors. Purchases made through our links may earn us a commission. The Nike Ultrafly is a reliable, comfortable, and functional trail running sho",
+        "excerpt": "# The Best Trail Running Shoes of 2026 Products are chosen independently by our editors. Purchases made through our links may earn us a commission. ## Nike Ultrafly Women's Trail Running Shoes The Nike Ultrafly is a reliable, comfortable, and functional trail running shoe that every mountain lover should consider. Read More #### Pros - Great traction - Lightweight - Comfortable for all-day wear #### Cons - None that we could find ## Hoka One One Speedgoat 4 Men’s Shoes If you want to swiftly run to the summit for sunrise or move with confidence on crooked rocks and slick dirt, these comfy shoes let you do just that. Read More #### Pros - Anti-slip, all-terrain rubber sole - Roomy forefoot for stability - Soft foam cushioning #### Cons - May wear down after hundreds of miles ## Topo Athletic Men's MTN Racer 2 Trail Running Shoes This running shoe is for all you avid mountain adventurers who live for stepping on and over rugged, very technical terrain. Read More #### Pros - All-ground, premium grip - Lightweight and resilient midsole cushion - Breathable upgrade #### Cons - May take some time to break in ## Altra Women’s Lone Peak 6 The Altra Lone Peak 6 provides greater protection from sharp rocks that you may step on while running. Read More #### Pros - Comfortable - Balanced cushioning for lighter landings - Altra EGO improves cushion and response #### Cons - Toe box is narrower than the Lone Peak 5 ## Salomon Women’s Speedcross 5 These popular trail running shoes are known ",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 26,
+          "images": 15,
+          "videos": 0,
+          "faq": 0,
+          "forms": 2,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 1.2389999628067017,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://www.quora.com/What-are-some-good-shoes-or-trainers-for-someone-starting-running-for-the-first-time",
+        "rank": 6,
+        "domain": "www.quora.com",
+        "title": "What are some good shoes or trainers for someone starting ...",
+        "description": "What are some good shoes or trainers for someone starting running for the first time?",
+        "headings": [],
+        "highlighted": [],
+        "word_count": null,
+        "char_count": null,
+        "digest": "",
+        "excerpt": "",
+        "elements": {},
+        "extractor": "",
+        "etv": null,
+        "fetch_status": "error: HTTPError (Forbidden)"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://rokslide.com/forums/threads/how-to-determine-best-shoes-for-running.365599/",
+        "rank": 7,
+        "domain": "rokslide.com",
+        "title": "How to determine best shoes for running",
+        "description": "Jul 11, 2024 — 1. Make sure all shoes have the same drop measurement. Use cushioned shoes for longer runs. 3. Use lighter shoes for speed, pace, and interval ...",
+        "headings": [],
+        "highlighted": [
+          "Use cushioned shoes for longer runs"
+        ],
+        "word_count": null,
+        "char_count": null,
+        "digest": "",
+        "excerpt": "",
+        "elements": {},
+        "extractor": "",
+        "etv": null,
+        "fetch_status": "error: HTTPError (Forbidden)"
+      }
+    ],
+    "keyword": "best running shoes",
+    "language": "en",
+    "location": "2840",
+    "people_also_ask": [
+      "What are the top 5 best running shoes?",
+      "What are the best shoes for running?",
+      "Is Hoka or Asics better?",
+      "What brand of shoes is best for running?"
+    ],
+    "related_searches": [],
+    "ai_overview": "The New Balance 1080 v15 is the best overall daily running shoe for comfort and smooth everyday miles. Top Running Shoes by Category Best Daily Trainer: New Balance 1080 v15 ($160–$170) offers soft, plush foam and a light feel for daily runs. Best for Beginners: ASICS Novablast 6 ($140–$155) gives you high energy return and good protection without a heavy build. Best Max Cushion: HOKA Bondi 9 ($140–$175) features a thick bed of soft foam that absorbs impact on long recovery days. Best Stability: Brooks Adrenaline GTS 25 ($155) uses GuideRails technology to keep your stride steady and secure. Best Lightweight / Speed: adidas Adizero EVO SL ($130–$150) delivers a fast, bouncy ride for tempo workouts at a lower price than carbon-plated shoes. If you want to narrow down your choice, please tell me:What is your weekly mileage or target distance?\nDo you need stability support for overpronation, or a neutral shoe?\nWhat is your budget ?",
+    "item_types": [
+      "ai_overview",
+      "organic",
+      "popular_products",
+      "people_also_ask",
+      "images",
+      "perspectives"
+    ],
+    "checked_at": "2026-09-30 09:13:22 +00:00"
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Compare top running shoes",
+        "searcher_goal": "The searcher wants recommendations for highly rated running shoes and help comparing options.",
+        "form": "Editorial best-of roundup with category-based recommendations",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r01",
+          "r02"
+        ],
+        "evidence": "The video promises a list of 15 best shoes, while PUMA’s guide recommends models by runner type and includes a model comparison.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Choose trail running shoes",
+        "searcher_goal": "The searcher wants recommendations for shoes suited to running on trails.",
+        "form": "Tested trail-shoe buying guide with pros and cons",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r05"
+        ],
+        "evidence": "The page specifically reviews trail running shoes, names individual models, and presents pros and cons.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Find shoes for starting running",
+        "searcher_goal": "The searcher wants suggestions for a suitable first pair of running shoes.",
+        "form": "Community question-and-answer advice",
+        "intent_type": "informational",
+        "result_ids": [
+          "r06"
+        ],
+        "evidence": "The question explicitly asks for shoes for someone starting running for the first time.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i4",
+        "title": "Find affordable daily trainers",
+        "searcher_goal": "The searcher wants recommendations for daily running shoes within a stated budget.",
+        "form": "Community discussion with model suggestions",
+        "intent_type": "commercial",
+        "result_ids": [
+          "r04"
+        ],
+        "evidence": "The Reddit question asks for daily running shoes below a price limit, and the reply suggests HOKA and ASICS models.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i5",
+        "title": "Choose shoes by running needs",
+        "searcher_goal": "The searcher wants practical criteria for matching a running shoe to distance, pace, and cushioning needs.",
+        "form": "Forum advice with selection tips",
+        "intent_type": "informational",
+        "result_ids": [
+          "r07"
+        ],
+        "evidence": "The forum reply discusses matching shoe drop, cushioning for longer runs, and lighter shoes for speed work.",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i6",
+        "title": "Get running shoe brand advice",
+        "searcher_goal": "The searcher wants peer recommendations for running-shoe brands, including support-oriented options.",
+        "form": "Social group discussion",
+        "intent_type": "informational",
+        "result_ids": [
+          "r03"
+        ],
+        "evidence": "The post asks about the best training and running-shoe brand, and its snippet mentions Nike, ASICS, and Under Armour.",
+        "basis": "model"
+      }
+    ],
+    "expected_genre": "Running-shoe recommendation roundups and buying guides, supplemented by community advice",
+    "page_types": [
+      {
+        "page_type": "Short-form video roundup",
+        "result_ids": [
+          "r01"
+        ]
+      },
+      {
+        "page_type": "PUMA brand buying guide",
+        "result_ids": [
+          "r02"
+        ]
+      },
+      {
+        "page_type": "Social group discussion",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "page_type": "Reddit advice thread",
+        "result_ids": [
+          "r04"
+        ]
+      },
+      {
+        "page_type": "Tested trail-shoe review guide",
+        "result_ids": [
+          "r05"
+        ]
+      },
+      {
+        "page_type": "Community question-and-answer page",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "page_type": "Forum advice thread",
+        "result_ids": [
+          "r07"
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "PUMA running shoe models and best-fit runner types",
+        "result_ids": [
+          "r02"
+        ]
+      },
+      {
+        "theme": "PUMA NITRO technology",
+        "result_ids": [
+          "r02"
+        ]
+      },
+      {
+        "theme": "Trail shoe model pros and cons",
+        "result_ids": [
+          "r05"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "PUMA",
+      "Reviewed"
+    ],
+    "subject_brands": [],
+    "ai_overview_signal": {
+      "present": true,
+      "interpretation": "The overview sets an expectation for concise, category-based model recommendations, with reasons and prices, rather than one universal shoe choice."
+    },
+    "article_fits": {
+      "value": true,
+      "reason": "A written roundup can serve the broad comparison intent by recommending models across runner needs and explaining how to choose among them."
+    },
+    "useful_elements": [
+      {
+        "element": "Category-by-category model comparison",
+        "job": "Helps readers quickly compare shoes for daily mileage, beginners, cushioning, stability, and speed."
+      },
+      {
+        "element": "Price and key-spec table",
+        "job": "Makes it easier to shortlist options by budget and practical differences."
+      },
+      {
+        "element": "Fit and use-case guidance",
+        "job": "Connects shoe features such as cushioning, support, and weight to the runner’s needs."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Declaring one shoe universally best",
+        "reason": "The results and AI Overview point to different models for different runner types and uses."
+      },
+      {
+        "element": "A brand-only ranking without fit criteria",
+        "reason": "Searchers also need help choosing by use case, budget, and running needs."
+      },
+      {
+        "element": "Treating trail shoes as interchangeable with road shoes",
+        "reason": "The results include a distinct trail-shoe recommendation need."
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "What are the top 5 best running shoes?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r02"
+        ]
+      },
+      {
+        "question": "What are the best shoes for running?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r02"
+        ]
+      },
+      {
+        "question": "Is Hoka or Asics better?",
+        "source": "paa",
+        "result_ids": [
+          "r03",
+          "r04"
+        ]
+      },
+      {
+        "question": "What brand of shoes is best for running?",
+        "source": "paa",
+        "result_ids": [
+          "r03",
+          "r06"
+        ]
+      }
+    ],
+    "summary": "The results mix broad shoe roundups with more specific advice for trail running, beginners, budget-conscious daily training, and choosing shoes by running needs. The AI Overview reinforces a category-based buying guide format, while community pages show that shoppers also seek peer recommendations.",
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 7,
+    "results_fetched": 2,
+    "has_ranks": true,
+    "traffic_known": 1,
+    "shared_results": [],
+    "words": {
+      "n": 2,
+      "min": 671,
+      "p10": 671,
+      "p25": 671,
+      "p50": 671,
+      "p75": 2681,
+      "p90": 2681,
+      "max": 2681
+    },
+    "chars": {
+      "n": 2,
+      "min": 3865,
+      "p10": 3865,
+      "p25": 3865,
+      "p50": 3865,
+      "p75": 16153,
+      "p90": 16153,
+      "max": 16153
+    },
+    "intents": {
+      "i1": {
+        "count": 2,
+        "coverage": 0.2857,
+        "answer_share": 0.2857,
+        "traffic_share": 0.0,
+        "ranks": [
+          1,
+          2
+        ],
+        "best_rank": 1,
+        "top3_count": 2,
+        "words": {
+          "n": 1,
+          "min": 2681,
+          "p10": 2681,
+          "p25": 2681,
+          "p50": 2681,
+          "p75": 2681,
+          "p90": 2681,
+          "max": 2681
+        },
+        "chars": {
+          "n": 1,
+          "min": 16153,
+          "p10": 16153,
+          "p25": 16153,
+          "p50": 16153,
+          "p75": 16153,
+          "p90": 16153,
+          "max": 16153
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 0.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 1.0,
+          "tables": 1.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i2": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.1429,
+        "traffic_share": 1.0,
+        "ranks": [
+          5
+        ],
+        "best_rank": 5,
+        "top3_count": 0,
+        "words": {
+          "n": 1,
+          "min": 671,
+          "p10": 671,
+          "p25": 671,
+          "p50": 671,
+          "p75": 671,
+          "p90": 671,
+          "max": 671
+        },
+        "chars": {
+          "n": 1,
+          "min": 3865,
+          "p10": 3865,
+          "p25": 3865,
+          "p50": 3865,
+          "p75": 3865,
+          "p90": 3865,
+          "max": 3865
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 0.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      },
+      "i3": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.1429,
+        "traffic_share": 0.0,
+        "ranks": [
+          6
+        ],
+        "best_rank": 6,
+        "top3_count": 0,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      },
+      "i4": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.1429,
+        "traffic_share": 0.0,
+        "ranks": [
+          4
+        ],
+        "best_rank": 4,
+        "top3_count": 0,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      },
+      "i5": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.1429,
+        "traffic_share": 0.0,
+        "ranks": [
+          7
+        ],
+        "best_rank": 7,
+        "top3_count": 0,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      },
+      "i6": {
+        "count": 1,
+        "coverage": 0.1429,
+        "answer_share": 0.1429,
+        "traffic_share": 0.0,
+        "ranks": [
+          3
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "words": {
+          "n": 0
+        },
+        "chars": {
+          "n": 0
+        },
+        "elements": {}
+      }
+    },
+    "page_types": [
+      {
+        "page_type": "Short-form video roundup",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          1
+        ]
+      },
+      {
+        "page_type": "PUMA brand buying guide",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          2
+        ]
+      },
+      {
+        "page_type": "Social group discussion",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          3
+        ]
+      },
+      {
+        "page_type": "Reddit advice thread",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          4
+        ]
+      },
+      {
+        "page_type": "Tested trail-shoe review guide",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          5
+        ]
+      },
+      {
+        "page_type": "Community question-and-answer page",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "page_type": "Forum advice thread",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          7
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "PUMA running shoe models and best-fit runner types",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          2
+        ]
+      },
+      {
+        "theme": "PUMA NITRO technology",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          2
+        ]
+      },
+      {
+        "theme": "Trail shoe model pros and cons",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          5
+        ]
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "What are the top 5 best running shoes?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "What are the best shoes for running?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          2
+        ]
+      },
+      {
+        "question": "Is Hoka or Asics better?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          3,
+          4
+        ]
+      },
+      {
+        "question": "What brand of shoes is best for running?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          3,
+          6
+        ]
+      }
+    ]
+  },
+  "form": {
+    "dominant_intent_id": "i1",
+    "dominant_intent_title": "Compare top running shoes",
+    "dominant_intent_form": "Editorial best-of roundup with category-based recommendations",
+    "dominant_intent_answer_share": 0.2857,
+    "dominant_intent_coverage": 0.2857,
+    "top_page_type": "Short-form video roundup",
+    "dominant_by_traffic_id": "i2",
+    "expected_genre": null,
+    "expected_genre_withheld": "genre not derived: dominant intent sample is insufficient_sample",
+    "article_fits": {
+      "value": true,
+      "reason": "A written roundup can serve the broad comparison intent by recommending models across runner needs and explaining how to choose among them."
+    },
+    "length_basis": "insufficient_sample",
+    "length_words": null,
+    "length_chars": null,
+    "length_sample_size": 1,
+    "useful_elements": [
+      {
+        "element": "Category-by-category model comparison",
+        "job": "Helps readers quickly compare shoes for daily mileage, beginners, cushioning, stability, and speed."
+      },
+      {
+        "element": "Price and key-spec table",
+        "job": "Makes it easier to shortlist options by budget and practical differences."
+      },
+      {
+        "element": "Fit and use-case guidance",
+        "job": "Connects shoe features such as cushioning, support, and weight to the runner’s needs."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "Declaring one shoe universally best",
+        "reason": "The results and AI Overview point to different models for different runner types and uses."
+      },
+      {
+        "element": "A brand-only ranking without fit criteria",
+        "reason": "Searchers also need help choosing by use case, budget, and running needs."
+      },
+      {
+        "element": "Treating trail shoes as interchangeable with road shoes",
+        "reason": "The results include a distinct trail-shoe recommendation need."
+      }
+    ],
+    "warnings": [
+      {
+        "code": "mixed_serp",
+        "message": "No intent holds 40% of results. The page must serve several intents, or the query is poorly chosen."
+      },
+      {
+        "code": "traffic_disagrees",
+        "message": "By answers the dominant intent is \"Compare top running shoes\", by traffic \"Choose trail running shoes\": many weak pages versus one strong page. Decide deliberately."
+      }
+    ]
+  }
+}

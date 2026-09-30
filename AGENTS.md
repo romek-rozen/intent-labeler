@@ -22,7 +22,7 @@ src/intent_labeler/
   core/            shared plumbing only: types, config, LLM transport. Knows no feature.
   features/
     serp_source/     keyword -> Snapshot (DataForSEO)
-    page_source/     URLs/HTML -> Results (fetch, digest, thin detection)
+    page_source/     URLs/HTML -> Results (fetch, trafilatura/stdlib text, digest, element inventory, thin)
     traffic/         etv per URL (DataForSEO); unknown stays None
     intent_labeling/ the only semantic step: prompt, contract validation, LLM call
     metrics/         arithmetic on result IDs
@@ -34,6 +34,9 @@ src/intent_labeler/
 
 Rules:
 
+0. **Every feature directory has a `README.md`**: purpose, public API, inputs/outputs, rules with the
+   reason (and measurement) behind each, tests. Change it in the same commit as the code. A new feature
+   without a README is not done. `test_every_feature_has_a_readme` enforces it.
 1. A feature imports from `core` and, when it must, from another feature's public `__init__`. Never
    reach into another feature's private modules. `core` never imports a feature.
 2. New input source (e.g. Crawl4AI, a sitemap, GSC) = a new feature or a new module inside
@@ -63,9 +66,10 @@ Rules:
 ## Commands
 
 ```bash
-pip install -e '.[dev,api]'
+pip install -e '.[dev,api,extract]'
 pytest -q
 python scripts/build_examples.py     # after touching report/ or the example data
+python scripts/run_examples.py       # live examples (needs LLM + DataForSEO, costs cents)
 ```
 
 ## Language

@@ -49,7 +49,10 @@ def decide(snapshot, labels: dict, metrics: dict) -> dict:
     reliable = basis == "median_of_dominant_intent_pages"
 
     warnings = []
-    if dominant and row["answer_share"] < MIXED_SERP_BELOW:
+    # Mixed means the results are split between goals. When the dominant
+    # intent still covers most pages, the overlap is one page serving several
+    # goals, not a divided SERP.
+    if dominant and row["answer_share"] < MIXED_SERP_BELOW and row["coverage"] < 0.5:
         warnings.append({"code": "mixed_serp", "message":
                          "No intent holds 40% of results. The page must serve several intents, "
                          "or the query is poorly chosen."})
@@ -87,6 +90,8 @@ def decide(snapshot, labels: dict, metrics: dict) -> dict:
         "dominant_intent_title": dominant["title"] if dominant else None,
         "dominant_intent_form": dominant.get("form") if dominant else None,
         "dominant_intent_answer_share": row.get("answer_share"),
+        "dominant_intent_coverage": row.get("coverage"),
+        "top_page_type": (metrics.get("page_types") or [{}])[0].get("page_type"),
         "dominant_by_traffic_id": by_traffic["intent_id"] if by_traffic else None,
         "expected_genre": genre,
         "expected_genre_withheld": genre_withheld,

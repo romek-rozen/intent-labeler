@@ -16,7 +16,19 @@ writes a percentage.
 
 ![Length of pages per intent](docs/images/length-strips.svg)
 
-*Charts from the bundled example ([full HTML report](docs/example-report.html), [Markdown](docs/example-report.md)).*
+*Charts from the bundled synthetic example ([HTML report](docs/example-report.html), [Markdown](docs/example-report.md)).*
+
+**Live examples** (Google top 10, `openai/gpt-6-luna`, run on 2026-09-30) - each folder has
+`report.html`, `report.md`, `analysis.json` and the `snapshot.json` to re-run offline:
+
+| Query | Market | Dominant intent -> form | Reference length | Warnings |
+|---|---|---|---|---|
+| [zagadki logiczne](examples/zagadki-logiczne/report.md) | PL | Kupno książek z zagadkami -> księgarniane listingi i strony produktów | 537 words | traffic_disagrees, wide_length_band |
+| [jak zrobić zakwas na chleb](examples/jak-zrobic-zakwas-na-chleb/report.md) | PL | Zrobić domowy zakwas żytni -> Przepis krok po kroku z harmonogramem dokarmiania i wskazówkami | 486 words | - |
+| [kalkulator raty kredytu](examples/kalkulator-raty-kredytu/report.md) | PL | Symulacja raty kredytu hipotecznego -> kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją | 2001 words | wide_length_band, serp_does_not_want_an_article |
+| [standing desk](examples/standing-desk/report.md) | US | Shop for a standing desk -> Retailer product-category listing | 423 words | wide_length_band |
+| [how to make sourdough starter](examples/how-to-make-sourdough-starter/report.md) | US | Make a starter from scratch -> Day-by-day starter recipe with measurements and readiness cues | n/a (insufficient_sample) | - |
+| [best running shoes](examples/best-running-shoes/report.md) | US | Compare top running shoes -> Editorial best-of roundup with category-based recommendations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
 
 ## What you get
 
@@ -24,8 +36,13 @@ writes a percentage.
 |---|---|
 | Intents | searcher goals that emerge from the results - no fixed taxonomy, no fixed count - with an optional coarse tag for filtering |
 | Form per intent | how each intent is best answered, named freely ("shop category listing", "PDF set", "quiz") |
-| Answer share | fraction of results serving the intent; a result in two intents counts half to each |
+| Coverage | fraction of results that address the intent (a page can address several) |
+| Answer share | how results divide between intents; a result in two intents counts half to each |
 | Traffic share | the same from estimated traffic (`etv`); unknown traffic is left out, never zero |
+| Content form per page | tables, lists, images, video, FAQ, forms, calculator inputs - counted from HTML, and their prevalence per intent |
+| Page types | what each result is (category listing, buying guide, brand page with FAQ...), named freely |
+| Heading themes | topics the pages cover, with how many results cover each - what a complete answer addresses |
+| Brands, AI Overview | brands present in the results; what the AI Overview (or its absence) says |
 | Expected genre | the content genre the SERP expects, and whether an article fits at all |
 | Reference length | p25/p50/p75 in words and characters of the dominant intent's pages - or `null` and a reason |
 | Warnings | mixed SERP, several major intents, traffic disagrees, wide length band, not an article |
@@ -38,7 +55,7 @@ writes a percentage.
 git clone https://github.com/romek-rozen/intent-labeler.git
 cd intent-labeler
 python -m venv .venv && . .venv/bin/activate
-pip install -e '.[api]'          # the core has zero dependencies; [api] adds FastAPI
+pip install -e '.[api,extract]'  # core has zero dependencies; [api] = FastAPI, [extract] = trafilatura
 cp .env.example .env             # then fill in the LLM endpoint and model
 ```
 
@@ -96,13 +113,46 @@ print(result["form"]["dominant_intent_title"], result["form"]["length_words"])
 
 ## How it works
 
+```mermaid
+flowchart TD
+    K[keyword] --> S[serp_source<br/>Google top 10 via DataForSEO]
+    U[URL list / HTML files] --> P0[page_source<br/>page set without ranks]
+    S --> SN[(Snapshot)]
+    P0 --> SN
+    SN --> F[page_source.enrich<br/>fetch pages, trafilatura text]
+    F --> D[digest 400 chars<br/>8 headings + 3 paragraphs]
+    F --> E[element inventory<br/>tables, lists, images, video, FAQ, forms]
+    F --> W[words and characters<br/>thin pages flagged]
+    SN --> T[traffic<br/>etv per URL, unknown stays unknown]
+
+    D --> L{{intent_labeling - the only LLM call<br/>sees titles, snippets, digests - NO numbers<br/>GROUPS results into emergent intents<br/>names form, genre, page types, themes}}
+    L --> V[contract validation<br/>errors go back to the model<br/>unplaced results -> unassigned]
+
+    V --> M[metrics - code only<br/>coverage, answer share, traffic share<br/>length distributions, element prevalence]
+    E --> M
+    W --> M
+    T --> M
+
+    M --> FD[form_decision - code only<br/>dominant intent, reference length<br/>genre guard, warnings]
+    FD --> R[report<br/>HTML with SVG charts, Markdown, JSON]
+
+    style L fill:#4a3aa7,color:#fff
+    style M fill:#1baf7a,color:#fff
+    style FD fill:#1baf7a,color:#fff
+```
+
+The purple box is the only place a language model works; the green boxes are plain arithmetic.
+
 1. **Source** - Google top 10 (DataForSEO) or a page list becomes a `Snapshot` of `Result`s.
-2. **Fetch** - pages are downloaded; a 400-char digest (8 headings + 3 paragraphs), words and characters
-   are extracted. Pages under 150 words are flagged `thin` and fall back to title + snippet.
+2. **Fetch** - pages are downloaded; text is extracted with trafilatura (if installed, else a stdlib parser);
+   a 400-char digest (8 headings + 3 paragraphs), words, characters and a structural inventory
+   (tables, lists, images, video, FAQ, forms) are recorded. Pages under 150 words are flagged `thin`
+   and fall back to title + snippet.
 3. **Traffic** - one DataForSEO call estimates `etv` for every URL; unknown stays unknown.
 4. **Label** - one LLM call groups results into emergent intents and names each form and the genre.
    Invalid JSON goes back to the model with the exact error. Unplaced results land in `unassigned`.
-5. **Measure** - code computes answer and traffic shares (split for shared results) and length distributions.
+5. **Measure** - code computes coverage, answer and traffic shares, length distributions, element
+   prevalence, and coverage of every page type, heading theme and reader question.
 6. **Decide** - code picks the dominant intent, the reference length and the warnings.
 7. **Report** - HTML with charts, Markdown, JSON.
 

@@ -66,7 +66,28 @@ the model to answer "prose" - it had no word for a category listing. The answer 
 undetectable. Named freely, "shop category listing" is visible, and `article_fits: false` turns it into
 an explicit warning: this query may not be a topic for an article at all.
 
-## 6. Two shares, both from data
+## 6. Page types, heading themes, content form
+
+Besides intents, the model names each result's **page type** (every result exactly one) and the
+**heading themes** the pages cover, each with the results covering it. Themes describe what a complete
+answer is expected to address; they are not an outline and carry no order.
+
+The **content form actually used on each page** is not asked of the model at all. Code counts it from
+the HTML: tables, numbered and bulleted lists, images, embedded video, FAQ blocks (`<details>` or
+`FAQPage` schema), forms and numeric inputs (calculators). Per intent the report gives the share of
+measured pages containing each element. A tag either is there or is not - there is nothing to
+interpret, so it is inventory for code, not semantics for a model.
+
+Text is extracted with trafilatura when installed (`[extract]` extra), which removes menus, footers
+and cookie walls far better than a plain parser and so gives honest word counts; without it a
+standard-library parser keeps the core dependency-free. The element inventory always comes from the
+raw HTML.
+
+## 7. Coverage and two shares, all from data
+
+`coverage` = results addressing the intent / all results, not split. On a heavily overlapping SERP
+(one shop page = offer + guide + FAQ) intents can cover 94%, 82% and 76% of results at once. Coverage
+answers "how many pages address this"; the shares below answer "how do the results divide".
 
 | Share | Definition |
 |---|---|
@@ -89,12 +110,12 @@ unknown and left out of both numerator and denominator, never counted as zero. C
 When the two shares disagree it is a signal, not an error: a topic served by many weak pages versus a
 topic served by one strong page.
 
-## 7. The dominant intent is decided by code
+## 8. The dominant intent is decided by code
 
 Dominant = highest `answer_share` (ties: traffic share, then best rank). The intent dominant by traffic
 is reported next to it; if they differ, the report warns and leaves the decision to a human.
 
-## 8. Reference length
+## 9. Reference length
 
 The distribution (p10, p25, p50, p75, p90, min, max; nearest-rank, so every value is a real page) of
 the dominant intent's measured pages, in **words and characters**. Characters because publishers and
@@ -117,11 +138,11 @@ different answers: a shopping query (96% of traffic transactional, no guide in t
 by 40%; an office-move query surfaced an 18% "quotes and costs" intent and *added* a section; a
 legal-act query kept its length (+7%) because that market is long.
 
-## 9. Warnings
+## 10. Warnings
 
 | Code | When |
 |---|---|
-| `mixed_serp` | the dominant intent holds < 40% of results |
+| `mixed_serp` | the dominant intent holds < 40% share **and** covers < 50% of results (overlap is not mixing) |
 | `consider_separate_pages` | 3 or more intents hold ≥ 15% each |
 | `traffic_disagrees` | dominant by answers ≠ dominant by traffic |
 | `wide_length_band` | p90 / p10 ≥ 5 - look at pages one by one |
@@ -131,12 +152,12 @@ legal-act query kept its length (+7%) because that market is long.
 A measurement nobody reads at the point of decision is decoration. Warnings are in the JSON so the
 next step (a brief, a panel) can block on them.
 
-## 10. Page sets without a SERP
+## 11. Page sets without a SERP
 
 With `--urls` or uploaded HTML there are no ranks: the pages are a sample of what exists. Shares
 describe the sample. Useful for auditing a site section or a competitor list.
 
-## 11. Reliability and cost
+## 12. Reliability and cost
 
 - JSON that fails the contract goes back to the model with the exact error and its previous answer, up
   to 3 attempts. A repeated identical prompt tends to repeat the same mistake.
@@ -144,7 +165,7 @@ describe the sample. Useful for auditing a site section or a competitor list.
 - A cheap reasoning model is enough. `openai/gpt-6-luna` with `reasoning_effort=low` labels a
   10-result SERP in about a minute for a fraction of a cent.
 
-## 12. What this method does not do
+## 13. What this method does not do
 
 It does not estimate CTR or difficulty, write outlines or content, or promise that matching the
 dominant intent earns rankings.

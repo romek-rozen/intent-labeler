@@ -28,6 +28,11 @@ class Result:
     # rewritten by Google; this says what the page actually offers.
     digest: str = ""
     excerpt: str = ""
+    # Structural inventory counted from HTML (tables, lists, images, video,
+    # FAQ, forms): what form the content takes on this page. Counted by code;
+    # a tag either is there or is not, nothing to interpret.
+    elements: dict = field(default_factory=dict)
+    extractor: str = ""
     # Estimated monthly organic traffic of the whole URL (DataForSEO `etv`).
     # None means unknown, never zero: a page the database does not know must
     # not enter the traffic denominator.

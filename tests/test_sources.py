@@ -7,7 +7,7 @@ HTML = """<html><head><title>Guide</title><meta name="description" content="How 
 
 
 def test_extract_html_reads_title_headings_and_counts_body_words():
-    data = page_source.extract_html(HTML)
+    data = page_source.extract_html(HTML, use_trafilatura=False)
     assert data["title"] == "Guide" and data["description"] == "How to"
     assert data["headings"] == ["H1: Standing desk guide", "H2: Height"]
     assert "ignored" not in data["excerpt"] and "Menu" not in data["excerpt"]
@@ -21,7 +21,8 @@ def test_failed_fetch_keeps_the_result():
     def fetcher(url):
         if "b.test" in url:
             raise TimeoutError()
-        return HTML + "<p>" + "word " * 200 + "</p>"
+        return HTML.replace("</body>", "".join(
+            f"<p>Sentence {i} explains one more practical detail about desks.</p>" for i in range(30)) + "</body>")
 
     page_source.enrich(snapshot, fetcher=fetcher)
     assert snapshot.results[0].fetch_status == "ok"
@@ -55,7 +56,7 @@ def test_thin_page_is_flagged_and_excluded_from_lengths(snapshot):
 
 def test_digest_is_headings_and_first_paragraphs_capped():
     body = "<h2>A</h2><h2>B</h2>" + "".join(f"<p>{'long paragraph words here ' * 5}{i}</p>" for i in range(6))
-    data = page_source.extract_html(body)
+    data = page_source.extract_html(body, use_trafilatura=False)
     assert data["digest"].startswith("headings: A; B | text: ")
     assert len(data["digest"]) <= 400 and data["char_count"] > 0
 
@@ -67,3 +68,24 @@ def test_traffic_zero_with_no_keywords_is_unknown(snapshot):
         {"target": snapshot.results[1].url, "metrics": {"organic": {"etv": 0, "count": 0}}}]}]}]}
     traffic.apply_traffic(snapshot, location_code=2840, language_code="en", fetcher=lambda *a, **k: payload)
     assert snapshot.results[0].etv == 120.5 and snapshot.results[1].etv is None and snapshot.results[2].etv is None
+
+
+def test_element_inventory_is_counted_from_html():
+    html = ("<table><tr><td>a</td></tr></table><ol><li>x</li></ol><ul><li>y</li></ul>"
+            "<img src=a.png><iframe src='https://www.youtube.com/embed/x'></iframe>"
+            "<details><summary>Q</summary>A</details>"
+            "<form><input type='number'><input type='search'></form>"
+            "<nav><ul><li>menu</li></ul></nav>")
+    elements = page_source.extract_html(html)["elements"]
+    assert elements == {"tables": 1, "ordered_lists": 1, "unordered_lists": 1, "images": 1,
+                        "videos": 1, "faq": 1, "forms": 1, "inputs": 1}
+
+
+def test_trafilatura_is_used_when_installed():
+    import pytest
+    pytest.importorskip("trafilatura")
+    body = "<html><body><nav>Home Shop Contact</nav><article><h1>Guide</h1>" + "".join(
+        f"<p>This is paragraph number {i} with enough words to count as real content.</p>" for i in range(20)
+    ) + "</article><footer>Copyright footer links</footer></body></html>"
+    data = page_source.extract_html(body)
+    assert data["extractor"] == "trafilatura" and "Copyright" not in data["excerpt"]

@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T09:13:15+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://www.youtube.com/shorts/R3fM6O4FaTA",
+        "rank": 1,
+        "domain": "www.youtube.com",
+        "title": "Easy sourdough starter tips #sourdoughstarter",
+        "description": "Easy sourdough starter tips #sourdoughstarter - Learn more @theventuringhomestead Subscribe",
+        "headings": [],
+        "highlighted": [
+          "Easy sourdough starter tips"
+        ],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://www.facebook.com/groups/1006060197306320/posts/1692275582018108/",
+        "rank": 2,
+        "domain": "www.facebook.com",
+        "title": "How to make sourdough starter and bread?",
+        "description": "To create one, mix 1/2 cup of warm water (around 90°F to 100°F) with 1/2 cup of flour. Cover it with a cloth and let it sit … 24 to 48 hours. ...",
+        "headings": [],
+        "highlighted": [
+          "mix 1/2 cup of warm water (around 90°F to 100°F) with 1/2 cup of flour"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://www.tiktok.com/@thesouthernsourdoughco/video/7590414839995010335",
+        "rank": 3,
+        "domain": "www.tiktok.com",
+        "title": "How To Make Sourdough Starter for Beginners",
+        "description": "1/2 cup flour 1/4 cup water. Grab your unbleached flour, filtered water, a jar and lets make your own starter!",
+        "headings": [],
+        "highlighted": [
+          "1/2 cup flour 1/4 cup water"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.youtube.com/shorts/2L3uDxehGeU",
+        "rank": 4,
+        "domain": "www.youtube.com",
+        "title": "Day 6: How to Make a Sourdough Starter",
+        "description": "Day 6: How to Make a Sourdough Starter - YouTube. Learn more @livingwellwithmandy Subscribe",
+        "headings": [],
+        "highlighted": [
+          "How to Make a Sourdough Starter"
+        ],
+        "word_count": 26,
+        "char_count": 195,
+        "digest": "",
+        "excerpt": "Informacje Centrum prasowe Prawa autorskie Skontaktuj się z nami Twórcy Reklamy Deweloperzy Warunki Prywatność Zasady i bezpieczeństwo Jak działa YouTube Przetestuj nowe funkcje © 2026 Google LLC",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 1,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.instagram.com/reel/Dc4mMlsPRob/",
+        "rank": 5,
+        "domain": "www.instagram.com",
+        "title": "First day: mix up 1/2 cup whole wheat flour and 1/2 cup water ...",
+        "description": "First day: mix up 1/2 cup whole wheat flour and 1/2 cup water in quart size mason jar. Cover with lightweight towel and place in warmest part ...",
+        "headings": [],
+        "highlighted": [
+          "mix up 1/2 cup whole wheat flour and 1/2 cup water in quart size mason jar"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 0,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://lockremhomestead.com/how-to-make-a-sourdough-starter/",
+        "rank": 6,
+        "domain": "lockremhomestead.com",
+        "title": "How to Make a Sourdough Starter from Scratch",
+        "description": "Apr 14, 2023 — Mix equal parts flour and water by weight in a clean quart-size jar. Cover the jar with a paper towel, – 72°F/22°C for 24 hours.",
+        "headings": [
+          "H1: How to Make a Sourdough Starter from Scratch",
+          "H2: **What is a Sourdough Starter?**",
+          "H2: **How Long Does It Take to Make a Sourdough Starter?**",
+          "H2: **How to Start and Feed a Sourdough Starter**",
+          "H2: **Sourdough Starter Life Cycle**",
+          "H2: **Sourdough Starter Ingredients**",
+          "H3: Tools You’ll Need For Sourdough Starter",
+          "H2: **How t**o Make Sourdough Starter from Scratch Instructions",
+          "H3: Day 1:",
+          "H3: Day 2-4:",
+          "H3: Step 3: Day 5-7:",
+          "H2: Helpful Tips for Making a Sourdough Starter",
+          "H2: Ways to Use Your Sourdough Starter",
+          "H2: FAQs About Making a Sourdough Starter",
+          "H3: **How Do I Know If My Starter is Ready to Bake With?**",
+          "H3: W**hat if My Starter Never Got Bubbly?**",
+          "H3: **I Have a Living, Bubbling Starter. Now What?**",
+          "H3: **How Do I Keep My Starter Alive?**",
+          "H4: **Option 1** **– Daily**",
+          "H4: **Option 2 – Weekly**",
+          "H3: **Ooops, I Forgot to Feed My Starter. Is it Dead?**",
+          "H3: **What do I do With a Freeze-Dried Starter?**",
+          "H3: **What Do I Do if I Got a Starter From a Friend?**"
+        ],
+        "highlighted": [
+          "Mix equal parts flour and water by weight in a clean quart-size jar"
+        ],
+        "word_count": 2899,
+        "char_count": 15920,
+        "digest": "headings: How to Make a Sourdough Starter from Scratch; **What is a Sourdough Starter?**; **How Long Does It Take to Make a Sourdough Starter?**; **How to Start and Feed a Sourdough Starter**; **Sourdough Starter Life Cycle**; **Sourdough Starter Ingredients**; Tools You’ll Need For Sourdough Starter; **How t**o Make Sourdough Starter from Scratch Instructions | text: Learn how to make a sourdough",
+        "excerpt": "# How to Make a Sourdough Starter from Scratch Learn how to make a sourdough starter from scratch using two simple ingredients – flour and water! Have you wanted to jump in and learn all about sourdough, but don’t know where to start? Join the conversation with others and learn how to make your very own sourdough starter from scratch. In this guide, you’ll learn what a sourdough starter is, how to make one, its life cycle, and a robust FAQs section to help troubleshoot your questions. Save This For Later! We’ll email this post to you so it doesn’t get lost in your open tabs! By submitting this form, you consent to receive emails from Lockrem Homestead Having a sourdough starter empowers you to bake breads and other baked goods with an ancient method of leavening. Baking with a sourdough starter makes it easy to feed your family homemade bread. I use this bread recipe weekly to feed fresh bread to my family. But don’t limit yourself to just bread loaves. A sourdough starter can be used to leaven bagels, baguettes, and cinnamon rolls. Incorporate the sourdough discard (unfed starter) to add flavor, moisture, and help break down the phytic acid in the grains. Here, be creative and use it in a variety of ways. Use it to thicken sauces, add to muffins, cakes, and cookies. ## **What is a Sourdough Starter?** Long before commercial yeasts were created, sourdough starters were used to inoculate bread doughs. But what is it and how does it work? A sourdough starter is a colony of wild",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 4,
+          "unordered_lists": 11,
+          "images": 20,
+          "videos": 0,
+          "faq": 0,
+          "forms": 4,
+          "inputs": 0
+        },
+        "extractor": "trafilatura",
+        "etv": 0.630000002682209,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://www.reddit.com/r/Sourdough/comments/lcl8xh/how_to_make_your_own_sourdough_starter/",
+        "rank": 7,
+        "domain": "www.reddit.com",
+        "title": "How to make your own sourdough starter",
+        "description": "add water and flour and then you take that mixture and then add flour and water? step by step exact guide for how to make a sourdough starter ...",
+        "headings": [],
+        "highlighted": [
+          "add water and flour"
+        ],
+        "word_count": 0,
+        "char_count": 0,
+        "digest": "",
+        "excerpt": "",
+        "elements": {
+          "tables": 0,
+          "ordered_lists": 0,
+          "unordered_lists": 0,
+          "images": 0,
+          "videos": 0,
+          "faq": 0,
+          "forms": 1,
+          "inputs": 0
+        },
+        "extractor": "stdlib",
+        "etv": null,
+        "fetch_status": "thin"
+      }
+    ],
+    "keyword": "how to make sourdough starter",
+    "language": "en",
+    "location": "2840",
+    "people_also_ask": [
+      "What is the biggest mistake beginners make with sourdough bread?",
+      "What is the 1/3/3 rule for sourdough starter?",
+      "How to start making sourdough for beginners?",
+      "What is the secret to a good sourdough starter?"
+    ],
+    "related_searches": [
+      "Can you buy sourdough starter",
+      "Sourdough starter kit",
+      "Where to buy sourdough starter",
+      "Can I buy sourdough starter",
+      "Where to get sourdough starter",
+      "Sourdough starter for sale",
+      "Sourdough starter near me",
+      "Where to buy sourdough starter near me"
+    ],
+    "ai_overview": "You can make a vibrant sourdough starter from scratch in 7 to 10 days using only unbleached flour, water, and daily feedings. What You Need Unbleached flour : Whole wheat or rye flour for Day 1, and unbleached all-purpose or bread flour for later feedings. Water : Filtered, bottled, or boiled and cooled water (around 75–80°F). Equipment : A clean glass jar, a kitchen scale, and a loose-fitting lid or cloth cover. Step-by-Step Schedule Day 1 (Initial Mix) :Place your jar on the scale and set it to zero.\nAdd 50g to 60g of whole wheat or rye flour and an equal weight (50g to 60g) of lukewarm water.\nStir until smooth like a thick pancake batter with no dry spots.\nCover loosely and let it sit at room temperature (70–80°F) for 24 hours. Place your jar on the scale and set it to zero. Add 50g to 60g of whole wheat or rye flour and an equal weight (50g to 60g) of lukewarm water. Stir until smooth like a thick pancake batter with no dry spots. Cover loosely and let it sit at room temperature (70–80°F) for 24 hours. Day 2 (First Feeding) :Discard about half of the mixture (down to roughly 50g).\nAdd 50g to 60g of all-purpose or bread flour and 50g to 60g of water.\nStir well, cover loosely, and rest for 24 hours. Discard about half of the mixture (down to roughly 50g). Add 50g to 60g of all-purpose or bread flour and 50g to 60g of water. Stir well, cover loosely, and rest for 24 hours. Days 3 through 7 (Daily Maintenance) :Repeat the exact same process once a day: discard half your starter, then feed with 60g fresh flour and 60g water.\nTip : Track the rise with a rubber band around the jar right after feeding. Repeat the exact same process once a day: discard half your starter, then feed with 60g fresh flour and 60g water. Tip : Track the rise with a rubber band around the jar right after feeding. Day 7 and Onward (Readiness) :Your starter is ready when it predictably doubles or triples in size within 4 to 6 hours of a feeding, smells pleasantly yeasty/tangy, and looks bubbly and spongy.\nYou can find an in-depth schedule and expert tips at The Perfect Loaf. Your starter is ready when it predictably doubles or triples in size within 4 to 6 hours of a feeding, smells pleasantly yeasty/tangy, and looks bubbly and spongy. You can find an in-depth schedule and expert tips at The Perfect Loaf. Watch a helpful visual guide on mixing your initial ingredients: 7:41 How to Make a Sourdough Starter in 5 Days Beginner‑Friendly, No Flour ... 26K views · 1 year ago YouTube · Matthew James Duffy If you want, tell me:What is the ambient temperature of your kitchen?\nWhat type of flour you plan to use for feeding?\nI can help you adjust your feeding schedule or troubleshoot slow growth.",
+    "item_types": [
+      "ai_overview",
+      "recipes",
+      "people_also_ask",
+      "short_videos",
+      "organic",
+      "related_searches"
+    ],
+    "checked_at": "2026-09-30 09:13:00 +00:00"
+  },
+  "labels": {
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Make a starter from scratch",
+        "searcher_goal": "The searcher wants clear instructions for combining flour and water, feeding the mixture over several days, and knowing when the starter is ready.",
+        "form": "Day-by-day starter recipe with measurements and readiness cues",
+        "intent_type": "informational",
+        "result_ids": [
+          "r01",
+          "r02",
+          "r03",
+          "r04",
+          "r05",
+          "r06",
+          "r07"
+        ],
+        "evidence": "The results repeatedly offer beginner tips, ingredient ratios, daily progress clips, and a written from-scratch method; the AI Overview also gives a feeding schedule and readiness signs.",
+        "basis": "model"
+      }
+    ],
+    "expected_genre": "Practical sourdough how-to recipe, ideally paired with visual demonstrations",
+    "page_types": [
+      {
+        "page_type": "Short-form social video",
+        "result_ids": [
+          "r01",
+          "r04"
+        ]
+      },
+      {
+        "page_type": "Social post or community thread",
+        "result_ids": [
+          "r02",
+          "r05",
+          "r07"
+        ]
+      },
+      {
+        "page_type": "Beginner short-form instructional video",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "page_type": "Written recipe and starter guide",
+        "result_ids": [
+          "r06"
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "What a sourdough starter is",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "theme": "How long starter takes to develop",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "theme": "Ingredients and tools for making a starter",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "theme": "Starting and feeding the starter",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "theme": "The starter's life cycle",
+        "result_ids": [
+          "r06"
+        ]
+      }
+    ],
+    "competitor_brands": [
+      "Lockrem Homestead",
+      "YouTube",
+      "TikTok",
+      "Instagram",
+      "Facebook",
+      "Reddit"
+    ],
+    "subject_brands": [],
+    "ai_overview_signal": {
+      "present": true,
+      "interpretation": "The overview directly answers the how-to query with ingredients, equipment, a day-by-day feeding schedule, and signs of readiness, so a useful page needs actionable specifics rather than a general explanation."
+    },
+    "article_fits": {
+      "value": true,
+      "reason": "A written recipe-style guide can explain quantities, timing, feeding, and readiness; short visual demonstrations can complement it but are not essential."
+    },
+    "useful_elements": [
+      {
+        "element": "Day-by-day schedule",
+        "job": "Shows when to mix, discard, and feed the starter throughout its development."
+      },
+      {
+        "element": "Ingredient measurements and ratios",
+        "job": "Lets beginners reproduce the mixture reliably using the stated flour and water amounts."
+      },
+      {
+        "element": "Readiness checklist",
+        "job": "Helps readers decide when the starter is active enough to use."
+      },
+      {
+        "element": "Progress photos or short video",
+        "job": "Shows how the mixture and its activity change between feedings."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "A general sourdough history article",
+        "reason": "The results serve a hands-on starter-making task, not background research."
+      },
+      {
+        "element": "A bread recipe without starter-making instructions",
+        "reason": "The searcher needs to create and maintain the starter before using it to bake."
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "What is the biggest mistake beginners make with sourdough bread?",
+        "source": "paa",
+        "result_ids": [
+          "r06",
+          "r07"
+        ]
+      },
+      {
+        "question": "What is the 1/3/3 rule for sourdough starter?",
+        "source": "paa",
+        "result_ids": [
+          "r06"
+        ]
+      },
+      {
+        "question": "How do you start making sourdough for beginners?",
+        "source": "paa",
+        "result_ids": [
+          "r03",
+          "r06"
+        ]
+      },
+      {
+        "question": "What is the secret to a good sourdough starter?",
+        "source": "paa",
+        "result_ids": [
+          "r01",
+          "r06"
+        ]
+      }
+    ],
+    "summary": "The results mainly serve people who want to make a sourdough starter at home, with brief social videos and posts alongside one detailed written guide. The AI Overview reinforces the expected practical recipe format by supplying a schedule, measurements, and readiness cues.",
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 7,
+    "results_fetched": 1,
+    "has_ranks": true,
+    "traffic_known": 1,
+    "shared_results": [],
+    "words": {
+      "n": 1,
+      "min": 2899,
+      "p10": 2899,
+      "p25": 2899,
+      "p50": 2899,
+      "p75": 2899,
+      "p90": 2899,
+      "max": 2899
+    },
+    "chars": {
+      "n": 1,
+      "min": 15920,
+      "p10": 15920,
+      "p25": 15920,
+      "p50": 15920,
+      "p75": 15920,
+      "p90": 15920,
+      "max": 15920
+    },
+    "intents": {
+      "i1": {
+        "count": 7,
+        "coverage": 1.0,
+        "answer_share": 1.0,
+        "traffic_share": 1.0,
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "best_rank": 1,
+        "top3_count": 3,
+        "words": {
+          "n": 1,
+          "min": 2899,
+          "p10": 2899,
+          "p25": 2899,
+          "p50": 2899,
+          "p75": 2899,
+          "p90": 2899,
+          "max": 2899
+        },
+        "chars": {
+          "n": 1,
+          "min": 15920,
+          "p10": 15920,
+          "p25": 15920,
+          "p50": 15920,
+          "p75": 15920,
+          "p90": 15920,
+          "max": 15920
+        },
+        "elements": {
+          "faq": 0.0,
+          "forms": 1.0,
+          "images": 1.0,
+          "inputs": 0.0,
+          "ordered_lists": 1.0,
+          "tables": 0.0,
+          "unordered_lists": 1.0,
+          "videos": 0.0,
+          "n": 1
+        }
+      }
+    },
+    "page_types": [
+      {
+        "page_type": "Social post or community thread",
+        "count": 3,
+        "coverage": 0.4286,
+        "ranks": [
+          2,
+          5,
+          7
+        ]
+      },
+      {
+        "page_type": "Short-form social video",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          4
+        ]
+      },
+      {
+        "page_type": "Beginner short-form instructional video",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          3
+        ]
+      },
+      {
+        "page_type": "Written recipe and starter guide",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      }
+    ],
+    "heading_themes": [
+      {
+        "theme": "What a sourdough starter is",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "theme": "How long starter takes to develop",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "theme": "Ingredients and tools for making a starter",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "theme": "Starting and feeding the starter",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      },
+      {
+        "theme": "The starter's life cycle",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      }
+    ],
+    "reader_questions": [
+      {
+        "question": "What is the biggest mistake beginners make with sourdough bread?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          6,
+          7
+        ]
+      },
+      {
+        "question": "How do you start making sourdough for beginners?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          3,
+          6
+        ]
+      },
+      {
+        "question": "What is the secret to a good sourdough starter?",
+        "count": 2,
+        "coverage": 0.2857,
+        "ranks": [
+          1,
+          6
+        ]
+      },
+      {
+        "question": "What is the 1/3/3 rule for sourdough starter?",
+        "count": 1,
+        "coverage": 0.1429,
+        "ranks": [
+          6
+        ]
+      }
+    ]
+  },
+  "form": {
+    "dominant_intent_id": "i1",
+    "dominant_intent_title": "Make a starter from scratch",
+    "dominant_intent_form": "Day-by-day starter recipe with measurements and readiness cues",
+    "dominant_intent_answer_share": 1.0,
+    "dominant_intent_coverage": 1.0,
+    "top_page_type": "Social post or community thread",
+    "dominant_by_traffic_id": "i1",
+    "expected_genre": null,
+    "expected_genre_withheld": "genre not derived: dominant intent sample is insufficient_sample",
+    "article_fits": {
+      "value": true,
+      "reason": "A written recipe-style guide can explain quantities, timing, feeding, and readiness; short visual demonstrations can complement it but are not essential."
+    },
+    "length_basis": "insufficient_sample",
+    "length_words": null,
+    "length_chars": null,
+    "length_sample_size": 1,
+    "useful_elements": [
+      {
+        "element": "Day-by-day schedule",
+        "job": "Shows when to mix, discard, and feed the starter throughout its development."
+      },
+      {
+        "element": "Ingredient measurements and ratios",
+        "job": "Lets beginners reproduce the mixture reliably using the stated flour and water amounts."
+      },
+      {
+        "element": "Readiness checklist",
+        "job": "Helps readers decide when the starter is active enough to use."
+      },
+      {
+        "element": "Progress photos or short video",
+        "job": "Shows how the mixture and its activity change between feedings."
+      }
+    ],
+    "avoid": [
+      {
+        "element": "A general sourdough history article",
+        "reason": "The results serve a hands-on starter-making task, not background research."
+      },
+      {
+        "element": "A bread recipe without starter-making instructions",
+        "reason": "The searcher needs to create and maintain the starter before using it to bake."
+      }
+    ],
+    "warnings": []
+  }
+}

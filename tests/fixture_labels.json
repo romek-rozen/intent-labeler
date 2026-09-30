@@ -90,5 +90,77 @@
   "article_fits": {
     "value": true,
     "reason": "reviews and guides hold half of the results"
+  },
+  "page_types": [
+    {
+      "page_type": "review / listicle",
+      "result_ids": [
+        "r02",
+        "r08"
+      ]
+    },
+    {
+      "page_type": "shop category listing",
+      "result_ids": [
+        "r01",
+        "r05",
+        "r10"
+      ]
+    },
+    {
+      "page_type": "product page",
+      "result_ids": [
+        "r03"
+      ]
+    },
+    {
+      "page_type": "guide",
+      "result_ids": [
+        "r04",
+        "r06",
+        "r09"
+      ]
+    },
+    {
+      "page_type": "forum thread",
+      "result_ids": [
+        "r07"
+      ]
+    }
+  ],
+  "heading_themes": [
+    {
+      "theme": "Electric vs manual lift",
+      "result_ids": [
+        "r02",
+        "r03",
+        "r06",
+        "r08"
+      ]
+    },
+    {
+      "theme": "Height range and stability",
+      "result_ids": [
+        "r02",
+        "r06",
+        "r09"
+      ]
+    },
+    {
+      "theme": "Health effects of standing",
+      "result_ids": [
+        "r04",
+        "r07"
+      ]
+    }
+  ],
+  "competitor_brands": [
+    "Brand B",
+    "Brand D"
+  ],
+  "subject_brands": [],
+  "ai_overview_signal": {
+    "present": false,
+    "interpretation": "No AI Overview; shoppers and reviews dominate."
   }
 }

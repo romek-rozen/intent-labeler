@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "intent-labeler"
-version = "0.2.0"
+version = "0.3.0"
 description = "Label search intent and recommended content form from a SERP or a set of pages, with transparent, code-computed metrics."
 readme = "README.md"
 license = "MIT"
@@ -20,6 +20,7 @@ dependencies = []
 
 [project.optional-dependencies]
 api = ["fastapi>=0.110", "uvicorn>=0.29", "python-multipart>=0.0.9"]
+extract = ["trafilatura>=2.0"]
 dev = ["pytest>=8", "httpx>=0.27", "fastapi>=0.110", "python-multipart>=0.0.9"]
 
 [project.scripts]
