@@ -63,11 +63,12 @@ def test_digest_is_headings_and_first_paragraphs_capped():
 
 def test_traffic_zero_with_no_keywords_is_unknown(snapshot):
     from intent_labeler.features import traffic
-    payload = {"tasks": [{"result": [{"items": [
+    payload = {"tasks": [{"cost": 0.0126, "result": [{"items": [
         {"target": snapshot.results[0].url, "metrics": {"organic": {"etv": 120.5, "count": 9}}},
         {"target": snapshot.results[1].url, "metrics": {"organic": {"etv": 0, "count": 0}}}]}]}]}
     traffic.apply_traffic(snapshot, location_code=2840, language_code="en", fetcher=lambda *a, **k: payload)
     assert snapshot.results[0].etv == 120.5 and snapshot.results[1].etv is None and snapshot.results[2].etv is None
+    assert snapshot.costs == {"traffic": 0.0126}
 
 
 def test_element_inventory_is_counted_from_html():

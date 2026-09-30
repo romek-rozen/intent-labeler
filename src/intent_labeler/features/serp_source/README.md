@@ -35,6 +35,11 @@ flowchart LR
 `description` and up to 4 `highlighted` phrases. People Also Ask, related searches, AI Overview text
 and SERP item types are kept on the snapshot as context for the labeler - they are not counted.
 
+## Cost
+
+Live mode, one page of results: $0.002 per query (DataForSEO pricing; standard queue is $0.0006
+but takes minutes). The reported `cost` is stored in `snapshot.costs["serp"]`.
+
 ## Rules
 
 - Only `type == "organic"` items become results. Ads, shopping and video packs are SERP features.

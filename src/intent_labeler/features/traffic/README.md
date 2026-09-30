@@ -35,6 +35,12 @@ response does not tell them apart. A page ranking #5 with etv 0 is a documented 
 zero known keywords gets `etv = None` (unknown) and `metrics` leaves it out of both numerator and
 denominator. Never turn `None` into `0`.
 
+## Cost
+
+The call's `cost` is recorded in `snapshot.costs["traffic"]`. Measured: about $0.013 per call -
+more than six SERP calls. It is the most expensive step; the CLI runs it only for `--keyword`
+(`--traffic off` to skip).
+
 ## Tests
 
 `tests/test_sources.py::test_traffic_zero_with_no_keywords_is_unknown` (offline).

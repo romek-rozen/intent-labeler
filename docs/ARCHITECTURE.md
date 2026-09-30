@@ -8,6 +8,7 @@ flowchart TD
     PS --> SN
     SN --> EN[page_source.enrich<br/>text, digest, elements, thin flag]
     SN --> TR[traffic.apply_traffic<br/>etv per URL]
+    SN --> SV[search_volume.apply_search_volume<br/>volume, monthly history]
     EN --> IL{{intent_labeling<br/>1 LLM call + contract}}
     IL --> LB[(labels<br/>IDs and words only)]
     LB --> ME[metrics]
@@ -16,6 +17,7 @@ flowchart TD
     ME --> FD[form_decision]
     LB --> FD
     FD --> AN[(analysis.json)]
+    SV --> AN
     AN --> RE[report<br/>HTML, Markdown]
     CLI[cli.py] -.calls.-> PL[pipeline.analyze]
     API[api/app.py] -.calls.-> PL
@@ -97,6 +99,7 @@ classDiagram
 | `labels` | intent_labeling | model output after validation (+ `coverage_gap`, `basis` per intent) |
 | `metrics` | metrics | per intent: coverage, answer/traffic share, ranks, words/chars, element prevalence; coverage of page types, heading themes, reader questions |
 | `form` | form_decision | dominant intent, genre, reference length, warnings |
+| `demand` | search_volume | volume, CPC, difficulty, monthly history, seasonality |
 | `llm_cache_hit` | pipeline | whether the labels came from cache |
 
 `Snapshot` and `Result` are defined in `core/types.py`. `fetch_status` is one of `not_fetched`, `ok`,

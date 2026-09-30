@@ -23,6 +23,15 @@ def render_markdown(analysis: dict) -> str:
         f"- Reference length: {length}, basis: {form['length_basis']}, n={form['length_sample_size']}",
         "",
     ]
+    demand = analysis.get("demand") or {}
+    if demand.get("volume") is not None:
+        season = demand.get("seasonality") or {}
+        yoy = "-" if season.get("yoy_change") is None else f"{season['yoy_change'] * 100:+.0f}%"
+        lines += [f"- Search volume: {demand['volume']:,}/month, CPC {demand.get('cpc')}, "
+                  f"difficulty {demand.get('keyword_difficulty')}, seasonality index "
+                  f"{season.get('seasonality_index')} (peak month {season.get('peak_month')}, "
+                  f"low month {season.get('low_month')}), last 12 months vs previous: "
+                  f"{yoy}", ""]
     if form["warnings"]:
         lines += ["## Warnings", *[f"- **{w['code']}** - {w['message']}" for w in form["warnings"]], ""]
     lines += ["| Intent | Form | Coverage | Share | Traffic | Ranks | Median words |", "|---|---|---|---|---|---|---|"]
@@ -32,6 +41,10 @@ def render_markdown(analysis: dict) -> str:
                      f"{_pct(row['traffic_share'])} | {', '.join(map(str, row['ranks'])) or '-'} | "
                      f"{row['words'].get('p50') or '-'} |")
     lines += ["", "## Searcher goals", *[f"- **{i['title']}** - {i['searcher_goal']}" for i in labels["intents"]]]
+    costs = snap.get("costs") or {}
+    if costs:
+        lines += ["", "DataForSEO cost: $" + f"{sum(costs.values()):.4f} (" +
+                  ", ".join(f"{k} ${v:.4f}" for k, v in costs.items()) + ")"]
     lines += ["", f"Traffic known for {metrics['traffic_known']} of {metrics['results_total']} results.",
               "", "## Content form on the pages (share of measured pages)",
               *[f"- {i['title']}: " + ", ".join(f"{k} {v * 100:.0f}%" for k, v in (metrics['intents'][i['intent_id']].get('elements') or {}).items() if k != 'n' and v)

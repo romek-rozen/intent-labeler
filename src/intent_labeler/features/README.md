@@ -6,7 +6,8 @@ Each feature has its own README with a flow diagram, the details and the reasons
 flowchart LR
     serp_source --> page_source
     page_source --> traffic
-    traffic --> intent_labeling
+    traffic --> search_volume
+    search_volume --> intent_labeling
     intent_labeling --> metrics
     metrics --> form_decision
     form_decision --> report
@@ -17,6 +18,7 @@ flowchart LR
 | [`serp_source`](serp_source/README.md) | keyword -> `Snapshot` via DataForSEO | `fetch_snapshot`, `snapshot_from_dataforseo` |
 | [`page_source`](page_source/README.md) | URLs/HTML -> `Result`s; fetch, 400-char digest, thin flag | `snapshot_from_urls`, `enrich`, `apply_html`, `extract_html` |
 | [`traffic`](traffic/README.md) | etv per URL from DataForSEO; unknown stays None | `apply_traffic`, `parse_response` |
+| [`search_volume`](search_volume/README.md) | search volume, CPC, difficulty, seasonality | `apply_search_volume`, `seasonality` |
 | [`intent_labeling`](intent_labeling/README.md) | the only LLM step; prompt in `prompts/` | `label`, `validate`, `build_payload` |
 | [`metrics`](metrics/README.md) | answer/traffic shares, length distributions | `measure`, `distribution`, `percentile` |
 | [`form_decision`](form_decision/README.md) | dominant intent, reference length, genre, warnings | `decide` |

@@ -15,7 +15,7 @@ from pathlib import Path
 from intent_labeler.core import llm
 from intent_labeler.core.config import LlmConfig
 from intent_labeler.core.types import Snapshot
-from intent_labeler.features import page_source, report, serp_source, traffic
+from intent_labeler.features import page_source, report, search_volume, serp_source, traffic
 from intent_labeler.pipeline import analyze
 
 
@@ -32,6 +32,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--depth", type=int, default=10, help="organic results to analyse (default: 10)")
     parser.add_argument("--traffic", choices=("auto", "on", "off"), default="auto",
                         help="DataForSEO traffic estimate per URL; auto = on for --keyword")
+    parser.add_argument("--volume", choices=("auto", "on", "off"), default="auto",
+                        help="search volume and seasonality (DataForSEO Labs, ~$0.012); auto = on for --keyword")
     parser.add_argument("--brief", default="", help="optional description of the page you plan")
     parser.add_argument("--no-fetch", action="store_true", help="do not download pages")
     parser.add_argument("--out", type=Path, default=Path("out"), help="output directory")
@@ -60,6 +62,8 @@ def main(argv: list[str] | None = None) -> int:
             json.dumps(snapshot.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
     if args.traffic == "on" or (args.traffic == "auto" and args.keyword):
         traffic.apply_traffic(snapshot, location_code=args.location, language_code=args.language)
+    if args.volume == "on" or (args.volume == "auto" and args.keyword):
+        search_volume.apply_search_volume(snapshot, location_code=args.location, language_code=args.language)
     result = analyze(snapshot, chat=llm.openai_chat(config), brief=args.brief,
                      fetch_pages=not args.no_fetch, cache_dir=config.cache_dir,
                      cache_salt=config.model)
@@ -72,6 +76,14 @@ def main(argv: list[str] | None = None) -> int:
     print(f"dominant intent: {form['dominant_intent_title']} -> {form['dominant_intent_form']}")
     print(f"genre:           {form['expected_genre'] or form['expected_genre_withheld']}")
     print(f"length (p50):    {words.get('p50') or 'n/a'} words ({form['length_basis']})")
+    demand = result.get("demand") or {}
+    if demand.get("volume") is not None:
+        season = demand.get("seasonality") or {}
+        print(f"search volume:   {demand['volume']:,}/month, CPC {demand.get('cpc')}, "
+              f"seasonality index {season.get('seasonality_index')}, peak month {season.get('peak_month')}")
+    if snapshot.costs:
+        parts = ", ".join(f"{k} ${v:.4f}" for k, v in snapshot.costs.items())
+        print(f"DataForSEO:      ${sum(snapshot.costs.values()):.4f} ({parts})")
     for warning in form["warnings"]:
         print(f"WARNING {warning['code']}: {warning['message']}")
     print(f"written:         {args.out}/analysis.json, report.html, report.md")

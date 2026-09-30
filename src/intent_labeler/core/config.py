@@ -1,8 +1,9 @@
 """Runtime configuration read from environment variables (and an optional .env)."""
 from __future__ import annotations
 
+import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 
@@ -30,6 +31,9 @@ class LlmConfig:
     # any temperature other than the default, so it must be omittable.
     temperature: float | None = 0.0
     reasoning_effort: str | None = None
+    # Provider-specific fields merged into the request body, e.g. OpenRouter's
+    # {"reasoning": {"enabled": false}} - the portable way to switch reasoning off.
+    extra_body: dict = field(default_factory=dict)
 
     @classmethod
     def from_env(cls) -> "LlmConfig":
@@ -46,6 +50,7 @@ class LlmConfig:
             max_tokens=int(os.environ.get("INTENT_LLM_MAX_TOKENS", "8000")),
             temperature=_optional_float(os.environ.get("INTENT_LLM_TEMPERATURE", "0")),
             reasoning_effort=os.environ.get("INTENT_LLM_REASONING_EFFORT", "").strip() or None,
+            extra_body=json.loads(os.environ.get("INTENT_LLM_EXTRA_BODY", "").strip() or "{}"),
         )
 
 

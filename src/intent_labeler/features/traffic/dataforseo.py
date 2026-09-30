@@ -52,7 +52,9 @@ def apply_traffic(snapshot: Snapshot, *, location_code: int, language_code: str,
     urls = list(dict.fromkeys(item.url for item in snapshot.results if item.url))
     if not urls:
         return snapshot
-    estimates = parse_response(fetcher(urls, location_code=location_code, language_code=language_code))
+    payload = fetcher(urls, location_code=location_code, language_code=language_code)
+    snapshot.costs["traffic"] = float(((payload.get("tasks") or [{}])[0]).get("cost") or 0)
+    estimates = parse_response(payload)
     for item in snapshot.results:
         item.etv = estimates.get(item.url)
     return snapshot

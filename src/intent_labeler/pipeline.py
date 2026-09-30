@@ -11,7 +11,7 @@ from pathlib import Path
 
 from intent_labeler.core import llm
 from intent_labeler.core.types import Snapshot
-from intent_labeler.features import form_decision, intent_labeling, metrics, page_source
+from intent_labeler.features import form_decision, intent_labeling, metrics, page_source, search_volume
 
 
 def analyze(snapshot: Snapshot, *, chat: llm.ChatFn, brief: str = "", fetch_pages: bool = True,
@@ -32,4 +32,7 @@ def analyze(snapshot: Snapshot, *, chat: llm.ChatFn, brief: str = "", fetch_page
         "labels": labels,
         "metrics": measured,
         "form": form,
+        "demand": ({**snapshot.search_volume,
+                    "seasonality": search_volume.seasonality(snapshot.search_volume.get("monthly") or [])}
+                   if snapshot.search_volume else {}),
     }

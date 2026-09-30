@@ -37,6 +37,7 @@ def openai_chat(config: LlmConfig) -> ChatFn:
             body["temperature"] = config.temperature
         if config.reasoning_effort:
             body["reasoning_effort"] = config.reasoning_effort
+        body.update(config.extra_body)
         headers = {"Content-Type": "application/json"}
         if config.api_key:
             headers["Authorization"] = f"Bearer {config.api_key}"

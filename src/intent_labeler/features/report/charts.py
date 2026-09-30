@@ -122,3 +122,33 @@ def _ticks(maximum: int) -> list[int]:
     if maximum / step < 3:
         step //= 2 or 1
     return list(range(0, maximum + 1, max(1, step)))
+
+
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
+
+def monthly_bars(monthly: list[dict], months: int = 36) -> str:
+    """Search volume per month, last `months` months. Unknown months are gaps, not zeros."""
+    data = monthly[-months:]
+    known = [m["volume"] for m in data if m.get("volume") is not None]
+    if not known:
+        return ""
+    top, height, left, bottom = max(known), 200, 56, 24
+    step = (WIDTH - left - 8) / len(data)
+    parts = []
+    for tick in (0, top // 2, top):
+        y = 8 + (height - bottom - 8) * (1 - tick / top)
+        parts.append(f'<line x1="{left}" x2="{WIDTH - 8}" y1="{y:.1f}" y2="{y:.1f}" class="grid"/>'
+                     f'<text x="{left - 6}" y="{y + 4:.1f}" text-anchor="end" class="lbl sm">{tick:,}</text>')
+    for i, m in enumerate(data):
+        x = left + i * step
+        if m["month"] == 1 or i == 0:
+            parts.append(f'<text x="{x + 1:.1f}" y="{height - 6}" class="lbl sm">{m["year"]}</text>')
+        if m.get("volume") is None:
+            continue
+        h = (height - bottom - 8) * m["volume"] / top
+        parts.append(f'<rect x="{x + 1:.1f}" y="{height - bottom - h:.1f}" width="{max(1, step - 2):.1f}" '
+                     f'height="{h:.1f}" rx="2" fill="var(--s1)"><title>{MONTHS[m["month"] - 1]} {m["year"]}: '
+                     f'{m["volume"]:,}</title></rect>')
+    return (f'<svg viewBox="0 0 {WIDTH} {height}" role="img" aria-label="Search volume per month">'
+            + "".join(parts) + "</svg>")

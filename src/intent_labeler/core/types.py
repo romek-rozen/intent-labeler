@@ -61,6 +61,10 @@ class Snapshot:
     ai_overview: str = ""
     item_types: list[str] = field(default_factory=list)
     checked_at: str = ""
+    # Search volume, CPC and monthly history of the keyword (see features/search_volume).
+    search_volume: dict = field(default_factory=dict)
+    # USD reported by paid APIs for this snapshot, e.g. {"serp": 0.002, "traffic": 0.0126}.
+    costs: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return asdict(self)

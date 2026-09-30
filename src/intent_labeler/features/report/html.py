@@ -13,15 +13,15 @@ CSS = """
 *{box-sizing:border-box}body{margin:0;background:var(--surface);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
 main{max-width:980px;margin:0 auto;padding:24px 16px 64px}
 h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:36px 0 8px}.sub{color:var(--text2);margin:0 0 20px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:12px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.card b{display:block;font-size:22px}.card span{color:var(--text2);font-size:13px}
+.card{min-width:0}.card b{display:block;font-size:22px;overflow-wrap:anywhere}.card span{color:var(--text2);font-size:13px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto}
 svg{width:100%;height:auto;display:block}.lbl{fill:var(--text2);font-size:13px}.sm{font-size:11px}
 .val{fill:var(--text);font-size:12px;font-weight:600}.grid{stroke:var(--line)}.band{fill:var(--band)}
 .empty{fill:var(--line)}.median{stroke:var(--text);stroke-width:2}
 table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--text2);font-weight:600}.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+th{color:var(--text2);font-weight:600}td,th{overflow-wrap:anywhere}.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
 .note{color:var(--text2);font-size:13px}.warn{border-left:4px solid var(--s4)}a{color:inherit}ul{margin:6px 0;padding-left:20px}
 """
 
@@ -131,6 +131,22 @@ def render_html(analysis: dict) -> str:
                          f"results; {metrics['traffic_known']} of {metrics['results_total']} results have a "
                          f"known estimate, the rest are left out, not counted as zero.</p>"
                          f"<div class=panel>{charts.share_bars(intents, metrics, 'traffic_share')}</div>")
+    demand = analysis.get("demand") or {}
+    demand_html = ""
+    if demand.get("volume") is not None:
+        season = demand.get("seasonality") or {}
+        names = charts.MONTHS
+        peak = names[season["peak_month"] - 1] if season.get("peak_month") else "-"
+        low = names[season["low_month"] - 1] if season.get("low_month") else "-"
+        yoy = f"{season['yoy_change'] * 100:+.0f}%" if season.get("yoy_change") is not None else "-"
+        facts = [(f"{demand['volume']:,}", "searches per month"), (str(demand.get("cpc") or "-"), "CPC (USD)"),
+                 (str(demand.get("keyword_difficulty") if demand.get("keyword_difficulty") is not None else "-"), "keyword difficulty"),
+                 (f"{season.get('seasonality_index') or '-'}", f"seasonality index (peak {peak}, low {low})"),
+                 (yoy, "last 12 months vs the 12 before")]
+        demand_html = ("<h2>Search demand</h2><p class=note>DataForSEO Labs. Seasonality index = best calendar "
+                       "month / worst, averaged over the last three years; above 2 is clearly seasonal.</p>"
+                       f"<div class=cards>{''.join(f'<div class=card><b>{v}</b><span>{escape(k)}</span></div>' for v, k in facts)}</div>"
+                       f"<div class=panel style='margin-top:12px'>{charts.monthly_bars(demand.get('monthly') or [])}</div>")
     css = CSS.replace("%LIGHT%", css_vars("light")).replace("%DARK%", css_vars("dark"))
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -140,6 +156,7 @@ def render_html(analysis: dict) -> str:
 <p>{escape(labels.get('summary') or '')}</p>
 <div class="cards">{''.join(f'<div class="card"><b>{v}</b><span>{k}</span></div>' for v, k in cards)}</div>
 {f'<h2>Warnings</h2><div class="panel warn"><ul>{warnings}</ul></div>' if warnings else ''}
+{demand_html}
 <h2>Share of results per intent</h2>
 <p class="note">Share: a result serving two intents counts half to each, so shares add up to 100%. Coverage (in the table below) counts every page that addresses the intent.</p>
 <div class="panel">{charts.share_bars(intents, metrics)}</div>

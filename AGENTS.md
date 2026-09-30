@@ -24,6 +24,7 @@ src/intent_labeler/
     serp_source/     keyword -> Snapshot (DataForSEO)
     page_source/     URLs/HTML -> Results (fetch, trafilatura/stdlib text, digest, element inventory, thin)
     traffic/         etv per URL (DataForSEO); unknown stays None
+    search_volume/   keyword volume, CPC, monthly history, seasonality (DataForSEO Labs)
     intent_labeling/ the only semantic step: prompt, contract validation, LLM call
     metrics/         arithmetic on result IDs
     form_decision/   dominant intent (by code), reference length, genre, warnings

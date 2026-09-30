@@ -56,4 +56,5 @@ def fetch_snapshot(keyword: str, *, location_code: int = 2840, language_code: st
                     language_code=language_code, depth=depth)
     snapshot = snapshot_from_dataforseo(raw, language=language_code, max_results=depth)
     snapshot.location = str(location_code)
+    snapshot.costs["serp"] = float(raw["tasks"][0].get("cost") or 0)
     return snapshot

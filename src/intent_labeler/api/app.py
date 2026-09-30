@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 from intent_labeler.core import llm
 from intent_labeler.core.config import LlmConfig
 from intent_labeler.core.types import Result, Snapshot
-from intent_labeler.features import page_source, report, serp_source, traffic
+from intent_labeler.features import page_source, report, search_volume, serp_source, traffic
 from intent_labeler.pipeline import analyze
 
 app = FastAPI(title="Intent Labeler", version="0.3.0",
@@ -29,6 +29,7 @@ class KeywordRequest(BaseModel):
     brief: str = ""
     fetch_pages: bool = True
     traffic: bool = True
+    volume: bool = True
 
 
 class UrlsRequest(BaseModel):
@@ -68,6 +69,8 @@ def health() -> dict:
 def analyze_keyword(body: KeywordRequest, format: str = "json"):
     snapshot = serp_source.fetch_snapshot(body.keyword, location_code=body.location_code,
                                           language_code=body.language, depth=body.depth)
+    if body.volume:
+        search_volume.apply_search_volume(snapshot, location_code=body.location_code, language_code=body.language)
     if body.traffic:
         traffic.apply_traffic(snapshot, location_code=body.location_code, language_code=body.language)
     return _run(snapshot, body.brief, body.fetch_pages, format)

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- `search_volume` feature: keyword volume, CPC, difficulty and 8 years of monthly history from
+  DataForSEO Labs ($0.012), seasonality computed by code; in the CLI, API, reports and playground.
+- DataForSEO costs recorded in `snapshot.costs`; the playground shows the actual cost of each run.
+- Every example labeled by seven low-cost models on the same data (`scripts/run_model_comparison.py`);
+  a failing model is recorded as a result. `INTENT_LLM_EXTRA_BODY` switches reasoning off on OpenRouter.
+- Playground: page reading via DataForSEO content parsing, live step-by-step progress with timers.
+- Site restyled with the Zwinnie media kit; sponsor links at the top; examples in six markets.
+
 - GitHub Pages site with an animated SERP, twelve live examples in five markets and a playground.
 - Playground: live Google top 10 via the visitor's DataForSEO account (16 markets, language per
   market), optional traffic estimate, OpenRouter labeling; keys never leave the browser.

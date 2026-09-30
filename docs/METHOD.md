@@ -243,7 +243,17 @@ sequenceDiagram
 - A cheap reasoning model is enough. `openai/gpt-6-luna` with `reasoning_effort=low` labels a
   10-result SERP in about a minute for a fraction of a cent.
 
-## 13. What this method does not do
+## 13. Search demand and seasonality
+
+The keyword's monthly search volume, CPC and keyword difficulty come from DataForSEO Labs
+`keyword_overview`: the same volume and CPC as Google Ads on a measured keyword, for $0.012 instead of
+$0.09, and with 95 months of history instead of 12. Seasonality is arithmetic: the mean of each calendar
+month over the last three years divided by the overall mean; the index is best month / worst month
+(about 1.2 is flat, 2 or more is clearly seasonal); year over year compares the last 12 months with the
+12 before. Measured examples: "recette pâte à crêpes" 7.7 (a February peak), "standing desk" 1.2.
+Demand is context for planning when to publish; it does not change the intent reading.
+
+## 14. What this method does not do
 
 It does not estimate CTR or difficulty, write outlines or content, or promise that matching the
 dominant intent earns rankings.
