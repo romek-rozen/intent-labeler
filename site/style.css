@@ -273,3 +273,6 @@ ul.plain li { margin-bottom: 6px; }
 @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } .pg-output { padding: 16px; } }
 
 .balances { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+
+.cost-table td.num, .cost-table th.num { text-align: right; font-family: var(--display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cost-table tr.total td { font-weight: 700; border-top: 2px solid var(--line); }

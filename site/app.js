@@ -152,7 +152,7 @@ function parseResults(text) {
 
 // Actual spend of the current run, from the services' own answers (DataForSEO task.cost,
 // OpenRouter usage.cost) - not an estimate.
-const spend = { serp: 0, pages: 0, traffic: 0, volume: 0, model: 0 };
+const spend = { serp: 0, pages: 0, traffic: 0, volume: 0, model: 0, tokensIn: 0, tokensOut: 0, attempts: 0 };
 const resetSpend = () => Object.keys(spend).forEach((k) => (spend[k] = 0));
 const usd = (v) => `$${v.toFixed(v < 0.01 ? 5 : 4)}`;
 
@@ -376,6 +376,9 @@ async function callModel({ key, model, payload, onAttempt = () => {} }) {
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body?.error?.message || `OpenRouter answered ${res.status}`);
     spend.model += Number(body?.usage?.cost || 0);
+    spend.tokensIn += Number(body?.usage?.prompt_tokens || 0);
+    spend.tokensOut += Number(body?.usage?.completion_tokens || 0);
+    spend.attempts += 1;
     lastRaw = body?.choices?.[0]?.message?.content || "";
     try {
       return validate(JSON.parse(lastRaw.replace(/^```(?:json)?\s*|\s*```$/g, "")), payload.results.map((r) => r.result_id));
@@ -470,6 +473,26 @@ function covered(rows, results, name) {
   }).sort((a, b) => b.count - a.count);
 }
 
+function costTable(run) {
+  const c = run.cost;
+  const dfs = c.serp + c.pages + c.traffic + c.volume;
+  const row = (step, service, detail, value) => `<tr><td>${step}</td><td>${service}</td><td>${detail}</td><td class="num">${value == null ? "-" : usd(value)}</td></tr>`;
+  return `<h4 class="pg-h">Cost of this run</h4>
+    <div class="table-wrap"><table class="cost-table">
+      <tr><th>Step</th><th>Service</th><th>Detail</th><th class="num">Cost</th></tr>
+      ${run.source === "dataforseo" ? [
+        row("Google top ten", "DataForSEO SERP", "live mode, one page", c.serp),
+        row("Read the pages", "DataForSEO content parsing", `${run.results.length} pages`, c.pages || null),
+        row("Search volume", "DataForSEO Labs", "keyword overview", c.volume || null),
+        row("Traffic per URL", "DataForSEO Labs", "bulk traffic estimation", c.traffic || null),
+      ].join("") : ""}
+      ${row("Grouping into intents", `OpenRouter, ${esc(currentModelLabel(run.model))}`,
+        `${c.tokensIn.toLocaleString("en")} tokens in, ${c.tokensOut.toLocaleString("en")} tokens out${c.attempts > 1 ? `, ${c.attempts} attempts` : ""}`, c.model)}
+      <tr class="total"><td colspan="3">Total${run.source === "dataforseo" ? ` (DataForSEO ${usd(dfs)}, OpenRouter ${usd(c.model)})` : ""}</td><td class="num">${usd(dfs + c.model)}</td></tr>
+    </table></div>
+    <p class="hint">Amounts as reported by DataForSEO (<code>cost</code>) and OpenRouter (<code>usage.cost</code>), billed to your accounts. <span id="resultBalances"></span></p>`;
+}
+
 function render(run) {
   const { keyword, results, labels, rows } = run;
   const out = $("#pgOutput");
@@ -553,6 +576,8 @@ function render(run) {
       <section><h4 class="pg-h">Brands in the results</h4><span class="tags">${(labels.competitor_brands || []).map((b) => `<span class="tag">${esc(b)}</span>`).join("") || `<span class="hint">-</span>`}</span></section>
       <section><h4 class="pg-h">AI Overview</h4><p>${labels.ai_overview_signal?.present ? "Present." : "Not shown for this query."} ${esc(labels.ai_overview_signal?.interpretation || "")}</p></section>
     </div>
+
+    ${costTable(run)}
 
     <details class="raw"><summary>Raw JSON from the model</summary><pre>${esc(JSON.stringify(labels, null, 2))}</pre></details>
     ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing left your browser except the calls to DataForSEO and OpenRouter.</p>`}`;
@@ -661,7 +686,7 @@ $("#playground").addEventListener("submit", async (event) => {
     steps.start(5);
     const run = { keyword, results, labels, rows: measure(labels, results), market: marketName(),
       location: Number(country.value), language: language.value, source: mode, model: model.id,
-      visibility: document.querySelector('input[name="visibility"]:checked').value, demand };
+      visibility: document.querySelector('input[name="visibility"]:checked').value, demand, cost: { ...spend } };
     render(run);
     steps.done(5, "done in your browser");
     if (run.visibility === "public") {
@@ -670,7 +695,10 @@ $("#playground").addEventListener("submit", async (event) => {
         if (el) el.textContent = ok ? "Thank you - the result was added to the collection. It is not shown publicly." : "Could not reach the collection right now. You can still contribute through GitHub below.";
       });
     }
-    showBalances();
+    showBalances().then(() => {
+      const el = $("#resultBalances");
+      if (el) el.textContent = `Left on your accounts now: ${$("#balanceOut").textContent}`;
+    });
     const dfsTotal = spend.serp + spend.pages + spend.traffic + spend.volume;
     status.textContent = `Finished. This run cost ${usd(dfsTotal + spend.model)}: DataForSEO ${usd(dfsTotal)}` +
       (dfsMode ? ` (SERP ${usd(spend.serp)}, pages ${usd(spend.pages)}, volume ${usd(spend.volume)}, traffic ${usd(spend.traffic)})` : "") +
