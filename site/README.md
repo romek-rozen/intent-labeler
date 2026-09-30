@@ -19,7 +19,7 @@ browser on the visitor's own keys:
 - A live cost estimate under the price table updates with every option; after a run the page shows
   the actual cost and both account balances (DataForSEO `appendix/user_data`, OpenRouter
   `/api/v1/credits`).
-- DataForSEO links on the page use the affiliate link https://skq.pl/data4seo (marked `sponsored`).
+- DataForSEO links on the page use the affiliate link https://skq.pl/data4seo and the n8n link uses https://skq.pl/n8n (both marked `sponsored`, labelled "affiliate link"). The short links are redirects we control, so the target can change without a rebuild.
 
 **Public results** ("Public" is the default) are sent once after the run to an n8n webhook
 (`n8n.nimblio.work/webhook/intent-labeler-contribution`, workflow "Intent Labeler - collect public

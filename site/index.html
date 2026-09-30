@@ -192,6 +192,7 @@ pip install -e '.[api,extract]'
 cp .env.example .env    # add your model key and DataForSEO login
 intent-labeler --keyword "standing desk" --language en --location 2840</code></pre>
     <p>It also runs as an HTTP API for your own panel, and on any list of URLs or uploaded HTML files instead of a search. The method, with the measurement behind every rule, is in <a href="https://github.com/romek-rozen/intent-labeler/blob/main/docs/METHOD.md">METHOD.md</a>.</p>
+    <p>No code at all: two <a href="https://github.com/romek-rozen/intent-labeler/tree/main/n8n-template">n8n templates</a> run the same method - keywords from a Google Sheet with results written back, or one keyword per webhook call with a JSON answer. Import the file into your <a href="https://skq.pl/n8n" rel="sponsored noopener" target="_blank">n8n</a> (affiliate link) and add your DataForSEO and OpenRouter keys.</p>
   </section>
 </main>
 

@@ -12,7 +12,9 @@ actual cost of every step, token counts and your remaining balances. The page ha
 no keys. Results marked "Public" (the default) are collected for the project through a small webhook -
 not published on the site until there is moderation.
 
-**n8n templates:** the same method as a Google Sheets workflow and as a webhook API - see [`n8n-template/`](n8n-template/).
+**n8n templates:** the same method as a Google Sheets workflow and as a webhook API - see [`n8n-template/`](n8n-template/). No n8n yet? [n8n](https://skq.pl/n8n) (affiliate link).
+
+**Accounts you need:** [DataForSEO](https://skq.pl/data4seo) (affiliate link) for Google results, pages, volume and traffic, and an [OpenRouter](https://openrouter.ai/keys) key for the model.
 
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*

@@ -28,7 +28,7 @@ SEO specialists, content teams and developers who want intent analysis inside th
 Optional: `model`, `read_pages`, `search_volume`, `traffic` (true/false).
 
 ### Requirements
-* DataForSEO account, OpenRouter API key
+* [DataForSEO](https://skq.pl/data4seo) account (affiliate link), OpenRouter API key
 
 ### How to customize
 Change defaults and the prompt in **Config**. Method and playground: https://romek-rozen.github.io/intent-labeler/

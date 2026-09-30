@@ -21,7 +21,7 @@ SEO specialists, content strategists and agencies who plan pages and briefs from
 3. Add keywords with country and language codes, then run.
 
 ### Requirements
-* DataForSEO account, OpenRouter API key, Google account
+* [DataForSEO](https://skq.pl/data4seo) account (affiliate link), OpenRouter API key, Google account
 
 ### Customising this workflow
 Switch page reading, search volume or traffic off in **Config**, pick another model or edit the prompt. The method is open source: https://github.com/romek-rozen/intent-labeler
