@@ -131,7 +131,15 @@ def themed_report(html: str, folders: list[Path], index: int, runs: list[dict] |
               '<a href="../index.html#try">Try it</a>'
               '<a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>'
               '<a class="nav-sponsor" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor</a></nav></header>')
-    head = f'{FONTS}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
+    keyword = _keyword(folders[index])
+    og = ('<meta property="og:type" content="article">'
+          f'<meta property="og:title" content="{escape(keyword)} - search intent report">'
+          '<meta property="og:site_name" content="Intent Labeler">'
+          '<meta property="og:image" content="https://romek-rozen.github.io/intent-labeler/og-image.png">'
+          '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+          '<meta name="twitter:card" content="summary_large_image">'
+          '<meta name="twitter:image" content="https://romek-rozen.github.io/intent-labeler/og-image.png">')
+    head = f'{FONTS}{og}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
     html = html.replace("</head>", head + "</head>", 1)
     html = html.replace("<main>", header + pager + "<main>", 1)
     panel = model_panel(folders[index].name, runs or [], current)
