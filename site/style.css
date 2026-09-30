@@ -271,3 +271,5 @@ ul.plain li { margin-bottom: 6px; }
 .raw summary { cursor: pointer; font-family: var(--display); font-size: 0.95rem; font-weight: 600; }
 .raw pre { max-height: 420px; overflow: auto; background: var(--inverted-bg); color: var(--inverted-text); padding: 14px; font-size: 0.8rem; }
 @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } .pg-output { padding: 16px; } }
+
+.balances { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }

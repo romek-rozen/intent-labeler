@@ -86,7 +86,7 @@
   <section id="try" class="band">
     <div class="wrap">
       <h2>Try it with your own keys</h2>
-      <p>You need an <a href="https://openrouter.ai/keys">OpenRouter</a> key - the model always runs through OpenRouter, so you can pick any of the low-cost models below with one key. For live Google results and page reading you also need a <a href="https://dataforseo.com/">DataForSEO</a> account; without it, paste results yourself.</p>
+      <p>You need an <a href="https://openrouter.ai/keys">OpenRouter</a> key - the model always runs through OpenRouter, so you can pick any of the low-cost models below with one key. For live Google results and page reading you also need a <a href="https://skq.pl/data4seo" rel="sponsored noopener">DataForSEO</a> account (affiliate link - it supports this project at no cost to you); without it, paste results yourself.</p>
 
       <aside class="keys-note cost-note" aria-label="What a run costs">
         <h3>What a run costs you</h3>
@@ -133,7 +133,7 @@
           <label class="check"><input id="pgPages" type="checkbox" checked> Read the pages: length, headings, tables, lists and video (content parsing)</label>
           <label class="check"><input id="pgVolume" type="checkbox" checked> Search volume and seasonality (DataForSEO Labs, about $0.012)</label>
           <label class="check"><input id="pgTraffic" type="checkbox" checked> Also estimate traffic per URL (DataForSEO Labs, about $0.013)</label>
-          <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password. New DataForSEO accounts get a small free credit, enough for many runs.</p>
+          <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password. New <a href="https://skq.pl/data4seo" rel="sponsored noopener">DataForSEO</a> accounts get a small free credit, enough for many runs.</p>
         </div>
 
         <div id="pasteFields" class="field-group" hidden>
@@ -148,12 +148,16 @@
           <label>Model <select id="pgModel"></select></label>
         </div>
         <label class="check"><input id="pgRemember" type="checkbox"> Remember my keys in this browser</label>
+        <div class="balances">
+          <button id="pgBalance" class="btn small" type="button">Check my balances</button>
+          <span id="balanceOut" class="hint" aria-live="polite">Shows what is left on your DataForSEO and OpenRouter accounts. Refreshed after every run.</span>
+        </div>
 
         <fieldset class="share">
           <legend>Who can see the result</legend>
-          <label class="check"><input type="radio" name="visibility" value="public" checked> Public - let me contribute it to the project's collection</label>
+          <label class="check"><input type="radio" name="visibility" value="public" checked> Public - add the result to the project's collection</label>
           <label class="check"><input type="radio" name="visibility" value="private"> Private - it stays in this tab</label>
-          <p class="hint">Nothing is sent automatically. After a public run you get a button that opens a pull request on GitHub with the query, market, intents and numbers - never keys. Contributed results are collected in the repository to improve the method; they are not shown on this page.</p>
+          <p class="hint">A public result is sent once, after the run, to the project's private collection: the query, market, results, intents and numbers - never keys. It helps improve the method and is not shown on this page. Choose Private and nothing is sent anywhere except the calls to DataForSEO and OpenRouter.</p>
         </fieldset>
 
         <button class="btn primary" type="submit" id="pgRun">Label the intents</button>

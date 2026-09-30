@@ -16,9 +16,18 @@ browser on the visitor's own keys:
 - Keys stay in the tab; only with "remember" are they kept in the browser's local storage.
 - Models: seven low-cost OpenRouter models, benchmarked on two real SERPs with reasoning switched
   off ($0.0003-$0.0022 per query). The list and measured costs live in `MODELS` in `app.js`.
-- A live cost estimate under the price table updates with every option.
+- A live cost estimate under the price table updates with every option; after a run the page shows
+  the actual cost and both account balances (DataForSEO `appendix/user_data`, OpenRouter
+  `/api/v1/credits`).
+- DataForSEO links on the page use the affiliate link https://skq.pl/data4seo (marked `sponsored`).
 
-**Public results** go through GitHub, not through a backend: with "Public" selected, the result page
+**Public results** ("Public" is the default) are sent once after the run to an n8n webhook
+(`n8n.nimblio.work/webhook/intent-labeler-contribution`, workflow "Intent Labeler - collect public
+contributions"). It accepts only the site's origin, validates the record (shape, size, no secrets) and
+stores it in the n8n data table `intent_labeler_contributions` with `status = new`. It always answers
+`{"ok":true}`, so a spammer learns nothing. Nothing is published.
+
+The GitHub route stays as an option for people who want their name on a result: with "Public" selected, the result page
 offers a link that opens GitHub's "new file" form for `community/<market>-<query>-<date>.json`,
 pre-filled with the record (no keys). GitHub forks and opens a pull request; `tests/test_community.py`
 checks the file in CI. "Public" is the default. Merged files are collected in `community/` but **not

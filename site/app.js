@@ -394,12 +394,55 @@ function publicRecord(run) {
     keyword: run.keyword, market: run.market, location_code: run.location, language: run.language,
     source: run.source, model: run.model, date: new Date().toISOString().slice(0, 10), shared_by: "",
     summary: run.labels.summary || "", expected_genre: run.labels.expected_genre || "",
+    search_volume: run.demand?.volume ?? null,
     results: run.results.map((r) => ({ id: r.result_id, rank: r.rank, url: r.url, title: r.title })),
     intents: run.rows.map((r) => ({ title: r.title, searcher_goal: r.searcher_goal || "", form: r.form || "",
       result_ids: r.result_ids, coverage: +r.coverage.toFixed(4), share: +r.share.toFixed(4),
       traffic_share: r.traffic == null ? null : +r.traffic.toFixed(4) })),
   };
 }
+
+// Public results go to the project's collection (an n8n webhook that validates and stores them;
+// nothing is published). text/plain keeps it a "simple" request: no CORS preflight.
+const COLLECT_URL = "https://n8n.nimblio.work/webhook/intent-labeler-contribution";
+async function contribute(run) {
+  try {
+    const res = await fetch(COLLECT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=UTF-8" },
+      body: JSON.stringify(publicRecord(run)), keepalive: true, signal: AbortSignal.timeout(15000) });
+    return res.ok;
+  } catch { return false; }
+}
+
+// Balances straight from the providers, with the visitor's own keys.
+async function balances() {
+  const out = [];
+  const login = keyFields.dfsLogin.value.trim(), pass = keyFields.dfsPassword.value.trim();
+  if (login && pass) {
+    try {
+      const res = await fetch("https://api.dataforseo.com/v3/appendix/user_data", {
+        headers: { Authorization: `Basic ${btoa(`${login}:${pass}`)}` }, signal: AbortSignal.timeout(20000) });
+      const body = await res.json();
+      const money = body?.tasks?.[0]?.result?.[0]?.money;
+      out.push(money ? `DataForSEO: $${Number(money.balance).toFixed(2)} left` : "DataForSEO: login not accepted");
+    } catch { out.push("DataForSEO: could not check"); }
+  }
+  const key = keyFields.openrouter.value.trim();
+  if (key) {
+    try {
+      const res = await fetch("https://openrouter.ai/api/v1/credits", {
+        headers: { Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(20000) });
+      const body = await res.json();
+      const d = body?.data;
+      out.push(d ? `OpenRouter: $${(Number(d.total_credits) - Number(d.total_usage)).toFixed(2)} left` : "OpenRouter: key not accepted");
+    } catch { out.push("OpenRouter: could not check"); }
+  }
+  return out.length ? out.join(". ") + "." : "Enter your keys first.";
+}
+async function showBalances() {
+  $("#balanceOut").textContent = "Checking...";
+  $("#balanceOut").textContent = await balances();
+}
+$("#pgBalance").addEventListener("click", showBalances);
 
 function shareBox(run) {
   const record = publicRecord(run);
@@ -409,10 +452,11 @@ function shareBox(run) {
   const blob = URL.createObjectURL(new Blob([json], { type: "application/json" }));
   const tooLong = url.length > 7500;
   return `<div class="share-box">
-    <h3>Contribute this result</h3>
-    <p>This opens GitHub with the file <code>community/${esc(name)}</code> filled in. GitHub forks the repository and opens a pull request for you. You can add your name in <code>shared_by</code> before you submit. The file holds the query, market, results and intents - no keys. Contributions are collected in the repository, not published on this page.</p>
+    <h3>Added to the project's collection</h3>
+    <p id="contributeStatus">Sending...</p>
+    <p class="hint">Want your name on it, or prefer GitHub? Open a pull request with the file <code>community/${esc(name)}</code> filled in - GitHub forks the repository for you. The file holds the query, market, results and intents - no keys.</p>
     ${tooLong ? `<p class="hint">This result is too long for a link. Download the file and upload it at the same address.</p>` :
-      `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Contribute on GitHub</a>`}
+      `<a class="btn" href="${url}" target="_blank" rel="noopener">Contribute on GitHub</a>`}
     <a class="btn" href="${blob}" download="${esc(name)}">Download the JSON</a>
   </div>`;
 }
@@ -620,6 +664,13 @@ $("#playground").addEventListener("submit", async (event) => {
       visibility: document.querySelector('input[name="visibility"]:checked').value, demand };
     render(run);
     steps.done(5, "done in your browser");
+    if (run.visibility === "public") {
+      contribute(run).then((ok) => {
+        const el = $("#contributeStatus");
+        if (el) el.textContent = ok ? "Thank you - the result was added to the collection. It is not shown publicly." : "Could not reach the collection right now. You can still contribute through GitHub below.";
+      });
+    }
+    showBalances();
     const dfsTotal = spend.serp + spend.pages + spend.traffic + spend.volume;
     status.textContent = `Finished. This run cost ${usd(dfsTotal + spend.model)}: DataForSEO ${usd(dfsTotal)}` +
       (dfsMode ? ` (SERP ${usd(spend.serp)}, pages ${usd(spend.pages)}, volume ${usd(spend.volume)}, traffic ${usd(spend.traffic)})` : "") +
