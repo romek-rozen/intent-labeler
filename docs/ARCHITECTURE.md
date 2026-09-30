@@ -5,7 +5,8 @@
  keyword -> │ serp_source  │   │ page_source  │ <- URLs / HTML files
             └──────┬───────┘   └──────┬───────┘
                    └──── Snapshot ────┘
-                            │  page_source.enrich (fetch, digest, thin flag)
+                            │  page_source.enrich (fetch, trafilatura/stdlib text,
+                            │    400-char digest, element inventory, thin flag)
                             │  traffic.apply_traffic (etv per URL, optional)
                             ▼
                     ┌────────────────┐
@@ -13,11 +14,11 @@
                     └───────┬────────┘
                             ▼ labels (IDs only)
                     ┌────────────────┐
-                    │    metrics     │  counts, ranks, percentiles
+                    │    metrics     │  coverage, shares, lengths, elements
                     └───────┬────────┘
                             ▼
                     ┌────────────────┐
-                    │ form_decision  │  dominant intent, length, form
+                    │ form_decision  │  dominant intent, length, genre, warnings
                     └───────┬────────┘
                             ▼
                     ┌────────────────┐
@@ -34,17 +35,19 @@
 |---|---|---|
 | `snapshot` | serp_source / page_source | input, including fetched word counts and `fetch_status` |
 | `labels` | intent_labeling | model output after validation (+ `coverage_gap`, `basis` per intent) |
-| `metrics` | metrics | per-intent and per-page-type counts, shares, ranks, distributions |
+| `metrics` | metrics | per intent: coverage, answer/traffic share, ranks, words/chars, element prevalence; coverage of page types, heading themes, reader questions |
 | `form` | form_decision | dominant intent, genre, reference length, warnings |
 | `llm_cache_hit` | pipeline | whether the labels came from cache |
 
 `Snapshot` and `Result` are defined in `core/types.py`. `fetch_status` is one of `not_fetched`, `ok`,
-`thin`, `error: <ExceptionName>`.
+`thin`, `error: <ExceptionName> (<reason>)`.
 
 ## Feature boundaries
 
 Each directory in `features/` is self-contained, exports its public functions from `__init__.py` and
-has a single job. See [AGENTS.md](../AGENTS.md) for the import rules.
+has a single job and its own `README.md` with the public API and the reasons behind its rules
+(index: [src/intent_labeler/features/README.md](../src/intent_labeler/features/README.md)).
+See [AGENTS.md](../AGENTS.md) for the import rules.
 
 ## Extension points
 

@@ -163,18 +163,20 @@ Code layout: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 - Page fetching uses plain HTTP. JavaScript-rendered pages come back `thin`; bot-protected sites come back `error`.
   Both stay in the intent analysis (title and snippet are enough to label them) but not in length statistics.
+  When most results are video or social (see the sourdough example), there is honestly no reference length.
 - The labeling is as good as the model; see METHOD.md on model choice.
 - Traffic share needs DataForSEO (automatic with `--keyword`) or your own `etv` per result.
 
 ## Development
 
 ```bash
-pip install -e '.[dev]'
+pip install -e '.[dev,api,extract]'
 pytest                          # offline, no API keys, ~1 s
 python scripts/build_examples.py   # rebuild docs/example-report.* and docs/images/*
 ```
 
-Contributors and coding agents: read [AGENTS.md](AGENTS.md) first.
+Contributors and coding agents: read [AGENTS.md](AGENTS.md) first. Every feature has its own README -
+start from [src/intent_labeler/features/README.md](src/intent_labeler/features/README.md).
 
 ## License
 
