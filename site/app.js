@@ -183,8 +183,8 @@ async function dataforseo(path, task) {
   const auth = btoa(`${keyFields.dfsLogin.value.trim()}:${keyFields.dfsPassword.value.trim()}`);
   const res = await fetch(`https://api.dataforseo.com/v3/${path}`, {
     method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
-    body: JSON.stringify([task]),
-  });
+    body: JSON.stringify([task]), signal: AbortSignal.timeout(90000),
+  }).catch((e) => { throw new Error(e.name === "TimeoutError" ? "DataForSEO did not answer within 90 seconds" : `cannot reach DataForSEO (${e.message})`); });
   const body = await res.json().catch(() => ({}));
   const t = body?.tasks?.[0];
   if (!res.ok || body.status_code !== 20000 || !t || t.status_code !== 20000) {
@@ -336,11 +336,12 @@ function decide(rows) {
 }
 
 let systemPrompt = null;
-async function callModel({ key, model, payload }) {
+async function callModel({ key, model, payload, onAttempt = () => {} }) {
   systemPrompt ??= await fetch("prompt.md").then((r) => r.text());
   const user = `Read these results and return the JSON object defined by your instructions.\n\n${JSON.stringify(payload)}`;
   let lastError = null, lastRaw = "";
   for (let attempt = 0; attempt < 3; attempt++) {
+    if (lastError) onAttempt(attempt + 1, `failed the contract (${lastError})`);
     const content = lastError
       ? `${user}\n\n<previous_invalid_response>\n${lastRaw.slice(0, 20000)}\n</previous_invalid_response>\nThat response failed the contract: ${lastError}. Return the complete corrected JSON object.`
       : user;
@@ -351,7 +352,8 @@ async function callModel({ key, model, payload }) {
       body: JSON.stringify({ model, max_tokens: 12000, reasoning: { enabled: false },
         response_format: { type: "json_object" },
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content }] }),
-    });
+      signal: AbortSignal.timeout(180000),
+    }).catch((e) => { throw new Error(e.name === "TimeoutError" ? "the model did not answer within 3 minutes - try a faster one" : `cannot reach OpenRouter (${e.message})`); });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body?.error?.message || `OpenRouter answered ${res.status}`);
     lastRaw = body?.choices?.[0]?.message?.content || "";
@@ -432,6 +434,35 @@ function render(run) {
     ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing was published. Choose "Public" before running to propose it for the gallery.</p>`}`;
 }
 
+// Live progress: a list of steps with state and a ticking clock, so a slow model never looks stuck.
+function progress(steps) {
+  const el = $("#pgProgress");
+  const state = steps.map((label) => ({ label, status: "waiting", detail: "", start: 0, end: 0 }));
+  const secs = (ms) => `${(ms / 1000).toFixed(0)} s`;
+  const draw = () => {
+    el.hidden = false;
+    el.innerHTML = state.map((s) => {
+      const time = s.status === "running" ? secs(Date.now() - s.start) : s.status === "done" ? secs(s.end - s.start) : "";
+      return `<li class="${s.status}"><span class="label">${esc(s.label)}</span>` +
+        `<span class="detail">${esc(s.detail)}${time ? ` <span class="time">${time}</span>` : ""}</span></li>`;
+    }).join("");
+  };
+  const timer = setInterval(draw, 1000);
+  draw();
+  return {
+    start(i, detail = "") { Object.assign(state[i], { status: "running", start: Date.now(), detail }); draw(); },
+    detail(i, detail) { state[i].detail = detail; draw(); },
+    done(i, detail = "") { Object.assign(state[i], { status: "done", end: Date.now(), detail: detail || state[i].detail }); draw(); },
+    skip(i, detail) { Object.assign(state[i], { status: "skipped", detail }); draw(); },
+    fail(detail) {
+      const i = state.findIndex((s) => s.status === "running");
+      if (i >= 0) Object.assign(state[i], { status: "failed", end: Date.now(), detail });
+      draw();
+    },
+    stop() { clearInterval(timer); draw(); },
+  };
+}
+
 $("#playground").addEventListener("submit", async (event) => {
   event.preventDefault();
   const status = $("#pgStatus");
@@ -443,35 +474,70 @@ $("#playground").addEventListener("submit", async (event) => {
     return fail("Enter your DataForSEO login and API password, or switch to pasting results.");
   }
   saveKeys();
+  let steps;
   $("#pgRun").disabled = true;
+  $("#pgOutput").hidden = true;
+  const dfsMode = mode === "dataforseo";
+  const readPages = dfsMode && $("#pgPages").checked;
+  const wantTraffic = dfsMode && $("#pgTraffic").checked;
+  const model = currentModel();
+  steps = progress([
+    dfsMode ? `Fetch Google's top ten in ${marketName()}` : "Read the pasted results",
+    "Read the pages",
+    "Estimate traffic per URL",
+    `Group the results with ${model.label}`,
+    "Count shares and lengths",
+  ]);
+  status.textContent = "";
   try {
     let results, features = { people_also_ask: [], related_searches: [], ai_overview: "", item_types: [] };
-    if (mode === "dataforseo") {
-      status.textContent = `Fetching Google's top ten for "${keyword}" in ${marketName()}...`;
+    steps.start(0, dfsMode ? "DataForSEO usually answers in about 5 seconds" : "");
+    if (dfsMode) {
       ({ results, features } = await fetchSerp(keyword));
-      if ($("#pgPages").checked) {
-        status.textContent = "Reading the pages through DataForSEO...";
-        await fetchPages(results, (n) => { status.textContent = `Reading the pages through DataForSEO: ${n} of ${results.length}`; });
-      }
-      if ($("#pgTraffic").checked) {
-        status.textContent = "Estimating traffic per URL...";
-        await fetchTraffic(results);
-      }
     } else {
       results = parseResults($("#pgResults").value);
       if (results.length < 2) throw new Error("add at least two results, one per line");
     }
+    steps.done(0, `${results.length} results`);
+
+    if (readPages) {
+      steps.start(1, `0 of ${results.length}`);
+      await fetchPages(results, (n) => steps.detail(1, `${n} of ${results.length}`));
+      const ok = results.filter((r) => r.fetch_status === "ok").length;
+      steps.done(1, `${ok} of ${results.length} readable${ok < results.length ? ", the rest are blocked or too short" : ""}`);
+    } else {
+      steps.skip(1, dfsMode ? "switched off" : "not available when pasting results");
+    }
+
+    if (wantTraffic) {
+      steps.start(2, "one DataForSEO Labs call");
+      await fetchTraffic(results);
+      steps.done(2, `known for ${results.filter((r) => r.etv != null).length} of ${results.length}`);
+    } else {
+      steps.skip(2, "switched off");
+    }
+
     const payload = { source: "serp", keyword, language: language.value, brief: "", serp_features: features, results };
-    status.textContent = `Asking ${currentModel().label} to group ${results.length} results. This usually takes a few seconds; slower models can take a minute.`;
-    const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: currentModel().id, payload: { ...payload, results: payload.results.map(({ words, chars, elements, etv, fetch_status, ...r }) => r) } });
+    steps.start(3, `usually ${model.speed}`);
+    const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: model.id,
+      payload: { ...payload, results: payload.results.map(({ words, chars, elements, etv, fetch_status, ...r }) => r) },
+      onAttempt: (n, why) => steps.detail(3, `attempt ${n} of 3: the previous answer ${why}; sent back for correction`) });
+    steps.done(3, `${labels.intents.filter((i) => !i.fallback).length} intents`);
+
+    steps.start(4);
     const run = { keyword, results, labels, rows: measure(labels, results), market: marketName(),
-      location: Number(country.value), language: language.value, source: mode, model: currentModel().id,
+      location: Number(country.value), language: language.value, source: mode, model: model.id,
       visibility: document.querySelector('input[name="visibility"]:checked').value };
-    status.textContent = "Done. The groups come from the model; every percentage below was computed in your browser.";
     render(run);
+    steps.done(4, "done in your browser");
+    status.textContent = "Finished. The groups come from the model; every number below was computed in your browser.";
+    $("#pgOutput").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
   } catch (e) {
+    steps.fail(e.message);
     fail(`Could not finish: ${e.message}. Check the keys, the query and the market, then try again.`);
   } finally {
+    steps?.stop();
     $("#pgRun").disabled = false;
   }
 });
+updateEstimate();

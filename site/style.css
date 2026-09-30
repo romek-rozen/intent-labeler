@@ -184,3 +184,18 @@ select { font: inherit; font-size: 0.98rem; color: var(--ink); background: var(-
 .model-note { font-size: 0.92rem; color: var(--ink-2); margin: 0; }
 @media (max-width: 860px) { .price-table td:last-child { white-space: normal; } }
 .warn-list { border-left: 5px solid var(--i4); padding: 8px 12px 8px 32px; background: var(--paper); border-radius: 4px; }
+
+.progress { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; max-width: 820px; }
+.progress li { display: grid; grid-template-columns: 1.6em minmax(0, 18em) 1fr; gap: 10px; align-items: baseline; color: var(--ink-2); }
+.progress li::before { content: "·"; font-weight: 900; text-align: center; }
+.progress li.running { color: var(--ink); font-weight: 500; }
+.progress li.running::before { content: "◌"; color: var(--i1); display: inline-block; animation: spin 1.2s linear infinite; }
+.progress li.done::before { content: "✓"; color: var(--i3); }
+.progress li.skipped { opacity: 0.6; }
+.progress li.skipped::before { content: "–"; }
+.progress li.failed { color: var(--i8); }
+.progress li.failed::before { content: "✕"; }
+.progress .detail { font-size: 0.92rem; }
+.progress .time { font-variant-numeric: tabular-nums; margin-left: 6px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 860px) { .progress li { grid-template-columns: 1.6em 1fr; } .progress .detail { grid-column: 2; } }
