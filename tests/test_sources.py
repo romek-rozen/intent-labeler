@@ -25,7 +25,7 @@ def test_failed_fetch_keeps_the_result():
 
     page_source.enrich(snapshot, fetcher=fetcher)
     assert snapshot.results[0].fetch_status == "ok"
-    assert snapshot.results[1].fetch_status == "error: TimeoutError"
+    assert snapshot.results[1].fetch_status.startswith("error: TimeoutError")
 
 
 def test_dataforseo_payload_is_normalised():
@@ -51,3 +51,19 @@ def test_thin_page_is_flagged_and_excluded_from_lengths(snapshot):
     from intent_labeler.core.types import Result
     item = page_source.apply_html(Result(result_id="p01", url="https://x.test"), "<p>Enable JavaScript</p>")
     assert item.fetch_status == "thin" and item.word_count == 2
+
+
+def test_digest_is_headings_and_first_paragraphs_capped():
+    body = "<h2>A</h2><h2>B</h2>" + "".join(f"<p>{'long paragraph words here ' * 5}{i}</p>" for i in range(6))
+    data = page_source.extract_html(body)
+    assert data["digest"].startswith("headings: A; B | text: ")
+    assert len(data["digest"]) <= 400 and data["char_count"] > 0
+
+
+def test_traffic_zero_with_no_keywords_is_unknown(snapshot):
+    from intent_labeler.features import traffic
+    payload = {"tasks": [{"result": [{"items": [
+        {"target": snapshot.results[0].url, "metrics": {"organic": {"etv": 120.5, "count": 9}}},
+        {"target": snapshot.results[1].url, "metrics": {"organic": {"etv": 0, "count": 0}}}]}]}]}
+    traffic.apply_traffic(snapshot, location_code=2840, language_code="en", fetcher=lambda *a, **k: payload)
+    assert snapshot.results[0].etv == 120.5 and snapshot.results[1].etv is None and snapshot.results[2].etv is None

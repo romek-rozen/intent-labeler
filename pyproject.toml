@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "intent-labeler"
-version = "0.1.0"
+version = "0.2.0"
 description = "Label search intent and recommended content form from a SERP or a set of pages, with transparent, code-computed metrics."
 readme = "README.md"
 license = "MIT"

@@ -20,7 +20,7 @@ def _text_of_ai_overview(item: dict) -> str:
 
 
 def snapshot_from_dataforseo(payload: dict, *, language: str = "en",
-                             max_results: int = 20) -> Snapshot:
+                             max_results: int = 10) -> Snapshot:
     result = payload["tasks"][0]["result"][0]
     items = result.get("items") or []
     results: list[Result] = []
@@ -37,6 +37,7 @@ def snapshot_from_dataforseo(payload: dict, *, language: str = "en",
                 domain=str(item.get("domain") or urlparse(url).netloc),
                 title=str(item.get("title") or ""),
                 description=str(item.get("description") or ""),
+                highlighted=[str(h) for h in item.get("highlighted") or []][:4],
             ))
         elif kind == "people_also_ask":
             paa.extend(str(sub.get("title") or "") for sub in item.get("items") or [])

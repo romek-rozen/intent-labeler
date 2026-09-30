@@ -15,7 +15,7 @@ from pathlib import Path
 from intent_labeler.core import llm
 from intent_labeler.core.config import LlmConfig
 from intent_labeler.core.types import Snapshot
-from intent_labeler.features import page_source, report, serp_source
+from intent_labeler.features import page_source, report, serp_source, traffic
 from intent_labeler.pipeline import analyze
 
 
@@ -29,7 +29,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--language", default="en", help="output language code (default: en)")
     parser.add_argument("--location", type=int, default=2840,
                         help="DataForSEO location code (default: 2840 = US)")
-    parser.add_argument("--depth", type=int, default=20, help="organic results to analyse")
+    parser.add_argument("--depth", type=int, default=10, help="organic results to analyse (default: 10)")
+    parser.add_argument("--traffic", choices=("auto", "on", "off"), default="auto",
+                        help="DataForSEO traffic estimate per URL; auto = on for --keyword")
     parser.add_argument("--brief", default="", help="optional description of the page you plan")
     parser.add_argument("--no-fetch", action="store_true", help="do not download pages")
     parser.add_argument("--out", type=Path, default=Path("out"), help="output directory")
@@ -56,6 +58,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.save_snapshot:
         (args.out / "snapshot.json").write_text(
             json.dumps(snapshot.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
+    if args.traffic == "on" or (args.traffic == "auto" and args.keyword):
+        traffic.apply_traffic(snapshot, location_code=args.location, language_code=args.language)
     result = analyze(snapshot, chat=llm.openai_chat(config), brief=args.brief,
                      fetch_pages=not args.no_fetch, cache_dir=config.cache_dir,
                      cache_salt=config.model)
@@ -64,8 +68,12 @@ def main(argv: list[str] | None = None) -> int:
     (args.out / "report.html").write_text(report.render_html(result), encoding="utf-8")
     (args.out / "report.md").write_text(report.render_markdown(result), encoding="utf-8")
     form = result["form"]
-    print(f"dominant intent: {form['dominant_intent_title']} ({form['dominant_intent_type']})")
-    print(f"target length:   {form['length_target_words'] or 'n/a'} words ({form['length_basis']})")
+    words = form["length_words"] or {}
+    print(f"dominant intent: {form['dominant_intent_title']} -> {form['dominant_intent_form']}")
+    print(f"genre:           {form['expected_genre'] or form['expected_genre_withheld']}")
+    print(f"length (p50):    {words.get('p50') or 'n/a'} words ({form['length_basis']})")
+    for warning in form["warnings"]:
+        print(f"WARNING {warning['code']}: {warning['message']}")
     print(f"written:         {args.out}/analysis.json, report.html, report.md")
     return 0
 

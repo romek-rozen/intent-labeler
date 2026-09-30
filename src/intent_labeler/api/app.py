@@ -12,10 +12,10 @@ from pydantic import BaseModel, Field
 from intent_labeler.core import llm
 from intent_labeler.core.config import LlmConfig
 from intent_labeler.core.types import Result, Snapshot
-from intent_labeler.features import page_source, report, serp_source
+from intent_labeler.features import page_source, report, serp_source, traffic
 from intent_labeler.pipeline import analyze
 
-app = FastAPI(title="Intent Labeler", version="0.1.0",
+app = FastAPI(title="Intent Labeler", version="0.2.0",
               description="Search intent and content form from a SERP or a page set.")
 MAX_URLS = 50
 MAX_FILES = 50
@@ -25,9 +25,10 @@ class KeywordRequest(BaseModel):
     keyword: str
     language: str = "en"
     location_code: int = 2840
-    depth: int = Field(20, ge=1, le=100)
+    depth: int = Field(10, ge=1, le=100)
     brief: str = ""
     fetch_pages: bool = True
+    traffic: bool = True
 
 
 class UrlsRequest(BaseModel):
@@ -67,6 +68,8 @@ def health() -> dict:
 def analyze_keyword(body: KeywordRequest, format: str = "json"):
     snapshot = serp_source.fetch_snapshot(body.keyword, location_code=body.location_code,
                                           language_code=body.language, depth=body.depth)
+    if body.traffic:
+        traffic.apply_traffic(snapshot, location_code=body.location_code, language_code=body.language)
     return _run(snapshot, body.brief, body.fetch_pages, format)
 
 

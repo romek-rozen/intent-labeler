@@ -2,4 +2,4 @@
 from intent_labeler.pipeline import analyze
 
 __all__ = ["analyze"]
-__version__ = "0.1.0"
+__version__ = "0.2.0"

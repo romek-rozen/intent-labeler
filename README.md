@@ -1,8 +1,9 @@
 # Intent Labeler
 
 Label the **search intent** behind a Google results page (or any set of web pages) and get a
-**recommended content form**: which intent dominates, what page type wins, how long the
-winning pages are, which presentation elements help and which to avoid.
+**recommended content form**: which intents the results serve, how strongly (by results and by
+traffic), in what form each is answered, how long the winning pages are, and when the query does not
+want an article at all.
 
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
@@ -21,18 +22,20 @@ writes a percentage.
 
 | Output | Meaning |
 |---|---|
-| Intents | searcher goals that emerge from the results - no fixed taxonomy, no fixed count - each ranked (`dominant`, `supporting`, `minor`), with an optional coarse tag (`informational`, `commercial`, ...) for filtering |
-| Share per intent | fraction of results serving it; a result may serve several intents |
-| Ranks per intent | where those results sit in the SERP, and how many are in the top 3 |
-| Page types | product page, category listing, guide, review, forum... with shares |
-| Target length | median word count of pages serving the dominant intent, with an IQR band - or `null` and a reason when the sample cannot support a number |
-| Form | presentation elements that do a job for this intent, and forms to avoid |
+| Intents | searcher goals that emerge from the results - no fixed taxonomy, no fixed count - with an optional coarse tag for filtering |
+| Form per intent | how each intent is best answered, named freely ("shop category listing", "PDF set", "quiz") |
+| Answer share | fraction of results serving the intent; a result in two intents counts half to each |
+| Traffic share | the same from estimated traffic (`etv`); unknown traffic is left out, never zero |
+| Expected genre | the content genre the SERP expects, and whether an article fits at all |
+| Reference length | p25/p50/p75 in words and characters of the dominant intent's pages - or `null` and a reason |
+| Warnings | mixed SERP, several major intents, traffic disagrees, wide length band, not an article |
+| Elements | presentation elements that do a job for these searchers, and forms to avoid |
 | Reader questions | from People Also Ask, related searches and headings |
 
 ## Install
 
 ```bash
-git clone ssh://git@repo.nimblio.work:222/Nimblio/intent-labeler.git intent-labeler
+git clone https://github.com/romek-rozen/intent-labeler.git
 cd intent-labeler
 python -m venv .venv && . .venv/bin/activate
 pip install -e '.[api]'          # the core has zero dependencies; [api] adds FastAPI
@@ -40,18 +43,20 @@ cp .env.example .env             # then fill in the LLM endpoint and model
 ```
 
 Any OpenAI-compatible endpoint works: OpenAI, OpenRouter, LiteLLM, vLLM, Ollama (`http://localhost:11434/v1`).
+A cheap reasoning model is enough: `openai/gpt-6-luna` on OpenRouter with `INTENT_LLM_TEMPERATURE=none`
+and `INTENT_LLM_REASONING_EFFORT=low` (the defaults in `.env.example`).
 
 ## Use
 
 ```bash
-# 1. Live Google SERP (needs DataForSEO credentials). Location 2616 = Poland, 2840 = US.
-intent-labeler --keyword "standing desk" --language en --location 2840 --save-snapshot
+# 1. Live Google top 10 + traffic estimates (needs DataForSEO). Location 2616 = Poland, 2840 = US.
+intent-labeler --keyword "zagadki logiczne" --language pl --location 2616 --save-snapshot
 
 # 2. Any set of pages - a competitor list, your own site section, 20 URLs from a client
 intent-labeler --urls my-pages.txt --language en
 
 # 3. A saved snapshot: offline and reproducible (no SERP call, cached LLM answer)
-intent-labeler --snapshot examples/sample_snapshot.json --no-fetch
+intent-labeler --snapshot examples/sample_snapshot.json --no-fetch --traffic off
 ```
 
 Each run writes `out/analysis.json`, `out/report.html` (self-contained, light and dark mode) and
@@ -66,7 +71,7 @@ uvicorn intent_labeler.api.app:app --port 8000     # or: docker build -t intent-
 
 | Endpoint | Input |
 |---|---|
-| `POST /analyze/keyword` | `{"keyword": "...", "language": "en", "location_code": 2840}` |
+| `POST /analyze/keyword` | `{"keyword": "...", "language": "en", "location_code": 2840, "traffic": true}` |
 | `POST /analyze/urls` | `{"urls": ["https://...", ...]}` (max 50) |
 | `POST /analyze/html-files` | multipart upload of saved `.html` files (max 50) |
 | `POST /analyze/snapshot` | `{"snapshot": {...}}` |
@@ -84,21 +89,22 @@ from intent_labeler.features import page_source
 
 snapshot = page_source.snapshot_from_urls(["https://a.example/guide", "https://b.example/shop"])
 result = analyze(snapshot, chat=llm.openai_chat(LlmConfig.from_env()))
-print(result["form"]["dominant_intent_title"], result["form"]["length_target_words"])
+print(result["form"]["dominant_intent_title"], result["form"]["length_words"])
 ```
 
 `chat` is any `(system, user) -> str` function, so plugging in another SDK takes three lines.
 
 ## How it works
 
-1. **Source** - a SERP snapshot (DataForSEO) or a page list becomes a `Snapshot` of `Result`s.
-2. **Fetch** - pages are downloaded; title, headings, word count and an excerpt are extracted.
-   Pages under 150 words are flagged `thin` (JavaScript shell or bot wall) and left out of length statistics.
-3. **Label** - one LLM call groups every result into intents and page types. Invalid JSON goes back to
-   the model with the exact contract error. Results it cannot place land in an explicit `unassigned` intent.
-4. **Measure** - code counts shares, ranks and word-count distributions.
-5. **Decide** - code picks the dominant intent and the target length.
-6. **Report** - HTML with charts, Markdown, JSON.
+1. **Source** - Google top 10 (DataForSEO) or a page list becomes a `Snapshot` of `Result`s.
+2. **Fetch** - pages are downloaded; a 400-char digest (8 headings + 3 paragraphs), words and characters
+   are extracted. Pages under 150 words are flagged `thin` and fall back to title + snippet.
+3. **Traffic** - one DataForSEO call estimates `etv` for every URL; unknown stays unknown.
+4. **Label** - one LLM call groups results into emergent intents and names each form and the genre.
+   Invalid JSON goes back to the model with the exact error. Unplaced results land in `unassigned`.
+5. **Measure** - code computes answer and traffic shares (split for shared results) and length distributions.
+6. **Decide** - code picks the dominant intent, the reference length and the warnings.
+7. **Report** - HTML with charts, Markdown, JSON.
 
 The full method, with the reasons behind each rule, is in [docs/METHOD.md](docs/METHOD.md).
 Code layout: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -108,7 +114,7 @@ Code layout: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 - Page fetching uses plain HTTP. JavaScript-rendered pages come back `thin`; bot-protected sites come back `error`.
   Both stay in the intent analysis (title and snippet are enough to label them) but not in length statistics.
 - The labeling is as good as the model; see METHOD.md on model choice.
-- Traffic share is computed only when you supply `etv` per result; nothing is estimated.
+- Traffic share needs DataForSEO (automatic with `--keyword`) or your own `etv` per result.
 
 ## Development
 

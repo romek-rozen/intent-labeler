@@ -5,7 +5,8 @@
  keyword -> │ serp_source  │   │ page_source  │ <- URLs / HTML files
             └──────┬───────┘   └──────┬───────┘
                    └──── Snapshot ────┘
-                            │  page_source.enrich (fetch, extract, thin flag)
+                            │  page_source.enrich (fetch, digest, thin flag)
+                            │  traffic.apply_traffic (etv per URL, optional)
                             ▼
                     ┌────────────────┐
                     │ intent_labeling│  1 LLM call, contract validation
@@ -34,7 +35,7 @@
 | `snapshot` | serp_source / page_source | input, including fetched word counts and `fetch_status` |
 | `labels` | intent_labeling | model output after validation (+ `coverage_gap`, `basis` per intent) |
 | `metrics` | metrics | per-intent and per-page-type counts, shares, ranks, distributions |
-| `form` | form_decision | the recommendation |
+| `form` | form_decision | dominant intent, genre, reference length, warnings |
 | `llm_cache_hit` | pipeline | whether the labels came from cache |
 
 `Snapshot` and `Result` are defined in `core/types.py`. `fetch_status` is one of `not_fetched`, `ok`,
@@ -51,6 +52,6 @@ has a single job. See [AGENTS.md](../AGENTS.md) for the import rules.
 |---|---|
 | JS rendering (Crawl4AI, Playwright) | a fetcher `(url) -> html` passed to `page_source.enrich(fetcher=...)` / `analyze(fetcher=...)` |
 | Another SERP provider | a module in `serp_source/` returning `Snapshot` |
-| Traffic data | set `Result.etv` before `analyze`; traffic shares appear automatically |
+| Other traffic data | set `Result.etv` (None = unknown) before `analyze` |
 | Another LLM SDK | a `chat(system, user) -> str` function |
 | New report | a module in `features/report/` reading `analysis.json` |

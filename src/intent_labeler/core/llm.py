@@ -30,10 +30,13 @@ def openai_chat(config: LlmConfig) -> ChatFn:
             "model": config.model,
             "messages": [{"role": "system", "content": system},
                          {"role": "user", "content": user}],
-            "temperature": 0,
             "max_tokens": config.max_tokens,
             "response_format": {"type": "json_object"},
         }
+        if config.temperature is not None:
+            body["temperature"] = config.temperature
+        if config.reasoning_effort:
+            body["reasoning_effort"] = config.reasoning_effort
         headers = {"Content-Type": "application/json"}
         if config.api_key:
             headers["Authorization"] = f"Bearer {config.api_key}"

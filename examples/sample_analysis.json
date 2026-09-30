@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-30T08:57:43+00:00",
+  "generated_at": "2026-09-30T09:07:44+00:00",
   "llm_cache_hit": false,
   "snapshot": {
     "source": "serp",
@@ -13,9 +13,12 @@
         "title": "Standing Desks - Shop 40 Models",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 1800,
+        "char_count": 10800,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 5200,
         "fetch_status": "ok"
       },
       {
@@ -26,9 +29,12 @@
         "title": "The 9 Best Standing Desks of 2026, Tested",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 4200,
+        "char_count": 25200,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 8100,
         "fetch_status": "ok"
       },
       {
@@ -39,9 +45,12 @@
         "title": "Desk Pro Electric Standing Desk",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 900,
+        "char_count": 5400,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 300,
         "fetch_status": "ok"
       },
       {
@@ -52,9 +61,12 @@
         "title": "Are Standing Desks Good for You? What Research Says",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 2600,
+        "char_count": 15600,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 1900,
         "fetch_status": "ok"
       },
       {
@@ -65,9 +77,12 @@
         "title": "Height Adjustable Desks | Free Delivery",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 1500,
+        "char_count": 9000,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 2400,
         "fetch_status": "ok"
       },
       {
@@ -78,9 +93,12 @@
         "title": "Standing Desk Buying Guide: 7 Things to Check",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 3100,
+        "char_count": 18600,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 1500,
         "fetch_status": "ok"
       },
       {
@@ -91,7 +109,10 @@
         "title": "Is a standing desk worth it? : r/homeoffice",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 2100,
+        "char_count": 12600,
+        "digest": "",
         "excerpt": "",
         "etv": null,
         "fetch_status": "ok"
@@ -104,9 +125,12 @@
         "title": "Best Cheap Standing Desks Under $300",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 3800,
+        "char_count": 22800,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 3900,
         "fetch_status": "ok"
       },
       {
@@ -117,9 +141,12 @@
         "title": "How to Set Up Your Standing Desk (Ergonomic Height Chart)",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 1400,
+        "char_count": 8400,
+        "digest": "",
         "excerpt": "",
-        "etv": null,
+        "etv": 700,
         "fetch_status": "ok"
       },
       {
@@ -130,7 +157,10 @@
         "title": "Standing Desk Converters - Shop Now",
         "description": "",
         "headings": [],
+        "highlighted": [],
         "word_count": 1200,
+        "char_count": 7200,
+        "digest": "",
         "excerpt": "",
         "etv": null,
         "fetch_status": "ok"
@@ -160,14 +190,12 @@
   },
   "labels": {
     "summary": "Mixed SERP: shoppers comparing models dominate, with health and setup questions as supporting intents.",
-    "dominant_intent_id": "i1",
     "intents": [
       {
         "intent_id": "i1",
         "title": "Compare and choose a desk",
         "searcher_goal": "pick the right standing desk model",
         "intent_type": "commercial",
-        "importance": "dominant",
         "result_ids": [
           "r02",
           "r06",
@@ -175,6 +203,7 @@
           "r07"
         ],
         "evidence": "reviews and buying guides in top positions",
+        "form": "comparison table with tested picks",
         "basis": "model"
       },
       {
@@ -182,7 +211,6 @@
         "title": "Buy a desk now",
         "searcher_goal": "see prices and order",
         "intent_type": "transactional",
-        "importance": "supporting",
         "result_ids": [
           "r01",
           "r03",
@@ -190,6 +218,7 @@
           "r10"
         ],
         "evidence": "category and product pages, shopping pack",
+        "form": "shop category listing",
         "basis": "model"
       },
       {
@@ -197,12 +226,12 @@
         "title": "Are they healthy?",
         "searcher_goal": "decide if standing desks are worth it for health",
         "intent_type": "informational",
-        "importance": "supporting",
         "result_ids": [
           "r04",
           "r07"
         ],
         "evidence": "PAA about health, forum thread",
+        "form": "evidence-based explainer",
         "basis": "model"
       },
       {
@@ -210,69 +239,14 @@
         "title": "Set it up correctly",
         "searcher_goal": "adjust height and posture",
         "intent_type": "informational",
-        "importance": "minor",
         "result_ids": [
           "r09"
         ],
         "evidence": "PAA about height",
+        "form": "step list with height chart",
         "basis": "model"
       }
     ],
-    "page_types": [
-      {
-        "page_type": "review / listicle",
-        "result_ids": [
-          "r02",
-          "r08"
-        ]
-      },
-      {
-        "page_type": "category listing",
-        "result_ids": [
-          "r01",
-          "r05",
-          "r10"
-        ]
-      },
-      {
-        "page_type": "product page",
-        "result_ids": [
-          "r03"
-        ]
-      },
-      {
-        "page_type": "guide",
-        "result_ids": [
-          "r04",
-          "r06",
-          "r09"
-        ]
-      },
-      {
-        "page_type": "forum thread",
-        "result_ids": [
-          "r07"
-        ]
-      }
-    ],
-    "market_forms": {
-      "useful_elements": [
-        {
-          "element": "comparison table of tested models",
-          "job": "lets the reader shortlist by price, height range and motor"
-        },
-        {
-          "element": "height chart by user height",
-          "job": "answers the setup question without leaving the page"
-        }
-      ],
-      "avoid": [
-        {
-          "element": "single-product sales page",
-          "reason": "the dominant searcher is still comparing"
-        }
-      ]
-    },
     "reader_questions": [
       {
         "question": "How high should a standing desk be?",
@@ -290,26 +264,62 @@
         ]
       }
     ],
+    "useful_elements": [
+      {
+        "element": "comparison table of tested models",
+        "job": "lets the reader shortlist by price, height range and motor"
+      },
+      {
+        "element": "height chart by user height",
+        "job": "answers the setup question without leaving the page"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "single-product sales page",
+        "reason": "the dominant searcher is still comparing"
+      }
+    ],
+    "expected_genre": "buying guide with model comparison",
+    "article_fits": {
+      "value": true,
+      "reason": "reviews and guides hold half of the results"
+    },
     "coverage_gap": []
   },
   "metrics": {
     "results_total": 10,
     "results_fetched": 10,
     "has_ranks": true,
-    "traffic_known": 0,
-    "intent_overlap_ratio": 1.1,
-    "word_count": {
+    "traffic_known": 8,
+    "shared_results": [
+      "r07"
+    ],
+    "words": {
       "n": 10,
       "min": 900,
+      "p10": 900,
       "p25": 1400,
       "p50": 1800,
       "p75": 3100,
+      "p90": 3800,
       "max": 4200
+    },
+    "chars": {
+      "n": 10,
+      "min": 5400,
+      "p10": 5400,
+      "p25": 8400,
+      "p50": 10800,
+      "p75": 18600,
+      "p90": 22800,
+      "max": 25200
     },
     "intents": {
       "i1": {
         "count": 4,
-        "share": 0.4,
+        "answer_share": 0.35,
+        "traffic_share": 0.5625,
         "ranks": [
           2,
           6,
@@ -318,19 +328,31 @@
         ],
         "best_rank": 2,
         "top3_count": 1,
-        "word_count": {
+        "words": {
           "n": 4,
           "min": 2100,
+          "p10": 2100,
           "p25": 2100,
           "p50": 3100,
           "p75": 3800,
+          "p90": 4200,
           "max": 4200
         },
-        "traffic_share": null
+        "chars": {
+          "n": 4,
+          "min": 12600,
+          "p10": 12600,
+          "p25": 12600,
+          "p50": 18600,
+          "p75": 22800,
+          "p90": 25200,
+          "max": 25200
+        }
       },
       "i2": {
         "count": 4,
-        "share": 0.4,
+        "answer_share": 0.4,
+        "traffic_share": 0.3292,
         "ranks": [
           1,
           3,
@@ -339,171 +361,113 @@
         ],
         "best_rank": 1,
         "top3_count": 2,
-        "word_count": {
+        "words": {
           "n": 4,
           "min": 900,
+          "p10": 900,
           "p25": 900,
           "p50": 1200,
           "p75": 1500,
+          "p90": 1800,
           "max": 1800
         },
-        "traffic_share": null
+        "chars": {
+          "n": 4,
+          "min": 5400,
+          "p10": 5400,
+          "p25": 5400,
+          "p50": 7200,
+          "p75": 9000,
+          "p90": 10800,
+          "max": 10800
+        }
       },
       "i3": {
         "count": 2,
-        "share": 0.2,
+        "answer_share": 0.15,
+        "traffic_share": 0.0792,
         "ranks": [
           4,
           7
         ],
         "best_rank": 4,
         "top3_count": 0,
-        "word_count": {
+        "words": {
           "n": 2,
           "min": 2100,
+          "p10": 2100,
           "p25": 2100,
           "p50": 2100,
           "p75": 2600,
+          "p90": 2600,
           "max": 2600
         },
-        "traffic_share": null
+        "chars": {
+          "n": 2,
+          "min": 12600,
+          "p10": 12600,
+          "p25": 12600,
+          "p50": 12600,
+          "p75": 15600,
+          "p90": 15600,
+          "max": 15600
+        }
       },
       "i4": {
         "count": 1,
-        "share": 0.1,
+        "answer_share": 0.1,
+        "traffic_share": 0.0292,
         "ranks": [
           9
         ],
         "best_rank": 9,
         "top3_count": 0,
-        "word_count": {
+        "words": {
           "n": 1,
           "min": 1400,
+          "p10": 1400,
           "p25": 1400,
           "p50": 1400,
           "p75": 1400,
+          "p90": 1400,
           "max": 1400
         },
-        "traffic_share": null
-      }
-    },
-    "page_types": {
-      "review / listicle": {
-        "count": 2,
-        "share": 0.2,
-        "ranks": [
-          2,
-          8
-        ],
-        "best_rank": 2,
-        "top3_count": 1,
-        "word_count": {
-          "n": 2,
-          "min": 3800,
-          "p25": 3800,
-          "p50": 3800,
-          "p75": 4200,
-          "max": 4200
-        },
-        "traffic_share": null
-      },
-      "category listing": {
-        "count": 3,
-        "share": 0.3,
-        "ranks": [
-          1,
-          5,
-          10
-        ],
-        "best_rank": 1,
-        "top3_count": 1,
-        "word_count": {
-          "n": 3,
-          "min": 1200,
-          "p25": 1200,
-          "p50": 1500,
-          "p75": 1800,
-          "max": 1800
-        },
-        "traffic_share": null
-      },
-      "product page": {
-        "count": 1,
-        "share": 0.1,
-        "ranks": [
-          3
-        ],
-        "best_rank": 3,
-        "top3_count": 1,
-        "word_count": {
+        "chars": {
           "n": 1,
-          "min": 900,
-          "p25": 900,
-          "p50": 900,
-          "p75": 900,
-          "max": 900
-        },
-        "traffic_share": null
-      },
-      "guide": {
-        "count": 3,
-        "share": 0.3,
-        "ranks": [
-          4,
-          6,
-          9
-        ],
-        "best_rank": 4,
-        "top3_count": 0,
-        "word_count": {
-          "n": 3,
-          "min": 1400,
-          "p25": 1400,
-          "p50": 2600,
-          "p75": 3100,
-          "max": 3100
-        },
-        "traffic_share": null
-      },
-      "forum thread": {
-        "count": 1,
-        "share": 0.1,
-        "ranks": [
-          7
-        ],
-        "best_rank": 7,
-        "top3_count": 0,
-        "word_count": {
-          "n": 1,
-          "min": 2100,
-          "p25": 2100,
-          "p50": 2100,
-          "p75": 2100,
-          "max": 2100
-        },
-        "traffic_share": null
+          "min": 8400,
+          "p10": 8400,
+          "p25": 8400,
+          "p50": 8400,
+          "p75": 8400,
+          "p90": 8400,
+          "max": 8400
+        }
       }
     }
   },
   "form": {
-    "dominant_intent_id": "i1",
-    "dominant_intent_basis": "model",
-    "dominant_intent_title": "Compare and choose a desk",
-    "dominant_intent_type": "commercial",
-    "dominant_page_type": "review / listicle",
-    "page_type_shares": {
-      "review / listicle": 0.2,
-      "category listing": 0.3,
-      "product page": 0.1,
-      "guide": 0.3,
-      "forum thread": 0.1
+    "dominant_intent_id": "i2",
+    "dominant_intent_title": "Buy a desk now",
+    "dominant_intent_form": "shop category listing",
+    "dominant_intent_answer_share": 0.4,
+    "dominant_by_traffic_id": "i1",
+    "expected_genre": "buying guide with model comparison",
+    "expected_genre_withheld": null,
+    "article_fits": {
+      "value": true,
+      "reason": "reviews and guides hold half of the results"
     },
-    "length_target_words": 3100,
-    "length_band_words": [
-      2100,
-      3800
-    ],
     "length_basis": "median_of_dominant_intent_pages",
+    "length_words": {
+      "p25": 900,
+      "p50": 1200,
+      "p75": 1500
+    },
+    "length_chars": {
+      "p25": 5400,
+      "p50": 7200,
+      "p75": 9000
+    },
     "length_sample_size": 4,
     "useful_elements": [
       {
@@ -519,6 +483,16 @@
       {
         "element": "single-product sales page",
         "reason": "the dominant searcher is still comparing"
+      }
+    ],
+    "warnings": [
+      {
+        "code": "consider_separate_pages",
+        "message": "3 intents hold at least 15% each. Consider separate pages instead of one."
+      },
+      {
+        "code": "traffic_disagrees",
+        "message": "By answers the dominant intent is \"Buy a desk now\", by traffic \"Compare and choose a desk\": many weak pages versus one strong page. Decide deliberately."
       }
     ]
   }

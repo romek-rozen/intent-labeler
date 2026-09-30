@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 from intent_labeler.core.types import Result, Snapshot
 from intent_labeler.features.page_source.extract import extract_html
 
-USER_AGENT = "Mozilla/5.0 (compatible; intent-labeler/0.1; +https://github.com/)"
+USER_AGENT = "Mozilla/5.0 (compatible; intent-labeler/0.2; +https://github.com/romek-rozen/intent-labeler)"
 MAX_BYTES = 3_000_000
 # Below this many words the HTML is almost always a JavaScript shell, a consent
 # wall or a bot block, not the real page. Measured on a live "standing desk"
@@ -34,17 +34,28 @@ def apply_html(result: Result, html: str) -> Result:
     result.description = result.description or data["description"]
     result.headings = data["headings"]
     result.word_count = data["word_count"]
+    result.char_count = data["char_count"]
+    result.digest = data["digest"]
     result.excerpt = data["excerpt"]
     result.fetch_status = "ok" if data["word_count"] >= THIN_WORDS else "thin"
     return result
 
 
+FETCH_ATTEMPTS = 2
+
+
 def _enrich_one(result: Result, fetcher) -> Result:
-    try:
-        return apply_html(result, fetcher(result.url))
-    except Exception as error:  # network errors vary by platform
-        result.fetch_status = f"error: {type(error).__name__}"
-        return result
+    """Two attempts: on a live Polish SERP five of nine pages failed with a
+    transient URLError that a single re-fetch seconds later did not reproduce."""
+    error: Exception | None = None
+    for _ in range(FETCH_ATTEMPTS):
+        try:
+            return apply_html(result, fetcher(result.url))
+        except Exception as caught:  # network errors vary by platform
+            error = caught
+    reason = getattr(error, "reason", "") or ""
+    result.fetch_status = f"error: {type(error).__name__}" + (f" ({reason})"[:80] if reason else "")
+    return result
 
 
 def enrich(snapshot: Snapshot, *, fetcher=fetch_html, workers: int = 8) -> Snapshot:

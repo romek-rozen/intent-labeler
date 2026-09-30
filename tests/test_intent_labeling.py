@@ -35,16 +35,22 @@ def test_intent_type_is_an_optional_tag_not_a_constraint(labels_raw):
     assert data["intents"][0]["intent_type"] is None and data["intents"][1]["intent_type"] is None
 
 
-def test_unknown_dominant_is_rejected(labels_raw):
+def test_model_cannot_choose_the_dominant_intent(labels_raw):
     labels_raw["dominant_intent_id"] = "i9"
-    with pytest.raises(ValueError, match="dominant_intent_id"):
-        validate(labels_raw, IDS)
+    assert "dominant_intent_id" not in validate(labels_raw, IDS)
+
+
+def test_free_form_and_genre_are_kept(labels_raw):
+    data = validate(labels_raw, IDS)
+    assert data["intents"][1]["form"] == "shop category listing"
+    assert data["expected_genre"] and data["article_fits"]["value"] is True
 
 
 def test_payload_contains_no_numbers_for_the_model_to_copy(snapshot):
     payload = build_payload(snapshot)
-    assert "word_count" not in json.dumps(payload["results"])
-    assert "etv" not in json.dumps(payload["results"])
+    text = json.dumps(payload["results"])
+    for key in ("word_count", "char_count", "etv"):
+        assert key not in text
 
 
 def test_invalid_response_is_sent_back_with_the_error(snapshot, labels_raw):
@@ -56,7 +62,7 @@ def test_invalid_response_is_sent_back_with_the_error(snapshot, labels_raw):
         return next(answers)
 
     data, cache_hit = label(snapshot, chat=chat)
-    assert not cache_hit and data["dominant_intent_id"] == "i1"
+    assert not cache_hit and data["intents"][0]["intent_id"] == "i1"
     assert "previous_invalid_response" in seen[1]
 
 

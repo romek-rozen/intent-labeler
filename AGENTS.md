@@ -11,8 +11,8 @@ page set and recommends a content form. Read [README.md](README.md) for usage an
 ## The one rule
 
 **The model groups, the code counts.** The LLM returns only IDs, labels and free text. Every number -
-share, rank, percentile, target length, traffic share - is computed in `features/metrics` or
-`features/form_decision`. Never ask the model for a number, and never let a model-provided number reach
+share, rank, percentile, length, traffic share - and every decision derived from numbers (which intent
+dominates) is made in `features/metrics` or `features/form_decision`. Never ask the model for a number, and never let a model-provided number reach
 the output. `test_payload_contains_no_numbers_for_the_model_to_copy` guards the input side.
 
 ## Layout (feature-based)
@@ -22,10 +22,11 @@ src/intent_labeler/
   core/            shared plumbing only: types, config, LLM transport. Knows no feature.
   features/
     serp_source/     keyword -> Snapshot (DataForSEO)
-    page_source/     URLs/HTML -> Results (fetch, extract, thin detection)
+    page_source/     URLs/HTML -> Results (fetch, digest, thin detection)
+    traffic/         etv per URL (DataForSEO); unknown stays None
     intent_labeling/ the only semantic step: prompt, contract validation, LLM call
     metrics/         arithmetic on result IDs
-    form_decision/   dominant intent, target length, form
+    form_decision/   dominant intent (by code), reference length, genre, warnings
     report/          HTML (inline SVG charts), Markdown
   pipeline.py      orchestration only - one call per feature
   cli.py, api/     thin entry points over pipeline.analyze
@@ -44,7 +45,9 @@ Rules:
 6. The core package has zero runtime dependencies. Anything heavier goes behind an optional extra.
 7. Unknown is not zero: a page that was not fetched, a thin page, or missing traffic is excluded from the
    denominator, never counted as 0.
-8. A result never disappears. Failed fetches keep `fetch_status`; unplaced results go to the explicit
+8. No closed lists for semantics. Intents, forms and genres are named freely by the model; do not add
+   an enum or a keyword classifier to "normalise" them. That approach was tried and removed.
+9. A result never disappears. Failed fetches keep `fetch_status`; unplaced results go to the explicit
    `unassigned` intent.
 
 ## Changing behaviour

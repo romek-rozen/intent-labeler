@@ -1,129 +1,150 @@
 # Method
 
-This document explains how Intent Labeler turns a set of results into an intent map and a form
-recommendation, and why each rule exists. The rules come from running the method in production on
-commissioned articles; where a rule was set by a measurement, the measurement is quoted.
+How Intent Labeler turns a results page (or a page set) into an intent map, a form and a reference
+length - and why each rule exists. The rules come from running the method in production on
+commissioned articles; where a measurement set a rule, it is quoted.
 
 ## 1. The question
 
-For a query (or a topic represented by a page set) we want to know:
+Length and form used to be written into a content order before anyone looked at the search results:
+"4,000-6,000 characters" for every topic, including topics where the answer is a table and two
+sentences. Stretching such an answer is not quality, it is dilution. The results page answers the
+question by itself: what people want, in what form, and how much of it.
 
-1. **What do people who land on these pages want?** - the intents.
-2. **How strongly does each intent hold the results?** - shares and ranks.
-3. **What should a new page look like to serve the main intent?** - page type, length, presentation forms.
+## 2. The model groups, the code counts - that is the whole principle
 
-## 2. Division of labour: the model groups, the code counts
+```
+model  GROUPS. It reads titles, snippets, highlighted phrases and a short digest of each page,
+       and returns clusters of result IDs. It sees no numbers and returns none.
+code   COUNTS. Two shares, length distributions, validations, warnings. It judges nothing.
+```
 
-Language models are good at reading a title, snippet and headings and saying *what the searcher
-expected after clicking*. They are bad at counting, and they will produce confident percentages that
-nobody computed.
+An earlier version classified intent with hand-made rules - URL shapes, SERP blocks, question
+vocabulary. It was removed on purpose: the weights were guesses that needed endless calibration, and
+every new query brought patterns they did not know (`/listing?`, `/p/123`, a `popular_products`
+block). Grouping is a language task, so a language model does it.
 
-So the model gets **no numbers to copy** (no word counts, no traffic) and returns **no numbers**. It
-returns groups of `result_id`s. Code then computes:
+A model that sees numbers starts to judge them. So the payload contains no word counts and no traffic
+(`test_payload_contains_no_numbers_for_the_model_to_copy`).
 
-- `share` = results in the intent / all results,
-- `ranks`, `best_rank`, `top3_count`,
-- word-count distribution (min, p25, p50, p75, max) - nearest-rank percentiles, so every reported value
-  is a length of a real page,
-- `traffic_share` = sum of known `etv` in the intent / sum of all known `etv` - only when traffic was supplied.
+## 3. What the model reads
 
-Every number in the report can be re-derived from `analysis.json` by hand.
+Per result: title, snippet (max 220 chars), up to 4 phrases the search engine highlighted, and a
+**digest of the page**: up to 8 headings and the first 3 paragraphs, capped at 400 characters.
 
-## 3. Intents
+Why the digest, if there is a snippet: the snippet may be rewritten by the search engine and does not
+say what the page actually offers. Ten digests of 400 characters are about as large as the snippets
+themselves, so the prompt does not grow by an order of magnitude. Headings carry the most per
+character - they say what the page offers, not how it sells itself.
 
-Intents are **emergent, not imposed**. There is no taxonomy and no fixed number: the model reads the
-results and names each goal it finds in its own words, as specific as the results justify - e.g.
-"choose between electric and manual desks under $500", "check whether standing all day is healthy",
-"find the right desk height for my body". A fixed list (informational / commercial / ...) would merge
-exactly the distinctions a writer needs.
+A page that could not be fetched, or came back thin (below 150 words - a JavaScript shell or a bot
+wall), falls back to title + snippet mode. **It does not drop out of the grouping.**
 
-Each intent has a `title`, a `searcher_goal`, an `importance` (`dominant`, `supporting`, `minor`), the
-`result_ids` it covers and a line of `evidence`. The optional `intent_type` is a coarse tag from the
-classic five, added after grouping, for filtering in a panel only. An unknown tag is dropped to null,
-never rejected, so it cannot force the grouping.
+SERP features - People Also Ask, related searches, AI Overview - are context: they show what else
+searchers want and often reveal an intent no organic result serves well.
 
-### Overlap is allowed, silence is not
+## 4. Intents are emergent
 
-A review page can serve both "compare models" and "are they healthy?". Forcing one label per result
-throws that information away, so results may belong to several intents. Shares may therefore sum to
-more than 100%. `intent_overlap_ratio` (intent memberships / results) summarises how mixed the SERP is:
-1.0 means every result serves exactly one intent.
+There is no taxonomy and no fixed number of intents. The model names each goal it finds, in its own
+words, as specific as the results justify: "solve puzzles with answers", "puzzles for kids",
+"download a PDF set". A fixed list (informational / commercial / ...) would merge exactly the
+distinctions a writer needs. The classic five survive only as an optional `intent_type` tag for
+filtering, added after grouping; an unknown tag becomes null, never an error.
 
-Every result must be placed. When the model leaves results out, they are **not** retried into place
-and **not** dropped. They go to an explicit `unassigned` intent marked `basis: code_fallback`.
+Every result must be placed. A result may sit in two clusters when the page genuinely serves both
+goals. Results the model leaves out are neither retried into place nor dropped: they go to an explicit
+`unassigned` intent (`basis: code_fallback`). In production, three retries with the full contract left
+the same 3 of 19 results unassigned; dropping them would silently inflate the dominant share.
 
-*Why:* in production, three retries with the full contract left the same 3 of 19 results unassigned -
-retrying does not fix a genuinely ambiguous page. Dropping them would shrink the denominator and
-silently inflate the dominant share.
+## 5. Form and genre are named freely
 
-### The dominant intent
+Each intent gets a `form`: the shape in which that intent is best answered, in a short free phrase.
+The SERP as a whole gets an `expected_genre`. Neither is picked from a list.
 
-The model names `dominant_intent_id`. If it does not, code picks the intent with the highest share
-among those the model marked `dominant`, then among all model-created intents, and records
-`dominant_intent_basis: highest_share_fallback`. The fallback intent `unassigned` can never be dominant.
+Why: with a closed list (prose / list / table), a query whose top 10 were shop category pages forced
+the model to answer "prose" - it had no word for a category listing. The answer was false and
+undetectable. Named freely, "shop category listing" is visible, and `article_fits: false` turns it into
+an explicit warning: this query may not be a topic for an article at all.
 
-## 4. SERP context
+## 6. Two shares, both from data
 
-People Also Ask, related searches and the AI Overview text go to the model as context: they show
-what else searchers of this query want and often reveal a supporting intent no organic result serves
-well - a content opportunity. They are not counted in shares.
+| Share | Definition |
+|---|---|
+| `answer_share` | results serving the intent / all results, not weighted by rank |
+| `traffic_share` | estimated traffic (`etv`) of the intent's results / traffic of all results with known `etv` |
 
-## 5. Page types
+A result assigned to two intents counts **half to each** in both shares, so shares add up to 100%.
+Counting it twice once produced 146% on a real SERP.
 
-Independently of intent, each result gets a page type (product page, category listing, guide,
-review/listicle, forum thread, video, tool). The page type that overlaps most with the dominant intent's
-results is reported as `dominant_page_type`. This answers the most expensive question early: if Google
-ranks category pages, a 3,000-word article will not replace them.
+`etv` comes from DataForSEO bulk traffic estimation: the whole URL's organic traffic from all its
+keywords, one request for all results. Until August 2026 traffic share was modelled with a fixed CTR
+curve (0.276 for position 1, ...) - our guessed weights in place of missing data. Measured is better
+than modelled, so the curve was dropped.
 
-## 6. Target length
+**Zero is ambiguous.** `etv: 0` with zero known keywords means either "no traffic" or "the database
+does not know this page" - a page ranking #5 with etv 0 is a documented case. Such pages are stored as
+unknown and left out of both numerator and denominator, never counted as zero. Coverage is reported
+(`traffic_known` of `results_total`).
 
-`length_target_words` = median word count of the fetched pages that serve the dominant intent, with the
-p25-p75 band.
+When the two shares disagree it is a signal, not an error: a topic served by many weak pages versus a
+topic served by one strong page.
+
+## 7. The dominant intent is decided by code
+
+Dominant = highest `answer_share` (ties: traffic share, then best rank). The intent dominant by traffic
+is reported next to it; if they differ, the report warns and leaves the decision to a human.
+
+## 8. Reference length
+
+The distribution (p10, p25, p50, p75, p90, min, max; nearest-rank, so every value is a real page) of
+the dominant intent's measured pages, in **words and characters**. Characters because publishers and
+orders speak in characters; a words-to-characters multiplier would be one more guess.
 
 Two guards return `null` with a reason instead of a number:
 
-| Basis | When | Why |
-|---|---|---|
-| `insufficient_sample` | fewer than 3 measured pages | a median of two pages is an anecdote |
-| `spread_too_wide` | longest / shortest > 50 | a 300-word product page and a 15,000-word guide share no meaningful "typical" length |
+| Basis | When |
+|---|---|
+| `insufficient_sample` | fewer than 3 measured pages |
+| `spread_too_wide` | longest / shortest > 50 |
 
-Pages under 150 words are marked `thin` and excluded from all length statistics. *Why:* on a live
-"standing desk" SERP, YouTube, Costco and a desk brand returned 26-35 words of JavaScript shell. They
-pushed the spread over the limit and hid a perfectly usable median (1,683 words once excluded).
+The reference case: a dominant cluster with n=2 and lengths from 64 to 496,559 characters (7,759x) -
+an EU legal act next to a twelve-word page. The median looked as confident as any other and let a bad
+brief through. Under the same guards the `expected_genre` is withheld: a genre derived from an
+unreliable cluster is a guess backed by a number.
 
-Length is a description of the market, not a goal. The report says what winning pages do; the writer
-decides.
+Length is a description of the market, not a target. Measured on three orders, the same rule gave three
+different answers: a shopping query (96% of traffic transactional, no guide in the top 10) cut the text
+by 40%; an office-move query surfaced an 18% "quotes and costs" intent and *added* a section; a
+legal-act query kept its length (+7%) because that market is long.
 
-## 7. Form
+## 9. Warnings
 
-The model lists `useful_elements` (parameter table, comparison, step list, height chart, calculator...)
-each with the **job** it does for this intent, and `avoid` forms, each with a reason. It is told not
-to produce headings or an outline - structure depends on the specific page being planned, which the
-SERP cannot know.
+| Code | When |
+|---|---|
+| `mixed_serp` | the dominant intent holds < 40% of results |
+| `consider_separate_pages` | 3 or more intents hold ≥ 15% each |
+| `traffic_disagrees` | dominant by answers ≠ dominant by traffic |
+| `wide_length_band` | p90 / p10 ≥ 5 - look at pages one by one |
+| `serp_does_not_want_an_article` | the model says an article cannot serve the main intent |
+| `unassigned_results` | the model left results unplaced |
 
-## 8. The brief
+A measurement nobody reads at the point of decision is decoration. Warnings are in the JSON so the
+next step (a brief, a panel) can block on them.
 
-`--brief` describes the page you plan to write. It helps the model understand the topic, but the prompt
-forbids bending the reading toward it: if you plan a product page and the SERP is all guides, the report
-must say so.
+## 10. Page sets without a SERP
 
-## 9. Page sets without a SERP
+With `--urls` or uploaded HTML there are no ranks: the pages are a sample of what exists. Shares
+describe the sample. Useful for auditing a site section or a competitor list.
 
-With `--urls` or uploaded HTML there are no ranks. The same method applies: the pages are a sample of
-what exists on the topic; shares describe the sample; rank columns stay empty. Useful for auditing a
-site section ("which of our 20 pages serve which intent, and where do they overlap?") or a competitor list.
+## 11. Reliability and cost
 
-## 10. Reliability and model choice
+- JSON that fails the contract goes back to the model with the exact error and its previous answer, up
+  to 3 attempts. A repeated identical prompt tends to repeat the same mistake.
+- Answers are cached by (prompt, input, model): re-running a snapshot is free and reproducible.
+- A cheap reasoning model is enough. `openai/gpt-6-luna` with `reasoning_effort=low` labels a
+  10-result SERP in about a minute for a fraction of a cent.
 
-- JSON that fails the contract is sent back to the model with the exact error and its previous answer,
-  up to 3 attempts. A repeated identical prompt at temperature 0 tends to repeat the same mistake.
-- Answers are cached by (prompt, input, model), so re-running a snapshot is free and reproducible.
-- Mid-size hosted models (e.g. Gemini Flash class) label a 20-result SERP in 20-40 seconds. The prompt
-  asks the model neither to merge different goals nor to split one goal into near-duplicates; it does
-  not cap the number of intents.
+## 12. What this method does not do
 
-## 11. What this method does not do
-
-- It does not estimate traffic, CTR or difficulty.
-- It does not write outlines or content.
-- It does not claim that matching the dominant intent guarantees rankings.
+It does not estimate CTR or difficulty, write outlines or content, or promise that matching the
+dominant intent earns rankings.

@@ -9,7 +9,6 @@ dominant intent's share.
 from __future__ import annotations
 
 INTENT_TYPES = ("informational", "commercial", "transactional", "navigational", "local")
-IMPORTANCE = ("dominant", "supporting", "minor")
 QUESTION_SOURCES = ("paa", "related", "heading")
 UNASSIGNED_INTENT_ID = "unassigned"
 
@@ -59,31 +58,25 @@ def validate(data: object, result_ids: list[str]) -> dict:
         # named by the searcher goal. An unknown tag is dropped, not rejected.
         intent_type = _text(intent.get("intent_type")).lower()
         intent["intent_type"] = intent_type if intent_type in INTENT_TYPES else None
-        importance = _text(intent.get("importance")).lower() or "supporting"
-        intent["importance"] = importance if importance in IMPORTANCE else "supporting"
+        intent["form"] = _text(intent.get("form"))
         intent["result_ids"] = _ids(intent, known, f"intent {intent_id}")
         intent["evidence"] = _text(intent.get("evidence"))
         intent["basis"] = "model"
         assigned.update(intent["result_ids"])
 
-    dominant = _text(data.get("dominant_intent_id"))
-    if dominant and dominant not in seen:
-        raise ValueError(f"dominant_intent_id {dominant!r} is not among intents")
-    data["dominant_intent_id"] = dominant or None
-
-    for page_type in _list(data, "page_types", "root"):
-        page_type["page_type"] = _text(page_type.get("page_type"))
-        page_type["result_ids"] = _ids(page_type, known, "page_types")
-
-    forms = data.get("market_forms") or {}
-    if not isinstance(forms, dict):
-        raise ValueError("market_forms must be an object")
-    data["market_forms"] = {
-        "useful_elements": [item for item in _list(forms, "useful_elements", "market_forms")
-                            if isinstance(item, dict) and _text(item.get("element"))],
-        "avoid": [item for item in _list(forms, "avoid", "market_forms")
-                  if isinstance(item, dict) and _text(item.get("element"))],
-    }
+    # Which intent dominates is decided by code from shares, not by the model.
+    data.pop("dominant_intent_id", None)
+    data["expected_genre"] = _text(data.get("expected_genre"))
+    fits = data.get("article_fits")
+    if isinstance(fits, dict):
+        value = fits.get("value")
+        data["article_fits"] = {"value": value if isinstance(value, bool) else None,
+                                "reason": _text(fits.get("reason"))}
+    else:
+        data["article_fits"] = {"value": fits if isinstance(fits, bool) else None, "reason": ""}
+    for key in ("useful_elements", "avoid"):
+        data[key] = [item for item in _list(data, key, "root")
+                     if isinstance(item, dict) and _text(item.get("element"))]
 
     for question in _list(data, "reader_questions", "root"):
         if question.get("source") not in QUESTION_SOURCES:
@@ -96,7 +89,7 @@ def validate(data: object, result_ids: list[str]) -> dict:
         data["intents"].append({
             "intent_id": UNASSIGNED_INTENT_ID, "title": "Unassigned results",
             "searcher_goal": "the model did not place these results in any intent",
-            "intent_type": None, "importance": "minor",
+            "intent_type": None, "form": "",
             "result_ids": missing, "evidence": "", "basis": "code_fallback",
         })
     data["summary"] = _text(data.get("summary"))

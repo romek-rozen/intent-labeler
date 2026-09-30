@@ -21,8 +21,9 @@ def _short(text: str, limit: int = 34) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
-def share_bars(intents: list[dict], metrics: dict) -> str:
-    """Share of results per intent. Overlap allowed, so shares may sum >100%."""
+def share_bars(intents: list[dict], metrics: dict, key: str = "answer_share") -> str:
+    """One bar per intent for `answer_share` or `traffic_share` (sums to 100%)."""
+    intents = [i for i in intents if metrics["intents"][i["intent_id"]][key] is not None]
     row_h, top = 34, 8
     height = top + row_h * len(intents) + 8
     plot_w = WIDTH - LABEL_W - 70
@@ -30,16 +31,17 @@ def share_bars(intents: list[dict], metrics: dict) -> str:
     for index, intent in enumerate(intents):
         row = metrics["intents"][intent["intent_id"]]
         y = top + index * row_h
-        w = max(2, plot_w * row["share"])
-        pct = f"{row['share'] * 100:.0f}%"
-        tip = escape(f"{intent['title']}: {row['count']} of {metrics['results_total']} results ({pct})")
+        value = row[key]
+        w = max(2, plot_w * value)
+        pct = f"{value * 100:.0f}%"
+        tip = escape(f"{intent['title']}: {pct} ({row['count']} of {metrics['results_total']} results)")
         parts.append(
             f'<g><title>{tip}</title>'
             f'<text x="{LABEL_W - 10}" y="{y + 20}" text-anchor="end" class="lbl">{escape(_short(intent["title"]))}</text>'
             f'<rect x="{LABEL_W}" y="{y + 7}" width="{plot_w}" height="18" fill="transparent"/>'
             f'<rect x="{LABEL_W}" y="{y + 7}" width="{w:.1f}" height="18" rx="4" fill="{_color(index, intent)}"/>'
-            f'<text x="{LABEL_W + w + 8:.1f}" y="{y + 20}" class="val">{pct} · {row["count"]}</text></g>')
-    return (f'<svg viewBox="0 0 {WIDTH} {height}" role="img" aria-label="Share of results per intent">'
+            f'<text x="{LABEL_W + w + 8:.1f}" y="{y + 20}" class="val">{pct}</text></g>')
+    return (f'<svg viewBox="0 0 {WIDTH} {height}" role="img" aria-label="{key} per intent">'
             + "".join(parts) + "</svg>")
 
 

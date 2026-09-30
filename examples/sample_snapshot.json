@@ -31,7 +31,9 @@
       "description": "",
       "word_count": 1800,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 5200,
+      "char_count": 10800
     },
     {
       "result_id": "r02",
@@ -42,7 +44,9 @@
       "description": "",
       "word_count": 4200,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 8100,
+      "char_count": 25200
     },
     {
       "result_id": "r03",
@@ -53,7 +57,9 @@
       "description": "",
       "word_count": 900,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 300,
+      "char_count": 5400
     },
     {
       "result_id": "r04",
@@ -64,7 +70,9 @@
       "description": "",
       "word_count": 2600,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 1900,
+      "char_count": 15600
     },
     {
       "result_id": "r05",
@@ -75,7 +83,9 @@
       "description": "",
       "word_count": 1500,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 2400,
+      "char_count": 9000
     },
     {
       "result_id": "r06",
@@ -86,7 +96,9 @@
       "description": "",
       "word_count": 3100,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 1500,
+      "char_count": 18600
     },
     {
       "result_id": "r07",
@@ -97,7 +109,9 @@
       "description": "",
       "word_count": 2100,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": null,
+      "char_count": 12600
     },
     {
       "result_id": "r08",
@@ -108,7 +122,9 @@
       "description": "",
       "word_count": 3800,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 3900,
+      "char_count": 22800
     },
     {
       "result_id": "r09",
@@ -119,7 +135,9 @@
       "description": "",
       "word_count": 1400,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": 700,
+      "char_count": 8400
     },
     {
       "result_id": "r10",
@@ -130,7 +148,9 @@
       "description": "",
       "word_count": 1200,
       "fetch_status": "ok",
-      "headings": []
+      "headings": [],
+      "etv": null,
+      "char_count": 7200
     }
   ]
 }

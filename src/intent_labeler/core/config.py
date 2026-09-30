@@ -26,6 +26,10 @@ class LlmConfig:
     cache_dir: Path
     timeout_s: int = 300
     max_tokens: int = 8000
+    # None = do not send. Reasoning models (e.g. the gpt-5.6/6 family) reject
+    # any temperature other than the default, so it must be omittable.
+    temperature: float | None = 0.0
+    reasoning_effort: str | None = None
 
     @classmethod
     def from_env(cls) -> "LlmConfig":
@@ -40,4 +44,11 @@ class LlmConfig:
             cache_dir=Path(os.environ.get("INTENT_CACHE_DIR") or ".cache/llm"),
             timeout_s=int(os.environ.get("INTENT_LLM_TIMEOUT", "300")),
             max_tokens=int(os.environ.get("INTENT_LLM_MAX_TOKENS", "8000")),
+            temperature=_optional_float(os.environ.get("INTENT_LLM_TEMPERATURE", "0")),
+            reasoning_effort=os.environ.get("INTENT_LLM_REASONING_EFFORT", "").strip() or None,
         )
+
+
+def _optional_float(value: str) -> float | None:
+    value = value.strip().lower()
+    return None if value in ("", "none", "default") else float(value)

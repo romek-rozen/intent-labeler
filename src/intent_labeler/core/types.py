@@ -19,10 +19,18 @@ class Result:
     title: str = ""
     description: str = ""
     headings: list[str] = field(default_factory=list)
+    highlighted: list[str] = field(default_factory=list)
     word_count: int | None = None
+    # Characters of extracted text, spaces included: publishers and briefs
+    # speak in characters, and a words-to-chars multiplier is another guess.
+    char_count: int | None = None
+    # Headings and opening paragraphs, at most ~400 chars. The snippet can be
+    # rewritten by Google; this says what the page actually offers.
+    digest: str = ""
     excerpt: str = ""
-    # Estimated monthly traffic from an external tool. None means "unknown",
-    # never zero - an unmeasured page must not dilute traffic shares.
+    # Estimated monthly organic traffic of the whole URL (DataForSEO `etv`).
+    # None means unknown, never zero: a page the database does not know must
+    # not enter the traffic denominator.
     etv: float | None = None
     fetch_status: str = "not_fetched"
 

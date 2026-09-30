@@ -36,8 +36,10 @@ def build_payload(snapshot: Snapshot, brief: str = "") -> dict:
         "results": [{
             "result_id": item.result_id, "rank": item.rank, "url": item.url,
             "domain": item.domain, "title": item.title,
-            "description": item.description, "headings": item.headings[:40],
-            "excerpt": item.excerpt[:1200],
+            "description": item.description[:220],
+            "highlighted": item.highlighted[:4],
+            # Thin or failed pages fall back to title + snippet mode.
+            "digest": item.digest if item.fetch_status == "ok" else "",
         } for item in snapshot.results],
     }
 

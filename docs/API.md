@@ -10,8 +10,8 @@ or input return `422` with a message.
 ## `POST /analyze/keyword`
 
 ```json
-{"keyword": "standing desk", "language": "en", "location_code": 2840, "depth": 20,
- "brief": "", "fetch_pages": true}
+{"keyword": "standing desk", "language": "en", "location_code": 2840, "depth": 10,
+ "brief": "", "fetch_pages": true, "traffic": true}
 ```
 
 ## `POST /analyze/urls`

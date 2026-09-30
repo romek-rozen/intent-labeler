@@ -22,7 +22,7 @@ svg{width:100%;height:auto;display:block}.lbl{fill:var(--text2);font-size:13px}.
 .empty{fill:var(--line)}.median{stroke:var(--text);stroke-width:2}
 table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 th{color:var(--text2);font-weight:600}.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
-.note{color:var(--text2);font-size:13px}a{color:inherit}ul{margin:6px 0;padding-left:20px}
+.note{color:var(--text2);font-size:13px}.warn{border-left:4px solid var(--s4)}a{color:inherit}ul{margin:6px 0;padding-left:20px}
 """
 
 
@@ -31,69 +31,92 @@ def _swatch(index: int, intent: dict) -> str:
     return f'<span class="sw" style="background:{color}"></span>'
 
 
+def _etv(item: dict) -> str:
+    return "-" if item["etv"] is None else f"{item['etv']:,.0f}"
+
+
+def _fmt_len(form: dict) -> tuple[str, str]:
+    words, chars = form["length_words"], form["length_chars"]
+    if not words:
+        return "n/a", f"reference length: {form['length_basis']} (n={form['length_sample_size']})"
+    return (f"{words['p50']:,} words",
+            f"~{chars['p50']:,} chars · IQR {words['p25']:,}-{words['p75']:,} words · n={form['length_sample_size']}")
+
+
 def render_html(analysis: dict) -> str:
     snap, labels, metrics, form = (analysis["snapshot"], analysis["labels"],
                                    analysis["metrics"], analysis["form"])
     intents = labels["intents"]
     results = sorted(snap["results"], key=lambda r: (r["rank"] is None, r["rank"] or 0, r["result_id"]))
     title = snap["keyword"] or f"{len(results)} pages"
-    length = (f'{form["length_target_words"]:,} words' if form["length_target_words"]
-              else "n/a")
-    band = form["length_band_words"]
+    length_value, length_label = _fmt_len(form)
+    share = form["dominant_intent_answer_share"]
     cards = [
-        (escape(form["dominant_intent_title"] or "n/a"), "dominant intent"),
-        (escape(form["dominant_intent_type"] or "-"), "intent tag"),
-        (escape(form["dominant_page_type"] or "n/a"), "dominant page type"),
-        (length, f"target length ({band[0]:,}-{band[1]:,})" if band else f"length: {form['length_basis']}"),
-        (f'{metrics["intent_overlap_ratio"]:.2f}', "intents per result (1.0 = clean SERP)"),
+        (escape(form["dominant_intent_title"] or "n/a"),
+         f"dominant intent · {share * 100:.0f}% of results" if share is not None else "dominant intent"),
+        (escape(form["dominant_intent_form"] or "n/a"), "form that answers it"),
+        (escape(form["expected_genre"] or "withheld" if form["expected_genre_withheld"] else form["expected_genre"] or "n/a"),
+         "genre the SERP expects"),
+        (length_value, length_label),
     ]
-    legend_rows = []
+    warnings = "".join(f'<li><b>{escape(w["code"])}</b> - {escape(w["message"])}</li>'
+                       for w in form["warnings"])
+    rows = []
     for index, intent in enumerate(intents):
         row = metrics["intents"][intent["intent_id"]]
-        legend_rows.append(
+        traffic = f"{row['traffic_share'] * 100:.0f}%" if row["traffic_share"] is not None else "-"
+        rows.append(
             f"<tr><td>{_swatch(index, intent)}{escape(intent['title'])}</td>"
-            f"<td>{escape(intent['intent_type'] or '-')}</td><td>{escape(intent['importance'])}</td>"
-            f"<td>{row['count']} ({row['share'] * 100:.0f}%)</td>"
+            f"<td>{escape(intent.get('form') or '-')}</td>"
+            f"<td>{row['answer_share'] * 100:.0f}%</td><td>{traffic}</td>"
             f"<td>{', '.join(map(str, row['ranks'])) or '-'}</td>"
-            f"<td>{row['word_count'].get('p50') or '-'}</td>"
+            f"<td>{row['words'].get('p50') or '-'}</td>"
             f"<td>{escape(intent['searcher_goal'])}</td></tr>")
-    result_rows = []
-    intent_of = {}
+    intent_of: dict[str, list[str]] = {}
     for intent in intents:
         for rid in intent["result_ids"]:
             intent_of.setdefault(rid, []).append(intent["title"])
-    for item in results:
-        result_rows.append(
-            f"<tr><td>{item['rank'] if item['rank'] is not None else '-'}</td>"
-            f"<td><a href=\"{escape(item['url'])}\" rel=\"noopener\">{escape(item['title'] or item['url'])}</a>"
-            f"<br><span class=note>{escape(item['domain'])}</span></td>"
-            f"<td>{escape('; '.join(intent_of.get(item['result_id'], [])))}</td>"
-            f"<td>{item['word_count'] or '-'}</td><td>{escape(item['fetch_status'])}</td></tr>")
+    result_rows = "".join(
+        f"<tr><td>{item['rank'] if item['rank'] is not None else '-'}</td>"
+        f"<td><a href=\"{escape(item['url'])}\" rel=\"noopener\">{escape(item['title'] or item['url'])}</a>"
+        f"<br><span class=note>{escape(item['domain'])}</span></td>"
+        f"<td>{escape('; '.join(intent_of.get(item['result_id'], [])))}</td>"
+        f"<td>{item['word_count'] or '-'}</td>"
+        f"<td>{_etv(item)}</td>"
+        f"<td>{escape(item['fetch_status'])}</td></tr>" for item in results)
     elements = "".join(f"<li><b>{escape(e['element'])}</b> - {escape(str(e.get('job', '')))}</li>"
                        for e in form["useful_elements"]) or "<li>-</li>"
     avoid = "".join(f"<li><b>{escape(e['element'])}</b> - {escape(str(e.get('reason', '')))}</li>"
                     for e in form["avoid"]) or "<li>-</li>"
     questions = "".join(f"<li>{escape(q['question'])} <span class=note>({q['source']})</span></li>"
                         for q in labels.get("reader_questions") or []) or "<li>-</li>"
+    traffic_chart = ""
+    if metrics["traffic_known"]:
+        traffic_chart = (f"<h2>Share of traffic per intent</h2><p class=note>Estimated traffic (etv) of the "
+                         f"results; {metrics['traffic_known']} of {metrics['results_total']} results have a "
+                         f"known estimate, the rest are left out, not counted as zero.</p>"
+                         f"<div class=panel>{charts.share_bars(intents, metrics, 'traffic_share')}</div>")
     css = CSS.replace("%LIGHT%", css_vars("light")).replace("%DARK%", css_vars("dark"))
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Intent Report</title><style>{css}</style></head><body><main>
 <h1>{escape(title)}</h1>
-<p class="sub">{escape(snap['source'])} · {len(results)} results · {metrics['results_fetched']} fetched · language {escape(snap['language'])}{' · ' + escape(snap['checked_at']) if snap['checked_at'] else ''}</p>
+<p class="sub">{escape(snap['source'])} · {len(results)} results · {metrics['results_fetched']} measured · language {escape(snap['language'])}{' · ' + escape(snap['checked_at']) if snap['checked_at'] else ''}</p>
 <p>{escape(labels.get('summary') or '')}</p>
 <div class="cards">{''.join(f'<div class="card"><b>{v}</b><span>{k}</span></div>' for v, k in cards)}</div>
+{f'<h2>Warnings</h2><div class="panel warn"><ul>{warnings}</ul></div>' if warnings else ''}
 <h2>Share of results per intent</h2>
-<p class="note">A result may serve several intents, so shares can add up to more than 100%.</p>
+<p class="note">A result serving two intents counts half to each, so shares add up to 100%.</p>
 <div class="panel">{charts.share_bars(intents, metrics)}</div>
+{traffic_chart}
 <h2>Which result serves which intent</h2>
 <div class="panel">{charts.rank_map(intents, results)}</div>
 <h2>Length of pages per intent</h2>
-<p class="note">Dots are pages, the dark tick is the median. Target length uses only the dominant intent.</p>
+<p class="note">Dots are pages, the dark tick is the median. Thin and unfetched pages are left out.</p>
 <div class="panel">{charts.length_strips(intents, results)}</div>
-<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Tag</th><th>Importance</th><th>Results</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(legend_rows)}</table></div>
-<h2>Recommended form</h2><div class="panel"><b>Use</b><ul>{elements}</ul><b>Avoid</b><ul>{avoid}</ul></div>
+<h2>Intents</h2><div class="panel"><table><tr><th>Intent</th><th>Form</th><th>Answers</th><th>Traffic</th><th>Ranks</th><th>Median words</th><th>Searcher goal</th></tr>{''.join(rows)}</table></div>
+<h2>Recommended elements</h2><div class="panel"><b>Use</b><ul>{elements}</ul><b>Avoid</b><ul>{avoid}</ul></div>
 <h2>Reader questions</h2><div class="panel"><ul>{questions}</ul></div>
-<h2>All results</h2><div class="panel"><table><tr><th>#</th><th>Page</th><th>Intents</th><th>Words</th><th>Fetch</th></tr>{''.join(result_rows)}</table></div>
+<h2>All results</h2><div class="panel"><table><tr><th>#</th><th>Page</th><th>Intents</th><th>Words</th><th>Traffic</th><th>Fetch</th></tr>{result_rows}</table></div>
 <p class="note">Generated by intent-labeler. The model only groups results; every number is computed by code.</p>
 </main></body></html>"""
