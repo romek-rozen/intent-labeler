@@ -21,7 +21,7 @@ writes a percentage.
 
 *Charts from the bundled synthetic example ([HTML report](docs/example-report.html), [Markdown](docs/example-report.md)).*
 
-**Live examples** (Google top 10, `openai/gpt-6-luna`, run on 2026-09-30) - each folder has
+**Live examples** in five markets (Google top 10, `openai/gpt-6-luna`, run on 2026-09-30) - each folder has
 `report.html`, `report.md`, `analysis.json` and the `snapshot.json` to re-run offline:
 
 | Query | Market | Dominant intent -> form | Reference length | Warnings |
@@ -32,6 +32,12 @@ writes a percentage.
 | [standing desk](examples/standing-desk/report.md) | US | Shop for a standing desk -> Retailer product-category listing | 423 words | wide_length_band |
 | [how to make sourdough starter](examples/how-to-make-sourdough-starter/report.md) | US | Make a starter from scratch -> Day-by-day starter recipe with measurements and readiness cues | n/a (insufficient_sample) | - |
 | [best running shoes](examples/best-running-shoes/report.md) | US | Compare top running shoes -> Editorial best-of roundup with category-based recommendations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
+| [Sauerteig ansetzen](examples/sauerteig-ansetzen/report.md) | DE | Sauerteigstarter selbst ansetzen -> Schritt-für-Schritt-Anleitung mit Tagesplan und kurzen Videos | n/a (insufficient_sample) | - |
+| [Wärmepumpe Kosten](examples/warmepumpe-kosten/report.md) | DE | Laufende Stromkosten abschätzen -> Rechenhilfe mit Verbrauchsbeispielen, Stromtarifen und Spartipps | 861 words | - |
+| [come fare il lievito madre](examples/come-fare-il-lievito-madre/report.md) | IT | Preparare il lievito madre in casa -> Ricetta guidata con dosi, passaggi e tempi di fermentazione | 1289 words | - |
+| [calcolo rata mutuo](examples/calcolo-rata-mutuo/report.md) | IT | Calcolare la rata del mutuo -> Calcolatore interattivo con stima della rata e piano di ammortamento | n/a (insufficient_sample) | - |
+| [recette pâte à crêpes](examples/recette-pate-a-crepes/report.md) | FR | Préparer une pâte à crêpes classique -> Recette illustrée avec ingrédients et étapes | 918 words | mixed_serp, consider_separate_pages |
+| [meilleur aspirateur robot](examples/meilleur-aspirateur-robot/report.md) | FR | Comparer les meilleurs modèles -> Comparatif de modèles testés avec critères et recommandations | n/a (insufficient_sample) | mixed_serp, traffic_disagrees |
 
 ## What you get
 

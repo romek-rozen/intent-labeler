@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 PROMPT = ROOT / "src/intent_labeler/features/intent_labeling/prompts/system.md"
 HERO_EXAMPLE = "standing-desk"
+MARKETS = {"2616": "Poland", "2840": "United States", "2276": "Germany", "2380": "Italy",
+           "2250": "France", "2826": "United Kingdom"}
 
 
 def example_summary(folder: Path) -> dict:
@@ -23,6 +25,7 @@ def example_summary(folder: Path) -> dict:
         "slug": folder.name,
         "keyword": snap["keyword"],
         "language": snap["language"],
+        "market": MARKETS.get(str(snap.get("location")), snap["language"].upper()),
         "results": len(snap["results"]),
         "dominant": form["dominant_intent_title"],
         "form": form["dominant_intent_form"],

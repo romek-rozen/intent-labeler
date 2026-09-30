@@ -19,7 +19,14 @@ EXAMPLES = [
     ("standing desk", "en", 2840),
     ("how to make sourdough starter", "en", 2840),
     ("best running shoes", "en", 2840),
+    ("Sauerteig ansetzen", "de", 2276),
+    ("Wärmepumpe Kosten", "de", 2276),
+    ("come fare il lievito madre", "it", 2380),
+    ("calcolo rata mutuo", "it", 2380),
+    ("recette pâte à crêpes", "fr", 2250),
+    ("meilleur aspirateur robot", "fr", 2250),
 ]
+# Re-running an existing example is skipped; delete its folder to refresh it.
 
 
 def slug(text: str) -> str:
@@ -31,6 +38,8 @@ def main() -> int:
     failed = 0
     for keyword, language, location in EXAMPLES:
         out = ROOT / "examples" / slug(keyword)
+        if (out / "analysis.json").is_file():
+            continue
         print(f"== {keyword} -> {out.relative_to(ROOT)}", flush=True)
         code = subprocess.call([sys.executable, "-m", "intent_labeler.cli", "--keyword", keyword,
                                 "--language", language, "--location", str(location),

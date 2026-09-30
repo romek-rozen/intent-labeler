@@ -63,7 +63,7 @@ if (!reduced) {
 $("#exampleList").innerHTML = data.examples.map((ex) => `
   <a class="example" href="examples/${ex.slug}.html">
     <span class="q">${esc(ex.keyword)}</span>
-    <span class="market">Google ${ex.language === "pl" ? "Poland" : "United States"}, ${ex.results} results</span>
+    <span class="market">Google ${esc(ex.market)}, ${ex.results} results</span>
     <span class="stack" aria-hidden="true">${ex.intents.map((it, i) => `<span style="flex:${it.share};background:${color(i)}"></span>`).join("")}</span>
     <p class="dom"><b>${esc(ex.dominant)}</b><br>${esc(ex.form)}</p>
     <p class="meta">${ex.length ? `Reference length ${ex.length} words` : `No reference length (${esc(ex.length_basis.replaceAll("_", " "))})`}</p>
