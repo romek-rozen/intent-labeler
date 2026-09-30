@@ -53,6 +53,32 @@ def hero_data(folder: Path) -> dict:
     }
 
 
+FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
+        '<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900'
+        '&display=swap" rel="stylesheet">')
+
+
+def _keyword(folder: Path) -> str:
+    return json.loads((folder / "analysis.json").read_text())["snapshot"]["keyword"]
+
+
+def themed_report(html: str, folders: list[Path], index: int) -> str:
+    """Give a copied report the site's fonts, colours and header, plus prev/next links."""
+    prev_f, next_f = folders[index - 1], folders[(index + 1) % len(folders)]
+    pager = (f'<nav class="report-nav" aria-label="Examples">'
+             f'<a href="{prev_f.name}.html">Previous: {_keyword(prev_f)}</a>'
+             f'<a href="../index.html#examples">All examples</a>'
+             f'<a href="{next_f.name}.html">Next: {_keyword(next_f)}</a></nav>')
+    header = ('<header class="top"><a class="brand" href="../index.html">Intent Labeler</a><nav>'
+              '<a href="../index.html#how">How it works</a><a href="../index.html#examples">Examples</a>'
+              '<a href="../index.html#try">Try it</a>'
+              '<a href="https://github.com/romek-rozen/intent-labeler">GitHub</a></nav></header>')
+    head = f'{FONT}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
+    html = html.replace("</head>", head + "</head>", 1)
+    html = html.replace("<main>", header + pager + "<main>", 1)
+    return html.replace("</main>", "</main>" + pager.replace('class="report-nav"', 'class="report-nav bottom"'), 1)
+
+
 def community_records() -> list[dict]:
     """Merged community results, newest first. Invalid files are skipped, not fatal."""
     records = []
@@ -72,8 +98,10 @@ def main() -> None:
     shutil.copytree(ROOT / "site", OUT)
     (OUT / "examples").mkdir()
     folders = sorted(p for p in (ROOT / "examples").iterdir() if (p / "analysis.json").is_file())
-    for folder in folders:
-        shutil.copy(folder / "report.html", OUT / "examples" / f"{folder.name}.html")
+    for index, folder in enumerate(folders):
+        html = (folder / "report.html").read_text()
+        (OUT / "examples" / f"{folder.name}.html").write_text(
+            themed_report(html, folders, index))
     data = {"examples": [example_summary(f) for f in folders],
             "hero": hero_data(ROOT / "examples" / HERO_EXAMPLE),
             "community": community_records()}

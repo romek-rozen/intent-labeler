@@ -1,0 +1,23 @@
+/* Makes the standalone example reports look like the site and adds site navigation.
+   Injected by scripts/build_site.py; the library's reports stay self-contained. */
+:root {
+  --surface: var(--paper); --panel: var(--card); --text: var(--ink); --text2: var(--ink-2);
+  --line: var(--rule); --band: var(--paper); --muted: #8a97a8;
+}
+body { font-family: "Schibsted Grotesk", system-ui, sans-serif; }
+main { max-width: 1180px; padding-top: 8px; }
+h1 { font-weight: 900; letter-spacing: -0.02em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+h2 { font-weight: 900; letter-spacing: -0.01em; }
+.card b { font-weight: 900; }
+.panel, .card { border-radius: var(--radius-card); }
+.report-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  max-width: 1180px; margin: 0 auto; padding: 0 16px 8px; font-size: 0.95rem; }
+.report-nav a { color: var(--link); }
+.report-nav.bottom { padding: 24px 16px 48px; border-top: 1px solid var(--rule); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: var(--paper); --panel: var(--card); --text: var(--ink); --text2: var(--ink-2);
+    --line: var(--rule); --band: var(--paper);
+  }
+}
+h1 { max-width: none; }

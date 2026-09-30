@@ -134,7 +134,7 @@ def render_html(analysis: dict) -> str:
     css = CSS.replace("%LIGHT%", css_vars("light")).replace("%DARK%", css_vars("dark"))
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Intent Report</title><style>{css}</style></head><body><main>
+<title>{escape(title)} - Intent Report</title><style>{css}</style></head><body><main>
 <h1>{escape(title)}</h1>
 <p class="sub">{escape(snap['source'])} · {len(results)} results · {metrics['results_fetched']} measured · language {escape(snap['language'])}{' · ' + escape(snap['checked_at']) if snap['checked_at'] else ''}</p>
 <p>{escape(labels.get('summary') or '')}</p>

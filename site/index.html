@@ -78,7 +78,20 @@
   <section id="try" class="band">
     <div class="wrap">
       <h2>Try it with your own keys</h2>
-      <p>Fetch Google's live top ten through your DataForSEO account, or paste results from any search. The model runs on your OpenRouter key. A typical run costs well under one US cent in model tokens, plus DataForSEO's own price for the SERP call.</p>
+      <p>You need an <a href="https://openrouter.ai/keys">OpenRouter</a> key - the model always runs through OpenRouter, so you can pick any of the low-cost models below with one key. For live Google results and page reading you also need a <a href="https://dataforseo.com/">DataForSEO</a> account; without it, paste results yourself.</p>
+
+      <aside class="keys-note cost-note" aria-label="What a run costs">
+        <h3>What a run costs you</h3>
+        <p>Both services bill your own account. Prices measured on real runs in September 2026:</p>
+        <table class="price-table">
+          <tr><th>Step</th><th>Service</th><th>Price</th></tr>
+          <tr><td>Google top ten, live</td><td>DataForSEO SERP API</td><td>$0.002 per query</td></tr>
+          <tr><td>Read the ten pages</td><td>DataForSEO OnPage content parsing</td><td>$0.00015 per page, about $0.0015 for ten</td></tr>
+          <tr><td>Traffic per URL (optional)</td><td>DataForSEO Labs traffic estimation</td><td>about $0.013 per query - the most expensive step</td></tr>
+          <tr><td>Grouping into intents</td><td>OpenRouter, the model you pick</td><td>$0.0006 to $0.002 per query</td></tr>
+        </table>
+        <p id="costEstimate" class="estimate"></p>
+      </aside>
 
       <aside class="keys-note" aria-label="How your keys are handled">
         <h3>We do not store your keys</h3>
@@ -107,8 +120,9 @@
             <label class="grow">DataForSEO login <input id="pgDfsLogin" autocomplete="off" placeholder="you@example.com"></label>
             <label class="grow">DataForSEO API password <input id="pgDfsPassword" type="password" autocomplete="off"></label>
           </div>
-          <label class="check"><input id="pgTraffic" type="checkbox" checked> Also estimate traffic per URL (one extra DataForSEO Labs call)</label>
-          <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password.</p>
+          <label class="check"><input id="pgPages" type="checkbox" checked> Read the pages: length, headings, tables, lists and video (content parsing)</label>
+          <label class="check"><input id="pgTraffic" type="checkbox"> Also estimate traffic per URL (DataForSEO Labs, about $0.013)</label>
+          <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password. New DataForSEO accounts get a small free credit, enough for many runs.</p>
         </div>
 
         <div id="pasteFields" class="field-group" hidden>
@@ -120,7 +134,7 @@
 
         <div class="field-row">
           <label class="grow">OpenRouter API key <input id="pgKey" type="password" required placeholder="sk-or-..."></label>
-          <label>Model <input id="pgModel" value="openai/gpt-6-luna"></label>
+          <label>Model <select id="pgModel"></select></label>
         </div>
         <label class="check"><input id="pgRemember" type="checkbox"> Remember my keys in this browser</label>
 

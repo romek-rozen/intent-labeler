@@ -109,7 +109,37 @@ const sourceMode = () => document.querySelector('input[name="source"]:checked').
 document.querySelectorAll('input[name="source"]').forEach((el) => el.addEventListener("change", () => {
   $("#dfsFields").hidden = sourceMode() !== "dataforseo";
   $("#pasteFields").hidden = sourceMode() !== "paste";
+  updateEstimate();
 }));
+
+// Low-cost OpenRouter models, measured on two real SERPs (English and Polish) in September 2026.
+// cost = measured USD per query with reasoning switched off (grouping ten results does not need it,
+// and with it Nemotron returned empty answers and Gemma took minutes).
+const MODELS = [
+  { id: "openai/gpt-6-luna", label: "GPT-6 Luna", cost: 0.0008, speed: "5-8 s" },
+  { id: "deepseek/deepseek-v4.1-flash", label: "DeepSeek V4.1 Flash", cost: 0.0022, speed: "3-4 s" },
+  { id: "nvidia/nemotron-3.5-lightning", label: "Nemotron 3.5 Lightning", cost: 0.0003, speed: "3-26 s" },
+  { id: "google/gemma-4-26b-a4b-it", label: "Gemma 4 26B MoE", cost: 0.0006, speed: "4-9 s" },
+  { id: "google/gemma-4-31b-it", label: "Gemma 4 31B", cost: 0.0006, speed: "30-40 s" },
+  { id: "qwen/qwen3.8-flash", label: "Qwen 3.8 Flash", cost: 0.0009, speed: "18-23 s" },
+  { id: "xiaomi/mimo-v2.6-flash", label: "MiMo V2.6 Flash", cost: 0.0007, speed: "26-34 s" },
+];
+const modelSelect = $("#pgModel");
+modelSelect.innerHTML = MODELS.map((m) => `<option value="${m.id}">${m.label} - about $${m.cost.toFixed(4)}, ${m.speed}</option>`).join("");
+const currentModel = () => MODELS.find((m) => m.id === modelSelect.value);
+
+const PRICE = { serp: 0.002, page: 0.00015, traffic: 0.013 };
+function updateEstimate() {
+  const dfs = sourceMode() === "dataforseo";
+  const pages = dfs && $("#pgPages").checked ? 10 * PRICE.page : 0;
+  const traffic = dfs && $("#pgTraffic").checked ? PRICE.traffic : 0;
+  const dfsCost = dfs ? PRICE.serp + pages + traffic : 0;
+  const total = dfsCost + currentModel().cost;
+  $("#costEstimate").textContent = `This run, as set below: about $${total.toFixed(4)}` +
+    (dfs ? ` (DataForSEO $${dfsCost.toFixed(4)}, model $${currentModel().cost.toFixed(4)})` : ` (model only)`) +
+    `. A hundred runs: about $${(total * 100).toFixed(2)}.`;
+}
+["change", "input"].forEach((ev) => $("#playground").addEventListener(ev, updateEstimate));
 
 // Keys: kept in memory; in localStorage only when the visitor ticks "remember".
 const STORE = { openrouter: "intent-labeler-openrouter-key", dfsLogin: "intent-labeler-dfs-login", dfsPassword: "intent-labeler-dfs-password" };
@@ -199,6 +229,51 @@ async function fetchTraffic(results) {
   results.forEach((x) => { x.etv = etv[x.url] ?? null; });
 }
 
+// Pages through DataForSEO OnPage content parsing: the browser cannot fetch other sites itself
+// (CORS), DataForSEO can, and returns the page as markdown. Measured cost: $0.00015 per page.
+const THIN_WORDS = 150;
+const WORD = /[\p{L}\p{N}]+/gu;
+function analyseMarkdown(md) {
+  const lines = md.split("\n");
+  const headings = [], paragraphs = [];
+  const el = { tables: 0, ordered_lists: 0, unordered_lists: 0, images: 0, videos: 0 };
+  let prev = "";
+  for (const raw of lines) {
+    const line = raw.trim();
+    const kind = line.startsWith("|") ? "table" : /^\d+[.)]\s/.test(line) ? "ol" : /^[-*+]\s/.test(line) ? "ul" : "";
+    if (kind && kind !== prev) el[{ table: "tables", ol: "ordered_lists", ul: "unordered_lists" }[kind]]++;
+    prev = kind;
+    el.images += (line.match(/!\[[^\]]*\]\(/g) || []).length;
+    el.videos += (line.match(/(youtube\.com\/(watch|embed)|youtu\.be\/|vimeo\.com\/)/g) || []).length;
+    if (line.startsWith("#")) headings.push(line.replace(/^#+\s*/, ""));
+    else if (!kind && !line.startsWith(">") && (line.match(WORD) || []).length >= 8) paragraphs.push(line);
+  }
+  const text = md.replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1");
+  const words = (text.match(WORD) || []).length;
+  const parts = [];
+  if (headings.length) parts.push("headings: " + headings.slice(0, 8).join("; "));
+  if (paragraphs.length) parts.push("text: " + paragraphs.slice(0, 3).join(" "));
+  return { words, chars: text.replace(/\s+/g, " ").trim().length, digest: parts.join(" | ").slice(0, 400), elements: el };
+}
+
+async function fetchPages(results, onProgress) {
+  let done = 0;
+  const one = async (r) => {
+    try {
+      const res = await dataforseo("on_page/content_parsing/live", { url: r.url, markdown_view: true });
+      const md = res.items?.[0]?.page_as_markdown || "";
+      Object.assign(r, analyseMarkdown(md));
+      r.fetch_status = r.words >= THIN_WORDS ? "ok" : "thin";
+    } catch (e) {
+      r.fetch_status = "error";
+    }
+    onProgress(++done);
+  };
+  const queue = [...results];
+  await Promise.all(Array.from({ length: 5 }, async () => { while (queue.length) await one(queue.shift()); }));
+  results.forEach((r) => { if (r.fetch_status !== "ok") r.digest = ""; });
+}
+
 function validate(labels, ids) {
   if (!labels || !Array.isArray(labels.intents) || !labels.intents.length) throw new Error("the model returned no intents");
   const known = new Set(ids);
@@ -228,7 +303,36 @@ function measure(labels, results) {
     share: it.result_ids.reduce((s, id) => s + 1 / k[id], 0) / results.length,
     traffic: trafficTotal ? it.result_ids.reduce((s, id) => s + (byId[id].etv ?? 0) / k[id], 0) / trafficTotal : null,
     ranks: it.result_ids.map((id) => byId[id].rank).sort((a, b) => a - b),
+    words: it.result_ids.map((id) => byId[id]).filter((r) => r.fetch_status === "ok").map((r) => r.words).sort((a, b) => a - b),
+    elements: elementShare(it.result_ids.map((id) => byId[id]).filter((r) => r.fetch_status === "ok")),
   }));
+}
+
+const nearestRank = (sorted, p) => sorted.length ? sorted[Math.max(0, Math.min(sorted.length - 1, Math.ceil(p / 100 * sorted.length) - 1))] : null;
+function elementShare(pages) {
+  if (!pages.length) return null;
+  const out = {};
+  for (const key of ["tables", "ordered_lists", "unordered_lists", "images", "videos"]) {
+    out[key] = pages.filter((p) => p.elements?.[key]).length / pages.length;
+  }
+  return out;
+}
+
+// Same guards as features/form_decision: no number without a sample.
+function decide(rows) {
+  const real = rows.filter((r) => !r.fallback);
+  const top = [...real].sort((a, b) => b.share - a.share || (b.traffic ?? 0) - (a.traffic ?? 0))[0];
+  const byTraffic = real.filter((r) => r.traffic != null).sort((a, b) => b.traffic - a.traffic)[0];
+  const w = top?.words || [];
+  let basis = "median of the dominant intent's pages";
+  if (w.length < 3) basis = `not enough measured pages (${w.length} of at least 3)`;
+  else if (w[w.length - 1] / w[0] > 50) basis = "lengths too far apart to average";
+  const length = basis.startsWith("median") ? { p25: nearestRank(w, 25), p50: nearestRank(w, 50), p75: nearestRank(w, 75) } : null;
+  const warnings = [];
+  if (top && top.share < 0.4 && top.coverage < 0.5) warnings.push("No intent holds 40% of the results: the page must serve several intents, or the query is poorly chosen.");
+  if (real.filter((r) => r.share >= 0.15).length >= 3) warnings.push("Three or more intents hold at least 15% each. Consider separate pages.");
+  if (byTraffic && top && byTraffic !== top) warnings.push(`By result count "${top.title}" dominates, by traffic "${byTraffic.title}". Decide deliberately.`);
+  return { top, length, basis, warnings };
 }
 
 let systemPrompt = null;
@@ -244,7 +348,7 @@ async function callModel({ key, model, payload }) {
       method: "POST",
       headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json",
                  "HTTP-Referer": location.origin, "X-Title": "Intent Labeler playground" },
-      body: JSON.stringify({ model, max_tokens: 8000, reasoning: { effort: "low" },
+      body: JSON.stringify({ model, max_tokens: 12000, reasoning: { enabled: false },
         response_format: { type: "json_object" },
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content }] }),
     });
@@ -294,16 +398,21 @@ function shareBox(run) {
 function render(run) {
   const { keyword, results, labels, rows } = run;
   const out = $("#pgOutput");
-  const top = [...rows].filter((r) => !r.fallback).sort((a, b) => b.share - a.share)[0];
+  const { top, length, basis, warnings } = decide(rows);
   const fits = labels.article_fits || {};
+  if (fits.value === false) warnings.push(`This query may not want an article: ${fits.reason}`);
   const hasTraffic = rows.some((r) => r.traffic != null);
+  const measured = results.filter((r) => r.fetch_status === "ok").length;
+  const EL = { tables: "table", ordered_lists: "numbered list", unordered_lists: "list", images: "images", videos: "video" };
+  const withElements = rows.filter((r) => r.elements);
   out.hidden = false;
   out.innerHTML = `
     <h3>${esc(keyword)} <span class="hint">Google ${esc(run.market)}, ${results.length} results</span></h3>
     <p class="pg-summary">${esc(labels.summary || "")}</p>
     <p>Dominant intent: <b>${esc(top?.title)}</b>, answered by <b>${esc(top?.form || "-")}</b>.
-       ${labels.expected_genre ? `Expected genre: ${esc(labels.expected_genre)}.` : ""}
-       ${fits.value === false ? `<br><b>This query may not want an article:</b> ${esc(fits.reason)}` : ""}</p>
+       ${labels.expected_genre && length ? `Expected genre: ${esc(labels.expected_genre)}.` : ""}</p>
+    <p>${measured ? (length ? `Reference length: <b>${length.p50} words</b> (middle half ${length.p25}-${length.p75}), from the dominant intent's pages.` : `No reference length: ${esc(basis)}.`) + ` ${measured} of ${results.length} pages were readable.` : "Pages were not read, so there is no length measurement."}</p>
+    ${warnings.length ? `<ul class="warn-list">${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
     <div class="bars">${rows.map((r, i) => `
       <div class="bar" style="--c:${r.fallback ? "var(--rule)" : color(i)}; --w:${(r.share * 100).toFixed(1)}%">
         <span class="name">${esc(r.title)}<small>${esc(r.form || "")}</small></span>
@@ -313,8 +422,11 @@ function render(run) {
       ${rows.map((r, i) => `<tr><td><span class="sw" style="--c:${r.fallback ? "var(--rule)" : color(i)}"></span>${esc(r.title)}</td>
         <td>${pct(r.coverage)}</td><td>${pct(r.share)}</td>${hasTraffic ? `<td>${pct(r.traffic)}</td>` : ""}<td>${r.ranks.join(", ")}</td><td>${esc(r.searcher_goal)}</td></tr>`).join("")}
     </table>
+    ${withElements.length ? `<h3 style="margin-top:24px">Content form on the pages</h3>
+    <table><tr><th>Intent</th>${Object.values(EL).map((l) => `<th>${l}</th>`).join("")}<th>Median words</th></tr>
+      ${withElements.map((r) => `<tr><td>${esc(r.title)}</td>${Object.keys(EL).map((k) => `<td>${pct(r.elements[k])}</td>`).join("")}<td>${nearestRank(r.words, 50) ?? "-"}</td></tr>`).join("")}</table>` : ""}
     <h3 style="margin-top:24px">Results</h3>
-    <table class="results-list">${results.map((r) => `<tr><td>${r.rank}</td><td><a href="${esc(r.url)}" rel="noopener">${esc(r.title || r.url)}</a><br><span class="hint">${esc(r.domain)}</span></td>
+    <table class="results-list">${results.map((r) => `<tr><td>${r.rank}</td><td><a href="${esc(r.url)}" rel="noopener">${esc(r.title || r.url)}</a><br><span class="hint">${esc(r.domain)}${r.fetch_status ? `, ${r.fetch_status === "ok" ? `${r.words} words` : r.fetch_status}` : ""}</span></td>
       <td>${esc(rows.filter((x) => x.result_ids.includes(r.result_id)).map((x) => x.title).join("; "))}</td></tr>`).join("")}</table>
     ${(labels.reader_questions || []).length ? `<h3 style="margin-top:24px">Reader questions</h3><ul>${labels.reader_questions.map((q) => `<li>${esc(q.question)}</li>`).join("")}</ul>` : ""}
     ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing was published. Choose "Public" before running to propose it for the gallery.</p>`}`;
@@ -337,6 +449,10 @@ $("#playground").addEventListener("submit", async (event) => {
     if (mode === "dataforseo") {
       status.textContent = `Fetching Google's top ten for "${keyword}" in ${marketName()}...`;
       ({ results, features } = await fetchSerp(keyword));
+      if ($("#pgPages").checked) {
+        status.textContent = "Reading the pages through DataForSEO...";
+        await fetchPages(results, (n) => { status.textContent = `Reading the pages through DataForSEO: ${n} of ${results.length}`; });
+      }
       if ($("#pgTraffic").checked) {
         status.textContent = "Estimating traffic per URL...";
         await fetchTraffic(results);
@@ -346,10 +462,10 @@ $("#playground").addEventListener("submit", async (event) => {
       if (results.length < 2) throw new Error("add at least two results, one per line");
     }
     const payload = { source: "serp", keyword, language: language.value, brief: "", serp_features: features, results };
-    status.textContent = `Asking ${$("#pgModel").value} to group ${results.length} results. This usually takes a few seconds; slower models can take a minute.`;
-    const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: $("#pgModel").value.trim(), payload });
+    status.textContent = `Asking ${currentModel().label} to group ${results.length} results. This usually takes a few seconds; slower models can take a minute.`;
+    const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: currentModel().id, payload: { ...payload, results: payload.results.map(({ words, chars, elements, etv, fetch_status, ...r }) => r) } });
     const run = { keyword, results, labels, rows: measure(labels, results), market: marketName(),
-      location: Number(country.value), language: language.value, source: mode, model: $("#pgModel").value.trim(),
+      location: Number(country.value), language: language.value, source: mode, model: currentModel().id,
       visibility: document.querySelector('input[name="visibility"]:checked').value };
     status.textContent = "Done. The groups come from the model; every percentage below was computed in your browser.";
     render(run);

@@ -11,7 +11,7 @@ def test_pipeline_output_is_json_and_renders(snapshot, fake_chat):
     result = analyze(snapshot, chat=fake_chat, fetch_pages=False)
     json.dumps(result)
     html = report.render_html(result)
-    assert "<svg" in html and "Compare and choose a desk" in html and "<title>Intent Report</title>" in html
+    assert "<svg" in html and "Compare and choose a desk" in html and "Intent Report</title>" in html
     assert "1,200 words" in html and "Share of traffic per intent" in html
     assert "| Buy a desk now | shop category listing | 40% | 40% |" in report.render_markdown(result)
 

@@ -177,3 +177,10 @@ select { font: inherit; font-size: 0.98rem; color: var(--ink); background: var(-
 .share-box .btn { margin: 8px 8px 0 0; }
 .results-list { font-size: 0.92rem; }
 .results-list td:first-child { font-weight: 900; color: var(--ink-2); }
+
+.price-table { margin: 10px 0 12px; font-size: 0.93rem; }
+.price-table td:last-child { white-space: nowrap; }
+.estimate { font-weight: 700; }
+.model-note { font-size: 0.92rem; color: var(--ink-2); margin: 0; }
+@media (max-width: 860px) { .price-table td:last-child { white-space: normal; } }
+.warn-list { border-left: 5px solid var(--i4); padding: 8px 12px 8px 32px; background: var(--paper); border-radius: 4px; }

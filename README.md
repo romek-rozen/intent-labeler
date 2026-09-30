@@ -6,7 +6,8 @@ traffic), in what form each is answered, how long the winning pages are, and whe
 want an article at all.
 
 **Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** - bring your own
-OpenRouter key (and DataForSEO login for live Google results in 16 markets). The page has no server and
+OpenRouter key (and DataForSEO login for live Google results and page reading in 16 markets; a full
+run costs about half a US cent). The page has no server and
 stores no keys. Results you choose to make public are proposed as pull requests to
 [`community/`](community/).
 
