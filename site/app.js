@@ -86,13 +86,13 @@ document.querySelectorAll('input[name="source"]').forEach((el) => el.addEventLis
 // cost = measured USD per query with reasoning switched off (grouping ten results does not need it,
 // and with it Nemotron returned empty answers and Gemma took minutes).
 const MODELS = [
-  { id: "openai/gpt-6-luna", label: "GPT-6 Luna", cost: 0.0008, speed: "5-8 s" },
-  { id: "deepseek/deepseek-v4.1-flash", label: "DeepSeek V4.1 Flash", cost: 0.0022, speed: "3-4 s" },
-  { id: "nvidia/nemotron-3.5-lightning", label: "Nemotron 3.5 Lightning", cost: 0.0003, speed: "3-26 s" },
-  { id: "google/gemma-4-26b-a4b-it", label: "Gemma 4 26B MoE", cost: 0.0006, speed: "4-9 s" },
-  { id: "google/gemma-4-31b-it", label: "Gemma 4 31B", cost: 0.0006, speed: "30-40 s" },
-  { id: "qwen/qwen3.8-flash", label: "Qwen 3.8 Flash", cost: 0.0009, speed: "18-23 s" },
-  { id: "xiaomi/mimo-v2.6-flash", label: "MiMo V2.6 Flash", cost: 0.0007, speed: "26-34 s" },
+  { id: "openai/gpt-6-luna", label: "GPT-6 Luna", cost: 0.0008, speed: "5-20 s" },
+  { id: "deepseek/deepseek-v4.1-flash", label: "DeepSeek V4.1 Flash", cost: 0.0022, speed: "3-15 s" },
+  { id: "nvidia/nemotron-3.5-lightning", label: "Nemotron 3.5 Lightning", cost: 0.0003, speed: "3-40 s" },
+  { id: "google/gemma-4-26b-a4b-it", label: "Gemma 4 26B MoE", cost: 0.0006, speed: "4-20 s" },
+  { id: "google/gemma-4-31b-it", label: "Gemma 4 31B", cost: 0.0006, speed: "30-80 s" },
+  { id: "qwen/qwen3.8-flash", label: "Qwen 3.8 Flash", cost: 0.0009, speed: "15-50 s" },
+  { id: "xiaomi/mimo-v2.6-flash", label: "MiMo V2.6 Flash", cost: 0.0007, speed: "25-70 s" },
 ];
 const modelSelect = $("#pgModel");
 modelSelect.innerHTML = MODELS.map((m) => `<option value="${m.id}">${m.label} - about $${m.cost.toFixed(4)}, ${m.speed}</option>`).join("");
@@ -697,7 +697,7 @@ $("#playground").addEventListener("submit", async (event) => {
   status.textContent = "";
   try {
     let results, features = { people_also_ask: [], related_searches: [], ai_overview: "", item_types: [] };
-    steps.start(0, dfsMode ? "DataForSEO usually answers in about 5 seconds" : "");
+    steps.start(0, dfsMode ? "usually 5-30 s, DataForSEO fetches Google live" : "");
     if (dfsMode) {
       ({ results, features } = await fetchSerp(keyword));
     } else {
@@ -707,8 +707,8 @@ $("#playground").addEventListener("submit", async (event) => {
     steps.done(0, `${results.length} results${dfsMode ? `, ${usd(spend.serp)}` : ""}`);
 
     if (readPages) {
-      steps.start(1, `0 of ${results.length}`);
-      await fetchPages(results, (n) => steps.detail(1, `${n} of ${results.length}`));
+      steps.start(1, `0 of ${results.length}, usually 5-30 s`);
+      await fetchPages(results, (n) => steps.detail(1, `${n} of ${results.length}, usually 5-30 s`));
       const ok = results.filter((r) => r.fetch_status === "ok").length;
       steps.done(1, `${ok} of ${results.length} readable${ok < results.length ? ", the rest are blocked or too short" : ""}, ${usd(spend.pages)}`);
     } else {
@@ -716,7 +716,7 @@ $("#playground").addEventListener("submit", async (event) => {
     }
 
     if (wantTraffic) {
-      steps.start(2, "one DataForSEO Labs call");
+      steps.start(2, "one DataForSEO Labs call, usually 2-15 s");
       await fetchTraffic(results);
       steps.done(2, `known for ${results.filter((r) => r.etv != null).length} of ${results.length}, ${usd(spend.traffic)}`);
     } else {
@@ -726,7 +726,7 @@ $("#playground").addEventListener("submit", async (event) => {
     const payload = { source: "serp", keyword, language: language.value, brief: "", serp_features: features, results };
     let demand = null;
     if (dfsMode && $("#pgVolume").checked) {
-      steps.start(3, "one DataForSEO Labs call");
+      steps.start(3, "one DataForSEO Labs call, usually 2-15 s");
       demand = await fetchVolume(keyword);
       steps.done(3, demand ? `${(demand.volume ?? 0).toLocaleString("en")} per month, ${usd(spend.volume)}` : `no data for this keyword, ${usd(spend.volume)}`);
     } else {
