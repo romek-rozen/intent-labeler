@@ -61,4 +61,4 @@ compete with it), a generated meta description and title per report, and Open Gr
 everything is crawlable. To speed up indexing, add `https://romek-rozen.github.io/intent-labeler/` as
 a URL-prefix property in Google Search Console and submit `sitemap.xml`.
 
-"Star on GitHub" buttons show the live star count from the public GitHub API (no key).
+"Star on GitHub" buttons link to the repository (no star count shown).
