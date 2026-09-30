@@ -463,15 +463,12 @@ function shareBox(run) {
   const record = publicRecord(run);
   const json = JSON.stringify(record, null, 2);
   const name = `${slugify(record.market)}-${slugify(record.keyword)}-${record.date}.json`;
-  const url = `https://github.com/romek-rozen/intent-labeler/new/main/community?filename=${encodeURIComponent(name)}&value=${encodeURIComponent(json)}`;
   const blob = URL.createObjectURL(new Blob([json], { type: "application/json" }));
-  const tooLong = url.length > 7500;
   return `<div class="share-box">
     <h3>Added to the project's collection</h3>
     <p id="contributeStatus">Sending...</p>
-    <p class="hint">Want your name on it, or prefer GitHub? Open a pull request with the file <code>community/${esc(name)}</code> filled in - GitHub forks the repository for you. The file holds the query, market, results and intents - no keys.</p>
-    ${tooLong ? `<p class="hint">This result is too long for a link. Download the file and upload it at the same address.</p>` :
-      `<a class="btn" href="${url}" target="_blank" rel="noopener">Contribute on GitHub</a>`}
+    <p>If this was useful, you can support the work on the tool.</p>
+    <a class="btn primary" href="https://github.com/sponsors/romek-rozen" target="_blank" rel="noopener">&#10084; Sponsor This Project</a>
     <a class="btn" href="${blob}" download="${esc(name)}">Download the JSON</a>
   </div>`;
 }
@@ -747,7 +744,7 @@ $("#playground").addEventListener("submit", async (event) => {
     if (run.visibility === "public") {
       contribute(run).then((ok) => {
         const el = $("#contributeStatus");
-        if (el) el.textContent = ok ? "Thank you - the result was added to the collection. It is not shown publicly." : "Could not reach the collection right now. You can still contribute through GitHub below.";
+        if (el) el.textContent = ok ? "Thank you - the result was added to the collection. It is not shown publicly." : "Could not reach the collection right now. You can still download the result below.";
       });
     }
     showBalances().then(() => {

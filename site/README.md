@@ -29,7 +29,7 @@ stores it in the n8n data table `intent_labeler_contributions` with `status = ne
 and again in n8n: a hidden honeypot field `website` that people never fill, and `elapsed_ms` since the
 page opened (under 5 seconds is dropped). No password: anything in a static page is public.
 
-The GitHub route stays as an option for people who want their name on a result: with "Public" selected, the result page
+The GitHub route is no longer offered on the page (the result box shows a sponsor button and a JSON download instead), but pull requests to `community/` still work the same way: with "Public" selected, the result page
 offers a link that opens GitHub's "new file" form for `community/<market>-<query>-<date>.json`,
 pre-filled with the record (no keys). GitHub forks and opens a pull request; `tests/test_community.py`
 checks the file in CI. "Public" is the default. Merged files are collected in `community/` but **not
