@@ -1,6 +1,16 @@
 # Features
 
-Each feature has its own README with the details and the reasons behind its rules.
+Each feature has its own README with a flow diagram, the details and the reasons behind its rules.
+
+```mermaid
+flowchart LR
+    serp_source --> page_source
+    page_source --> traffic
+    traffic --> intent_labeling
+    intent_labeling --> metrics
+    metrics --> form_decision
+    form_decision --> report
+```
 
 | Feature | Job | Public API |
 |---|---|---|

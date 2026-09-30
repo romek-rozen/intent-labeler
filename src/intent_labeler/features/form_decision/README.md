@@ -3,6 +3,23 @@
 Turns metrics into the recommendation: which intent dominates, the reference length, the genre, and
 the warnings a human must see.
 
+## Flow
+
+```mermaid
+flowchart TD
+    M[(metrics)] --> DOM[dominant = max answer_share<br/>ties: traffic share, best rank]
+    M --> DT[dominant by traffic]
+    DOM --> LEN{n >= 3 and max/min <= 50?}
+    LEN -->|yes| L[length p25/p50/p75<br/>words + chars, genre kept]
+    LEN -->|no| NL[length null + basis<br/>genre withheld]
+    DOM --> W[warnings]
+    DT --> W
+    LB[(labels)] --> W
+    L --> OUT[(form)]
+    NL --> OUT
+    W --> OUT
+```
+
 ## Public API
 
 `decide(snapshot, labels, metrics) -> dict`

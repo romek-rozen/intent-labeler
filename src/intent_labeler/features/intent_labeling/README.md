@@ -3,6 +3,23 @@
 The only semantic step and the only LLM call: groups results into intents and names forms, genre,
 page types and heading themes. Returns IDs and words - never numbers.
 
+## Flow
+
+```mermaid
+flowchart TD
+    S[(Snapshot)] --> P[build_payload<br/>titles, snippets, highlighted,<br/>digest only if fetch ok<br/>NO numbers]
+    P --> PR[prompts/system.md + user.md]
+    PR --> C{cache hit?}
+    C -->|yes| V
+    C -->|no| L[LLM]
+    L --> V[validate contract]
+    V -->|error| L
+    V -->|ok| G{all results placed?}
+    G -->|no| UA[add unassigned intent<br/>basis code_fallback]
+    G -->|yes| OUT[(labels)]
+    UA --> OUT
+```
+
 ## Public API
 
 | Function | Does |

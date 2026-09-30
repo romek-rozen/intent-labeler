@@ -2,6 +2,20 @@
 
 Every number in the report. Pure arithmetic on the labeler's `result_ids` and the fetched page data.
 
+## Flow
+
+```mermaid
+flowchart LR
+    LB[(labels<br/>result_ids per intent)] --> MUL[multiplicity:<br/>in how many intents is each result]
+    MUL --> SH[answer_share<br/>1/k per result]
+    LB --> COV[coverage<br/>unsplit]
+    ETV[etv, known only] --> TS[traffic_share<br/>1/k per result]
+    MUL --> TS
+    OK[pages with fetch_status ok] --> LEN[words, chars<br/>p10..p90]
+    OK --> ELP[element prevalence]
+    LB --> THM[page types, themes,<br/>questions: count, coverage, ranks]
+```
+
 ## Public API
 
 | Function | Does |

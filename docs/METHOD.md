@@ -13,10 +13,23 @@ question by itself: what people want, in what form, and how much of it.
 
 ## 2. The model groups, the code counts - that is the whole principle
 
-```
-model  GROUPS. It reads titles, snippets, highlighted phrases and a short digest of each page,
-       and returns clusters of result IDs. It sees no numbers and returns none.
-code   COUNTS. Two shares, length distributions, validations, warnings. It judges nothing.
+```mermaid
+flowchart LR
+    subgraph model [Model - groups, judges nothing numeric]
+        IN[titles, snippets,<br/>highlighted phrases,<br/>400-char digests] --> G[clusters of result IDs<br/>+ names, forms, genre]
+    end
+    subgraph code [Code - counts, judges nothing semantic]
+        C1[coverage and shares]
+        C2[length distributions]
+        C3[element prevalence]
+        C4[dominant intent, warnings]
+    end
+    G --> C1
+    G --> C2
+    G --> C3
+    C1 --> C4
+    C2 --> C4
+    NUM[word counts, etv,<br/>element counts] -.never shown to the model.-> code
 ```
 
 An earlier version classified intent with hand-made rules - URL shapes, SERP blocks, question
@@ -36,6 +49,17 @@ Why the digest, if there is a snippet: the snippet may be rewritten by the searc
 say what the page actually offers. Ten digests of 400 characters are about as large as the snippets
 themselves, so the prompt does not grow by an order of magnitude. Headings carry the most per
 character - they say what the page offers, not how it sells itself.
+
+```mermaid
+flowchart TD
+    R[result] --> F{fetched?}
+    F -->|error| TS[title + snippet mode]
+    F -->|ok| W{150+ words?}
+    W -->|no - thin| TS
+    W -->|yes| DG[title + snippet + digest<br/>and counted in length stats]
+    TS --> L[still grouped by the model]
+    DG --> L
+```
 
 A page that could not be fetched, or came back thin (below 150 words - a JavaScript shell or a bot
 wall), falls back to title + snippet mode. **It does not drop out of the grouping.**
@@ -94,6 +118,16 @@ answers "how many pages address this"; the shares below answer "how do the resul
 | `answer_share` | results serving the intent / all results, not weighted by rank |
 | `traffic_share` | estimated traffic (`etv`) of the intent's results / traffic of all results with known `etv` |
 
+```mermaid
+flowchart LR
+    R1[r01] --> A[intent A]
+    R2[r02] --> A
+    R2 --> B[intent B]
+    R3[r03] --> B
+    A --> SA["coverage A = 2/3<br/>share A = (1 + 1/2)/3 = 50%"]
+    B --> SB["coverage B = 2/3<br/>share B = (1/2 + 1)/3 = 50%"]
+```
+
 A result assigned to two intents counts **half to each** in both shares, so shares add up to 100%.
 Counting it twice once produced 146% on a real SERP.
 
@@ -120,6 +154,18 @@ is reported next to it; if they differ, the report warns and leaves the decision
 The distribution (p10, p25, p50, p75, p90, min, max; nearest-rank, so every value is a real page) of
 the dominant intent's measured pages, in **words and characters**. Characters because publishers and
 orders speak in characters; a words-to-characters multiplier would be one more guess.
+
+```mermaid
+flowchart TD
+    D[dominant intent] --> P[its pages with fetch_status ok]
+    P --> N{n >= 3?}
+    N -->|no| X1[length = null<br/>basis insufficient_sample<br/>genre withheld]
+    N -->|yes| S{max / min <= 50?}
+    S -->|no| X2[length = null<br/>basis spread_too_wide<br/>genre withheld]
+    S -->|yes| OK[p25 / p50 / p75<br/>in words and characters]
+    OK --> B{p90 / p10 >= 5?}
+    B -->|yes| W[warning wide_length_band]
+```
 
 Two guards return `null` with a reason instead of a number:
 
@@ -149,6 +195,20 @@ legal-act query kept its length (+7%) because that market is long.
 | `serp_does_not_want_an_article` | the model says an article cannot serve the main intent |
 | `unassigned_results` | the model left results unplaced |
 
+```mermaid
+flowchart TD
+    M[metrics] --> Q1{dominant share < 40%<br/>and coverage < 50%?}
+    Q1 -->|yes| W1[mixed_serp]
+    M --> Q2{3+ intents with share >= 15%?}
+    Q2 -->|yes| W2[consider_separate_pages]
+    M --> Q3{dominant by answers<br/>!= dominant by traffic?}
+    Q3 -->|yes| W3[traffic_disagrees]
+    L[labels] --> Q4{article_fits = false?}
+    Q4 -->|yes| W4[serp_does_not_want_an_article]
+    L --> Q5{coverage_gap not empty?}
+    Q5 -->|yes| W5[unassigned_results]
+```
+
 A measurement nobody reads at the point of decision is decoration. Warnings are in the JSON so the
 next step (a brief, a panel) can block on them.
 
@@ -158,6 +218,24 @@ With `--urls` or uploaded HTML there are no ranks: the pages are a sample of wha
 describe the sample. Useful for auditing a site section or a competitor list.
 
 ## 12. Reliability and cost
+
+```mermaid
+sequenceDiagram
+    participant P as labeler
+    participant C as cache
+    participant L as LLM
+    P->>C: key = prompt + input + model
+    alt cached and still valid
+        C-->>P: labels (free)
+    else
+        loop up to 3 attempts
+            P->>L: prompt (+ previous answer and contract error)
+            L-->>P: JSON
+            P->>P: validate
+        end
+        P->>C: store valid labels
+    end
+```
 
 - JSON that fails the contract goes back to the model with the exact error and its previous answer, up
   to 3 attempts. A repeated identical prompt tends to repeat the same mistake.

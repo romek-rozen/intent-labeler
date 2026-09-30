@@ -2,6 +2,23 @@
 
 Renders an analysis dict (the `analysis.json` shape) for people. Reads data, computes nothing new.
 
+## Flow
+
+```mermaid
+flowchart LR
+    A[(analysis.json)] --> H[render_html]
+    A --> MD[render_markdown]
+    H --> C1[share_bars<br/>answer and traffic]
+    H --> C2[rank_map<br/>result x intent]
+    H --> C3[length_strips]
+    H --> T[tables: intents, content form,<br/>page types, themes, results]
+    C1 --> PAGE[self-contained HTML<br/>light + dark]
+    C2 --> PAGE
+    C3 --> PAGE
+    T --> PAGE
+    MD --> MDF[report.md]
+```
+
 ## Public API
 
 | Function | Output |

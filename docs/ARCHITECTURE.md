@@ -1,30 +1,90 @@
 # Architecture
 
+```mermaid
+flowchart TD
+    K([keyword]) --> SS[serp_source]
+    U([URLs / HTML files]) --> PS[page_source]
+    SS --> SN[(Snapshot)]
+    PS --> SN
+    SN --> EN[page_source.enrich<br/>text, digest, elements, thin flag]
+    SN --> TR[traffic.apply_traffic<br/>etv per URL]
+    EN --> IL{{intent_labeling<br/>1 LLM call + contract}}
+    IL --> LB[(labels<br/>IDs and words only)]
+    LB --> ME[metrics]
+    EN --> ME
+    TR --> ME
+    ME --> FD[form_decision]
+    LB --> FD
+    FD --> AN[(analysis.json)]
+    AN --> RE[report<br/>HTML, Markdown]
+    CLI[cli.py] -.calls.-> PL[pipeline.analyze]
+    API[api/app.py] -.calls.-> PL
+    PL -.wires.-> EN
+    PL -.wires.-> IL
+    PL -.wires.-> ME
+    PL -.wires.-> FD
 ```
-            ┌──────────────┐   ┌──────────────┐
- keyword -> │ serp_source  │   │ page_source  │ <- URLs / HTML files
-            └──────┬───────┘   └──────┬───────┘
-                   └──── Snapshot ────┘
-                            │  page_source.enrich (fetch, trafilatura/stdlib text,
-                            │    400-char digest, element inventory, thin flag)
-                            │  traffic.apply_traffic (etv per URL, optional)
-                            ▼
-                    ┌────────────────┐
-                    │ intent_labeling│  1 LLM call, contract validation
-                    └───────┬────────┘
-                            ▼ labels (IDs only)
-                    ┌────────────────┐
-                    │    metrics     │  coverage, shares, lengths, elements
-                    └───────┬────────┘
-                            ▼
-                    ┌────────────────┐
-                    │ form_decision  │  dominant intent, length, genre, warnings
-                    └───────┬────────┘
-                            ▼
-                    ┌────────────────┐
-                    │     report     │  HTML + SVG, Markdown
-                    └────────────────┘
-       pipeline.analyze() wires the steps; cli.py and api/app.py call it.
+
+`pipeline.analyze()` wires the steps; `cli.py` and `api/app.py` call it. Traffic is applied by the
+entry points before `analyze`, because it costs money and is optional.
+
+## Import rules
+
+```mermaid
+flowchart BT
+    core[core<br/>types, config, llm]
+    subgraph features
+        serp_source
+        page_source
+        traffic
+        intent_labeling
+        metrics
+        form_decision
+        report
+    end
+    serp_source --> core
+    page_source --> core
+    traffic --> core
+    traffic --> serp_source
+    intent_labeling --> core
+    metrics --> core
+    form_decision --> metrics
+    report --> core
+    pipeline[pipeline.py] --> features
+    cli[cli.py / api] --> pipeline
+```
+
+Arrows point at what a module imports. `core` imports no feature; a feature imports another only
+through its public `__init__` (`traffic` reuses `serp_source.credentials`, `form_decision` reuses
+`metrics.percentile`).
+
+## Data model
+
+```mermaid
+classDiagram
+    class Snapshot {
+        source: serp | pages
+        keyword
+        language
+        location
+        people_also_ask[]
+        related_searches[]
+        ai_overview
+        checked_at
+        results: Result[]
+    }
+    class Result {
+        result_id
+        rank: int | None
+        url, domain, title, description
+        highlighted[]
+        digest (400 chars)
+        word_count, char_count
+        elements: dict
+        etv: float | None
+        fetch_status
+    }
+    Snapshot "1" --> "many" Result
 ```
 
 ## Data contract

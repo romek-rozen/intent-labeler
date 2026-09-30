@@ -4,6 +4,18 @@ Fills `Result.etv` - estimated monthly organic traffic of each URL - from DataFo
 `dataforseo_labs/google/bulk_traffic_estimation`. One request for all results (up to 1000 targets,
 billed per call).
 
+## Flow
+
+```mermaid
+flowchart LR
+    S[(Snapshot)] --> U[unique URLs]
+    U --> API[DataForSEO<br/>bulk_traffic_estimation<br/>one call]
+    API --> I{organic count > 0?}
+    I -->|yes| E[etv = value]
+    I -->|no| N[etv = None<br/>unknown, not zero]
+    U -.URL missing in response.-> N
+```
+
 ## Public API
 
 | Function | Does |

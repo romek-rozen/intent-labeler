@@ -3,6 +3,24 @@
 Turns a keyword into a `Snapshot` of Google's organic results via DataForSEO
 (`serp/google/organic/live/advanced`).
 
+## Flow
+
+```mermaid
+flowchart LR
+    K([keyword]) --> T[build task<br/>location, language, depth 10]
+    T --> API[DataForSEO<br/>organic live/advanced]
+    API --> RAW[(raw payload)]
+    RAW --> N{item type}
+    N -->|organic| R[Result r01..r10]
+    N -->|people_also_ask| PAA[snapshot.people_also_ask]
+    N -->|related_searches| REL[snapshot.related_searches]
+    N -->|ai_overview| AIO[snapshot.ai_overview]
+    R --> S[(Snapshot source=serp)]
+    PAA --> S
+    REL --> S
+    AIO --> S
+```
+
 ## Public API
 
 | Function | Does |

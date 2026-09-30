@@ -3,6 +3,29 @@
 Builds `Result`s from URLs or raw HTML and fills them from the page itself: text, a short digest,
 length, and the structural form of the content.
 
+## Flow
+
+```mermaid
+flowchart TD
+    U([URL]) --> F[fetch_html]
+    F -->|error| RE{2nd attempt}
+    RE -->|error| ER[fetch_status = error: ...]
+    RE -->|ok| H
+    F -->|ok| H[(raw HTML)]
+    H --> P[stdlib parser<br/>title, meta description]
+    H --> EL[element inventory<br/>tables, lists, images, video, FAQ, forms, inputs]
+    H --> TQ{trafilatura installed?}
+    TQ -->|yes| TX[trafilatura markdown]
+    TQ -->|no| ST[stdlib text]
+    TX --> TXT[text, headings, paragraphs]
+    ST --> TXT
+    TXT --> DG[digest: 8 headings + 3 paragraphs, 400 chars]
+    TXT --> WC[word_count, char_count]
+    WC --> TH{150+ words?}
+    TH -->|yes| OK[fetch_status = ok]
+    TH -->|no| THIN[fetch_status = thin]
+```
+
 ## Public API
 
 | Function | Does |
