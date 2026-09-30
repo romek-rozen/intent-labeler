@@ -312,3 +312,4 @@ ul.plain li { margin-bottom: 6px; }
 .strip-axis .tick { position: absolute; top: 3px; transform: translateX(-50%); font-size: 0.8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .strip-axis .tick::before { content: ""; position: absolute; left: 50%; top: -7px; width: 1px; height: 5px; background: var(--ink-2); }
 .strip-axis .tick:first-child { transform: none; }
+.foot-counter { margin: 4px 0 14px; }

@@ -65,7 +65,10 @@ FOOTER = ('<footer class="foot"><p class="made">Made in Poland with <span class=
           '<a href="https://zwinnie.com" aria-label="Zwinnie.com"><img src="https://zwinnie.com/user/themes/zwinnie/'
           'images/logo/zwinnie-wordmark-light.svg" alt="Zwinnie" width="143" height="26"></a></p>'
           '<p class="foot-sponsor">Useful? <a href="https://github.com/sponsors/romek-rozen">Sponsor on GitHub</a> '
-          'or <a href="https://www.patreon.com/RomanRozenberger">support on Patreon</a>.</p></footer>')
+          'or <a href="https://www.patreon.com/RomanRozenberger">support on Patreon</a>.</p>'
+          '<div class="foot-counter"><div class="blog-counter" data-api="https://liczniknabloga.co.pl/counter.php" '
+          'data-style="box" data-theme="dark" data-global="both" data-branding="false"></div></div></footer>'
+          '<script src="https://liczniknabloga.co.pl/counter.js"></script>')
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">'
          '<link rel="icon" href="https://zwinnie.com/user/themes/zwinnie/images/favicon.svg" type="image/svg+xml">')
