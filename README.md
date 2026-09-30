@@ -12,6 +12,8 @@ actual cost of every step, token counts and your remaining balances. The page ha
 no keys. Results marked "Public" (the default) are collected for the project through a small webhook -
 not published on the site until there is moderation.
 
+**n8n template:** the same method as a Google Sheets workflow - see [`n8n-template/`](n8n-template/).
+
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
 intent". Shares, ranks, medians and the target length are counted from those IDs - the model never

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- n8n template (`n8n-template/`): Google Sheets in, Google top 10, page reading, search volume and
+  traffic via DataForSEO, grouping via OpenRouter, counting in Code nodes, results and costs back to
+  the sheet; public template sheet with three analysed examples; Creator Hub description.
+- Site: footer view counter; Star on GitHub buttons without the count.
+
 - Site: sitemap, canonical links, noindex on per-model report variants, meta descriptions and titles
   per report, Open Graph image; Star on GitHub buttons with the live count; playground result uses the
   report layout (tables for intents, page types, themes, all results) and the length chart has an axis.

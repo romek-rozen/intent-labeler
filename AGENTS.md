@@ -70,6 +70,13 @@ validation too.
 known result IDs, no secrets). Neither route is shown on the site (`SHOW_COMMUNITY = False`) until
 there is moderation. Review content before merging; never edit a contributor's numbers.
 
+## n8n template
+
+`n8n-template/` holds an n8n workflow export that runs the method on keywords from a Google Sheet. Its
+Code nodes re-implement the counting rules in JavaScript (like `site/app.js`); keep all three in step
+with `features/metrics` and `features/form_decision`. The live copy is workflow `fOsP70JjwnJjHhPO` in
+the "Intent Labeler" folder on n8n.nimblio.work; export it again after editing (credentials stripped).
+
 ## Changing behaviour
 
 - Wrong interpretation by the model -> change the prompt, not the code.
