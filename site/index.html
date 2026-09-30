@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intent Labeler</title>
+<meta name="description" content="Read a Google results page the way an editor does: which intents it serves, in what form, and how long the winning pages are. The model groups, the code counts.">
+<meta property="og:title" content="Intent Labeler">
+<meta property="og:description" content="Search intent and content form from a SERP or a page set. Open source. The model groups, the code counts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#">Intent Labeler</a>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#examples">Examples</a>
+    <a href="#try">Try it</a>
+    <a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>What does this search results page actually want?</h1>
+      <p class="lede">Intent Labeler reads Google's top ten the way a good editor does. It groups the results by what the searcher is after, names the form each group expects, and measures how long the winning pages are. A language model does the grouping. Plain code does every number.</p>
+      <div class="hero-actions">
+        <button id="sortToggle" class="btn primary" type="button">Sort into intents</button>
+        <a class="btn" href="#try">Try it with your own key</a>
+      </div>
+    </div>
+    <figure class="serp-stage" aria-label="Live example: the Google results for standing desk sorted into intents">
+      <figcaption>Google, United States: <b id="heroKeyword">standing desk</b></figcaption>
+      <div id="serp" class="serp"></div>
+    </figure>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <h2>The model groups. The code counts.</h2>
+      <p>Most tools ask a model "what is the intent and how long should the article be?" and print whatever comes back. That is how you get confident percentages nobody computed. Here the work is split on purpose.</p>
+      <div class="split">
+        <div class="side model">
+          <h3>The model reads</h3>
+          <p>Titles, snippets, the phrases Google highlighted and a 400-character digest of each page: its headings and first paragraphs. It returns groups of result IDs, a name for each searcher goal, and the form that answers it. It never sees a number and never writes one.</p>
+        </div>
+        <div class="side code">
+          <h3>The code counts</h3>
+          <p>How many results each intent covers. How the results divide when one page serves two goals: half to each, so shares add up to 100%. Estimated traffic per intent. Word and character lengths of the pages that win. Tables, lists, videos and calculators found in the HTML.</p>
+        </div>
+      </div>
+      <p>When the numbers cannot support a conclusion, it says so. Two pages is not a sample, and a 64-character page next to a 500,000-character legal act has no meaningful median. You get <em>no length</em> and the reason, not a number to trust.</p>
+
+      <h3 class="list-title">What you get for a query</h3>
+      <dl class="outputs">
+        <dt>Intents</dt><dd>Named from the results, not picked from a list. No fixed count.</dd>
+        <dt>Form per intent</dt><dd>"Shop category listing", "day-by-day recipe", "mortgage calculator". Named freely.</dd>
+        <dt>Coverage and share</dt><dd>How many results address the intent, and how the results divide between intents.</dd>
+        <dt>Traffic share</dt><dd>From estimated traffic per URL. A page the database does not know is left out, never counted as zero.</dd>
+        <dt>Reference length</dt><dd>Words and characters of the dominant intent's pages, or no number and the reason.</dd>
+        <dt>Content form on pages</dt><dd>Which share of the winning pages use tables, numbered lists, video, FAQ or a calculator.</dd>
+        <dt>Warnings</dt><dd>Mixed results page, several big intents, traffic disagreeing with the result count, and "this query does not want an article".</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="examples" class="wrap">
+    <h2>Six live queries</h2>
+    <p>Run on 30 September 2026 against Google's top ten, with a low-cost model. Each report is the full output: charts, every result and the numbers behind them.</p>
+    <div id="exampleList" class="examples"></div>
+  </section>
+
+  <section id="try" class="band">
+    <div class="wrap">
+      <h2>Try it with your own key</h2>
+      <p>This page has no server. Your OpenRouter key goes from your browser straight to OpenRouter and nowhere else. Paste results from any search, or load the standing desk example. Pages are not fetched here, so the model works from titles and snippets and there is no length measurement. For the full analysis, run the command line tool.</p>
+
+      <form id="playground" class="playground" autocomplete="off">
+        <div class="field-row">
+          <label>Query <input id="pgKeyword" required placeholder="standing desk"></label>
+          <label>Answer language <input id="pgLanguage" value="en" size="4"></label>
+        </div>
+        <label>Results, one per line: <span class="hint">title | url | snippet</span>
+          <textarea id="pgResults" rows="9" required placeholder="The 3 Best Standing Desks in 2026 | https://www.nytimes.com/wirecutter/... | We tested 30 desks..."></textarea>
+        </label>
+        <button id="pgLoad" class="btn small" type="button">Load the standing desk example</button>
+        <div class="field-row">
+          <label class="grow">OpenRouter API key <input id="pgKey" type="password" required placeholder="sk-or-..."></label>
+          <label>Model <input id="pgModel" value="openai/gpt-6-luna"></label>
+        </div>
+        <label class="check"><input id="pgRemember" type="checkbox"> Remember the key in this browser</label>
+        <button class="btn primary" type="submit" id="pgRun">Label the intents</button>
+        <p id="pgStatus" class="status" role="status"></p>
+      </form>
+      <div id="pgOutput" class="pg-output" hidden></div>
+    </div>
+  </section>
+
+  <section class="wrap run">
+    <h2>Run the full version</h2>
+    <p>The command line tool fetches every page, reads a digest of each, counts tables and videos, estimates traffic, and writes an HTML report like the examples above. It needs an OpenAI-compatible model endpoint, and DataForSEO for live Google results.</p>
+<pre><code>git clone https://github.com/romek-rozen/intent-labeler.git
+cd intent-labeler
+pip install -e '.[api,extract]'
+cp .env.example .env    # add your model key and DataForSEO login
+intent-labeler --keyword "standing desk" --language en --location 2840</code></pre>
+    <p>It also runs as an HTTP API for your own panel, and on any list of URLs or uploaded HTML files instead of a search. The method, with the measurement behind every rule, is in <a href="https://github.com/romek-rozen/intent-labeler/blob/main/docs/METHOD.md">METHOD.md</a>.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>MIT licensed. Made by Roman Rozenberger. <a href="https://github.com/romek-rozen/intent-labeler">Source on GitHub</a>. <a href="https://github.com/sponsors/romek-rozen">Sponsor</a>.</p>
+</footer>
+<script src="app.js" type="module"></script>
+</body>
+</html>

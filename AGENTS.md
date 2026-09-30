@@ -53,6 +53,12 @@ Rules:
 9. A result never disappears. Failed fetches keep `fetch_status`; unplaced results go to the explicit
    `unassigned` intent.
 
+## Website
+
+`site/` is the GitHub Pages site (see `site/README.md`). The playground in `site/app.js` mirrors the
+contract and the coverage/share rules in JavaScript - when you change those in Python, change them
+there too. Never put an API key in the site.
+
 ## Changing behaviour
 
 - Wrong interpretation by the model -> change the prompt, not the code.

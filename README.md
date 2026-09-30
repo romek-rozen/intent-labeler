@@ -5,6 +5,9 @@ Label the **search intent** behind a Google results page (or any set of web page
 traffic), in what form each is answered, how long the winning pages are, and when the query does not
 want an article at all.
 
+**Website and in-browser playground: https://romek-rozen.github.io/intent-labeler/** (bring your own
+OpenRouter key; the page has no server).
+
 The method has one rule that makes it trustworthy: **the language model only groups results; every
 number is computed by code.** The model says "results r02, r06 and r08 serve the *compare models*
 intent". Shares, ranks, medians and the target length are counted from those IDs - the model never

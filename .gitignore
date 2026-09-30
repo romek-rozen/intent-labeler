@@ -8,3 +8,4 @@ dist/
 *.egg-info/
 .pytest_cache/
 .run-examples.*
+_site/
