@@ -1,0 +1,129 @@
+{
+  "summary": "Mixed SERP: shoppers comparing models dominate, with health and setup questions as supporting intents.",
+  "dominant_intent_id": "i1",
+  "intents": [
+    {
+      "intent_id": "i1",
+      "title": "Compare and choose a desk",
+      "searcher_goal": "pick the right standing desk model",
+      "intent_type": "commercial",
+      "importance": "dominant",
+      "result_ids": [
+        "r02",
+        "r06",
+        "r08",
+        "r07"
+      ],
+      "evidence": "reviews and buying guides in top positions"
+    },
+    {
+      "intent_id": "i2",
+      "title": "Buy a desk now",
+      "searcher_goal": "see prices and order",
+      "intent_type": "transactional",
+      "importance": "supporting",
+      "result_ids": [
+        "r01",
+        "r03",
+        "r05",
+        "r10"
+      ],
+      "evidence": "category and product pages, shopping pack"
+    },
+    {
+      "intent_id": "i3",
+      "title": "Are they healthy?",
+      "searcher_goal": "decide if standing desks are worth it for health",
+      "intent_type": "informational",
+      "importance": "supporting",
+      "result_ids": [
+        "r04",
+        "r07"
+      ],
+      "evidence": "PAA about health, forum thread"
+    },
+    {
+      "intent_id": "i4",
+      "title": "Set it up correctly",
+      "searcher_goal": "adjust height and posture",
+      "intent_type": "informational",
+      "importance": "minor",
+      "result_ids": [
+        "r09"
+      ],
+      "evidence": "PAA about height"
+    }
+  ],
+  "page_types": [
+    {
+      "page_type": "review / listicle",
+      "result_ids": [
+        "r02",
+        "r08"
+      ]
+    },
+    {
+      "page_type": "category listing",
+      "result_ids": [
+        "r01",
+        "r05",
+        "r10"
+      ]
+    },
+    {
+      "page_type": "product page",
+      "result_ids": [
+        "r03"
+      ]
+    },
+    {
+      "page_type": "guide",
+      "result_ids": [
+        "r04",
+        "r06",
+        "r09"
+      ]
+    },
+    {
+      "page_type": "forum thread",
+      "result_ids": [
+        "r07"
+      ]
+    }
+  ],
+  "market_forms": {
+    "useful_elements": [
+      {
+        "element": "comparison table of tested models",
+        "job": "lets the reader shortlist by price, height range and motor"
+      },
+      {
+        "element": "height chart by user height",
+        "job": "answers the setup question without leaving the page"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "single-product sales page",
+        "reason": "the dominant searcher is still comparing"
+      }
+    ]
+  },
+  "reader_questions": [
+    {
+      "question": "How high should a standing desk be?",
+      "source": "paa",
+      "result_ids": [
+        "r09"
+      ]
+    },
+    {
+      "question": "Are standing desks worth it?",
+      "source": "paa",
+      "result_ids": [
+        "r04",
+        "r07"
+      ]
+    }
+  ]
+}

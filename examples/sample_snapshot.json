@@ -1,0 +1,136 @@
+{
+  "source": "serp",
+  "keyword": "standing desk",
+  "language": "en",
+  "location": "2840",
+  "people_also_ask": [
+    "Is it healthy to use a standing desk all day?",
+    "How high should a standing desk be?",
+    "Are standing desks worth it?"
+  ],
+  "related_searches": [
+    "standing desk ikea",
+    "best standing desk",
+    "standing desk converter"
+  ],
+  "ai_overview": "",
+  "item_types": [
+    "organic",
+    "people_also_ask",
+    "related_searches",
+    "shopping"
+  ],
+  "checked_at": "2026-09-30 10:00:00 +00:00",
+  "results": [
+    {
+      "result_id": "r01",
+      "rank": 1,
+      "url": "https://www.shop-a.com/standing-desks",
+      "domain": "shop-a.com",
+      "title": "Standing Desks - Shop 40 Models",
+      "description": "",
+      "word_count": 1800,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r02",
+      "rank": 2,
+      "url": "https://www.review-lab.com/best-standing-desks",
+      "domain": "review-lab.com",
+      "title": "The 9 Best Standing Desks of 2026, Tested",
+      "description": "",
+      "word_count": 4200,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r03",
+      "rank": 3,
+      "url": "https://www.brand-b.com/desk-pro",
+      "domain": "brand-b.com",
+      "title": "Desk Pro Electric Standing Desk",
+      "description": "",
+      "word_count": 900,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r04",
+      "rank": 4,
+      "url": "https://www.health-site.org/standing-desk-benefits",
+      "domain": "health-site.org",
+      "title": "Are Standing Desks Good for You? What Research Says",
+      "description": "",
+      "word_count": 2600,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r05",
+      "rank": 5,
+      "url": "https://www.shop-c.com/c/height-adjustable-desks",
+      "domain": "shop-c.com",
+      "title": "Height Adjustable Desks | Free Delivery",
+      "description": "",
+      "word_count": 1500,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r06",
+      "rank": 6,
+      "url": "https://www.techmag.com/standing-desk-buying-guide",
+      "domain": "techmag.com",
+      "title": "Standing Desk Buying Guide: 7 Things to Check",
+      "description": "",
+      "word_count": 3100,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r07",
+      "rank": 7,
+      "url": "https://www.forum.example/t/standing-desk-worth-it",
+      "domain": "forum.example",
+      "title": "Is a standing desk worth it? : r/homeoffice",
+      "description": "",
+      "word_count": 2100,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r08",
+      "rank": 8,
+      "url": "https://www.review-lab.com/cheap-standing-desks",
+      "domain": "review-lab.com",
+      "title": "Best Cheap Standing Desks Under $300",
+      "description": "",
+      "word_count": 3800,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r09",
+      "rank": 9,
+      "url": "https://www.brand-d.com/how-to-set-up-standing-desk",
+      "domain": "brand-d.com",
+      "title": "How to Set Up Your Standing Desk (Ergonomic Height Chart)",
+      "description": "",
+      "word_count": 1400,
+      "fetch_status": "ok",
+      "headings": []
+    },
+    {
+      "result_id": "r10",
+      "rank": 10,
+      "url": "https://www.shop-e.com/standing-desk-converters",
+      "domain": "shop-e.com",
+      "title": "Standing Desk Converters - Shop Now",
+      "description": "",
+      "word_count": 1200,
+      "fetch_status": "ok",
+      "headings": []
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T08:51:15+00:00",
+  "llm_cache_hit": false,
+  "snapshot": {
+    "source": "serp",
+    "results": [
+      {
+        "result_id": "r01",
+        "url": "https://www.shop-a.com/standing-desks",
+        "rank": 1,
+        "domain": "shop-a.com",
+        "title": "Standing Desks - Shop 40 Models",
+        "description": "",
+        "headings": [],
+        "word_count": 1800,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r02",
+        "url": "https://www.review-lab.com/best-standing-desks",
+        "rank": 2,
+        "domain": "review-lab.com",
+        "title": "The 9 Best Standing Desks of 2026, Tested",
+        "description": "",
+        "headings": [],
+        "word_count": 4200,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r03",
+        "url": "https://www.brand-b.com/desk-pro",
+        "rank": 3,
+        "domain": "brand-b.com",
+        "title": "Desk Pro Electric Standing Desk",
+        "description": "",
+        "headings": [],
+        "word_count": 900,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r04",
+        "url": "https://www.health-site.org/standing-desk-benefits",
+        "rank": 4,
+        "domain": "health-site.org",
+        "title": "Are Standing Desks Good for You? What Research Says",
+        "description": "",
+        "headings": [],
+        "word_count": 2600,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r05",
+        "url": "https://www.shop-c.com/c/height-adjustable-desks",
+        "rank": 5,
+        "domain": "shop-c.com",
+        "title": "Height Adjustable Desks | Free Delivery",
+        "description": "",
+        "headings": [],
+        "word_count": 1500,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r06",
+        "url": "https://www.techmag.com/standing-desk-buying-guide",
+        "rank": 6,
+        "domain": "techmag.com",
+        "title": "Standing Desk Buying Guide: 7 Things to Check",
+        "description": "",
+        "headings": [],
+        "word_count": 3100,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r07",
+        "url": "https://www.forum.example/t/standing-desk-worth-it",
+        "rank": 7,
+        "domain": "forum.example",
+        "title": "Is a standing desk worth it? : r/homeoffice",
+        "description": "",
+        "headings": [],
+        "word_count": 2100,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r08",
+        "url": "https://www.review-lab.com/cheap-standing-desks",
+        "rank": 8,
+        "domain": "review-lab.com",
+        "title": "Best Cheap Standing Desks Under $300",
+        "description": "",
+        "headings": [],
+        "word_count": 3800,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r09",
+        "url": "https://www.brand-d.com/how-to-set-up-standing-desk",
+        "rank": 9,
+        "domain": "brand-d.com",
+        "title": "How to Set Up Your Standing Desk (Ergonomic Height Chart)",
+        "description": "",
+        "headings": [],
+        "word_count": 1400,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      },
+      {
+        "result_id": "r10",
+        "url": "https://www.shop-e.com/standing-desk-converters",
+        "rank": 10,
+        "domain": "shop-e.com",
+        "title": "Standing Desk Converters - Shop Now",
+        "description": "",
+        "headings": [],
+        "word_count": 1200,
+        "excerpt": "",
+        "etv": null,
+        "fetch_status": "ok"
+      }
+    ],
+    "keyword": "standing desk",
+    "language": "en",
+    "location": "2840",
+    "people_also_ask": [
+      "Is it healthy to use a standing desk all day?",
+      "How high should a standing desk be?",
+      "Are standing desks worth it?"
+    ],
+    "related_searches": [
+      "standing desk ikea",
+      "best standing desk",
+      "standing desk converter"
+    ],
+    "ai_overview": "",
+    "item_types": [
+      "organic",
+      "people_also_ask",
+      "related_searches",
+      "shopping"
+    ],
+    "checked_at": "2026-09-30 10:00:00 +00:00"
+  },
+  "labels": {
+    "summary": "Mixed SERP: shoppers comparing models dominate, with health and setup questions as supporting intents.",
+    "dominant_intent_id": "i1",
+    "intents": [
+      {
+        "intent_id": "i1",
+        "title": "Compare and choose a desk",
+        "searcher_goal": "pick the right standing desk model",
+        "intent_type": "commercial",
+        "importance": "dominant",
+        "result_ids": [
+          "r02",
+          "r06",
+          "r08",
+          "r07"
+        ],
+        "evidence": "reviews and buying guides in top positions",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i2",
+        "title": "Buy a desk now",
+        "searcher_goal": "see prices and order",
+        "intent_type": "transactional",
+        "importance": "supporting",
+        "result_ids": [
+          "r01",
+          "r03",
+          "r05",
+          "r10"
+        ],
+        "evidence": "category and product pages, shopping pack",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i3",
+        "title": "Are they healthy?",
+        "searcher_goal": "decide if standing desks are worth it for health",
+        "intent_type": "informational",
+        "importance": "supporting",
+        "result_ids": [
+          "r04",
+          "r07"
+        ],
+        "evidence": "PAA about health, forum thread",
+        "basis": "model"
+      },
+      {
+        "intent_id": "i4",
+        "title": "Set it up correctly",
+        "searcher_goal": "adjust height and posture",
+        "intent_type": "informational",
+        "importance": "minor",
+        "result_ids": [
+          "r09"
+        ],
+        "evidence": "PAA about height",
+        "basis": "model"
+      }
+    ],
+    "page_types": [
+      {
+        "page_type": "review / listicle",
+        "result_ids": [
+          "r02",
+          "r08"
+        ]
+      },
+      {
+        "page_type": "category listing",
+        "result_ids": [
+          "r01",
+          "r05",
+          "r10"
+        ]
+      },
+      {
+        "page_type": "product page",
+        "result_ids": [
+          "r03"
+        ]
+      },
+      {
+        "page_type": "guide",
+        "result_ids": [
+          "r04",
+          "r06",
+          "r09"
+        ]
+      },
+      {
+        "page_type": "forum thread",
+        "result_ids": [
+          "r07"
+        ]
+      }
+    ],
+    "market_forms": {
+      "useful_elements": [
+        {
+          "element": "comparison table of tested models",
+          "job": "lets the reader shortlist by price, height range and motor"
+        },
+        {
+          "element": "height chart by user height",
+          "job": "answers the setup question without leaving the page"
+        }
+      ],
+      "avoid": [
+        {
+          "element": "single-product sales page",
+          "reason": "the dominant searcher is still comparing"
+        }
+      ]
+    },
+    "reader_questions": [
+      {
+        "question": "How high should a standing desk be?",
+        "source": "paa",
+        "result_ids": [
+          "r09"
+        ]
+      },
+      {
+        "question": "Are standing desks worth it?",
+        "source": "paa",
+        "result_ids": [
+          "r04",
+          "r07"
+        ]
+      }
+    ],
+    "coverage_gap": []
+  },
+  "metrics": {
+    "results_total": 10,
+    "results_fetched": 10,
+    "has_ranks": true,
+    "traffic_known": 0,
+    "intent_overlap_ratio": 1.1,
+    "word_count": {
+      "n": 10,
+      "min": 900,
+      "p25": 1400,
+      "p50": 1800,
+      "p75": 3100,
+      "max": 4200
+    },
+    "intents": {
+      "i1": {
+        "count": 4,
+        "share": 0.4,
+        "ranks": [
+          2,
+          6,
+          7,
+          8
+        ],
+        "best_rank": 2,
+        "top3_count": 1,
+        "word_count": {
+          "n": 4,
+          "min": 2100,
+          "p25": 2100,
+          "p50": 3100,
+          "p75": 3800,
+          "max": 4200
+        },
+        "traffic_share": null
+      },
+      "i2": {
+        "count": 4,
+        "share": 0.4,
+        "ranks": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "best_rank": 1,
+        "top3_count": 2,
+        "word_count": {
+          "n": 4,
+          "min": 900,
+          "p25": 900,
+          "p50": 1200,
+          "p75": 1500,
+          "max": 1800
+        },
+        "traffic_share": null
+      },
+      "i3": {
+        "count": 2,
+        "share": 0.2,
+        "ranks": [
+          4,
+          7
+        ],
+        "best_rank": 4,
+        "top3_count": 0,
+        "word_count": {
+          "n": 2,
+          "min": 2100,
+          "p25": 2100,
+          "p50": 2100,
+          "p75": 2600,
+          "max": 2600
+        },
+        "traffic_share": null
+      },
+      "i4": {
+        "count": 1,
+        "share": 0.1,
+        "ranks": [
+          9
+        ],
+        "best_rank": 9,
+        "top3_count": 0,
+        "word_count": {
+          "n": 1,
+          "min": 1400,
+          "p25": 1400,
+          "p50": 1400,
+          "p75": 1400,
+          "max": 1400
+        },
+        "traffic_share": null
+      }
+    },
+    "page_types": {
+      "review / listicle": {
+        "count": 2,
+        "share": 0.2,
+        "ranks": [
+          2,
+          8
+        ],
+        "best_rank": 2,
+        "top3_count": 1,
+        "word_count": {
+          "n": 2,
+          "min": 3800,
+          "p25": 3800,
+          "p50": 3800,
+          "p75": 4200,
+          "max": 4200
+        },
+        "traffic_share": null
+      },
+      "category listing": {
+        "count": 3,
+        "share": 0.3,
+        "ranks": [
+          1,
+          5,
+          10
+        ],
+        "best_rank": 1,
+        "top3_count": 1,
+        "word_count": {
+          "n": 3,
+          "min": 1200,
+          "p25": 1200,
+          "p50": 1500,
+          "p75": 1800,
+          "max": 1800
+        },
+        "traffic_share": null
+      },
+      "product page": {
+        "count": 1,
+        "share": 0.1,
+        "ranks": [
+          3
+        ],
+        "best_rank": 3,
+        "top3_count": 1,
+        "word_count": {
+          "n": 1,
+          "min": 900,
+          "p25": 900,
+          "p50": 900,
+          "p75": 900,
+          "max": 900
+        },
+        "traffic_share": null
+      },
+      "guide": {
+        "count": 3,
+        "share": 0.3,
+        "ranks": [
+          4,
+          6,
+          9
+        ],
+        "best_rank": 4,
+        "top3_count": 0,
+        "word_count": {
+          "n": 3,
+          "min": 1400,
+          "p25": 1400,
+          "p50": 2600,
+          "p75": 3100,
+          "max": 3100
+        },
+        "traffic_share": null
+      },
+      "forum thread": {
+        "count": 1,
+        "share": 0.1,
+        "ranks": [
+          7
+        ],
+        "best_rank": 7,
+        "top3_count": 0,
+        "word_count": {
+          "n": 1,
+          "min": 2100,
+          "p25": 2100,
+          "p50": 2100,
+          "p75": 2100,
+          "max": 2100
+        },
+        "traffic_share": null
+      }
+    }
+  },
+  "form": {
+    "dominant_intent_id": "i1",
+    "dominant_intent_basis": "model",
+    "dominant_intent_title": "Compare and choose a desk",
+    "dominant_intent_type": "commercial",
+    "dominant_page_type": "review / listicle",
+    "page_type_shares": {
+      "review / listicle": 0.2,
+      "category listing": 0.3,
+      "product page": 0.1,
+      "guide": 0.3,
+      "forum thread": 0.1
+    },
+    "length_target_words": 3100,
+    "length_band_words": [
+      2100,
+      3800
+    ],
+    "length_basis": "median_of_dominant_intent_pages",
+    "length_sample_size": 4,
+    "useful_elements": [
+      {
+        "element": "comparison table of tested models",
+        "job": "lets the reader shortlist by price, height range and motor"
+      },
+      {
+        "element": "height chart by user height",
+        "job": "answers the setup question without leaving the page"
+      }
+    ],
+    "avoid": [
+      {
+        "element": "single-product sales page",
+        "reason": "the dominant searcher is still comparing"
+      }
+    ]
+  }
+}
