@@ -435,7 +435,7 @@
       ],
       "parameters": {
         "content": "## Try it out!\n### This n8n template reads Google's top 10 for every keyword in a Google Sheet and tells you what the results page actually wants: which search intents it serves, in what form, and how long the winning pages are.\n\n**Good to know**\n* A full run costs about $0.03 per keyword in API fees (DataForSEO about $0.029, OpenRouter about $0.001). SERP and grouping only: about $0.003.\n* The model runs in a Basic LLM Chain, which does not report its cost: check it in your OpenRouter activity (about $0.001 per keyword with openai/gpt-6-luna).\n* The model only **groups** results. Every number is **counted** in Code nodes, so each figure in the sheet can be recomputed by hand.\n\n### Who's it for\nSEO specialists, content strategists and agencies who plan pages and briefs from real search results.\n\n### How it works\n* The verified DataForSEO nodes fetch Google's top 10 and, if switched on, reads every page, the search volume with seasonality and the traffic per URL.\n* A low-cost OpenRouter model groups the results into search intents and names the form each one expects.\n* Code nodes compute share of results and traffic per intent, reference length, content form, seasonality and warnings such as a mixed SERP or \"this query does not want an article\".\n* Results go to the Summary, Intents and Results tabs, with the cost of every keyword.\n\n### How to use\n1. Copy the template sheet (link in the Setup note) and paste its URL into **Config**.\n2. Add DataForSEO (HTTP Basic Auth), OpenRouter and Google Sheets credentials.\n3. Add keywords with country and language codes, then run.\n\n### Requirements\n* [DataForSEO](https://skq.pl/data4seo) account (affiliate link), OpenRouter API key, Google account\n\n### Customising this workflow\nSwitch page reading, search volume or traffic off in **Config**, pick another model or edit the prompt. The method is open source: github.com/romek-rozen/intent-labeler",
-        "height": 760,
+        "height": 840,
         "width": 640
       }
     },
@@ -463,9 +463,9 @@
         -864
       ],
       "parameters": {
-        "content": "## Costs per keyword (measured Sept 2026)\n\n| Step | Price |\n|---|---|\n| Google top 10 (SERP, live) | $0.002 |\n| Read 10 pages (content parsing) | ~$0.0015 |\n| Search volume + 8 years of history | ~$0.012 |\n| Traffic per URL | ~$0.013 |\n| Grouping (openai/gpt-6-luna) | ~$0.001 |\n| **Full run** | **~$0.03** |\n\nSwitch steps off in **Config** (read_pages, search_volume, traffic) to pay less. SERP + model only: ~$0.003.\n\nOther low-cost models that kept the contract: deepseek/deepseek-v4.1-flash, nvidia/nemotron-3.5-lightning, google/gemma-4-26b-a4b-it, google/gemma-4-31b-it, qwen/qwen3.8-flash, xiaomi/mimo-v2.6-flash. Reasoning is switched off - grouping ten results does not need it.",
+        "content": "## Costs per keyword (measured Sept 2026)\n\n| Step | Price |\n|---|---|\n| Google top 10 (SERP, live) | $0.002 |\n| Read 10 pages (content parsing) | ~$0.0015 |\n| Search volume + 8 years of history | ~$0.012 |\n| Traffic per URL | ~$0.013 |\n| Grouping (openai/gpt-6-luna) | ~$0.001 |\n| **Full run** | **~$0.03** |\n\nSwitch steps off in **Config** (read_pages, search_volume, traffic) to pay less. SERP + model only: ~$0.003.\n\nOther low-cost models that kept the contract: deepseek/deepseek-v4.1-flash, nvidia/nemotron-3.5-lightning, google/gemma-4-26b-a4b-it, google/gemma-4-31b-it, qwen/qwen3.8-flash, xiaomi/mimo-v2.6-flash. Pick a model without heavy reasoning - grouping ten results does not need it. The Basic LLM Chain does not report the model cost; see it in your OpenRouter activity.",
         "height": 400,
-        "width": 600,
+        "width": 712,
         "color": 7
       }
     },
@@ -549,8 +549,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1984,
-        -864
+        2240,
+        -848
       ],
       "parameters": {
         "content": "## Example output\n![](https://romek-rozen.github.io/intent-labeler/og-image.png#full-width)\n\nThe same method as a browser playground with full reports: [romek-rozen.github.io/intent-labeler](https://romek-rozen.github.io/intent-labeler/) - see the example for [\"seo agency london\"](https://romek-rozen.github.io/intent-labeler/examples/seo-agency-london.html).",
