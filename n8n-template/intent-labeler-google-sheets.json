@@ -632,13 +632,13 @@
       "typeVersion": 1,
       "position": [
         -20,
-        -640
+        -860
       ],
       "parameters": {
-        "content": "## Label search intent from Google's top 10\n\n### Who's it for\nSEO specialists, content strategists and agencies who need to know what a Google results page wants before writing: which search intents it serves, in what form, and how long the winning pages are.\n\n### How it works\nFor each keyword in a Google Sheet the workflow fetches Google's top 10 with DataForSEO, reads every page (headings, text, tables, lists, video) and optionally adds search volume with seasonality and traffic per URL. A low-cost model on OpenRouter only **groups** the result IDs into search intents and names the form each one expects. Code nodes **count** everything else: share of results and traffic per intent, reference length, content form, seasonality and warnings such as a mixed SERP or \"this query does not want an article\". Results go to the Summary, Intents and Results tabs, with the cost of every keyword.\n\n### How to set up\n1. Copy the template sheet (link in the Setup note) and paste its URL into **Config**.\n2. Add DataForSEO (Basic Auth), OpenRouter and Google Sheets credentials.\n3. Add keywords with country and language codes, then run.\n\n### Requirements\nDataForSEO account, OpenRouter key, Google account. About $0.03 per keyword with every step on.\n\n### How to customize\nSwitch page reading, search volume or traffic off in **Config**, pick another model, or edit the prompt. Open source method: github.com/romek-rozen/intent-labeler",
+        "content": "## Try it out!\n### This n8n template reads Google's top 10 for every keyword in a Google Sheet and tells you what the results page actually wants: which search intents it serves, in what form, and how long the winning pages are.\n\n**Good to know**\n* A full run costs about $0.03 per keyword in API fees (DataForSEO about $0.029, OpenRouter about $0.001). SERP and grouping only: about $0.003.\n* The model only **groups** results. Every number is **counted** in Code nodes, so each figure in the sheet can be recomputed by hand.\n\n### Who's it for\nSEO specialists, content strategists and agencies who plan pages and briefs from real search results.\n\n### How it works\n* DataForSEO fetches Google's top 10 and, if switched on, reads every page, the search volume with seasonality and the traffic per URL.\n* A low-cost OpenRouter model groups the results into search intents and names the form each one expects.\n* Code nodes compute share of results and traffic per intent, reference length, content form, seasonality and warnings such as a mixed SERP or \"this query does not want an article\".\n* Results go to the Summary, Intents and Results tabs, with the cost of every keyword.\n\n### How to use\n1. Copy the template sheet (link in the Setup note) and paste its URL into **Config**.\n2. Add DataForSEO (HTTP Basic Auth), OpenRouter and Google Sheets credentials.\n3. Add keywords with country and language codes, then run.\n\n### Requirements\n* DataForSEO account, OpenRouter API key, Google account\n\n### Customising this workflow\nSwitch page reading, search volume or traffic off in **Config**, pick another model or edit the prompt. The method is open source: github.com/romek-rozen/intent-labeler",
         "color": 1,
         "width": 640,
-        "height": 620
+        "height": 760
       }
     },
     {
@@ -647,7 +647,7 @@
       "typeVersion": 1,
       "position": [
         660,
-        -640
+        -860
       ],
       "parameters": {
         "color": 7,
@@ -662,7 +662,7 @@
       "typeVersion": 1,
       "position": [
         1340,
-        -640
+        -860
       ],
       "parameters": {
         "color": 7,
@@ -698,7 +698,7 @@
         "color": 7,
         "width": 900,
         "height": 380,
-        "content": "### 1. Read pending keywords\nConfig holds every setting. The Keywords tab is read and rows with an empty **status** are processed one at a time (up to max_keywords)."
+        "content": "## 1. Read pending keywords from Google Sheets\nConfig holds every setting. The Keywords tab is read and rows with an empty **status** are processed one at a time (up to max_keywords).\n\n[Read more about the Google Sheets API values endpoint](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/get)"
       }
     },
     {
@@ -713,7 +713,7 @@
         "color": 7,
         "width": 2620,
         "height": 440,
-        "content": "### 2. Collect data from DataForSEO\nGoogle top 10, then - if switched on in Config - every page as markdown (words, a 400-character digest, tables, lists, images, video), search volume with 8 years of monthly history, and traffic per URL. Each step records its cost as reported by DataForSEO."
+        "content": "## 2. Collect SERP, page and demand data from DataForSEO\nGoogle top 10, then - if switched on in Config - every page as markdown (words, a 400-character digest, tables, lists, images, video), search volume with 8 years of monthly history, and traffic per URL. Each step records its cost as reported by DataForSEO.\n\n[Read more about the DataForSEO SERP API](https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/) - [OnPage content parsing](https://docs.dataforseo.com/v3/on_page/content_parsing/live/) - [Labs keyword overview](https://docs.dataforseo.com/v3/dataforseo_labs/google/keyword_overview/live/)"
       }
     },
     {
@@ -728,7 +728,7 @@
         "color": 7,
         "width": 900,
         "height": 440,
-        "content": "### 3. Group with a model, count with code\nThe model sees titles, snippets and page digests - no numbers - and returns groups of result IDs. The Code node validates the answer and computes coverage, split shares, traffic share, reference length and warnings."
+        "content": "## 3. Group with an OpenRouter model, count with code\nThe model sees titles, snippets and page digests - no numbers - and returns groups of result IDs. The Code node validates the answer and computes coverage, split shares, traffic share, reference length and warnings.\n\n[Read more about OpenRouter structured outputs](https://openrouter.ai/docs/features/structured-outputs)"
       }
     },
     {
@@ -743,7 +743,21 @@
         "color": 7,
         "width": 1100,
         "height": 440,
-        "content": "### 4. Write back to the sheet\nOne row in Summary, one per intent in Intents, one per result in Results. The keyword row gets status (done or error), the time and the cost, and the loop moves to the next keyword."
+        "content": "## 4. Write results back to Google Sheets\nOne row in Summary, one per intent in Intents, one per result in Results. The keyword row gets status (done or error), the time and the cost, and the loop moves to the next keyword.\n\n[Read more about the HTTP Request node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/)"
+      }
+    },
+    {
+      "name": "Example output",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        -860
+      ],
+      "parameters": {
+        "width": 760,
+        "height": 560,
+        "content": "## Example output\n![](https://romek-rozen.github.io/intent-labeler/og-image.png#full-width)\n\nThe same method as a browser playground with full reports: [romek-rozen.github.io/intent-labeler](https://romek-rozen.github.io/intent-labeler/) - see the example for [\"seo agency london\"](https://romek-rozen.github.io/intent-labeler/examples/seo-agency-london.html)."
       }
     }
   ],

@@ -1,36 +1,27 @@
 # Label search intent from Google top 10 with DataForSEO, OpenRouter and Google Sheets
 
-## Who's it for
+### This n8n template reads Google's top 10 for every keyword in a Google Sheet and tells you what the results page actually wants: which search intents it serves, in what form, and how long the winning pages are.
 
-SEO specialists, content strategists and agencies who need to know what a Google results page wants
-before writing: which search intents it serves, in what form, and how long the winning pages are.
+**Good to know**
+* A full run costs about $0.03 per keyword in API fees (DataForSEO about $0.029, OpenRouter about $0.001). SERP and grouping only: about $0.003.
+* The model only **groups** results. Every number is **counted** in Code nodes, so each figure in the sheet can be recomputed by hand.
 
-## How it works
+### Who's it for
+SEO specialists, content strategists and agencies who plan pages and briefs from real search results.
 
-For each keyword in a Google Sheet the workflow fetches Google's top 10 with DataForSEO, reads every page
-(headings, text, tables, lists, video) and optionally adds search volume with seasonality and traffic per
-URL. A low-cost model on OpenRouter only **groups** the result IDs into search intents and names the form
-each one expects. Code nodes **count** everything else: share of results and traffic per intent,
-reference length, content form, seasonality and warnings such as a mixed SERP or "this query does not
-want an article". Results are written to the Summary, Intents and Results tabs, together with the cost of
-every keyword.
+### How it works
+* DataForSEO fetches Google's top 10 and, if switched on, reads every page, the search volume with seasonality and the traffic per URL.
+* A low-cost OpenRouter model groups the results into search intents and names the form each one expects.
+* Code nodes compute share of results and traffic per intent, reference length, content form, seasonality and warnings such as a mixed SERP or "this query does not want an article".
+* Results go to the Summary, Intents and Results tabs, with the cost of every keyword.
 
-## How to set up
-
+### How to use
 1. Copy the template sheet (link in the Setup note) and paste its URL into **Config**.
 2. Add DataForSEO (HTTP Basic Auth), OpenRouter and Google Sheets credentials.
-3. Add keywords with country and language codes, then run the workflow.
+3. Add keywords with country and language codes, then run.
 
-## Requirements
+### Requirements
+* DataForSEO account, OpenRouter API key, Google account
 
-- DataForSEO account (API login and password)
-- OpenRouter API key
-- Google account for Google Sheets
-
-About $0.03 per keyword with every step switched on, about $0.003 for SERP and grouping only.
-
-## How to customize the workflow
-
-Switch page reading, search volume or traffic off in **Config**, pick another OpenRouter model, change
-`max_keywords`, or edit the grouping prompt. The method is open source:
-https://github.com/romek-rozen/intent-labeler
+### Customising this workflow
+Switch page reading, search volume or traffic off in **Config**, pick another model or edit the prompt. The method is open source: https://github.com/romek-rozen/intent-labeler

@@ -99,4 +99,12 @@ the sheet from the services' own answers.
 ## Files
 
 - `intent-labeler-google-sheets.json` - the workflow export (credentials are references; set your own).
+- `creator-hub-description.md` - the description submitted to the n8n Creator Hub (same text as the
+  yellow sticky note).
 - `README.md` - this file.
+
+## Updating the export
+
+Edit the live workflow in n8n, then run `N8N_API_KEY=... python scripts/export_n8n_template.py`. It
+strips credential IDs, account names and node IDs, and refuses to write the file if a sheet ID other than
+the public template or an email address is left in it.
