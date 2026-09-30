@@ -12,6 +12,9 @@ SERP jest skupiony na przygotowaniu domowego zakwasu, przede wszystkim żytniego
 |---|---|---|---|---|---|---|
 | Zrobić domowy zakwas żytni | Przepis krok po kroku z harmonogramem dokarmiania i wskazówkami | 100% | 100% | 100% | 1, 2, 3, 4, 5, 6, 7, 8 | 486 |
 
+## Searcher goals
+- **Zrobić domowy zakwas żytni** - Wyszukujący chce przygotować od podstaw aktywny zakwas do pieczenia chleba, korzystając z konkretnych składników i instrukcji dokarmiania.
+
 Traffic known for 6 of 8 results.
 
 ## Content form on the pages (share of measured pages)

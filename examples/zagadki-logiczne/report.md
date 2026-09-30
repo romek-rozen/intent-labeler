@@ -18,6 +18,11 @@ Wyniki łączą potrzebę znalezienia zagadek do rozwiązania z ofertami książ
 | Kupno książek z zagadkami | księgarniane listingi i strony produktów | 57% | 57% | 47% | 3, 4, 5, 6 | 537 |
 | Zagadki dla młodszych uczniów | strona produktu zeszytu ćwiczeń | 14% | 14% | 0% | 7 | 177 |
 
+## Searcher goals
+- **Rozwiązywanie zagadek logicznych** - Szukający chce znaleźć zagadki logiczne do samodzielnego rozwiązania lub wykorzystania jako ćwiczenia.
+- **Kupno książek z zagadkami** - Szukający chce znaleźć i kupić książki lub serie z zagadkami logicznymi.
+- **Zagadki dla młodszych uczniów** - Szukający chce kupić ćwiczenia z zagadkami logicznymi dopasowane do dzieci z klas 1–3.
+
 Traffic known for 3 of 7 results.
 
 ## Content form on the pages (share of measured pages)

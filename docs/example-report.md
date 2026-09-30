@@ -19,6 +19,12 @@ Mixed SERP: shoppers comparing models dominate, with health and setup questions 
 | Are they healthy? | evidence-based explainer | 20% | 15% | 8% | 4, 7 | 2100 |
 | Set it up correctly | step list with height chart | 10% | 10% | 3% | 9 | 1400 |
 
+## Searcher goals
+- **Compare and choose a desk** - pick the right standing desk model
+- **Buy a desk now** - see prices and order
+- **Are they healthy?** - decide if standing desks are worth it for health
+- **Set it up correctly** - adjust height and posture
+
 Traffic known for 8 of 10 results.
 
 ## Content form on the pages (share of measured pages)

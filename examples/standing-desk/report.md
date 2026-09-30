@@ -17,6 +17,11 @@ The SERP primarily serves people ready to browse or buy standing desks, with ret
 | Compare the best standing desks | Tested product-review buying guide | 25% | 25% | 33% | 3, 8 | 6093 |
 | Understand desk ergonomics | Practical ergonomics FAQ | 12% | 6% | 15% | 4 | 423 |
 
+## Searcher goals
+- **Shop for a standing desk** - The searcher wants to browse and buy a height-adjustable desk, often with options to filter by size, material, or desk type.
+- **Compare the best standing desks** - The searcher wants recommendations and comparisons to choose a standing desk that fits their needs and budget.
+- **Understand desk ergonomics** - The searcher wants to know how to use a standing desk, including appropriate height and how often to alternate between sitting and standing.
+
 Traffic known for 4 of 8 results.
 
 ## Content form on the pages (share of measured pages)

@@ -21,6 +21,14 @@ The results mix broad shoe roundups with more specific advice for trail running,
 | Choose shoes by running needs | Forum advice with selection tips | 14% | 14% | 0% | 7 | - |
 | Get running shoe brand advice | Social group discussion | 14% | 14% | 0% | 3 | - |
 
+## Searcher goals
+- **Compare top running shoes** - The searcher wants recommendations for highly rated running shoes and help comparing options.
+- **Choose trail running shoes** - The searcher wants recommendations for shoes suited to running on trails.
+- **Find shoes for starting running** - The searcher wants suggestions for a suitable first pair of running shoes.
+- **Find affordable daily trainers** - The searcher wants recommendations for daily running shoes within a stated budget.
+- **Choose shoes by running needs** - The searcher wants practical criteria for matching a running shoe to distance, pace, and cushioning needs.
+- **Get running shoe brand advice** - The searcher wants peer recommendations for running-shoe brands, including support-oriented options.
+
 Traffic known for 1 of 7 results.
 
 ## Content form on the pages (share of measured pages)

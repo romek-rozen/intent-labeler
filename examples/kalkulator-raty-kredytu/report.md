@@ -18,6 +18,11 @@ Wyniki odpowiadają przede wszystkim na potrzebę obliczenia raty, zwłaszcza kr
 | Symulacja raty kredytu hipotecznego | kalkulator hipoteczny połączony z informacją o ofertach lub konsultacją | 78% | 78% | 70% | 2, 4, 5, 6, 7, 8, 9 | 2001 |
 | Sprawdzenie wpływu zmiany oprocentowania | kalkulator scenariuszy zmiany oprocentowania | 11% | 11% | 14% | 3 | 403 |
 
+## Searcher goals
+- **Obliczenie raty kredytu** - Wyszukujący chce obliczyć wysokość raty na podstawie kwoty, oprocentowania, okresu spłaty i rodzaju rat.
+- **Symulacja raty kredytu hipotecznego** - Wyszukujący chce oszacować ratę kredytu mieszkaniowego, a często także sprawdzić zdolność kredytową lub porównać oferty.
+- **Sprawdzenie wpływu zmiany oprocentowania** - Wyszukujący chce sprawdzić, jak zmiana oprocentowania wpłynie na ratę już spłacanego kredytu hipotecznego.
+
 Traffic known for 8 of 9 results.
 
 ## Content form on the pages (share of measured pages)

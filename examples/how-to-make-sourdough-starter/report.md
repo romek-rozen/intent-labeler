@@ -12,6 +12,9 @@ The results mainly serve people who want to make a sourdough starter at home, wi
 |---|---|---|---|---|---|---|
 | Make a starter from scratch | Day-by-day starter recipe with measurements and readiness cues | 100% | 100% | 100% | 1, 2, 3, 4, 5, 6, 7 | 2899 |
 
+## Searcher goals
+- **Make a starter from scratch** - The searcher wants clear instructions for combining flour and water, feeding the mixture over several days, and knowing when the starter is ready.
+
 Traffic known for 1 of 7 results.
 
 ## Content form on the pages (share of measured pages)

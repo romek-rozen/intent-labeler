@@ -31,6 +31,7 @@ def render_markdown(analysis: dict) -> str:
         lines.append(f"| {intent['title']} | {intent.get('form') or '-'} | {_pct(row['coverage'])} | {_pct(row['answer_share'])} | "
                      f"{_pct(row['traffic_share'])} | {', '.join(map(str, row['ranks'])) or '-'} | "
                      f"{row['words'].get('p50') or '-'} |")
+    lines += ["", "## Searcher goals", *[f"- **{i['title']}** - {i['searcher_goal']}" for i in labels["intents"]]]
     lines += ["", f"Traffic known for {metrics['traffic_known']} of {metrics['results_total']} results.",
               "", "## Content form on the pages (share of measured pages)",
               *[f"- {i['title']}: " + ", ".join(f"{k} {v * 100:.0f}%" for k, v in (metrics['intents'][i['intent_id']].get('elements') or {}).items() if k != 'n' and v)
