@@ -212,7 +212,7 @@ async function fetchTraffic(results) {
     const organic = item.metrics?.organic || {};
     etv[String(item.target).toLowerCase()] = organic.count ? Number(organic.etv || 0) : null;
   }
-  results.forEach((x) => { x.etv = etv[x.url.toLowerCase()] ?? null; // DataForSEO lowercases targets });
+  results.forEach((x) => { x.etv = etv[x.url.toLowerCase()] ?? null; }); // DataForSEO lowercases targets
 }
 
 // Pages through DataForSEO OnPage content parsing: the browser cannot fetch other sites itself
