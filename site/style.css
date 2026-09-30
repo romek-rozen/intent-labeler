@@ -290,3 +290,6 @@ ul.plain li { margin-bottom: 6px; }
 .strip .med { position: absolute; top: 0; width: 2px; height: 22px; margin-left: -1px; background: var(--ink); }
 @media (max-width: 860px) { .strip { grid-template-columns: 1fr; gap: 4px; } }
 .strip .line { margin-right: 8px; } .pg-output { overflow-x: hidden; }
+
+/* Honeypot: invisible to people and screen readers, still in the DOM for form-filling bots. */
+.hp { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }

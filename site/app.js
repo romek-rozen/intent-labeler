@@ -408,10 +408,15 @@ function publicRecord(run) {
 // Public results go to the project's collection (an n8n webhook that validates and stores them;
 // nothing is published). text/plain keeps it a "simple" request: no CORS preflight.
 const COLLECT_URL = "https://n8n.nimblio.work/webhook/intent-labeler-contribution";
+// Bot traps, checked here and again in n8n: a hidden field people never fill, and the time
+// since the page opened (a real run takes far longer than 5 seconds).
+const PAGE_OPENED = Date.now();
 async function contribute(run) {
+  const website = $("#pgWebsite").value;
+  if (website) return true; // a bot filled the honeypot: pretend it worked, send nothing
   try {
     const res = await fetch(COLLECT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=UTF-8" },
-      body: JSON.stringify(publicRecord(run)), keepalive: true, signal: AbortSignal.timeout(15000) });
+      body: JSON.stringify({ ...publicRecord(run), website, elapsed_ms: Date.now() - PAGE_OPENED }), keepalive: true, signal: AbortSignal.timeout(15000) });
     return res.ok;
   } catch { return false; }
 }

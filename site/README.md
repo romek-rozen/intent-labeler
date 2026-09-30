@@ -25,7 +25,9 @@ browser on the visitor's own keys:
 (`n8n.nimblio.work/webhook/intent-labeler-contribution`, workflow "Intent Labeler - collect public
 contributions"). It accepts only the site's origin, validates the record (shape, size, no secrets) and
 stores it in the n8n data table `intent_labeler_contributions` with `status = new`. It always answers
-`{"ok":true}`, so a spammer learns nothing. Nothing is published.
+`{"ok":true}`, so a spammer learns nothing. Nothing is published. Two bot traps, checked in the browser
+and again in n8n: a hidden honeypot field `website` that people never fill, and `elapsed_ms` since the
+page opened (under 5 seconds is dropped). No password: anything in a static page is public.
 
 The GitHub route stays as an option for people who want their name on a result: with "Public" selected, the result page
 offers a link that opens GitHub's "new file" form for `community/<market>-<query>-<date>.json`,
