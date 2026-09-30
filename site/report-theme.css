@@ -5,7 +5,7 @@
   --line: var(--rule); --band: var(--paper); --muted: #8a97a8;
 }
 body { font-family: var(--font); }
-.card b, .val { font-family: var(--mono); }
+h1, h2, .card b, .val { font-family: var(--display); }
 main { max-width: 1180px; padding-top: 8px; }
 h1 { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
 h2 { font-weight: 700; letter-spacing: -0.01em; }

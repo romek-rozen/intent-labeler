@@ -66,8 +66,7 @@ FOOTER = ('<footer class="foot"><p class="made">Made with <span class="heart" ar
           '<p class="foot-sponsor">Useful? <a href="https://github.com/sponsors/romek-rozen">Sponsor on GitHub</a> '
           'or <a href="https://www.patreon.com/RomanRozenberger">support on Patreon</a>.</p></footer>')
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
-         '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700'
-         '&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">'
+         '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">'
          '<link rel="icon" href="https://zwinnie.com/user/themes/zwinnie/images/favicon.svg" type="image/svg+xml">')
 
 
