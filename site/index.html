@@ -9,7 +9,8 @@
 <meta property="og:description" content="Search intent and content form from a SERP or a page set. Open source. The model groups, the code counts.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://zwinnie.com/user/themes/zwinnie/images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,8 +20,8 @@
     <a href="#how">How it works</a>
     <a href="#examples">Examples</a>
     <a href="#try">Try it</a>
-    <a href="#community" id="navCommunity" hidden>Community</a>
     <a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>
+    <a class="nav-sponsor" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor</a>
   </nav>
 </header>
 
@@ -30,11 +31,18 @@
       <h1>What does this search results page actually want?</h1>
       <p class="lede">Intent Labeler reads Google's top ten the way a good editor does. It groups the results by what the searcher is after, names the form each group expects, and measures how long the winning pages are. A language model does the grouping. Plain code does every number.</p>
       <div class="hero-actions">
-        <button id="sortToggle" class="btn primary" type="button">Sort into intents</button>
-        <a class="btn" href="#try">Try it with your own key</a>
+        <a class="btn primary" href="#try">Try it with your own key</a>
+        <a class="btn" href="#examples">See the examples</a>
       </div>
+      <aside class="sponsor-call" aria-label="Support this project">
+        <p><b>Free and open source.</b> If you think tools like this are worth building, sponsor the work - it decides what gets made next.</p>
+        <p class="sponsor-links">
+          <a class="btn primary" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor on GitHub</a>
+          <a class="btn" href="https://www.patreon.com/RomanRozenberger">Support on Patreon</a>
+        </p>
+      </aside>
     </div>
-    <figure class="serp-stage" aria-label="Live example: the Google results for standing desk sorted into intents">
+    <figure class="serp-stage" aria-label="Live example: Google results for standing desk, sorted into intents">
       <figcaption>Google, United States: <b id="heroKeyword">standing desk</b></figcaption>
       <div id="serp" class="serp"></div>
     </figure>
@@ -70,8 +78,8 @@
   </section>
 
   <section id="examples" class="wrap">
-    <h2>Twelve live queries, five markets</h2>
-    <p>Run on 30 September 2026 against Google's top ten in Poland, the United States, Germany, Italy and France, with a low-cost model. The same topic, sourdough starter, appears in four languages. Each report is the full output: charts, every result and the numbers behind them.</p>
+    <h2>Sixteen live queries, six markets</h2>
+    <p>Run on 30 September 2026 against Google's top ten in Poland, the United States, the United Kingdom, Germany, Italy and France. Each one is labeled by seven low-cost models on the same data, so you can compare them. The same topic, sourdough starter, appears in four languages. Each report is the full output: charts, every result and the numbers behind them.</p>
     <div id="exampleList" class="examples"></div>
   </section>
 
@@ -87,10 +95,12 @@
           <tr><th>Step</th><th>Service</th><th>Price</th></tr>
           <tr><td>Google top ten, live</td><td>DataForSEO SERP API</td><td>$0.002 per query</td></tr>
           <tr><td>Read the ten pages</td><td>DataForSEO OnPage content parsing</td><td>$0.00015 per page, about $0.0015 for ten</td></tr>
+          <tr><td>Search volume and 8 years of monthly history</td><td>DataForSEO Labs keyword overview</td><td>about $0.012 per query</td></tr>
           <tr><td>Traffic per URL (optional)</td><td>DataForSEO Labs traffic estimation</td><td>about $0.013 per query - the most expensive step</td></tr>
           <tr><td>Grouping into intents</td><td>OpenRouter, the model you pick</td><td>$0.0006 to $0.002 per query</td></tr>
         </table>
         <p id="costEstimate" class="estimate"></p>
+        <p class="hint">After each run the page shows what it actually cost, as reported by DataForSEO and OpenRouter.</p>
       </aside>
 
       <aside class="keys-note" aria-label="How your keys are handled">
@@ -121,6 +131,7 @@
             <label class="grow">DataForSEO API password <input id="pgDfsPassword" type="password" autocomplete="off"></label>
           </div>
           <label class="check"><input id="pgPages" type="checkbox" checked> Read the pages: length, headings, tables, lists and video (content parsing)</label>
+          <label class="check"><input id="pgVolume" type="checkbox" checked> Search volume and seasonality (DataForSEO Labs, about $0.012)</label>
           <label class="check"><input id="pgTraffic" type="checkbox"> Also estimate traffic per URL (DataForSEO Labs, about $0.013)</label>
           <p class="hint">The API password is in your DataForSEO dashboard under API access; it is not your account password. New DataForSEO accounts get a small free credit, enough for many runs.</p>
         </div>
@@ -140,9 +151,9 @@
 
         <fieldset class="share">
           <legend>Who can see the result</legend>
-          <label class="check"><input type="radio" name="visibility" value="private" checked> Private - it stays in this tab</label>
-          <label class="check"><input type="radio" name="visibility" value="public"> Public - let me propose it for the community gallery</label>
-          <p class="hint">Public results are never sent automatically. After the run you get a button that opens a pull request on GitHub with the query, market, intents and numbers - no keys. It appears in the gallery once accepted.</p>
+          <label class="check"><input type="radio" name="visibility" value="public" checked> Public - let me contribute it to the project's collection</label>
+          <label class="check"><input type="radio" name="visibility" value="private"> Private - it stays in this tab</label>
+          <p class="hint">Nothing is sent automatically. After a public run you get a button that opens a pull request on GitHub with the query, market, intents and numbers - never keys. Contributed results are collected in the repository to improve the method; they are not shown on this page.</p>
         </fieldset>
 
         <button class="btn primary" type="submit" id="pgRun">Label the intents</button>
@@ -153,11 +164,6 @@
     </div>
   </section>
 
-  <section id="community" class="wrap" hidden>
-    <h2>Shared by the community</h2>
-    <p>Results people ran in the playground and chose to publish. Each one came in as a pull request.</p>
-    <div id="communityList" class="examples"></div>
-  </section>
 
   <section class="wrap run">
     <h2>Run the full version</h2>
@@ -172,7 +178,9 @@ intent-labeler --keyword "standing desk" --language en --location 2840</code></p
 </main>
 
 <footer class="foot">
-  <p>MIT licensed. Made by Roman Rozenberger. <a href="https://github.com/romek-rozen/intent-labeler">Source on GitHub</a>. <a href="https://github.com/sponsors/romek-rozen">Sponsor</a>.</p>
+  <p class="made">Made with <span class="heart" aria-label="love">&#10084;</span> by <a href="https://zwinnie.com" aria-label="Zwinnie"><img src="https://zwinnie.com/user/themes/zwinnie/images/logo/zwinnie-wordmark-light.svg" alt="Zwinnie" width="143" height="26"></a></p>
+  <p class="foot-sponsor">Useful? <a href="https://github.com/sponsors/romek-rozen">Sponsor on GitHub</a> or <a href="https://www.patreon.com/RomanRozenberger">support on Patreon</a>.</p>
+  <p class="foot-links"><a href="https://github.com/romek-rozen/intent-labeler">Source on GitHub</a> <a href="https://github.com/romek-rozen/intent-labeler/blob/main/docs/METHOD.md">Method</a> <a href="https://github.com/sponsors/romek-rozen">Sponsor</a> <span>MIT licence</span></p>
 </footer>
 <script src="app.js" type="module"></script>
 </body>

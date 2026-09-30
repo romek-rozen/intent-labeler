@@ -8,12 +8,14 @@ from __future__ import annotations
 
 import json
 import shutil
+from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 PROMPT = ROOT / "src/intent_labeler/features/intent_labeling/prompts/system.md"
 HERO_EXAMPLE = "standing-desk"
+SHOW_COMMUNITY = False
 MARKETS = {"2616": "Poland", "2840": "United States", "2276": "Germany", "2380": "Italy",
            "2250": "France", "2826": "United Kingdom"}
 
@@ -32,6 +34,9 @@ def example_summary(folder: Path) -> dict:
         "length": (form["length_words"] or {}).get("p50"),
         "length_basis": form["length_basis"],
         "warnings": [w["code"] for w in form["warnings"]],
+        "volume": (analysis.get("demand") or {}).get("volume"),
+        "season_index": ((analysis.get("demand") or {}).get("seasonality") or {}).get("seasonality_index"),
+        "models": len([r for r in model_runs(folder) if not r.get("failed")]),
         "intents": [{"title": i["title"], "share": metrics["intents"][i["intent_id"]]["answer_share"],
                      "coverage": metrics["intents"][i["intent_id"]]["coverage"]}
                     for i in labels["intents"]],
@@ -53,17 +58,68 @@ def hero_data(folder: Path) -> dict:
     }
 
 
-FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
-        '<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900'
-        '&display=swap" rel="stylesheet">')
+FOOTER = ('<footer class="foot"><p class="made">Made with <span class="heart" aria-label="love">&#10084;</span> by '
+          '<a href="https://zwinnie.com" aria-label="Zwinnie"><img src="https://zwinnie.com/user/themes/zwinnie/'
+          'images/logo/zwinnie-wordmark-light.svg" alt="Zwinnie" width="143" height="26"></a></p>'
+          '<p class="foot-sponsor">Useful? <a href="https://github.com/sponsors/romek-rozen">Sponsor on GitHub</a> '
+          'or <a href="https://www.patreon.com/RomanRozenberger">support on Patreon</a>.</p></footer>')
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
+         '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700'
+         '&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">'
+         '<link rel="icon" href="https://zwinnie.com/user/themes/zwinnie/images/favicon.svg" type="image/svg+xml">')
 
 
 def _keyword(folder: Path) -> str:
     return json.loads((folder / "analysis.json").read_text())["snapshot"]["keyword"]
 
 
-def themed_report(html: str, folders: list[Path], index: int) -> str:
-    """Give a copied report the site's fonts, colours and header, plus prev/next links."""
+MODEL_ORDER = ["gpt-6-luna", "deepseek-v4.1-flash", "nemotron-3.5-lightning", "gemma-4-26b-a4b-it",
+               "gemma-4-31b-it", "qwen3.8-flash", "mimo-v2.6-flash"]
+
+
+def model_runs(folder: Path) -> list[dict]:
+    """One row per model that labeled this example: the headline numbers for the comparison."""
+    runs = []
+    for slug in MODEL_ORDER:
+        path = folder / "models" / slug / "analysis.json"
+        failed = folder / "models" / slug / "failed.json"
+        if failed.is_file() and not path.is_file():
+            runs.append({"slug": slug, "model": json.loads(failed.read_text())["model"], "failed": True})
+            continue
+        if not path.is_file():
+            continue
+        a = json.loads(path.read_text())
+        form, labels = a["form"], a["labels"]
+        runs.append({"slug": slug, "model": a.get("model", slug),
+                     "intents": sum(1 for i in labels["intents"] if i.get("basis") == "model"),
+                     "dominant": form["dominant_intent_title"], "form": form["dominant_intent_form"],
+                     "share": form["dominant_intent_answer_share"],
+                     "unassigned": len(labels.get("coverage_gap") or []),
+                     "article": (form.get("article_fits") or {}).get("value")})
+    return runs
+
+
+def model_panel(folder_name: str, runs: list[dict], current: str | None) -> str:
+    if not runs:
+        return ""
+    rows = "".join(
+        f'<tr><td>{escape(r["model"])}</td><td colspan=5>failed the JSON contract three times '
+        f'(returned result positions instead of result IDs)</td></tr>' if r.get("failed") else
+        f'<tr{" class=current" if r["slug"] == current else ""}>'
+        f'<td><a href="{folder_name}--{r["slug"]}.html">{escape(r["model"])}</a></td>'
+        f'<td>{r["intents"]}</td><td>{escape(r["dominant"] or "-")}</td><td>{escape(r["form"] or "-")}</td>'
+        f'<td>{round((r["share"] or 0) * 100)}%</td><td>{r["unassigned"] or "-"}</td></tr>' for r in runs)
+    label = "the original run" if current is None else next(r["model"] for r in runs if r["slug"] == current)
+    return (f'<section class="model-compare"><h2>Same results, seven models</h2>'
+            f'<p class="note">Only the model changes: the search results, pages and traffic are identical. '
+            f'You are viewing <b>{escape(label)}</b>. <a href="{folder_name}.html">Original run</a>.</p>'
+            f'<div class="panel"><table><tr><th>Model</th><th>Intents</th><th>Dominant intent</th>'
+            f'<th>Form</th><th>Share</th><th>Unplaced</th></tr>{rows}</table></div></section>')
+
+
+def themed_report(html: str, folders: list[Path], index: int, runs: list[dict] | None = None,
+                  current: str | None = None) -> str:
+    """Give a copied report the site's look and header, prev/next links and the model comparison."""
     prev_f, next_f = folders[index - 1], folders[(index + 1) % len(folders)]
     pager = (f'<nav class="report-nav" aria-label="Examples">'
              f'<a href="{prev_f.name}.html">Previous: {_keyword(prev_f)}</a>'
@@ -72,11 +128,16 @@ def themed_report(html: str, folders: list[Path], index: int) -> str:
     header = ('<header class="top"><a class="brand" href="../index.html">Intent Labeler</a><nav>'
               '<a href="../index.html#how">How it works</a><a href="../index.html#examples">Examples</a>'
               '<a href="../index.html#try">Try it</a>'
-              '<a href="https://github.com/romek-rozen/intent-labeler">GitHub</a></nav></header>')
-    head = f'{FONT}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
+              '<a href="https://github.com/romek-rozen/intent-labeler">GitHub</a>'
+              '<a class="nav-sponsor" href="https://github.com/sponsors/romek-rozen">&#10084; Sponsor</a></nav></header>')
+    head = f'{FONTS}<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../report-theme.css">'
     html = html.replace("</head>", head + "</head>", 1)
     html = html.replace("<main>", header + pager + "<main>", 1)
-    return html.replace("</main>", "</main>" + pager.replace('class="report-nav"', 'class="report-nav bottom"'), 1)
+    panel = model_panel(folders[index].name, runs or [], current)
+    if panel:
+        html = html.replace("<h2>", panel + "<h2>", 1)
+    return html.replace("</main>", "</main>" + pager.replace('class="report-nav"', 'class="report-nav bottom"')
+                        + FOOTER, 1)
 
 
 def community_records() -> list[dict]:
@@ -99,12 +160,18 @@ def main() -> None:
     (OUT / "examples").mkdir()
     folders = sorted(p for p in (ROOT / "examples").iterdir() if (p / "analysis.json").is_file())
     for index, folder in enumerate(folders):
-        html = (folder / "report.html").read_text()
+        runs = model_runs(folder)
         (OUT / "examples" / f"{folder.name}.html").write_text(
-            themed_report(html, folders, index))
+            themed_report((folder / "report.html").read_text(), folders, index, runs, None))
+        for run in [r for r in runs if not r.get("failed")]:
+            html = (folder / "models" / run["slug"] / "report.html").read_text()
+            (OUT / "examples" / f"{folder.name}--{run['slug']}.html").write_text(
+                themed_report(html, folders, index, runs, run["slug"]))
     data = {"examples": [example_summary(f) for f in folders],
             "hero": hero_data(ROOT / "examples" / HERO_EXAMPLE),
-            "community": community_records()}
+            # Community results are collected but not published until there is moderation
+            # (queries can contain offensive or personal text). Flip SHOW_COMMUNITY to show them.
+            "community": community_records() if SHOW_COMMUNITY else []}
     (OUT / "data.json").write_text(json.dumps(data, ensure_ascii=False))
     shutil.copy(PROMPT, OUT / "prompt.md")
     shutil.copy(ROOT / "examples/standing-desk/snapshot.json", OUT / "sample-snapshot.json")

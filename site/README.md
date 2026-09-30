@@ -21,7 +21,8 @@ browser on the visitor's own keys:
 **Public results** go through GitHub, not through a backend: with "Public" selected, the result page
 offers a link that opens GitHub's "new file" form for `community/<market>-<query>-<date>.json`,
 pre-filled with the record (no keys). GitHub forks and opens a pull request; `tests/test_community.py`
-checks the file in CI; once merged, `build_site.py` puts it in the "Shared by the community" gallery.
+checks the file in CI. "Public" is the default. Merged files are collected in `community/` but **not
+shown** on the site until moderation exists (`SHOW_COMMUNITY = False` in `build_site.py`).
 
 ```mermaid
 flowchart LR

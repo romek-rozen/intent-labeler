@@ -1,8 +1,11 @@
 # community
 
-Results people ran in the website playground and chose to publish. Each file arrives as a pull
-request opened from the playground's "Propose it for the gallery" button, and appears on the website
-once merged.
+Results people ran in the website playground and chose to contribute. Each file arrives as a pull
+request opened from the playground's "Contribute on GitHub" button.
+
+They are **collected, not published**: the website does not show them until there is moderation
+(a query can contain offensive or personal text, and checking that with a model on the fly is not
+done yet). `SHOW_COMMUNITY` in `scripts/build_site.py` switches the gallery on.
 
 Rules checked by `tests/test_community.py` on every pull request:
 

@@ -4,11 +4,12 @@
   --surface: var(--paper); --panel: var(--card); --text: var(--ink); --text2: var(--ink-2);
   --line: var(--rule); --band: var(--paper); --muted: #8a97a8;
 }
-body { font-family: "Schibsted Grotesk", system-ui, sans-serif; }
+body { font-family: var(--font); }
+.card b, .val { font-family: var(--mono); }
 main { max-width: 1180px; padding-top: 8px; }
-h1 { font-weight: 900; letter-spacing: -0.02em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
-h2 { font-weight: 900; letter-spacing: -0.01em; }
-.card b { font-weight: 900; }
+h1 { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(2rem, 4.4vw, 3.2rem); }
+h2 { font-weight: 700; letter-spacing: -0.01em; }
+.card b { font-weight: 700; }
 .panel, .card { border-radius: var(--radius-card); }
 .report-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   max-width: 1180px; margin: 0 auto; padding: 0 16px 8px; font-size: 0.95rem; }
@@ -21,3 +22,10 @@ h2 { font-weight: 900; letter-spacing: -0.01em; }
   }
 }
 h1 { max-width: none; }
+
+.model-compare { margin: 28px 0 8px; }
+.model-compare tr.current td { font-weight: 700; background: var(--band); }
+
+.panel { max-width: 100%; overflow-x: auto; }
+main { min-width: 0; }
+td, th { overflow-wrap: anywhere; }

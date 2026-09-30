@@ -29,35 +29,8 @@ serp.innerHTML = `
       <div class="nums"><span><b>${pct(it.coverage)}</b> of results address it</span><span><b>${pct(it.share)}</b> share after splitting</span></div>
     </div>`).join("")}</div>`;
 serp.insertAdjacentHTML("afterend", `<p class="serp-note">Result 4 serves two intents, so it counts half to each. Shares add up to 100%; coverage does not have to.</p>`);
-serp.classList.add("list");
-
-function flip(toGrouped) {
-  const from = {};
-  serp.querySelectorAll(toGrouped ? ".results .row" : ".groups .row").forEach((el) => {
-    from[el.dataset.id] = el.getBoundingClientRect();
-  });
-  serp.classList.toggle("grouped", toGrouped);
-  serp.classList.toggle("list", !toGrouped);
-  serp.classList.remove("settled");
-  const targets = serp.querySelectorAll(toGrouped ? ".groups .row" : ".results .row");
-  if (!reduced) {
-    targets.forEach((el) => {
-      const a = from[el.dataset.id];
-      if (!a) return;
-      const b = el.getBoundingClientRect();
-      el.animate([{ transform: `translate(${a.left - b.left}px, ${a.top - b.top}px)` }, { transform: "none" }],
-        { duration: 700, easing: "cubic-bezier(.2,.7,.2,1)" });
-    });
-  }
-  setTimeout(() => serp.classList.add("settled"), reduced ? 0 : 50);
-  $("#sortToggle").textContent = toGrouped ? "Show as search results" : "Sort into intents";
-}
-let grouped = false;
-$("#sortToggle").addEventListener("click", () => flip((grouped = !grouped)));
-if (!reduced) {
-  // One orchestrated moment: the page opens on the raw results, then sorts them once.
-  setTimeout(() => { if (!grouped) flip((grouped = true)); }, 1400);
-}
+// The hero shows the finished reading: results already sorted into intents, with the numbers.
+serp.classList.add("grouped", "settled");
 
 // ------------------------------------------------------------ examples ----
 $("#exampleList").innerHTML = data.examples.map((ex) => `
@@ -66,23 +39,10 @@ $("#exampleList").innerHTML = data.examples.map((ex) => `
     <span class="market">Google ${esc(ex.market)}, ${ex.results} results</span>
     <span class="stack" aria-hidden="true">${ex.intents.map((it, i) => `<span style="flex:${it.share};background:${color(i)}"></span>`).join("")}</span>
     <p class="dom"><b>${esc(ex.dominant)}</b><br>${esc(ex.form)}</p>
-    <p class="meta">${ex.length ? `Reference length ${ex.length} words` : `No reference length (${esc(ex.length_basis.replaceAll("_", " "))})`}</p>
+    ${ex.volume != null ? `<p class="meta"><b>${ex.volume.toLocaleString("en")}</b> searches per month${ex.season_index ? `, seasonality index ${ex.season_index}` : ""}</p>` : ""}
+    <p class="meta">${ex.length ? `Reference length ${ex.length} words` : `No reference length (${esc(ex.length_basis.replaceAll("_", " "))})`}${ex.models ? `. Compared across ${ex.models} models` : ""}</p>
     <span>${ex.warnings.map((w) => `<span class="tag">${esc(w.replaceAll("_", " "))}</span>`).join("")}</span>
   </a>`).join("");
-
-// ---------------------------------------------------------- community ----
-if (data.community?.length) {
-  $("#community").hidden = false;
-  $("#navCommunity").hidden = false;
-  $("#communityList").innerHTML = data.community.map((c) => `
-    <article class="example">
-      <span class="q">${esc(c.keyword)}</span>
-      <span class="market">Google ${esc(c.market)}, ${c.results.length} results, ${esc(c.date)}</span>
-      <span class="stack" aria-hidden="true">${c.intents.map((it, i) => `<span style="flex:${it.share};background:${color(i)}"></span>`).join("")}</span>
-      <p class="dom">${c.intents.map((it) => `<b>${esc(it.title)}</b> ${pct(it.share)}<br>`).join("")}</p>
-      <p class="meta">Model ${esc(c.model)}${c.shared_by ? `, shared by ${esc(c.shared_by)}` : ""}</p>
-    </article>`).join("");
-}
 
 // ---------------------------------------------------------- playground ----
 // Markets: DataForSEO location code + the languages Google serves there.
@@ -128,12 +88,13 @@ const modelSelect = $("#pgModel");
 modelSelect.innerHTML = MODELS.map((m) => `<option value="${m.id}">${m.label} - about $${m.cost.toFixed(4)}, ${m.speed}</option>`).join("");
 const currentModel = () => MODELS.find((m) => m.id === modelSelect.value);
 
-const PRICE = { serp: 0.002, page: 0.00015, traffic: 0.013 };
+const PRICE = { serp: 0.002, page: 0.00015, traffic: 0.013, volume: 0.012 };
 function updateEstimate() {
   const dfs = sourceMode() === "dataforseo";
   const pages = dfs && $("#pgPages").checked ? 10 * PRICE.page : 0;
   const traffic = dfs && $("#pgTraffic").checked ? PRICE.traffic : 0;
-  const dfsCost = dfs ? PRICE.serp + pages + traffic : 0;
+  const volume = dfs && $("#pgVolume").checked ? PRICE.volume : 0;
+  const dfsCost = dfs ? PRICE.serp + pages + traffic + volume : 0;
   const total = dfsCost + currentModel().cost;
   $("#costEstimate").textContent = `This run, as set below: about $${total.toFixed(4)}` +
     (dfs ? ` (DataForSEO $${dfsCost.toFixed(4)}, model $${currentModel().cost.toFixed(4)})` : ` (model only)`) +
@@ -178,8 +139,14 @@ function parseResults(text) {
   });
 }
 
+// Actual spend of the current run, from the services' own answers (DataForSEO task.cost,
+// OpenRouter usage.cost) - not an estimate.
+const spend = { serp: 0, pages: 0, traffic: 0, volume: 0, model: 0 };
+const resetSpend = () => Object.keys(spend).forEach((k) => (spend[k] = 0));
+const usd = (v) => `$${v.toFixed(v < 0.01 ? 5 : 4)}`;
+
 // DataForSEO straight from the browser (their API allows it: CORS *).
-async function dataforseo(path, task) {
+async function dataforseo(path, task, bucket) {
   const auth = btoa(`${keyFields.dfsLogin.value.trim()}:${keyFields.dfsPassword.value.trim()}`);
   const res = await fetch(`https://api.dataforseo.com/v3/${path}`, {
     method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/json" },
@@ -187,6 +154,7 @@ async function dataforseo(path, task) {
   }).catch((e) => { throw new Error(e.name === "TimeoutError" ? "DataForSEO did not answer within 90 seconds" : `cannot reach DataForSEO (${e.message})`); });
   const body = await res.json().catch(() => ({}));
   const t = body?.tasks?.[0];
+  if (bucket) spend[bucket] += Number(t?.cost || body?.cost || 0);
   if (!res.ok || body.status_code !== 20000 || !t || t.status_code !== 20000) {
     throw new Error(`DataForSEO: ${t?.status_message || body?.status_message || res.status}`);
   }
@@ -196,7 +164,7 @@ async function dataforseo(path, task) {
 async function fetchSerp(keyword) {
   const r = await dataforseo("serp/google/organic/live/advanced", {
     keyword, location_code: Number(country.value), language_code: language.value, device: "desktop", depth: 10,
-  });
+  }, "serp");
   const features = { people_also_ask: [], related_searches: [], ai_overview: "", item_types: r.item_types || [] };
   const results = [];
   for (const item of r.items || []) {
@@ -220,7 +188,7 @@ async function fetchTraffic(results) {
   // Unknown is not zero: a page with no known keywords gets etv null.
   const r = await dataforseo("dataforseo_labs/google/bulk_traffic_estimation/live", {
     targets: results.map((x) => x.url), location_code: Number(country.value), language_code: language.value, item_types: ["organic"],
-  });
+  }, "traffic");
   const etv = {};
   for (const item of r.items || []) {
     const organic = item.metrics?.organic || {};
@@ -260,7 +228,7 @@ async function fetchPages(results, onProgress) {
   let done = 0;
   const one = async (r) => {
     try {
-      const res = await dataforseo("on_page/content_parsing/live", { url: r.url, markdown_view: true });
+      const res = await dataforseo("on_page/content_parsing/live", { url: r.url, markdown_view: true }, "pages");
       const md = res.items?.[0]?.page_as_markdown || "";
       Object.assign(r, analyseMarkdown(md));
       r.fetch_status = r.words >= THIN_WORDS ? "ok" : "thin";
@@ -272,6 +240,46 @@ async function fetchPages(results, onProgress) {
   const queue = [...results];
   await Promise.all(Array.from({ length: 5 }, async () => { while (queue.length) await one(queue.shift()); }));
   results.forEach((r) => { if (r.fetch_status !== "ok") r.digest = ""; });
+}
+
+// Search volume + monthly history (DataForSEO Labs keyword_overview: $0.012, 95 months).
+async function fetchVolume(keyword) {
+  const r = await dataforseo("dataforseo_labs/google/keyword_overview/live", {
+    keywords: [keyword], location_code: Number(country.value), language_code: language.value, include_serp_info: false,
+  }, "volume");
+  const item = r.items?.[0];
+  if (!item) return null;
+  const info = item.keyword_info || {};
+  const monthly = (info.monthly_searches || []).map((m) => ({ year: m.year, month: m.month, volume: m.search_volume }))
+    .sort((a, b) => a.year - b.year || a.month - b.month);
+  return { volume: info.search_volume, cpc: info.cpc, difficulty: item.keyword_properties?.keyword_difficulty, monthly, season: seasonality(monthly) };
+}
+
+// Same arithmetic as features/search_volume/seasonality.py.
+function seasonality(monthly) {
+  const known = monthly.filter((m) => m.volume != null);
+  if (known.length < 12) return null;
+  const byMonth = {};
+  known.slice(-36).forEach((m) => (byMonth[m.month] ||= []).push(m.volume));
+  const means = Object.fromEntries(Object.entries(byMonth).map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length]));
+  const overall = Object.values(means).reduce((a, b) => a + b, 0) / Object.keys(means).length;
+  const profile = Object.fromEntries(Object.entries(means).map(([k, v]) => [k, v / overall]));
+  const entries = Object.entries(profile);
+  const peak = entries.reduce((a, b) => (b[1] > a[1] ? b : a));
+  const low = entries.reduce((a, b) => (b[1] < a[1] ? b : a));
+  const sum = (arr) => arr.reduce((a, m) => a + m.volume, 0);
+  const prev = known.length >= 24 ? sum(known.slice(-24, -12)) : null;
+  return { peak: +peak[0], low: +low[0], index: low[1] ? peak[1] / low[1] : null, yoy: prev ? sum(known.slice(-12)) / prev - 1 : null };
+}
+
+const MONTH_NAMES = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");
+function monthlyChart(monthly) {
+  const data = monthly.slice(-36);
+  const top = Math.max(...data.map((m) => m.volume || 0));
+  if (!top) return "";
+  return `<div class="month-bars" role="img" aria-label="Search volume per month, last ${data.length} months">${data.map((m) =>
+    `<span title="${MONTH_NAMES[m.month - 1]} ${m.year}: ${(m.volume ?? 0).toLocaleString("en")}" style="height:${m.volume == null ? 0 : Math.max(2, 100 * m.volume / top)}%"></span>`).join("")}</div>
+    <div class="month-axis"><span>${MONTH_NAMES[data[0].month - 1]} ${data[0].year}</span><span>${MONTH_NAMES[data.at(-1).month - 1]} ${data.at(-1).year}</span></div>`;
 }
 
 function validate(labels, ids) {
@@ -349,13 +357,14 @@ async function callModel({ key, model, payload, onAttempt = () => {} }) {
       method: "POST",
       headers: { "Authorization": `Bearer ${key}`, "Content-Type": "application/json",
                  "HTTP-Referer": location.origin, "X-Title": "Intent Labeler playground" },
-      body: JSON.stringify({ model, max_tokens: 12000, reasoning: { enabled: false },
+      body: JSON.stringify({ model, max_tokens: 12000, reasoning: { enabled: false }, usage: { include: true },
         response_format: { type: "json_object" },
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content }] }),
       signal: AbortSignal.timeout(180000),
     }).catch((e) => { throw new Error(e.name === "TimeoutError" ? "the model did not answer within 3 minutes - try a faster one" : `cannot reach OpenRouter (${e.message})`); });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body?.error?.message || `OpenRouter answered ${res.status}`);
+    spend.model += Number(body?.usage?.cost || 0);
     lastRaw = body?.choices?.[0]?.message?.content || "";
     try {
       return validate(JSON.parse(lastRaw.replace(/^```(?:json)?\s*|\s*```$/g, "")), payload.results.map((r) => r.result_id));
@@ -389,10 +398,10 @@ function shareBox(run) {
   const blob = URL.createObjectURL(new Blob([json], { type: "application/json" }));
   const tooLong = url.length > 7500;
   return `<div class="share-box">
-    <h3>Propose this result for the gallery</h3>
-    <p>This opens GitHub with the file <code>community/${esc(name)}</code> filled in. GitHub will fork the repository and open a pull request for you. You can add your name in <code>shared_by</code> before you submit. The file contains the query, market, results and intents - no keys.</p>
+    <h3>Contribute this result</h3>
+    <p>This opens GitHub with the file <code>community/${esc(name)}</code> filled in. GitHub forks the repository and opens a pull request for you. You can add your name in <code>shared_by</code> before you submit. The file holds the query, market, results and intents - no keys. Contributions are collected in the repository, not published on this page.</p>
     ${tooLong ? `<p class="hint">This result is too long for a link. Download the file and upload it at the same address.</p>` :
-      `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Propose it for the gallery</a>`}
+      `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Contribute on GitHub</a>`}
     <a class="btn" href="${blob}" download="${esc(name)}">Download the JSON</a>
   </div>`;
 }
@@ -414,6 +423,10 @@ function render(run) {
     <p>Dominant intent: <b>${esc(top?.title)}</b>, answered by <b>${esc(top?.form || "-")}</b>.
        ${labels.expected_genre && length ? `Expected genre: ${esc(labels.expected_genre)}.` : ""}</p>
     <p>${measured ? (length ? `Reference length: <b>${length.p50} words</b> (middle half ${length.p25}-${length.p75}), from the dominant intent's pages.` : `No reference length: ${esc(basis)}.`) + ` ${measured} of ${results.length} pages were readable.` : "Pages were not read, so there is no length measurement."}</p>
+    ${run.demand ? `<div class="demand"><p><b>${(run.demand.volume ?? 0).toLocaleString("en")}</b> searches per month.
+      CPC ${run.demand.cpc ?? "-"}, keyword difficulty ${run.demand.difficulty ?? "-"}${run.demand.season ? `.
+      Seasonality index ${run.demand.season.index?.toFixed(2)}: peak in ${MONTH_NAMES[run.demand.season.peak - 1]}, low in ${MONTH_NAMES[run.demand.season.low - 1]}${run.demand.season.yoy != null ? `; last 12 months ${run.demand.season.yoy >= 0 ? "+" : ""}${Math.round(run.demand.season.yoy * 100)}% on the year before` : ""}` : ""}.</p>
+      ${monthlyChart(run.demand.monthly)}</div>` : ""}
     ${warnings.length ? `<ul class="warn-list">${warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
     <div class="bars">${rows.map((r, i) => `
       <div class="bar" style="--c:${r.fallback ? "var(--rule)" : color(i)}; --w:${(r.share * 100).toFixed(1)}%">
@@ -431,7 +444,7 @@ function render(run) {
     <table class="results-list">${results.map((r) => `<tr><td>${r.rank}</td><td><a href="${esc(r.url)}" rel="noopener">${esc(r.title || r.url)}</a><br><span class="hint">${esc(r.domain)}${r.fetch_status ? `, ${r.fetch_status === "ok" ? `${r.words} words` : r.fetch_status}` : ""}</span></td>
       <td>${esc(rows.filter((x) => x.result_ids.includes(r.result_id)).map((x) => x.title).join("; "))}</td></tr>`).join("")}</table>
     ${(labels.reader_questions || []).length ? `<h3 style="margin-top:24px">Reader questions</h3><ul>${labels.reader_questions.map((q) => `<li>${esc(q.question)}</li>`).join("")}</ul>` : ""}
-    ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing was published. Choose "Public" before running to propose it for the gallery.</p>`}`;
+    ${run.visibility === "public" ? shareBox(run) : `<p class="hint" style="margin-top:20px">Private run: nothing left your browser except the calls to DataForSEO and OpenRouter.</p>`}`;
 }
 
 // Live progress: a list of steps with state and a ticking clock, so a slow model never looks stuck.
@@ -474,6 +487,7 @@ $("#playground").addEventListener("submit", async (event) => {
     return fail("Enter your DataForSEO login and API password, or switch to pasting results.");
   }
   saveKeys();
+  resetSpend();
   let steps;
   $("#pgRun").disabled = true;
   $("#pgOutput").hidden = true;
@@ -485,6 +499,7 @@ $("#playground").addEventListener("submit", async (event) => {
     dfsMode ? `Fetch Google's top ten in ${marketName()}` : "Read the pasted results",
     "Read the pages",
     "Estimate traffic per URL",
+    "Search volume and seasonality",
     `Group the results with ${model.label}`,
     "Count shares and lengths",
   ]);
@@ -498,13 +513,13 @@ $("#playground").addEventListener("submit", async (event) => {
       results = parseResults($("#pgResults").value);
       if (results.length < 2) throw new Error("add at least two results, one per line");
     }
-    steps.done(0, `${results.length} results`);
+    steps.done(0, `${results.length} results${dfsMode ? `, ${usd(spend.serp)}` : ""}`);
 
     if (readPages) {
       steps.start(1, `0 of ${results.length}`);
       await fetchPages(results, (n) => steps.detail(1, `${n} of ${results.length}`));
       const ok = results.filter((r) => r.fetch_status === "ok").length;
-      steps.done(1, `${ok} of ${results.length} readable${ok < results.length ? ", the rest are blocked or too short" : ""}`);
+      steps.done(1, `${ok} of ${results.length} readable${ok < results.length ? ", the rest are blocked or too short" : ""}, ${usd(spend.pages)}`);
     } else {
       steps.skip(1, dfsMode ? "switched off" : "not available when pasting results");
     }
@@ -512,28 +527,41 @@ $("#playground").addEventListener("submit", async (event) => {
     if (wantTraffic) {
       steps.start(2, "one DataForSEO Labs call");
       await fetchTraffic(results);
-      steps.done(2, `known for ${results.filter((r) => r.etv != null).length} of ${results.length}`);
+      steps.done(2, `known for ${results.filter((r) => r.etv != null).length} of ${results.length}, ${usd(spend.traffic)}`);
     } else {
       steps.skip(2, "switched off");
     }
 
     const payload = { source: "serp", keyword, language: language.value, brief: "", serp_features: features, results };
-    steps.start(3, `usually ${model.speed}`);
+    let demand = null;
+    if (dfsMode && $("#pgVolume").checked) {
+      steps.start(3, "one DataForSEO Labs call");
+      demand = await fetchVolume(keyword);
+      steps.done(3, demand ? `${(demand.volume ?? 0).toLocaleString("en")} per month, ${usd(spend.volume)}` : `no data for this keyword, ${usd(spend.volume)}`);
+    } else {
+      steps.skip(3, dfsMode ? "switched off" : "not available when pasting results");
+    }
+    steps.start(4, `usually ${model.speed}`);
     const labels = await callModel({ key: keyFields.openrouter.value.trim(), model: model.id,
       payload: { ...payload, results: payload.results.map(({ words, chars, elements, etv, fetch_status, ...r }) => r) },
-      onAttempt: (n, why) => steps.detail(3, `attempt ${n} of 3: the previous answer ${why}; sent back for correction`) });
-    steps.done(3, `${labels.intents.filter((i) => !i.fallback).length} intents`);
+      onAttempt: (n, why) => steps.detail(4, `attempt ${n} of 3: the previous answer ${why}; sent back for correction`) });
+    steps.done(4, `${labels.intents.filter((i) => !i.fallback).length} intents, ${usd(spend.model)}`);
 
-    steps.start(4);
+    steps.start(5);
     const run = { keyword, results, labels, rows: measure(labels, results), market: marketName(),
       location: Number(country.value), language: language.value, source: mode, model: model.id,
-      visibility: document.querySelector('input[name="visibility"]:checked').value };
+      visibility: document.querySelector('input[name="visibility"]:checked').value, demand };
     render(run);
-    steps.done(4, "done in your browser");
-    status.textContent = "Finished. The groups come from the model; every number below was computed in your browser.";
+    steps.done(5, "done in your browser");
+    const dfsTotal = spend.serp + spend.pages + spend.traffic + spend.volume;
+    status.textContent = `Finished. This run cost ${usd(dfsTotal + spend.model)}: DataForSEO ${usd(dfsTotal)}` +
+      (dfsMode ? ` (SERP ${usd(spend.serp)}, pages ${usd(spend.pages)}, volume ${usd(spend.volume)}, traffic ${usd(spend.traffic)})` : "") +
+      `, OpenRouter ${usd(spend.model)} - as reported by the services and billed to your accounts.`;
     $("#pgOutput").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
   } catch (e) {
-    steps.fail(e.message);
+    steps?.fail(e.message);
+    const spent = spend.serp + spend.pages + spend.traffic + spend.volume + spend.model;
+    if (spent) e.message += `. Spent before the error: ${usd(spent)}`;
     fail(`Could not finish: ${e.message}. Check the keys, the query and the market, then try again.`);
   } finally {
     steps?.stop();
